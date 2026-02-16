@@ -1,0 +1,144 @@
+name: Promote Instance Files
+
+on:
+  workflow_dispatch:
+    inputs:
+      direction:
+        description: 'Promotion direction'
+        required: true
+        type: choice
+        options:
+          - dev-to-test
+          - test-to-prod
+      bump:
+        description: 'Version bump type (test-to-prod only)'
+        required: false
+        type: choice
+        options:
+          - minor
+          - patch
+          - major
+        default: minor
+
+permissions:
+  contents: read
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Load promotion config
+        id: config
+        run: |
+          source source/promotion/promotion.env
+          if [[ "${{ inputs.direction }}" == "dev-to-test" ]]; then
+            echo "target_repo=${PROMOTION_ORG}/${TEST_REPO}" >> "$GITHUB_OUTPUT"
+            echo "target_name=${TEST_REPO}" >> "$GITHUB_OUTPUT"
+          else
+            echo "target_repo=${PROMOTION_ORG}/${PROD_REPO}" >> "$GITHUB_OUTPUT"
+            echo "target_name=${PROD_REPO}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.config.outputs.target_repo }}
+          token: ${{ secrets.PROMOTION_PAT }}
+          path: target
+
+      - name: Copy instance files
+        run: |
+          # Copy instance-data directory
+          if [[ -d "source/instance-data" ]]; then
+            cp -r source/instance-data target/
+            echo "Copied instance-data/"
+          fi
+
+          # Copy pfc-core directory
+          if [[ -d "source/pfc-core" ]]; then
+            mkdir -p target/pfc-core
+            cp -r source/pfc-core/* target/pfc-core/
+            echo "Copied pfc-core/"
+          fi
+
+          # Copy supabase directory
+          if [[ -d "source/supabase" ]]; then
+            cp -r source/supabase target/
+            echo "Copied supabase/"
+          fi
+
+          # Copy tools directory
+          if [[ -d "source/tools" ]]; then
+            cp -r source/tools target/
+            echo "Copied tools/"
+          fi
+
+          # Copy promotion config
+          if [[ -d "source/promotion" ]]; then
+            mkdir -p target/promotion
+            cp source/promotion/* target/promotion/
+            echo "Copied promotion/"
+          fi
+
+      - name: Check for changes
+        id: diff
+        working-directory: target
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "No changes to promote."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "## Changed files" >> "$GITHUB_STEP_SUMMARY"
+            git diff --cached --name-only >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Create promotion branch and PR
+        if: steps.diff.outputs.has_changes == 'true'
+        working-directory: target
+        env:
+          GH_TOKEN: ${{ secrets.PROMOTION_PAT }}
+        run: |
+          BRANCH="promote/${{ inputs.direction }}/$(date -u +%Y%m%d-%H%M%S)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git commit -m "promote: ${{ inputs.direction }} $(date -u +%Y-%m-%d)"
+          git push origin "$BRANCH"
+
+          LABELS=""
+          if [[ "${{ inputs.direction }}" == "test-to-prod" ]]; then
+            LABELS="--label needs-sme-approval"
+          fi
+
+          REQUIREMENTS=""
+          if [[ "${{ inputs.direction }}" == "test-to-prod" ]]; then
+            REQUIREMENTS="- [ ] SME approval
+          - [ ] Version bump: ${{ inputs.bump }}"
+          else
+            REQUIREMENTS="- [ ] CI passes
+          - [ ] Instance data validated"
+          fi
+
+          gh pr create \
+            --title "Promote: ${{ inputs.direction }} $(date -u +%Y-%m-%d)" \
+            --body "$(cat <<EOF
+          ## Instance Promotion: ${{ inputs.direction }}
+
+          PFI-VHF Nutrition App instance files promoted from source repo.
+
+          ### Changed files
+          $(git diff --name-only HEAD~1 2>/dev/null || echo "See commits tab")
+
+          ### Merge requirements
+          ${REQUIREMENTS}
+          EOF
+          )" $LABELS
+
+          echo "## PR created on ${{ steps.config.outputs.target_name }}" >> "$GITHUB_STEP_SUMMARY"

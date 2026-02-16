@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "description": "Instance files promoted across PFI-VHF dev/test/prod repos",
+  "files": [
+    "instance-data/config/pfi-config.json",
+    "instance-data/ontologies",
+    "instance-data/tokens",
+    "pfc-core/azlan-workflow-version",
+    "supabase/migrations",
+    "tools/custom"
+  ],
+  "exclude": [
+    ".gitkeep"
+  ]
+}

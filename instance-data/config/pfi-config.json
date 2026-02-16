@@ -1,0 +1,32 @@
+{
+  "id": "PFI-VHF",
+  "name": "VHF Nutrition App",
+  "version": "0.1.0",
+  "status": "poc",
+  "industry": "HealthTech / Nutrition",
+  "orgProfile": {
+    "name": "VHF Nutrition",
+    "type": "PoC Instance",
+    "vertical": "HealthTech",
+    "jurisdictions": ["UK"]
+  },
+  "pfcPin": "latest",
+  "license": "pfc-enterprise",
+  "ontologySeries": [
+    "VE-Series",
+    "PE-Series",
+    "RCSG-Series",
+    "Foundation",
+    "Orchestration"
+  ],
+  "requirementScopes": ["PRODUCT", "COMPLIANCE", "SECURITY"],
+  "maturityLevel": 0,
+  "brandConfig": {
+    "theme": "pfc"
+  },
+  "repos": {
+    "dev": "ajrmooreuk/pfi-vhf-nutrition-app-dev",
+    "test": "ajrmooreuk/pfi-vhf-nutrition-app-test",
+    "prod": "ajrmooreuk/pfi-vhf-nutrition-app-prod"
+  }
+}
