@@ -1,0 +1,45 @@
+name: Validate Labels
+
+on:
+  workflow_call:
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+
+permissions:
+  issues: read
+
+jobs:
+  check-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate mandatory labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title;
+            const labels = issue.labels.map(l => l.name);
+
+            // Detect expected type from title
+            const titlePatterns = [
+              { regex: /^Epic\s+\d+/,       label: 'type:epic',    name: 'Epic' },
+              { regex: /^F\d+[A-Z]?\.\d+/,  label: 'type:feature', name: 'Feature' },
+              { regex: /^S\d+[A-Z]?\.\d+/,  label: 'type:story',   name: 'Story' },
+              { regex: /^\[PBS\]/,           label: 'type:pbs',     name: 'PBS' },
+              { regex: /^\[WBS\]/,           label: 'type:wbs',     name: 'WBS' }
+            ];
+
+            for (const { regex, label, name } of titlePatterns) {
+              if (regex.test(title)) {
+                if (!labels.includes(label)) {
+                  core.warning(
+                    `Issue #${issue.number} title looks like a ${name} but is missing the "${label}" label.`
+                  );
+                } else {
+                  core.info(`Issue #${issue.number} correctly has "${label}" label.`);
+                }
+                return;
+              }
+            }
+
+            core.info('Title does not match any hierarchy pattern — label check skipped.');

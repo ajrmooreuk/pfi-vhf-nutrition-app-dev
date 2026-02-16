@@ -1,0 +1,87 @@
+# Azlan Workflow — Standard Label Set
+# Use with: github-label-sync or scripts/setup-labels.sh
+#
+# Hierarchy Type Labels
+- name: "type:epic"
+  color: "BFD4F2"
+  description: "Epic-level customer problem"
+
+- name: "type:feature"
+  color: "BFD4F2"
+  description: "Feature-level solution capability"
+
+- name: "type:story"
+  color: "BFD4F2"
+  description: "User story"
+
+- name: "type:pbs"
+  color: "BFD4F2"
+  description: "PBS Component (Deliverable)"
+
+- name: "type:wbs"
+  color: "BFD4F2"
+  description: "WBS Task (Work Package)"
+
+- name: "type:registry"
+  color: "BFD4F2"
+  description: "Registry Artifact"
+
+# Domain Labels
+- name: "domain:pf-core"
+  color: "D4C5F9"
+  description: "PF Core domain"
+
+- name: "domain:baiv"
+  color: "D4C5F9"
+  description: "BAIV domain"
+
+- name: "domain:w4m"
+  color: "D4C5F9"
+  description: "W4M domain"
+
+- name: "domain:air"
+  color: "D4C5F9"
+  description: "AIR domain"
+
+# Tier Labels
+- name: "tier:t1"
+  color: "FBCA04"
+  description: "Tier 1 — Core"
+
+- name: "tier:t2"
+  color: "FBCA04"
+  description: "Tier 2 — Extended"
+
+- name: "tier:t3"
+  color: "FBCA04"
+  description: "Tier 3 — Experimental"
+
+# Phase Labels
+- name: "phase:0"
+  color: "C2E0C6"
+  description: "Phase 0 — Ideation"
+
+- name: "phase:1"
+  color: "C2E0C6"
+  description: "Phase 1 — Definition"
+
+- name: "phase:2"
+  color: "C2E0C6"
+  description: "Phase 2 — Design"
+
+- name: "phase:3"
+  color: "C2E0C6"
+  description: "Phase 3 — Build"
+
+- name: "phase:4"
+  color: "C2E0C6"
+  description: "Phase 4 — Test"
+
+- name: "phase:5"
+  color: "C2E0C6"
+  description: "Phase 5 — Deploy"
+
+# Project Labels (add per-project as needed)
+- name: "visualiser"
+  color: "0075CA"
+  description: "Ontology Visualiser project"

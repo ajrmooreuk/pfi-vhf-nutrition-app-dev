@@ -1,0 +1,86 @@
+name: Feature
+description: Feature-level solution capability under an Epic
+title: "FN.x: "
+labels: ["type:feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Naming Convention
+        Replace `N.x` in the title with the parent epic number and feature sequence.
+        Example: `F9K.1:`, `F10.3:`, `F11A.2:`
+
+  - type: input
+    id: parent-epic
+    attributes:
+      label: Parent Epic
+      description: Reference the parent epic issue
+      placeholder: "#155"
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What capability does this feature deliver?
+      placeholder: Describe the feature goal...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Specific criteria that must be met for this feature to be complete
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: stories
+    attributes:
+      label: Stories
+      description: Checklist of user stories under this feature (use tasklist format)
+      placeholder: |
+        - [ ] SN.x.1: Story name (#issue)
+        - [ ] SN.x.2: Story name (#issue)
+    validations:
+      required: false
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: Key deliverables produced by this feature
+      placeholder: |
+        - Deliverable 1
+        - Deliverable 2
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0
+        - P1
+        - P2
+        - P3
+    validations:
+      required: false
+
+  - type: dropdown
+    id: estimate
+    attributes:
+      label: Estimate
+      options:
+        - S
+        - M
+        - L
+        - XL
+    validations:
+      required: false

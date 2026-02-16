@@ -1,0 +1,81 @@
+name: Epic
+description: Epic-level customer problem — top of the hierarchy
+title: "Epic N: "
+labels: ["type:epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Naming Convention
+        Replace `N` in the title with the next sequential epic number (e.g., `Epic 10:`, `Epic 11A:`).
+        Use a letter suffix for sub-epics under a parent (e.g., `Epic 9K:`).
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What customer-facing outcome does this epic deliver?
+      placeholder: Describe the high-level goal...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Pain
+      description: What problem or pain point does this address?
+      placeholder: Describe the customer problem...
+    validations:
+      required: true
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: What indicates this epic is complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: features
+    attributes:
+      label: Features
+      description: Checklist of features that compose this epic (use tasklist format)
+      placeholder: |
+        - [ ] FN.1: Feature name (#issue)
+        - [ ] FN.2: Feature name (#issue)
+    validations:
+      required: false
+
+  - type: input
+    id: origin
+    attributes:
+      label: Origin Discussion
+      description: Link to originating discussion or idea (if any)
+      placeholder: "#123 or URL"
+    validations:
+      required: false
+
+  - type: textarea
+    id: vsom-alignment
+    attributes:
+      label: VSOM / OKR Alignment
+      description: Strategic objective and OKR reference
+      placeholder: Describe alignment with vision, strategy, objectives...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P0
+        - P1
+        - P2
+        - P3
+    validations:
+      required: false

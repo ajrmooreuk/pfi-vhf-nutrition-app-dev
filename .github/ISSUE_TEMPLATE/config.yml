@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Registry Artifact
+    url: https://github.com/ajrmooreuk/Azlan-EA-AAA/tree/main/PBS/ONTOLOGIES/ontology-library
+    about: Browse the ontology registry for existing artifacts before creating new issues

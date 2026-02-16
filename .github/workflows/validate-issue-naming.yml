@@ -1,0 +1,49 @@
+name: Validate Issue Naming
+
+on:
+  workflow_call:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: read
+
+jobs:
+  check-naming:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate issue title against naming conventions
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title;
+            const labels = issue.labels.map(l => l.name);
+
+            const patterns = {
+              'type:epic':    { regex: /^Epic\s+\d+[A-Z]?:\s+.+/, example: 'Epic 10: Title here' },
+              'type:feature': { regex: /^F\d+[A-Z]?\.\d+:\s+.+/,  example: 'F10.1: Title here' },
+              'type:story':   { regex: /^S\d+[A-Z]?\.\d+\.\d+:\s+.+/, example: 'S10.1.1: Title here' },
+              'type:pbs':     { regex: /^\[PBS\]\s+.+/,            example: '[PBS] Deliverable name' },
+              'type:wbs':     { regex: /^\[WBS\]\s+.+/,            example: '[WBS] Work package name' }
+            };
+
+            let checked = false;
+            for (const [label, { regex, example }] of Object.entries(patterns)) {
+              if (labels.includes(label)) {
+                checked = true;
+                if (!regex.test(title)) {
+                  core.warning(
+                    `Issue #${issue.number} has label "${label}" but title does not match convention.\n` +
+                    `Expected format: ${example}\n` +
+                    `Got: ${title}`
+                  );
+                } else {
+                  core.info(`Issue #${issue.number} title matches ${label} convention.`);
+                }
+              }
+            }
+
+            if (!checked) {
+              core.info('No hierarchy type label found — naming check skipped.');
+            }

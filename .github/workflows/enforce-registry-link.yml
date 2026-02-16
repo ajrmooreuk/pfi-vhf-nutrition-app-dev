@@ -1,0 +1,69 @@
+name: Enforce Registry Link
+
+on:
+  workflow_call:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+permissions:
+  issues: read
+  pull-requests: read
+
+jobs:
+  check-registry-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Registry Artifact in PR body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const body = pr.body || '';
+
+            // Extract referenced issue numbers from "Resolves: #N" or "Closes #N"
+            const issueRefs = body.match(/(?:resolves|closes|fixes)\s*:?\s*#(\d+)/gi) || [];
+            const issueNumbers = issueRefs.map(ref => {
+              const match = ref.match(/#(\d+)/);
+              return match ? parseInt(match[1]) : null;
+            }).filter(Boolean);
+
+            if (issueNumbers.length === 0) {
+              core.info('No linked issues found — skipping registry check.');
+              return;
+            }
+
+            // Check if any referenced issue has type:wbs or type:pbs label
+            let needsRegistry = false;
+            for (const num of issueNumbers) {
+              try {
+                const issue = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: num
+                });
+                const labels = issue.data.labels.map(l => l.name);
+                if (labels.includes('type:wbs') || labels.includes('type:pbs')) {
+                  needsRegistry = true;
+                  core.info(`Issue #${num} has WBS/PBS label — registry link required.`);
+                  break;
+                }
+              } catch (e) {
+                core.warning(`Could not fetch issue #${num}: ${e.message}`);
+              }
+            }
+
+            if (!needsRegistry) {
+              core.info('No WBS/PBS issues referenced — registry link not required.');
+              return;
+            }
+
+            // Check for Registry Artifact field in PR body
+            const registryMatch = body.match(/Registry Artifact[:\s]*(\S+)/i);
+            if (!registryMatch || !registryMatch[1]) {
+              core.setFailed(
+                'This PR references a WBS/PBS issue but is missing a "Registry Artifact:" field in the body.\n' +
+                'Please add: Registry Artifact: <namespace:type:name:version>'
+              );
+            } else {
+              core.info(`Registry Artifact found: ${registryMatch[1]}`);
+            }

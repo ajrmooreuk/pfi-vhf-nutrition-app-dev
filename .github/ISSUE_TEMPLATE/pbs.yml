@@ -1,0 +1,61 @@
+name: PBS Component
+description: Product Breakdown Structure deliverable
+title: "[PBS] "
+labels: ["type:pbs"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## PBS — Product Breakdown Structure
+        A PBS item represents a **deliverable** (component, artifact, document).
+        Title format: `[PBS] <Deliverable name>`
+
+  - type: input
+    id: parent-story
+    attributes:
+      label: Parent Story
+      description: Reference the parent story issue
+      placeholder: "#200"
+    validations:
+      required: false
+
+  - type: input
+    id: pbs-id
+    attributes:
+      label: PBS ID
+      description: Product Breakdown Structure identifier
+      placeholder: "PBS-2.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: What artifacts or components does this PBS item produce?
+      placeholder: |
+        - Deliverable 1
+        - Deliverable 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: wbs-tasks
+    attributes:
+      label: WBS Tasks
+      description: Checklist of work packages needed to produce this deliverable
+      placeholder: |
+        - [ ] [WBS] Task name (#issue)
+        - [ ] [WBS] Task name (#issue)
+    validations:
+      required: false
+
+  - type: textarea
+    id: registry-dependencies
+    attributes:
+      label: Registry Dependencies
+      description: Registry artifacts this deliverable depends on or produces
+      placeholder: |
+        - type: registry-id
+    validations:
+      required: false

@@ -1,0 +1,79 @@
+name: WBS Task
+description: Work Breakdown Structure work package
+title: "[WBS] "
+labels: ["type:wbs"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## WBS — Work Breakdown Structure
+        A WBS item represents a **work package** (task to be completed).
+        Title format: `[WBS] <Work package action>`
+
+  - type: input
+    id: parent-pbs
+    attributes:
+      label: Parent PBS
+      description: Reference the parent PBS issue
+      placeholder: "#201"
+    validations:
+      required: false
+
+  - type: input
+    id: wbs-code
+    attributes:
+      label: WBS Code
+      description: Work Breakdown Structure code
+      placeholder: "2.1.1.2"
+    validations:
+      required: true
+
+  - type: input
+    id: registry-id
+    attributes:
+      label: Registry ID
+      description: Registry artifact produced by this work package
+      placeholder: "baiv:api:endpoint:ontology-query:v1.0.0"
+    validations:
+      required: false
+
+  - type: textarea
+    id: work-description
+    attributes:
+      label: Work Description
+      description: Detailed description of the work to be done
+      placeholder: Describe the work...
+    validations:
+      required: true
+
+  - type: textarea
+    id: definition-of-done
+    attributes:
+      label: Definition of Done
+      description: Checklist of criteria for completion
+      placeholder: |
+        - [ ] Implementation complete
+        - [ ] Tests added (≥90% coverage)
+        - [ ] Artifact registered
+        - [ ] PR merged
+    validations:
+      required: true
+
+  - type: input
+    id: estimate
+    attributes:
+      label: Estimate (hours)
+      description: Estimated effort in hours
+      placeholder: "4"
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Other WBS items or resources this depends on
+      placeholder: |
+        - #issue-number (WBS dependency)
+    validations:
+      required: false
