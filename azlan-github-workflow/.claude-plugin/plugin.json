@@ -1,0 +1,21 @@
+{
+  "name": "azlan-github-workflow",
+  "description": "Azlan workflow conventions — issue creation, repo setup, and compliance auditing for GitHub projects using the Epic/Feature/Story/PBS/WBS hierarchy.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ajrmooreuk",
+    "url": "https://github.com/ajrmooreuk"
+  },
+  "repository": "https://github.com/ajrmooreuk/Azlan-EA-AAA",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "workflow",
+    "epic",
+    "feature",
+    "story",
+    "pbs",
+    "wbs",
+    "hierarchy"
+  ]
+}
