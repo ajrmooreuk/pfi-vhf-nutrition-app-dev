@@ -1,12 +1,14 @@
 {
   "@context": "https://platformcore.io/ontology/registry/",
-  "@type": "OntologyRegistry",
-  "@id": "azlan-ont-registry",
-  "name": "Azlan Ontology Registry",
-  "version": "7.2.0",
+  "@type": "OntologyRegistrySnapshot",
+  "@id": "pfc-snapshot-PFI-VHF",
+  "name": "Azlan Ontology Registry — PFI-VHF Snapshot",
+  "sourceVersion": "9.0.0",
   "oaaVersion": "6.1.0",
-  "lastUpdated": "2026-02-14",
-  "description": "Merged ontology library — registry entries co-located with artifacts, organized by series",
+  "releaseTag": "pfc-v1.0.0",
+  "releaseDate": "2026-02-19T19:08:21Z",
+  "targetPfi": "PFI-VHF",
+  "snapshotDescription": "Filtered ontology registry for PFI-VHF. Contains 40 ontologies from series: VE-Series, PE-Series, RCSG-Series, Foundation, Orchestration.",
   "entries": [
     {
       "@id": "Entry-ONT-EMC-001",
@@ -56,32 +58,6 @@
       "gatesFailed": 0,
       "validatedDate": "2026-02-09",
       "path": "./Foundation/ORG-MAT-ONT/Entry-ONT-ORG-MAT-001.json"
-    },
-    {
-      "@id": "Entry-ONT-CA-001",
-      "name": "CA Ontology (Competitive Analysis) [DEPRECATED]",
-      "namespace": "ca:",
-      "status": "deprecated",
-      "oaaVersion": "6.1.0",
-      "version": "3.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
-      "path": "./_orphans/Competitive-deprecated/CA-ONT/Entry-ONT-CA-001.json",
-      "deprecationNote": "Entities absorbed into ORG-CONTEXT v3.0.0 (Epic 9C). Use org-ctx: namespace equivalents."
-    },
-    {
-      "@id": "Entry-ONT-CL-001",
-      "name": "CL Ontology (Competitive Landscape) [DEPRECATED]",
-      "namespace": "cl:",
-      "status": "deprecated",
-      "oaaVersion": "6.1.0",
-      "version": "2.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
-      "path": "./_orphans/Competitive-deprecated/CL-ONT/Entry-ONT-CL-001.json",
-      "deprecationNote": "Entities absorbed into ORG-CONTEXT v3.0.0 (Epic 9C). Use org-ctx: namespace equivalents."
     },
     {
       "@id": "Entry-ONT-GA-001",
@@ -327,7 +303,7 @@
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-09",
-      "path": "./RCSG-Series/MCSB-ONT/Entry-ONT-ALZ-001.json"
+      "path": "./RCSG-Series/GRC-04-SEC/MCSB-ONT/Entry-ONT-ALZ-001.json"
     },
     {
       "@id": "Entry-ONT-EA-001",
@@ -402,16 +378,30 @@
       "subSeries": "ORG-CTX"
     },
     {
-      "@id": "Entry-ONT-RCSG-FW-001",
-      "name": "RCSG-FW Ontology (RCSG Framework)",
-      "namespace": "rcsg-fw:",
+      "@id": "Entry-ONT-GRC-FW-001",
+      "name": "GRC-FW Ontology (GRC Framework — Governance, Risk & Compliance)",
+      "namespace": "grc-fw:",
       "status": "compliant",
       "oaaVersion": "6.1.0",
-      "version": "1.0.0",
+      "version": "3.0.0",
       "gatesPassed": 8,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-10",
-      "path": "./RCSG-Series/RCSG-FW-ONT/Entry-ONT-RCSG-FW-001.json"
+      "validatedDate": "2026-02-17",
+      "path": "./RCSG-Series/GRC-01-GOV/GRC-FW-ONT/Entry-ONT-GRC-FW-001.json",
+      "supersedes": "Entry-ONT-RCSG-FW-001"
+    },
+    {
+      "@id": "Entry-ONT-RCSG-FW-001",
+      "name": "RCSG-FW Ontology (RCSG Framework) [SUPERSEDED by GRC-FW v3.0.0]",
+      "namespace": "rcsg-fw:",
+      "status": "superseded",
+      "oaaVersion": "6.1.0",
+      "version": "2.0.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-16",
+      "path": "./RCSG-Series/RCSG-04-GOV/RCSG-FW-ONT/Entry-ONT-RCSG-FW-001.json",
+      "supersededBy": "Entry-ONT-GRC-FW-001"
     },
     {
       "@id": "Entry-ONT-MCSB2-001",
@@ -421,7 +411,7 @@
       "gatesPassed": 0,
       "gatesFailed": 0,
       "validatedDate": null,
-      "path": "./RCSG-Series/MCSB2-ONT/Entry-ONT-MCSB2-001.json"
+      "path": "./RCSG-Series/GRC-04-SEC/MCSB2-ONT/Entry-ONT-MCSB2-001.json"
     },
     {
       "@id": "Entry-ONT-GDPR-001",
@@ -433,7 +423,7 @@
       "validatedDate": "2026-02-06",
       "oaaVersion": "6.1.0",
       "version": "1.0.0",
-      "path": "./RCSG-Series/GDPR-ONT/Entry-ONT-GDPR-001.json"
+      "path": "./RCSG-Series/GRC-03-COMP/GDPR-ONT/Entry-ONT-GDPR-001.json"
     },
     {
       "@id": "Entry-ONT-AZALZ-001",
@@ -443,7 +433,7 @@
       "gatesPassed": 0,
       "gatesFailed": 0,
       "validatedDate": null,
-      "path": "./RCSG-Series/AZALZ-ONT/Entry-ONT-AZALZ-001.json"
+      "path": "./RCSG-Series/GRC-04-SEC/AZALZ-ONT/Entry-ONT-AZALZ-001.json"
     },
     {
       "@id": "Entry-ONT-PII-001",
@@ -455,7 +445,7 @@
       "validatedDate": "2026-02-06",
       "oaaVersion": "6.1.0",
       "version": "3.3.0",
-      "path": "./RCSG-Series/PII-ONT/Entry-ONT-PII-001.json"
+      "path": "./RCSG-Series/GRC-04-SEC/PII-ONT/Entry-ONT-PII-001.json"
     },
     {
       "@id": "Entry-ONT-RMF-001",
@@ -467,7 +457,19 @@
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-10",
-      "path": "./RCSG-Series/RMF-IS27005-ONT/Entry-ONT-RMF-001.json"
+      "path": "./RCSG-Series/GRC-02-RISK/RMF-IS27005-ONT/Entry-ONT-RMF-001.json"
+    },
+    {
+      "@id": "Entry-ONT-ERM-001",
+      "name": "ERM Ontology (Enterprise Risk Management — ISO 31000)",
+      "namespace": "erm:",
+      "status": "compliant",
+      "oaaVersion": "6.1.0",
+      "version": "1.0.0",
+      "gatesPassed": 7,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-17",
+      "path": "./RCSG-Series/GRC-02-RISK/ERM-ONT/Entry-ONT-ERM-001.json"
     },
     {
       "@id": "Entry-ONT-NCSC-CAF-001",
@@ -479,7 +481,7 @@
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-14",
-      "path": "./RCSG-Series/NCSC-CAF-ONT/Entry-ONT-NCSC-CAF-001.json"
+      "path": "./RCSG-Series/GRC-03-COMP/NCSC-CAF-ONT/Entry-ONT-NCSC-CAF-001.json"
     },
     {
       "@id": "Entry-ONT-DSPT-001",
@@ -491,7 +493,7 @@
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-14",
-      "path": "./RCSG-Series/DSPT-ONT/Entry-ONT-DSPT-001.json"
+      "path": "./RCSG-Series/GRC-03-COMP/DSPT-ONT/Entry-ONT-DSPT-001.json"
     }
   ],
   "namespaceRegistry": {
@@ -500,8 +502,6 @@
     "org": "https://platformcore.io/ontology/org/",
     "org-ctx": "https://platformcore.io/ontology/org-context/",
     "org-mat": "https://platformcore.io/ontology/org-maturity/",
-    "ca": "https://platformcore.io/ontology/ca/",
-    "cl": "https://platformcore.io/ontology/cl/",
     "ga": "https://platformcore.io/ontology/ga/",
     "vsom": "https://platformcore.io/ontology/vsom/",
     "okr": "https://platformcore.io/ontology/okr/",
@@ -535,45 +535,126 @@
     "rcsg-fw": "https://platformcore.io/ontology/rcsg-fw/",
     "ns": "https://baiv.co.uk/ontology/",
     "ncsc-caf": "https://platformcore.io/ontology/ncsc-caf/",
-    "dspt": "https://platformcore.io/ontology/dspt/"
+    "dspt": "https://platformcore.io/ontology/dspt/",
+    "erm": "https://platformcore.io/ontology/erm/"
   },
   "seriesRegistry": {
     "VE-Series": {
       "name": "Value Engineering Series",
       "description": "Strategic value definition, measurement, and analysis ontologies",
-      "ontologies": ["VSOM", "OKR", "VP", "RRR", "PMF", "KPI"],
+      "ontologies": [
+        "VSOM",
+        "OKR",
+        "VP",
+        "RRR",
+        "PMF",
+        "KPI"
+      ],
       "subSeries": {
         "VSOM-SA": {
           "name": "VSOM Strategy Analysis",
           "description": "Strategic analysis frameworks layered on VSOM spine — enables deeper pattern analysis as sub-analysis of VSOM",
-          "ontologies": ["BSC", "INDUSTRY", "REASON", "MACRO", "PORTFOLIO"]
+          "ontologies": [
+            "BSC",
+            "INDUSTRY",
+            "REASON",
+            "MACRO",
+            "PORTFOLIO"
+          ]
         },
         "VSOM-SC": {
           "name": "VSOM Strategy Communication",
           "description": "Strategy communication, audience cascade, culture alignment, and visual artefact ontologies — the 'how we tell' complement to VSOM-SA's 'how we think'",
-          "ontologies": ["NARRATIVE", "CASCADE", "CULTURE", "VIZSTRAT"]
+          "ontologies": [
+            "NARRATIVE",
+            "CASCADE",
+            "CULTURE",
+            "VIZSTRAT"
+          ]
         }
       }
     },
     "PE-Series": {
       "name": "Process Engineering Series",
       "description": "Execution and process management ontologies",
-      "ontologies": ["PPM", "PE", "EFS", "EA", "EA-CORE", "EA-TOGAF", "EA-MSFT", "DS"]
+      "ontologies": [
+        "PPM",
+        "PE",
+        "EFS",
+        "EA",
+        "EA-CORE",
+        "EA-TOGAF",
+        "EA-MSFT",
+        "DS"
+      ]
     },
     "RCSG-Series": {
-      "name": "Risk, Compliance, Security & Governance Series",
-      "description": "Risk management, regulatory compliance, security benchmarks, and governance ontologies",
-      "ontologies": ["RCSG-FW", "MCSB", "MCSB2", "GDPR", "AZALZ", "PII", "RMF-IS27005", "NCSC-CAF", "DSPT"]
+      "name": "Governance, Risk & Compliance (GRC) Series",
+      "description": "Governance-centric hub-spoke architecture — GRC-FW as governance hub with risk, compliance, security, AI governance, and resource economics as governed domains. Aligned to COBIT 2019, ISO 38500, NIST CSF 2.0, IIA Three Lines.",
+      "ontologies": [],
+      "subSeries": {
+        "GRC-01-GOV": {
+          "name": "Governance Hub",
+          "description": "GRC governance hub — GRC-FW framework ontology with governance structures, bodies, policies, assurance, cross-domain edges, 7 VSEM bridges. Governance is superordinate.",
+          "ontologies": [
+            "GRC-FW"
+          ]
+        },
+        "GRC-02-RISK": {
+          "name": "Risk Domain",
+          "description": "Enterprise and domain-specific risk management ontologies — ERM (ISO 31000, Tier 1) and RMF-IS27005 (ISO 27005, Tier 2)",
+          "ontologies": [
+            "ERM",
+            "RMF-IS27005"
+          ]
+        },
+        "GRC-03-COMP": {
+          "name": "Compliance Domain",
+          "description": "Regulatory compliance and assessment framework ontologies",
+          "ontologies": [
+            "GDPR",
+            "NCSC-CAF",
+            "DSPT"
+          ]
+        },
+        "GRC-04-SEC": {
+          "name": "Security Domain",
+          "description": "Security benchmark, data protection, and infrastructure assessment ontologies",
+          "ontologies": [
+            "MCSB",
+            "MCSB2",
+            "PII",
+            "AZALZ"
+          ]
+        },
+        "GRC-05-RES": {
+          "name": "Resource Economics Domain",
+          "description": "Resource economics ontology — planned (F30.5)",
+          "ontologies": []
+        },
+        "GRC-06-AI": {
+          "name": "AI Governance Domain",
+          "description": "AI governance ontology — planned (F30.4)",
+          "ontologies": []
+        }
+      }
     },
     "Foundation": {
       "name": "Foundation Ontologies",
       "description": "Core organizational and context ontologies",
-      "ontologies": ["ORG", "ORG-MAT", "GA"],
+      "ontologies": [
+        "ORG",
+        "ORG-MAT",
+        "GA"
+      ],
       "subSeries": {
         "ORG-CTX": {
           "name": "Organisation Context",
           "description": "Context types, subtypes, and environmental factors",
-          "ontologies": ["ORG-CONTEXT", "CTX"],
+          "ontologies": [
+            "ORG-CONTEXT",
+            "CTX"
+          ],
           "parentOntology": "ORG-CONTEXT"
         }
       }
@@ -581,181 +662,16 @@
     "Orchestration": {
       "name": "Orchestration Layer",
       "description": "Model composition and integration ontologies",
-      "ontologies": ["EMC"]
+      "ontologies": [
+        "EMC"
+      ]
     }
   },
   "statistics": {
     "totalOntologies": 40,
-    "compliant": 36,
-    "nearCompliance": 0,
-    "partialCompliance": 0,
-    "pendingReview": 0,
+    "compliant": 37,
+    "superseded": 1,
     "placeholder": 2,
-    "deprecated": 2
-  },
-  "validationSummary": {
-    "validated": 36,
-    "validatedOntologies": [
-      "EMC", "ORG", "ORG-CONTEXT", "ORG-MAT", "CTX",
-      "GA",
-      "VSOM", "OKR", "VP", "RRR", "PMF", "KPI",
-      "BSC", "INDUSTRY", "REASON", "MACRO", "PORTFOLIO",
-      "NARRATIVE", "CASCADE", "CULTURE", "VIZSTRAT",
-      "PPM", "PE", "EFS", "MCSB", "EA", "PII", "GDPR",
-      "EA-CORE", "EA-TOGAF", "EA-MSFT", "DS", "RCSG-FW", "RMF-IS27005", "NCSC-CAF", "DSPT"
-    ],
-    "deprecatedOntologies": ["CA", "CL"],
-    "placeholders": ["MCSB2", "AZALZ"],
-    "oaaVersion": "6.1.0",
-    "oaaVersionNotes": "36 compliant ontologies at OAA v6.1.0+. KPI at v6.2.0. VE-Series expanded with VSOM-SA sub-series (BSC, INDUSTRY, REASON, MACRO, PORTFOLIO) and VSOM-SC sub-series (NARRATIVE, CASCADE, CULTURE, VIZSTRAT). SA = 'how we think'; SC = 'how we tell'. RCSG-Series expanded: NCSC-CAF-ONT (UK NCSC Cyber Assessment Framework v4.0 — 4 objectives, 14 principles, 41 contributing outcomes, ~559 IGPs; UK public sector compliance for NIS Regulations, GovAssure, local government) and DSPT-ONT (NHS Data Security and Protection Toolkit — 10 NDG standards, 44 assertions, 149 evidence items across 4 organisation categories; cross-mapped to CAF and GDPR). Epic 9C: Competitive series eliminated — CA-ONT and CL-ONT entities absorbed into ORG-CONTEXT v3.0.0 as subtypes; GA-ONT moved to Foundation. 2 deprecated (CA, CL), 2 placeholders (MCSB2, AZALZ) pending implementation.",
-    "lastFullValidation": "2026-02-14"
-  },
-  "pfiInstances": [
-    {
-      "@id": "PFI-BAIV",
-      "name": "BAIV Instance",
-      "description": "Brand AI Visibility PF-Instance — SaaS platform for B2B AI citation tracking and content optimisation",
-      "products": ["AIV"],
-      "brands": ["BAIV"],
-      "designSystemConfig": {
-        "brand": "baiv",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["PRODUCT", "COMPETITIVE", "STRATEGIC"],
-      "maturityLevel": 1,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:baiv-limited",
-        "organizationName": "BAIV Limited",
-        "industry": "MarTech SaaS",
-        "size": "Startup"
-      },
-      "verticalMarket": "MarTech",
-      "jurisdictions": ["UK", "EU"],
-      "instanceDataFiles": [
-        {
-          "ontologyRef": "VP-ONT",
-          "path": "pfi-BAIV-AIV-ONT/baiv-ai-visibility-vp-instance-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV AI Visibility Value Proposition instance"
-        },
-        {
-          "ontologyRef": "RRR-ONT",
-          "path": "pfi-BAIV-AIV-ONT/RRR-DATA-BAIV-AIV-roles-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV RBAC roles and permissions"
-        },
-        {
-          "ontologyRef": "RRR-ONT",
-          "path": "pfi-BAIV-AIV-ONT/baiv-csuite-rrr-instances-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV C-Suite role instances with strategic objectives"
-        },
-        {
-          "ontologyRef": "VP-ONT",
-          "path": "pfi-BAIV-AIV-ONT/baiv-ai-visibility-vp-rrr-enhanced-v1.1.0.jsonld",
-          "type": "instance-data",
-          "description": "Enhanced VP+RRR integration with security context"
-        },
-        {
-          "ontologyRef": "EFS-ONT",
-          "path": "pfi-BAIV-AIV-ONT/EFS-DATA-BAIV-AIV-security-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV Enterprise Framework Services security data"
-        }
-      ],
-      "instanceOntologies": [
-        "pfi-BAIV-AIV-ONT/RRR-DATA-BAIV-AIV-roles-v1.0.0.jsonld",
-        "pfi-BAIV-AIV-ONT/AIV-Competitive-ONT/"
-      ],
-      "clientOrgs": []
-    },
-    {
-      "@id": "PFI-RCS",
-      "name": "RCS Instance",
-      "description": "RCS PF-Instance — regulatory compliance and security platform for multi-framework governance",
-      "products": ["RCS"],
-      "brands": ["RCS"],
-      "designSystemConfig": {
-        "brand": "rcs",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["COMPLIANCE", "SECURITY"],
-      "maturityLevel": 1,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:rcs-platform",
-        "organizationName": "RCS Platform",
-        "industry": "RegTech",
-        "size": "Enterprise"
-      },
-      "verticalMarket": "RegTech",
-      "jurisdictions": ["UK", "EU", "US"],
-      "instanceDataFiles": [],
-      "instanceOntologies": [],
-      "clientOrgs": []
-    },
-    {
-      "@id": "PFI-W4M",
-      "name": "W4M Instance",
-      "description": "W4M PF-Instance — placeholder using PF-Core defaults, no brand-specific design tokens",
-      "products": ["W4M"],
-      "brands": ["W4M"],
-      "designSystemConfig": {
-        "brand": null,
-        "fallback": "pfc",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["PRODUCT"],
-      "maturityLevel": 1,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:w4m-platform",
-        "organizationName": "W4M Platform",
-        "industry": "SaaS",
-        "size": "Startup"
-      },
-      "verticalMarket": "SaaS",
-      "jurisdictions": ["UK"],
-      "instanceDataFiles": [],
-      "instanceOntologies": [],
-      "clientOrgs": []
-    },
-    {
-      "@id": "PFI-VHF",
-      "name": "VHF Nutrition App Instance",
-      "description": "VHF Nutrition App PF-Instance — PoC instance validating hub-and-spoke CI/CD architecture with full ontology suite",
-      "products": ["VHF-Nutrition"],
-      "brands": ["VHF"],
-      "designSystemConfig": {
-        "brand": null,
-        "fallback": "pfc",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["PRODUCT", "COMPLIANCE", "SECURITY"],
-      "maturityLevel": 0,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:vhf-nutrition",
-        "organizationName": "VHF Nutrition",
-        "industry": "HealthTech / Nutrition",
-        "size": "PoC"
-      },
-      "verticalMarket": "HealthTech",
-      "jurisdictions": ["UK"],
-      "instanceDataFiles": [],
-      "instanceOntologies": [],
-      "clientOrgs": [],
-      "hubSpokeConfig": {
-        "repos": {
-          "dev": "ajrmooreuk/pfi-vhf-nutrition-app-dev",
-          "test": "ajrmooreuk/pfi-vhf-nutrition-app-test",
-          "prod": "ajrmooreuk/pfi-vhf-nutrition-app-prod"
-        },
-        "pfcPin": "latest",
-        "license": "pfc-enterprise",
-        "ontologySeries": ["VE-Series", "PE-Series", "RCSG-Series", "Foundation", "Orchestration"]
-      }
-    }
-  ]
+    "deprecated": 0
+  }
 }
