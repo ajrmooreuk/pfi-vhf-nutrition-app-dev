@@ -1,0 +1,278 @@
+{
+  "version": "1.0.0",
+  "manifestVersion": "2.0.0",
+  "description": "All PFC skills distributed as sealed artifacts via pfc-release.yml. These skills are executable but not editable in PFI triad repos — protected by guard-core.yml.",
+  "sealedSkills": [
+    {
+      "name": "close-out",
+      "sourcePath": "azlan-github-workflow/skills/close-out/SKILL.md",
+      "targetPath": "pfc-core/skills/close-out/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Post-change housekeeping pipeline — issue close-out, architecture docs, operating guides, test plans, bulletins, deployment requirements. Supports PR, story, feature, commit, and session entry points."
+    },
+    {
+      "name": "create-epic",
+      "sourcePath": "azlan-github-workflow/skills/create-epic/SKILL.md",
+      "targetPath": "pfc-core/skills/create-epic/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates a correctly-formatted Epic issue with auto-detected numbering, labels, and project board integration."
+    },
+    {
+      "name": "create-feature",
+      "sourcePath": "azlan-github-workflow/skills/create-feature/SKILL.md",
+      "targetPath": "pfc-core/skills/create-feature/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates a correctly-formatted Feature issue linked to a parent Epic."
+    },
+    {
+      "name": "create-story",
+      "sourcePath": "azlan-github-workflow/skills/create-story/SKILL.md",
+      "targetPath": "pfc-core/skills/create-story/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates a correctly-formatted Story issue linked to a parent Feature."
+    },
+    {
+      "name": "review-hierarchy",
+      "sourcePath": "azlan-github-workflow/skills/review-hierarchy/SKILL.md",
+      "targetPath": "pfc-core/skills/review-hierarchy/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Audits a GitHub repository for Azlan workflow compliance — naming conventions, labels, parent references, project board assignment."
+    },
+    {
+      "name": "setup-project-board",
+      "sourcePath": "azlan-github-workflow/skills/setup-project-board/SKILL.md",
+      "targetPath": "pfc-core/skills/setup-project-board/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates or configures a GitHub Projects v2 board with standard Azlan workflow fields and views."
+    },
+    {
+      "name": "setup-repo",
+      "sourcePath": "azlan-github-workflow/skills/setup-repo/SKILL.md",
+      "targetPath": "pfc-core/skills/setup-repo/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Provisions a GitHub repository with the full Azlan workflow — labels, branch protection, and project board."
+    },
+    {
+      "name": "pfc-org-context",
+      "sourcePath": "azlan-github-workflow/skills/pfc-org-context/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-org-context/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Establishes organizational context — products, brands, competitive landscape, market context, and maturity assessment."
+    },
+    {
+      "name": "pfc-macro-analysis",
+      "sourcePath": "azlan-github-workflow/skills/pfc-macro-analysis/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-macro-analysis/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "PESTEL analysis and scenario planning providing 5-10 year macro-environment context for VE strategy formulation."
+    },
+    {
+      "name": "pfc-industry-analysis",
+      "sourcePath": "azlan-github-workflow/skills/pfc-industry-analysis/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-industry-analysis/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Porter's Five Forces, SWOT/TOWS, and Ansoff growth matrix for competitive environment context."
+    },
+    {
+      "name": "pfc-vsom",
+      "sourcePath": "azlan-github-workflow/skills/pfc-vsom/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-vsom/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Vision-Strategy-Objectives-Metrics formulation with Balanced Scorecard strategy mapping."
+    },
+    {
+      "name": "pfc-okr",
+      "sourcePath": "azlan-github-workflow/skills/pfc-okr/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-okr/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Cascades VSOM strategic objectives into quarterly OKRs with 2-5 key results each."
+    },
+    {
+      "name": "pfc-kpi",
+      "sourcePath": "azlan-github-workflow/skills/pfc-kpi/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-kpi/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Defines KPIs with formulas, thresholds, data sources, and BSC perspective classification."
+    },
+    {
+      "name": "pfc-vp",
+      "sourcePath": "azlan-github-workflow/skills/pfc-vp/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-vp/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Builds a complete Value Proposition for a given ICP with mandatory VP-RRR alignment."
+    },
+    {
+      "name": "pfc-kano",
+      "sourcePath": "azlan-github-workflow/skills/pfc-kano/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-kano/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Kano satisfaction analysis — classifies VP features by 5 categories with decay tracking and PMF signal enrichment."
+    },
+    {
+      "name": "pfc-efs",
+      "sourcePath": "azlan-github-workflow/skills/pfc-efs/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-efs/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Generates PRDs with Epic-Feature-Story hierarchies from Terms of Reference and VSOM context."
+    },
+    {
+      "name": "pfc-ve-pipeline",
+      "sourcePath": "azlan-github-workflow/skills/pfc-ve-pipeline/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-ve-pipeline/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "orchestrator",
+      "userInvocable": true,
+      "description": "Master orchestrator for the VE process chain — sequences 7 skills from org-context through value proposition."
+    },
+    {
+      "name": "pfc-delta-scope",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-scope/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-scope/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 1 (Discover) of DELTA — scopes discovery engagement, stakeholder mapping, context layer identification."
+    },
+    {
+      "name": "pfc-delta-evaluate",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-evaluate/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-evaluate/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 2 (Evaluate) of DELTA — Comparative Gap Analysis engine, scores current vs future state."
+    },
+    {
+      "name": "pfc-delta-leverage",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-leverage/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-leverage/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 3 (Leverage) of DELTA — sensitivity analysis, hypothesis testing, impact-effort prioritisation."
+    },
+    {
+      "name": "pfc-delta-narrate",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-narrate/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-narrate/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 4 (Transform) of DELTA — client-facing narrative generation using VE-SC communication patterns."
+    },
+    {
+      "name": "pfc-delta-adapt",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-adapt/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-adapt/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 5 (Adapt) of DELTA — variance analysis, threshold breach detection, cycle determination."
+    },
+    {
+      "name": "pfc-delta-pipeline",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-pipeline/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-pipeline/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "orchestrator",
+      "userInvocable": true,
+      "description": "Master orchestrator for DELTA 5-phase discovery process — sequences scope, evaluate, leverage, narrate, adapt."
+    },
+    {
+      "name": "pfc-reason",
+      "sourcePath": "azlan-github-workflow/skills/pfc-reason/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-reason/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "plugin",
+      "userInvocable": false,
+      "description": "MECE decomposition, logic tree analysis, hypothesis testing, and synthesis. Cross-cutting reasoning substrate."
+    },
+    {
+      "name": "pfc-oaa-v7",
+      "sourcePath": "azlan-github-workflow/skills/pfc-oaa-v7/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-oaa-v7/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ontology",
+      "userInvocable": true,
+      "description": "Ontology Architect Agent v7.1 — creates, converts, and validates OAA v7.0.0 compliant ontologies."
+    }
+  ],
+  "categories": {
+    "lifecycle": "Issue management, repo setup, compliance auditing, and close-out",
+    "ve-pipeline": "Value Engineering process chain — org-context through value proposition",
+    "delta-pipeline": "DELTA 5-phase discovery and gap analysis process",
+    "orchestrator": "Multi-skill pipeline orchestrators",
+    "plugin": "Non-user-invocable plugins called by other skills",
+    "ontology": "Ontology creation, conversion, and validation"
+  },
+  "governance": {
+    "authorisedAuthor": "github-actions[bot]",
+    "guardWorkflow": "guard-core.yml",
+    "overrideType": "none",
+    "editableInTriad": false,
+    "editableInHub": true,
+    "hubRepository": "ajrmooreuk/Azlan-EA-AAA"
+  },
+  "release": {
+    "tagPattern": "pfc-v*",
+    "workflow": "pfc-release.yml",
+    "changelogPath": "azlan-github-workflow/CHANGELOG.md"
+  }
+}
