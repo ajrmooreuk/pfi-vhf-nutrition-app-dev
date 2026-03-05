@@ -1,13 +1,14 @@
 # VHF Application Framework — Epic & Feature Plan
 
 **Date:** 2026-03-05
-**Version:** 1.0.0
-**Status:** Draft — Pending Review
-**Repo:** `ajrmooreuk/VHF-App-Mk3`
-**Scope:** PFI-VHF skeleton application framework, zone-based UI, design token bridge, `.pen` artefacts
+**Version:** 1.1.0
+**Status:** Draft — Updated for PFC Leverage Model
+**Repo:** `ajrmooreuk/pfi-vhf-nutrition-app-dev` (triad: dev/test/prod)
+**Scope:** Standalone PFI-VHF nutrition coaching app — 80% PFC toolkit leverage, 20% custom
 **Parent Strategy:** Azlan Epic 34 (#518) — PF-Core Graph-Based Agentic Platform Strategy
 **Upstream Prioritisation:** `Azlan-EA-AAA/PBS/STRATEGY/PRIORITISATION-Epics-and-Strategy-Alignment-2026-03-05.md`
-**Governing Ontologies:** DS-ONT v3.0.0, NUT-ONT (proposed), EMC-ONT v5.0.0, EFS-ONT v2.0.0
+**Governing Ontologies:** DS-ONT v3.0.0, NUT-ONT (Azlan E50 #748), EMC-ONT v5.0.0
+**Architecture:** Standalone app consuming PFC toolkit outputs — cascade PFC → PFI-VHF → NUT-ONT
 
 ---
 
@@ -17,7 +18,22 @@ VHF-App-Mk3 delivered Epic 1 (30-Day Meal Plan Generator) — 4 Claude Code skil
 
 **What's missing is the application itself.** There is no skeleton framework, no zone-based UI, no browser viewer, no runtime token rendering, and no `.pen` design artefacts. Generated plans output as static HTML/JSON-LD with hardcoded styling.
 
-**This plan bridges VHF into the PFC skeleton-driven application framework** — the same architecture proven in the Azlan visualiser (22 zones, 10 nav layers, 62 actions, 25 zone components, 4-tier EMC cascade). VHF becomes the **first PFI instance to deliver a standalone skeleton-driven web application** outside the visualiser.
+### 80/20 PFC Leverage Model
+
+VHF is a **standalone application** with its **own database, custom UI, and NUT-ONT-specific features**. It is NOT a plugin inside the PFC Ontology Visualiser. However, it leverages **80% of PFC toolkit outputs**:
+
+| What VHF Leverages (80%) | What VHF Customises (20%) |
+|---------------------------|--------------------------|
+| PFC skeleton architecture patterns (zones, nav layers, actions) | VHF-specific zones (meal viewer, recipe browser, coach panel) |
+| DS-ONT token schema + extraction pipeline (PE-DS-EXTRACT-001) | VHF Viridian brand tokens (#007c74, PT Sans) |
+| EMC cascade composition (PFC → PFI-VHF) | NUT-ONT nutrition-specific entities & constraints |
+| Ontology library (VP, RRR, KPI, BSC from Azlan registry) | Custom meal plan generation skills (Claude Code) |
+| Graph authoring tools from PFC visualiser/workbench | VHF-specific graph views & nutrition dashboards |
+| Strategy outputs (VSOM, OKR, VP-RRR alignment) | Coach James Kerby's methodology digitised |
+| `.pen` design tooling (Pencil MCP) | VHF zone wireframes & branded layouts |
+| Supabase patterns (RLS, JSONB, `resolve_cascaded_config`) | VHF-specific tables (meal_plans, clients, recipes) |
+
+**Cascade:** PFC → PFI-VHF → NUT-ONT → Micro-SaaS (skills generate meal plans, demo layer)
 
 ### What This Enables
 
@@ -44,30 +60,36 @@ VHF-App-Mk3 delivered Epic 1 (30-Day Meal Plan Generator) — 4 Claude Code skil
 | Generated Plan | ✅ 1 plan | tp-001 Sarah Mitchell — 96KB JSON-LD + 75KB HTML |
 | GitHub Issues | 4 total | #7 (Epic 1), #8 (F1.1), #9 (F1.2), #5 (Figma palettes) |
 
-### 2.2 What's Missing
+### 2.2 What's Missing (VHF-Specific Build)
 
-| Layer | Gap | Blocks |
-|-------|-----|--------|
-| App Skeleton JSONLD | No zones, nav layers, actions, zone components | Everything |
-| Skeleton Loader | No `parseAppSkeleton`, no cascade merge | UI rendering |
-| Browser Viewer HTML | No zone `<div>` framework, no dynamic nav | User interaction |
-| Token-to-CSS Bridge | Tokens exist but don't render at runtime | Brand fidelity |
-| `.pen` Design Artefacts | Zero Pencil files | Agentic design execution |
-| NUT-ONT (OAA v7) | Ontology not OAA-compliant | Registry integration, visualiser |
-| EMC InstanceConfiguration | No VHF EMC config | Cascade composition |
-| Supabase | Schema designed but not created | Persistence, multi-user |
+| Layer | Gap | Blocks | PFC Leverage |
+|-------|-----|--------|--------------|
+| App Skeleton JSONLD | No VHF zones, nav layers, actions defined | Everything | Clone from PFI template, follow BAIV pattern |
+| Skeleton Loader | No `parseAppSkeleton` in VHF app | UI rendering | Port patterns from `app-skeleton-loader.js` |
+| Browser Viewer HTML | No zone `<div>` framework, no dynamic nav | User interaction | Port zone/nav architecture from PFC visualiser |
+| Token-to-CSS Bridge | Tokens exist but don't render at runtime | Brand fidelity | Port token bridge patterns from PFC |
+| `.pen` Design Artefacts | Zero Pencil files | Agentic design execution | Pencil MCP tooling available |
+| NUT-ONT (OAA v7) | Ontology not OAA-compliant | Registry integration | Azlan Epic 50 delivers; VHF consumes |
+| EMC InstanceConfiguration | VHF EMC config exists but `pfiOverrides: null` | Cascade composition | Update existing EMC instance |
+| Supabase | Schema designed but not created | Persistence, multi-user | Follow Azlan E10A patterns |
 
-### 2.3 What VHF Inherits from PFC (Azlan)
+### 2.3 What VHF Leverages from PFC Toolkit (80%)
 
-| Pattern | Source | VHF Reuse Strategy |
-|---------|--------|-------------------|
-| DS-ONT v3.0.0 schema | `PE-Series/DS-ONT/ds-v3.0.0-oaa-v6.json` | Schema inherited; VHF creates PFI instance |
-| PFI Skeleton Template | `pfi-app-skeleton-template-v1.0.0.jsonld` | Clone → customise with VHF zones |
-| App Skeleton Loader | `app-skeleton-loader.js` (F40.13) | Port parsing + cascade merge patterns |
-| Dynamic Nav Bar | `renderDynamicNavBar()` (F40.20) | Inherit; add L4-VHF nav items |
-| Token Extraction | PE-DS-EXTRACT-001 v2.2.0 | Re-extract VHF tokens to v3.0 schema |
-| EMC Cascade | 4-tier merge (PFC→PFI→Product→App) | VHF is a PFI-tier override |
-| Zone Types | Fixed, Floating, Sliding, Overlay, Conditional | Reuse type system; define VHF-specific zones |
+VHF is a standalone app that **consumes outputs** from PFC tools, ontologies, and patterns. It does NOT run inside the PFC visualiser — it builds its own UI using PFC architectural patterns.
+
+| PFC Toolkit Output | Source in Azlan | How VHF Uses It |
+|--------------------|----------------|-----------------|
+| DS-ONT v3.0.0 schema | `PE-Series/DS-ONT/ds-v3.0.0-oaa-v6.json` | Schema inherited; VHF creates branded PFI instance |
+| PFI Skeleton Template | `pfi-app-skeleton-template-v1.0.0.jsonld` | Clone → customise with VHF-specific zones & nav |
+| Skeleton architecture patterns | `app-skeleton-loader.js` (F40.13) | Port parsing + cascade merge into VHF app codebase |
+| Dynamic nav bar patterns | `renderDynamicNavBar()` (F40.20) | Port nav renderer; add L4-VHF custom items |
+| Token extraction pipeline | PE-DS-EXTRACT-001 v2.2.0 | Extract VHF tokens from Figma to v3.0 schema |
+| EMC cascade composition | 4-tier merge (PFC→PFI→Product→App) | VHF EMC instance already exists; update skeleton ref |
+| Zone type system | Fixed, Floating, Sliding, Overlay, Conditional | Reuse type definitions; define VHF-specific zones |
+| Ontology library | VP, RRR, KPI, BSC, EMC, ORG registered in Azlan | VHF consumes these + NUT-ONT for graph composition |
+| Graph authoring (visualiser) | PFC Ontology Visualiser/Workbench | Author custom VHF graphs, export for VHF app consumption |
+| Strategy frameworks | VSOM, OKR, VP-RRR alignment conventions | Coach methodology modelled using PFC strategy tools |
+| Supabase patterns | E10A Security MVP, `resolve_cascaded_config()` | VHF creates own tables following established patterns |
 
 ---
 
@@ -265,7 +287,7 @@ generated-plans/*.jsonld ──→ Z-VHF-002 (Meal Plan), Z-VHF-005 (Shopping), 
                     └──────────────────┼─┼───────────────────┼─┼──┘
                                        │ │                   │ │
                     ┌──────────────────▼─▼───────────────────▼─▼──┐
-                    │           VHF-App-Mk3 (PFI-VHF)             │
+                    │     pfi-vhf-nutrition-app-dev (Standalone)    │
                     │                                              │
                     │  Epic 1 ✅ (Skills) ─────────┐              │
                     │                               │              │
@@ -504,6 +526,7 @@ When approved, create the following issues in `ajrmooreuk/VHF-App-Mk3`:
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0.0 | 2026-03-05 | PFC Programme | Initial draft — 7 epics, 23 features, 4-phase delivery |
+| 1.1.0 | 2026-03-05 | PFC Programme | Updated for 80/20 PFC leverage model — standalone app consuming PFC toolkit outputs, own DB, cascade PFC→PFI-VHF→NUT-ONT |
 
 ---
 

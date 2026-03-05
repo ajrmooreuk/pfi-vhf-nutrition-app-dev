@@ -1,0 +1,345 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ds": "https://platformcore.io/ontology/ds/",
+    "emc": "https://platformcore.io/ontology/emc/",
+    "nut": "https://oaa-ontology.org/v6/nutrition/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "ds:vhf-app-skeleton-v1.0.0",
+  "@type": "ds:AppSkeletonInstance",
+  "name": "VHF PFI Application Skeleton Override",
+  "description": "PFI-tier skeleton override for VHF Nutrition Coaching App. Standalone application consuming PFC toolkit outputs (80% leverage). Defines 8 VHF-specific zones for meal plan management, 6 L4 navigation items for nutrition coaching workflow, and Viridian brand token overrides. Cascade: PFC -> PFI-VHF -> NUT-ONT.",
+  "version": "1.0.0",
+  "dateCreated": "2026-03-05",
+  "ds:targetOntology": "ds-v3.0.0-oaa-v6.json",
+  "ds:cascadeTier": "PFI",
+  "ds:extendsApp": { "@id": "ds:pfc-app-skeleton-v1.0.0" },
+  "ds:configuredByApp": { "@id": "emc:InstanceConfiguration-VHF" },
+
+  "@graph": [
+
+    {
+      "_section": "=== L4-VHF NAVIGATION ITEMS (6) ==="
+    },
+
+    {
+      "@id": "ds:nav-L4-vhf-clients",
+      "@type": "ds:NavItem",
+      "ds:itemId": "nav-vhf-clients",
+      "ds:label": "Clients",
+      "ds:itemType": "Button",
+      "ds:action": "showClientProfile",
+      "ds:icon": "users",
+      "ds:shortcut": null,
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:renderOrder": 1,
+      "ds:cascadeTier": "PFI",
+      "ds:belongsToLayer": { "@id": "ds:navlayer-L4" },
+      "description": "VHF client profile panel -- health profile, diet types, allergens, macro targets"
+    },
+    {
+      "@id": "ds:nav-L4-vhf-plans",
+      "@type": "ds:NavItem",
+      "ds:itemId": "nav-vhf-plans",
+      "ds:label": "Plans",
+      "ds:itemType": "Button",
+      "ds:action": "showMealPlanViewer",
+      "ds:icon": "calendar",
+      "ds:shortcut": null,
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:renderOrder": 2,
+      "ds:cascadeTier": "PFI",
+      "ds:belongsToLayer": { "@id": "ds:navlayer-L4" },
+      "description": "VHF 30-day meal plan viewer -- week/day drill-down, nutrition bars, recipe links"
+    },
+    {
+      "@id": "ds:nav-L4-vhf-recipes",
+      "@type": "ds:NavItem",
+      "ds:itemId": "nav-vhf-recipes",
+      "ds:label": "Recipes",
+      "ds:itemType": "Button",
+      "ds:action": "showRecipeBrowser",
+      "ds:icon": "book-open",
+      "ds:shortcut": null,
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:renderOrder": 3,
+      "ds:cascadeTier": "PFI",
+      "ds:belongsToLayer": { "@id": "ds:navlayer-L4" },
+      "description": "VHF recipe browser -- filter by diet type (18), allergens (14), theme (16), cuisine"
+    },
+    {
+      "@id": "ds:nav-L4-vhf-generate",
+      "@type": "ds:NavItem",
+      "ds:itemId": "nav-vhf-generate",
+      "ds:label": "Generate",
+      "ds:itemType": "Button",
+      "ds:action": "openPlanGenerator",
+      "ds:icon": "zap",
+      "ds:shortcut": null,
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:renderOrder": 4,
+      "ds:cascadeTier": "PFI",
+      "ds:belongsToLayer": { "@id": "ds:navlayer-L4" },
+      "description": "VHF AI meal plan generator -- triggers Claude Code skill for selected client profile"
+    },
+    {
+      "@id": "ds:nav-L4-vhf-coach",
+      "@type": "ds:NavItem",
+      "ds:itemId": "nav-vhf-coach",
+      "ds:label": "Coach",
+      "ds:itemType": "Button",
+      "ds:action": "showCoachPanel",
+      "ds:icon": "clipboard-check",
+      "ds:shortcut": null,
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:renderOrder": 5,
+      "ds:cascadeTier": "PFI",
+      "ds:belongsToLayer": { "@id": "ds:navlayer-L4" },
+      "description": "VHF coach panel -- plan approval/rejection, client management, coach notes"
+    },
+    {
+      "@id": "ds:nav-L4-vhf-chat",
+      "@type": "ds:NavItem",
+      "ds:itemId": "nav-vhf-chat",
+      "ds:label": "Chat",
+      "ds:itemType": "Toggle",
+      "ds:action": "toggleNutritionChat",
+      "ds:icon": "message-circle",
+      "ds:shortcut": null,
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:renderOrder": 6,
+      "ds:cascadeTier": "PFI",
+      "ds:belongsToLayer": { "@id": "ds:navlayer-L4" },
+      "description": "VHF nutrition advisor AI chat overlay (future) -- contextual nutrition Q&A"
+    },
+
+    {
+      "_section": "=== VHF-SPECIFIC ZONES (8) ==="
+    },
+
+    {
+      "@id": "ds:zone-Z-VHF-001",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-001",
+      "ds:zoneName": "Dashboard",
+      "ds:zoneType": "Fixed",
+      "ds:position": "center",
+      "ds:defaultVisible": true,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "description": "Client overview, plan status cards, macro summary tiles, at-a-glance coach view"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-002",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-002",
+      "ds:zoneName": "Meal Plan Viewer",
+      "ds:zoneType": "Sliding",
+      "ds:position": "center",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF' && state.activePlan",
+      "description": "30-day plan with week/day drill-down, nutrition bars per meal, recipe links, portion scaling"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-003",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-003",
+      "ds:zoneName": "Client Profile",
+      "ds:zoneType": "Sliding",
+      "ds:position": "right",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF' && state.activeClient",
+      "description": "Health profile, diet types, allergens, macro targets for selected client"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-004",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-004",
+      "ds:zoneName": "Recipe Browser",
+      "ds:zoneType": "Sliding",
+      "ds:position": "right",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "description": "Card-based recipe grid with filter by diet type, allergen exclusion, theme, cuisine, meal type"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-005",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-005",
+      "ds:zoneName": "Shopping List",
+      "ds:zoneType": "Sliding",
+      "ds:position": "right",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF' && state.activePlan",
+      "description": "Weekly shopping list grouped by 8 UK supermarket aisles, estimated weekly cost"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-006",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-006",
+      "ds:zoneName": "Coach Panel",
+      "ds:zoneType": "Sliding",
+      "ds:position": "left",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF' && state.userRole === 'coach'",
+      "description": "Plan approval/rejection, client management, coach notes, generate plan per client"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-007",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-007",
+      "ds:zoneName": "Quality Dashboard",
+      "ds:zoneType": "Sliding",
+      "ds:position": "left",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF' && state.activePlan",
+      "description": "Compliance %, macro adherence (daily/weekly/30-day), variety score, allergen violations, cost analysis"
+    },
+    {
+      "@id": "ds:zone-Z-VHF-008",
+      "@type": "ds:AppZone",
+      "ds:zoneId": "Z-VHF-008",
+      "ds:zoneName": "AI Chat",
+      "ds:zoneType": "Overlay",
+      "ds:position": "right",
+      "ds:defaultVisible": false,
+      "ds:cascadeTier": "PFI",
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF' && state.chatEnabled",
+      "description": "Nutrition advisor agent overlay (future) -- contextual nutrition Q&A"
+    },
+
+    {
+      "_section": "=== VHF BRAND TOKEN OVERRIDES ==="
+    },
+
+    {
+      "@id": "ds:cmp-vhf-context-bar",
+      "@type": "ds:ZoneComponent",
+      "ds:placementId": "cmp-vhf-context-bar",
+      "ds:renderOrder": 1,
+      "ds:slotName": "context-bar-content",
+      "ds:tokenOverrides": {
+        "--ds-color-primary": "#007c74",
+        "--ds-color-secondary": "#f16a21",
+        "--ds-font-family": "'PT Sans', sans-serif",
+        "--ds-color-primary-hover": "#006660",
+        "--ds-color-primary-light": "#e6f5f4",
+        "--ds-surface-brand": "#007c74",
+        "--ds-text-on-brand": "#FFFFFF"
+      },
+      "ds:visibilityCondition": "state.activeInstanceId === 'PFI-VHF'",
+      "ds:cascadeTier": "PFI",
+      "ds:placedInZone": { "@id": "ds:zone-Z1" },
+      "ds:placesComponent": { "@id": "ds:dc-context-bar" },
+      "description": "VHF Viridian-branded context identity bar -- VHF logo, teal accent #007c74, orange secondary #f16a21, PT Sans typography"
+    },
+
+    {
+      "_section": "=== VHF ACTION REGISTRY (12) ==="
+    },
+
+    {
+      "@id": "ds:action-vhf-showClientProfile",
+      "@type": "ds:Action",
+      "ds:actionId": "showClientProfile",
+      "ds:functionRef": "vhfShowClientProfile",
+      "ds:cascadeTier": "PFI",
+      "description": "Show client profile panel (Z-VHF-003)"
+    },
+    {
+      "@id": "ds:action-vhf-showMealPlanViewer",
+      "@type": "ds:Action",
+      "ds:actionId": "showMealPlanViewer",
+      "ds:functionRef": "vhfShowMealPlanViewer",
+      "ds:cascadeTier": "PFI",
+      "description": "Show 30-day meal plan viewer (Z-VHF-002)"
+    },
+    {
+      "@id": "ds:action-vhf-showRecipeBrowser",
+      "@type": "ds:Action",
+      "ds:actionId": "showRecipeBrowser",
+      "ds:functionRef": "vhfShowRecipeBrowser",
+      "ds:cascadeTier": "PFI",
+      "description": "Show recipe browser (Z-VHF-004)"
+    },
+    {
+      "@id": "ds:action-vhf-openPlanGenerator",
+      "@type": "ds:Action",
+      "ds:actionId": "openPlanGenerator",
+      "ds:functionRef": "vhfOpenPlanGenerator",
+      "ds:cascadeTier": "PFI",
+      "description": "Open AI meal plan generator for selected client"
+    },
+    {
+      "@id": "ds:action-vhf-showCoachPanel",
+      "@type": "ds:Action",
+      "ds:actionId": "showCoachPanel",
+      "ds:functionRef": "vhfShowCoachPanel",
+      "ds:cascadeTier": "PFI",
+      "description": "Show coach panel (Z-VHF-006)"
+    },
+    {
+      "@id": "ds:action-vhf-toggleNutritionChat",
+      "@type": "ds:Action",
+      "ds:actionId": "toggleNutritionChat",
+      "ds:functionRef": "vhfToggleNutritionChat",
+      "ds:cascadeTier": "PFI",
+      "description": "Toggle nutrition advisor AI chat overlay (Z-VHF-008)"
+    },
+    {
+      "@id": "ds:action-vhf-showShoppingList",
+      "@type": "ds:Action",
+      "ds:actionId": "showShoppingList",
+      "ds:functionRef": "vhfShowShoppingList",
+      "ds:cascadeTier": "PFI",
+      "description": "Show weekly shopping list (Z-VHF-005)"
+    },
+    {
+      "@id": "ds:action-vhf-showQualityDashboard",
+      "@type": "ds:Action",
+      "ds:actionId": "showQualityDashboard",
+      "ds:functionRef": "vhfShowQualityDashboard",
+      "ds:cascadeTier": "PFI",
+      "description": "Show quality dashboard (Z-VHF-007)"
+    },
+    {
+      "@id": "ds:action-vhf-approvePlan",
+      "@type": "ds:Action",
+      "ds:actionId": "approvePlan",
+      "ds:functionRef": "vhfApprovePlan",
+      "ds:cascadeTier": "PFI",
+      "description": "Coach approves active meal plan -- transitions status to approved"
+    },
+    {
+      "@id": "ds:action-vhf-rejectPlan",
+      "@type": "ds:Action",
+      "ds:actionId": "rejectPlan",
+      "ds:functionRef": "vhfRejectPlan",
+      "ds:cascadeTier": "PFI",
+      "description": "Coach rejects active meal plan with notes -- transitions status to rejected"
+    },
+    {
+      "@id": "ds:action-vhf-showDashboard",
+      "@type": "ds:Action",
+      "ds:actionId": "showDashboard",
+      "ds:functionRef": "vhfShowDashboard",
+      "ds:cascadeTier": "PFI",
+      "description": "Return to VHF dashboard (Z-VHF-001)"
+    },
+    {
+      "@id": "ds:action-vhf-exportPlanHtml",
+      "@type": "ds:Action",
+      "ds:actionId": "exportPlanHtml",
+      "ds:functionRef": "vhfExportPlanHtml",
+      "ds:cascadeTier": "PFI",
+      "description": "Export current meal plan as branded HTML -- uses /meal-plan-html skill output"
+    }
+  ]
+}
