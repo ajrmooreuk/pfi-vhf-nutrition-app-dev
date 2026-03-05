@@ -1,0 +1,666 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "vhf": "https://viridian.app/ontology/vhf/",
+    "client": "https://viridian.app/ontology/vhf/client/",
+    "coach": "https://viridian.app/ontology/vhf/coach/",
+    "diet": "https://viridian.app/ontology/vhf/diet/"
+  },
+
+  "@graph": [
+
+    {
+      "@id": "coach:james-kerby",
+      "@type": ["coach:Coach", "Person"],
+      "givenName": "James",
+      "familyName": "Kerby",
+      "jobTitle": "Personal Trainer Coach & Clinical Weight-Loss Practitioner",
+      "qualifications": [
+        "Level 5 Clinical Weight Loss Practitioner",
+        "Diploma in Sports Science",
+        "Nutrition and Weight Management Qualified"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Viridian Health & Fitness",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Woodhams Farm, Kings Worthy",
+          "addressLocality": "Winchester",
+          "addressRegion": "Hampshire",
+          "addressCountry": "GB"
+        }
+      },
+      "specialisms": ["weight-loss", "strength-training", "injury-rehabilitation", "seniors", "sports-performance"],
+      "coach:manages": [
+        { "@id": "client:tp-001" },
+        { "@id": "client:tp-002" },
+        { "@id": "client:tp-003" },
+        { "@id": "client:tp-004" },
+        { "@id": "client:tp-005" },
+        { "@id": "client:tp-006" },
+        { "@id": "client:tp-007" },
+        { "@id": "client:tp-008" },
+        { "@id": "client:tp-009" },
+        { "@id": "client:tp-010" },
+        { "@id": "client:tp-011" },
+        { "@id": "client:tp-012" }
+      ]
+    },
+
+
+    {
+      "@id": "client:tp-001",
+      "@type": ["client:Client", "Patient"],
+      "name": "Sarah Mitchell",
+      "givenName": "Sarah",
+      "familyName": "Mitchell",
+      "gender": "Female",
+      "birthDate": "1985-03-15",
+      "description": "GOOD DATA: Busy professional, moderate weight loss goal, well-managed Type 2 Diabetes. Complete profile with all required fields.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Baseline ideal client. All fields populated correctly. Should generate diabetic-friendly, high-protein meal plans.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 168, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 82, "unitCode": "KGM" },
+        "bmi": 29.1,
+        "activityLevel": "moderately_active",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "Type 2 Diabetes",
+            "code": { "@type": "MedicalCode", "code": "E11", "codingSystem": "ICD-10" },
+            "status": "managed"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-weight-loss" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 1650,
+        "proteinGrams": 120,
+        "carbsGrams": 140,
+        "fatsGrams": 55,
+        "vhf:rationale": "500kcal deficit from TDEE 2150. High protein for satiety and muscle preservation. Carbs controlled for blood sugar."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:diabetic" },
+        { "@id": "diet:low-carb" }
+      ],
+      "client:hasDietaryRestriction": ["low-glycemic", "controlled-carbs"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-nuts" },
+        { "@id": "client:allergen-peanuts" }
+      ],
+      "client:prefersTheme": [
+        { "@id": "theme:QuickWeeknight" },
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:DiabeticFriendly" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-002",
+      "@type": ["client:Client", "Patient"],
+      "name": "Raj Patel",
+      "givenName": "Raj",
+      "familyName": "Patel",
+      "gender": "Male",
+      "birthDate": "1990-07-22",
+      "description": "GOOD DATA: Young professional, muscle gain goal, Hindu vegetarian with religious dietary requirements. Active gym user.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests religious diet + muscle gain macro targets. High protein vegetarian challenge — must rely on dairy, legumes, paneer, tofu.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 178, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 72, "unitCode": "KGM" },
+        "bmi": 22.7,
+        "activityLevel": "very_active",
+        "medicalCondition": []
+      },
+      "client:hasGoal": { "@id": "client:goal-muscle-gain" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 2800,
+        "proteinGrams": 168,
+        "carbsGrams": 350,
+        "fatsGrams": 78,
+        "vhf:rationale": "300kcal surplus. 2.0g/kg protein via dairy, legumes, paneer. High carbs for training fuel."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:hindu-vegetarian" },
+        { "@id": "diet:high-protein" }
+      ],
+      "client:hasDietaryRestriction": ["lacto-vegetarian", "no-eggs"],
+      "client:hasAllergen": [],
+      "client:prefersTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:BatchCookSunday" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-003",
+      "@type": ["client:Client", "Patient"],
+      "name": "Fatima Al-Rashid",
+      "givenName": "Fatima",
+      "familyName": "Al-Rashid",
+      "gender": "Female",
+      "birthDate": "1988-11-03",
+      "description": "GOOD DATA: Halal diet with PCOS, weight loss goal. Requires halal certification awareness and anti-inflammatory focus.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests religious diet (halal) + medical condition (PCOS) + weight loss. Complex constraint intersection. Must exclude pork, alcohol, non-halal meat.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 162, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 78, "unitCode": "KGM" },
+        "bmi": 29.7,
+        "activityLevel": "lightly_active",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "Polycystic Ovary Syndrome (PCOS)",
+            "code": { "@type": "MedicalCode", "code": "E28.2", "codingSystem": "ICD-10" },
+            "status": "active"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-weight-loss" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 1500,
+        "proteinGrams": 112,
+        "carbsGrams": 120,
+        "fatsGrams": 58,
+        "vhf:rationale": "Moderate deficit. Anti-inflammatory ratio. Low refined carbs for insulin sensitivity."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:halal" },
+        { "@id": "diet:anti-inflammatory" }
+      ],
+      "client:hasDietaryRestriction": ["halal-certified-meat", "no-pork", "no-alcohol", "low-refined-sugar"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-sesame" }
+      ],
+      "client:prefersTheme": [
+        { "@id": "theme:PCOSSupport" },
+        { "@id": "theme:Mediterranean" },
+        { "@id": "theme:BudgetFriendly" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-004",
+      "@type": ["client:Client", "Patient"],
+      "name": "Tom Jeffries",
+      "givenName": "Tom",
+      "familyName": "Jeffries",
+      "gender": "Male",
+      "birthDate": "1972-01-19",
+      "description": "GOOD DATA: Senior client, maintenance goal, recovering from knee replacement. Needs gentle anti-inflammatory meals with adequate calcium.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests senior profile + injury recovery + maintenance. Mediterranean lifestyle diet. Age-appropriate portion sizes and nutrient density.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 180, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 88, "unitCode": "KGM" },
+        "bmi": 27.2,
+        "activityLevel": "lightly_active",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "Osteoarthritis (knee)",
+            "code": { "@type": "MedicalCode", "code": "M17", "codingSystem": "ICD-10" },
+            "status": "post-operative"
+          },
+          {
+            "@type": "MedicalCondition",
+            "name": "Hypertension",
+            "code": { "@type": "MedicalCode", "code": "I10", "codingSystem": "ICD-10" },
+            "status": "managed"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-maintenance" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 2100,
+        "proteinGrams": 105,
+        "carbsGrams": 240,
+        "fatsGrams": 75,
+        "vhf:rationale": "Maintenance TDEE. Moderate protein for recovery. Emphasis on calcium, vitamin D, omega-3."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:low-sodium" },
+        { "@id": "diet:anti-inflammatory" }
+      ],
+      "client:hasDietaryRestriction": ["low-sodium", "anti-inflammatory"],
+      "client:hasAllergen": [],
+      "client:prefersTheme": [
+        { "@id": "theme:Mediterranean" },
+        { "@id": "theme:AntiInflammatory" },
+        { "@id": "theme:BritishComfort" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-005",
+      "@type": ["client:Client", "Patient"],
+      "name": "Emma Chen",
+      "givenName": "Emma",
+      "familyName": "Chen",
+      "gender": "Female",
+      "birthDate": "1995-06-30",
+      "description": "GOOD DATA: Vegan triathlete, sports performance goal. Multiple allergens. Needs high-calorie, nutrient-dense plant-based meals.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests vegan + sports performance + multiple allergens. Hardest constraint set — plant-based, soya-free, nut-free, high calorie. Very narrow recipe pool.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 170, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 60, "unitCode": "KGM" },
+        "bmi": 20.8,
+        "activityLevel": "extremely_active",
+        "medicalCondition": []
+      },
+      "client:hasGoal": { "@id": "client:goal-sports-performance" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 2600,
+        "proteinGrams": 130,
+        "carbsGrams": 390,
+        "fatsGrams": 65,
+        "vhf:rationale": "High carb for endurance training. Plant protein 2.0g/kg via legumes, seeds, seitan. Low fat for performance."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:high-protein" }
+      ],
+      "client:hasDietaryRestriction": ["vegan", "no-animal-products"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-soya" },
+        { "@id": "client:allergen-nuts" },
+        { "@id": "client:allergen-peanuts" }
+      ],
+      "client:prefersTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:EnergyBoost" },
+        { "@id": "theme:AsianFusion" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-006",
+      "@type": ["client:Client", "Patient"],
+      "name": "David Goldstein",
+      "givenName": "David",
+      "familyName": "Goldstein",
+      "gender": "Male",
+      "birthDate": "1980-09-14",
+      "description": "GOOD DATA: Kosher diet, IBS (low-FODMAP), weight loss goal. Complex dietary law + medical restrictions.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests kosher + low-FODMAP + weight loss. Meat-dairy separation plus FODMAP exclusions. Very restrictive but well-defined constraints.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 175, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 95, "unitCode": "KGM" },
+        "bmi": 31.0,
+        "activityLevel": "sedentary",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "Irritable Bowel Syndrome (IBS-D)",
+            "code": { "@type": "MedicalCode", "code": "K58.0", "codingSystem": "ICD-10" },
+            "status": "active"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-weight-loss" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 1800,
+        "proteinGrams": 135,
+        "carbsGrams": 160,
+        "fatsGrams": 65,
+        "vhf:rationale": "600kcal deficit from TDEE 2400. High protein for satiety. Low-FODMAP carb sources only."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:kosher" },
+        { "@id": "diet:low-fodmap" }
+      ],
+      "client:hasDietaryRestriction": ["kosher-certified", "no-meat-dairy-mixing", "low-fodmap"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-crustaceans" },
+        { "@id": "client:allergen-molluscs" }
+      ],
+      "client:prefersTheme": [
+        { "@id": "theme:LowFODMAP" },
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:FamilyMeals" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-007",
+      "@type": ["client:Client", "Patient"],
+      "name": "Karen Whitfield",
+      "givenName": "Karen",
+      "familyName": "Whitfield",
+      "gender": "Female",
+      "birthDate": "1968-04-07",
+      "description": "GOOD DATA: Keto diet, hypothyroidism, weight loss. Senior-ish client. Needs very low carb with thyroid-supportive nutrients.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests keto + medical condition + weight loss. Strict <20g net carbs. Must include selenium, iodine, zinc for thyroid support.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 165, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 90, "unitCode": "KGM" },
+        "bmi": 33.1,
+        "activityLevel": "lightly_active",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "Hypothyroidism",
+            "code": { "@type": "MedicalCode", "code": "E03.9", "codingSystem": "ICD-10" },
+            "status": "managed"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-weight-loss" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 1500,
+        "proteinGrams": 94,
+        "carbsGrams": 20,
+        "fatsGrams": 117,
+        "vhf:rationale": "Ketogenic ratio 75:20:5. Strict <20g net carbs for ketosis. Moderate protein to prevent gluconeogenesis."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:keto" }
+      ],
+      "client:hasDietaryRestriction": ["ketogenic", "net-carbs-under-20g"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-eggs" },
+        { "@id": "client:allergen-milk" }
+      ],
+      "client:prefersTheme": [
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:BritishComfort" },
+        { "@id": "theme:QuickWeeknight" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-008",
+      "@type": ["client:Client", "Patient"],
+      "name": "Marcus Williams",
+      "givenName": "Marcus",
+      "familyName": "Williams",
+      "gender": "Male",
+      "birthDate": "1998-12-01",
+      "description": "POOR DATA: Missing height, unrealistic macro targets, no medical history despite claiming condition. Tests validation.",
+      "vhf:dataQuality": "poor",
+      "vhf:testNotes": "INTENTIONALLY POOR: Missing height (cannot calculate BMI), impossibly low calorie target (800kcal) with high protein claim. medicalCondition field says 'asthma' but no ICD code. No allergens declared but dietary restriction says 'nut-free'. System should flag data quality issues.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": null,
+        "weight": { "@type": "QuantitativeValue", "value": 110, "unitCode": "KGM" },
+        "bmi": null,
+        "activityLevel": "very_active",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "asthma",
+            "status": "active"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-weight-loss" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 800,
+        "proteinGrams": 200,
+        "carbsGrams": 50,
+        "fatsGrams": 20,
+        "vhf:rationale": "INVALID: 800kcal is below safe minimum. 200g protein at 800kcal is impossible (protein alone = 800kcal). Macros don't add to calorie total.",
+        "vhf:validationErrors": [
+          "dailyCalories below 1200kcal minimum for males",
+          "proteinGrams (200 * 4 = 800kcal) exceeds total dailyCalories",
+          "macroCalories (200*4 + 50*4 + 20*9 = 1180) != dailyCalories (800)",
+          "height is null — cannot verify calorie target against TDEE"
+        ]
+      },
+      "client:followsDiet": [
+        { "@id": "diet:carnivore" }
+      ],
+      "client:hasDietaryRestriction": ["nut-free"],
+      "client:hasAllergen": [],
+      "client:prefersTheme": [],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-009",
+      "@type": ["client:Client", "Patient"],
+      "name": "Priya Sharma",
+      "givenName": "Priya",
+      "familyName": "Sharma",
+      "gender": "Female",
+      "birthDate": "1992-08-25",
+      "description": "GOOD DATA: Jain vegetarian, strict religious diet. No root vegetables, no eggs, no honey. Muscle gain goal with very narrow protein sources.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests strictest religious diet (Jain) + muscle gain. No root veg eliminates onion, garlic, potato, carrot. Extremely narrow ingredient pool. AI must be creative with above-ground veg, dairy, legumes.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 158, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 52, "unitCode": "KGM" },
+        "bmi": 20.8,
+        "activityLevel": "moderately_active",
+        "medicalCondition": []
+      },
+      "client:hasGoal": { "@id": "client:goal-muscle-gain" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 2000,
+        "proteinGrams": 104,
+        "carbsGrams": 260,
+        "fatsGrams": 56,
+        "vhf:rationale": "250kcal surplus. 2.0g/kg protein via paneer, dal, chickpeas, quinoa. No alliums in any recipe."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:jain" },
+        { "@id": "diet:high-protein" }
+      ],
+      "client:hasDietaryRestriction": ["jain-strict", "no-root-vegetables", "no-eggs", "no-honey", "no-alcohol"],
+      "client:hasAllergen": [],
+      "client:prefersTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:BudgetFriendly" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-010",
+      "@type": ["client:Client", "Patient"],
+      "name": "Jake Thompson",
+      "givenName": "Jake",
+      "familyName": "Thompson",
+      "gender": "Male",
+      "birthDate": "2001-03-10",
+      "description": "POOR DATA: Conflicting diet types, impossible allergen+diet combo. Tests AI error detection.",
+      "vhf:dataQuality": "poor",
+      "vhf:testNotes": "INTENTIONALLY POOR: Claims vegan AND carnivore diets simultaneously. Has dairy allergen but follows keto (typically dairy-heavy). Multiple conflicting constraints should be flagged.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 185, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 78, "unitCode": "KGM" },
+        "bmi": 22.8,
+        "activityLevel": "moderately_active",
+        "medicalCondition": []
+      },
+      "client:hasGoal": { "@id": "client:goal-maintenance" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 2500,
+        "proteinGrams": 150,
+        "carbsGrams": 250,
+        "fatsGrams": 83,
+        "vhf:rationale": "INVALID: Macros are reasonable but diet types conflict. Vegan + Carnivore is impossible.",
+        "vhf:validationErrors": [
+          "diet:vegan and diet:carnivore are mutually exclusive",
+          "client:allergen-milk conflicts with diet:keto (dairy-dependent)",
+          "three mutually incompatible diet types declared"
+        ]
+      },
+      "client:followsDiet": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:carnivore" },
+        { "@id": "diet:keto" }
+      ],
+      "client:hasDietaryRestriction": ["vegan", "carnivore", "keto"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-milk" }
+      ],
+      "client:prefersTheme": [],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-011",
+      "@type": ["client:Client", "Patient"],
+      "name": "Linda Okafor",
+      "givenName": "Linda",
+      "familyName": "Okafor",
+      "gender": "Female",
+      "birthDate": "1975-02-28",
+      "description": "GOOD DATA: Coeliac disease (gluten-free mandatory), CKD stage 2 (renal diet), pescatarian by choice. Medical management goal.",
+      "vhf:dataQuality": "good",
+      "vhf:testNotes": "Tests gluten-free (medical) + renal diet + pescatarian. Triple constraint. Must avoid gluten cereals, limit sodium/potassium/phosphorus, no meat (fish OK). Narrow but valid.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 172, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 68, "unitCode": "KGM" },
+        "bmi": 23.0,
+        "activityLevel": "lightly_active",
+        "medicalCondition": [
+          {
+            "@type": "MedicalCondition",
+            "name": "Coeliac Disease",
+            "code": { "@type": "MedicalCode", "code": "K90.0", "codingSystem": "ICD-10" },
+            "status": "active"
+          },
+          {
+            "@type": "MedicalCondition",
+            "name": "Chronic Kidney Disease Stage 2",
+            "code": { "@type": "MedicalCode", "code": "N18.2", "codingSystem": "ICD-10" },
+            "status": "active"
+          }
+        ]
+      },
+      "client:hasGoal": { "@id": "client:goal-medical-management" },
+      "client:hasMacroTarget": {
+        "@type": "client:MacroTarget",
+        "dailyCalories": 1800,
+        "proteinGrams": 72,
+        "carbsGrams": 230,
+        "fatsGrams": 65,
+        "vhf:rationale": "Moderate protein (0.8g/kg capped for CKD). Gluten-free carb sources: rice, potato, quinoa. Low sodium <1500mg."
+      },
+      "client:followsDiet": [
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:renal" },
+        { "@id": "diet:pescatarian" }
+      ],
+      "client:hasDietaryRestriction": ["gluten-free", "low-sodium", "low-potassium", "low-phosphorus", "pescatarian"],
+      "client:hasAllergen": [
+        { "@id": "client:allergen-cereals" }
+      ],
+      "client:prefersTheme": [
+        { "@id": "theme:Mediterranean" },
+        { "@id": "theme:GutHealth" },
+        { "@id": "theme:SpringFresh" }
+      ],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+    {
+      "@id": "client:tp-012",
+      "@type": ["client:Client", "Patient"],
+      "name": "Ben Fraser",
+      "givenName": "Ben",
+      "familyName": "Fraser",
+      "gender": "Male",
+      "birthDate": "1993-10-17",
+      "description": "POOR DATA: Incomplete profile, no goal set, no macro targets, vague restrictions. Tests minimum-viable data handling.",
+      "vhf:dataQuality": "poor",
+      "vhf:testNotes": "INTENTIONALLY POOR: No goal selected (null). No macro targets. Dietary restriction is free-text 'i dont eat much meat' instead of enum. Weight in stones not kg. System must handle gracefully.",
+      "client:hasProfile": {
+        "@type": "client:HealthProfile",
+        "height": { "@type": "QuantitativeValue", "value": 182, "unitCode": "CMT" },
+        "weight": { "@type": "QuantitativeValue", "value": 13, "unitCode": "STN", "vhf:note": "WRONG UNIT: 13 stone = 82.5kg but stored as 13 with stones unit code. System should convert or reject." },
+        "bmi": null,
+        "activityLevel": null,
+        "medicalCondition": null
+      },
+      "client:hasGoal": null,
+      "client:hasMacroTarget": null,
+      "client:followsDiet": [],
+      "client:hasDietaryRestriction": ["i dont eat much meat"],
+      "client:hasAllergen": [],
+      "client:prefersTheme": [],
+      "client:coachedBy": { "@id": "coach:james-kerby" }
+    },
+
+
+    {
+      "@id": "vhf:TestDataValidRanges",
+      "@type": "vhf:Entity",
+      "name": "Valid Data Ranges for Meal Plan Generation",
+      "description": "Reference ranges the LLM should use to validate client data and generated meal plans",
+      "vhf:validRanges": {
+        "client": {
+          "height_cm": { "min": 140, "max": 210, "unit": "CMT" },
+          "weight_kg": { "min": 40, "max": 180, "unit": "KGM" },
+          "bmi": { "underweight": "<18.5", "normal": "18.5-24.9", "overweight": "25-29.9", "obese_1": "30-34.9", "obese_2": "35-39.9", "obese_3": ">=40" },
+          "age_years": { "min": 16, "max": 90 },
+          "activityLevel": ["sedentary", "lightly_active", "moderately_active", "very_active", "extremely_active"],
+          "activityMultiplier": { "sedentary": 1.2, "lightly_active": 1.375, "moderately_active": 1.55, "very_active": 1.725, "extremely_active": 1.9 }
+        },
+        "macroTargets": {
+          "dailyCalories": { "min_female": 1200, "min_male": 1500, "max": 5000 },
+          "proteinGrams_per_kg": { "sedentary": "0.8-1.0", "active": "1.2-1.6", "athlete": "1.6-2.2", "max_safe": 2.5 },
+          "carbsGrams_percent": { "keto": "5-10%", "low_carb": "10-25%", "moderate": "40-55%", "high_carb": "55-65%" },
+          "fatsGrams_percent": { "low_fat": "15-25%", "moderate": "25-35%", "high_fat": "60-75%" },
+          "macroCalorieCheck": "proteinG*4 + carbsG*4 + fatsG*9 must equal dailyCalories within 5% tolerance"
+        },
+        "recipe": {
+          "calories_per_serving": { "snack": "100-300", "breakfast": "300-600", "lunch": "400-700", "dinner": "400-800" },
+          "protein_per_serving_g": { "low": "0-15", "moderate": "15-30", "high": "30-50", "very_high": "50+" },
+          "prep_time_minutes": { "quick": "0-15", "moderate": "15-30", "long": "30-60" },
+          "cook_time_minutes": { "none": 0, "quick": "0-15", "moderate": "15-30", "long": "30-60", "slow_cook": "60-480" },
+          "ingredients_count": { "simple": "3-6", "moderate": "7-12", "complex": "13-20" },
+          "cost_per_serving_gbp": { "budget": "0.50-2.00", "moderate": "2.00-5.00", "premium": "5.00-10.00" }
+        },
+        "mealPlan": {
+          "days": 7,
+          "meals_per_day": { "min": 3, "max": 6 },
+          "daily_calorie_variance": "within 10% of target",
+          "weekly_protein_average": "within 5% of target",
+          "recipe_repetition": "max 2 uses per recipe per 7-day plan",
+          "variety_minimum": "at least 3 different protein sources per week"
+        }
+      }
+    }
+  ]
+}

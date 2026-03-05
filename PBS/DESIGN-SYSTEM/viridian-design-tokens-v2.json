@@ -1,0 +1,800 @@
+{
+  "$schema": "https://schemas.opendesignsystems.org/token-schema.json",
+  "name": "Viridian Nutrition Platform",
+  "version": "2.0.0",
+  "description": "Complete design token system for Viridian Nutrition Intelligence Platform",
+  "lastUpdated": "2024-12-05",
+  "platforms": ["web", "ios", "android"],
+  
+  "color": {
+    "primary": {
+      "value": "#94134d",
+      "type": "color",
+      "description": "Primary brand color - Deep Magenta/Pink",
+      "category": "brand"
+    },
+    "primary-light": {
+      "value": "#e0176e",
+      "type": "color",
+      "description": "Light variant of primary color",
+      "category": "brand"
+    },
+    "primary-dark": {
+      "value": "#6c0f3a",
+      "type": "color",
+      "description": "Dark variant of primary color",
+      "category": "brand"
+    },
+    "primary-50": {
+      "value": "#fdf4f8",
+      "type": "color",
+      "description": "Primary color tint 50",
+      "category": "brand"
+    },
+    "primary-100": {
+      "value": "#fbe8f1",
+      "type": "color",
+      "description": "Primary color tint 100",
+      "category": "brand"
+    },
+    "primary-200": {
+      "value": "#f7d1e3",
+      "type": "color",
+      "description": "Primary color tint 200",
+      "category": "brand"
+    },
+    "primary-300": {
+      "value": "#f1a9cd",
+      "type": "color",
+      "description": "Primary color tint 300",
+      "category": "brand"
+    },
+    "primary-400": {
+      "value": "#e878ac",
+      "type": "color",
+      "description": "Primary color tint 400",
+      "category": "brand"
+    },
+    "primary-500": {
+      "value": "#e0176e",
+      "type": "color",
+      "description": "Primary color base 500",
+      "category": "brand"
+    },
+    "primary-600": {
+      "value": "#94134d",
+      "type": "color",
+      "description": "Primary color shade 600 (main)",
+      "category": "brand"
+    },
+    "primary-700": {
+      "value": "#6c0f3a",
+      "type": "color",
+      "description": "Primary color shade 700",
+      "category": "brand"
+    },
+    "primary-800": {
+      "value": "#4a0a27",
+      "type": "color",
+      "description": "Primary color shade 800",
+      "category": "brand"
+    },
+    "primary-900": {
+      "value": "#2d061a",
+      "type": "color",
+      "description": "Primary color shade 900",
+      "category": "brand"
+    },
+    "secondary": {
+      "value": "#0797d5",
+      "type": "color",
+      "description": "Secondary brand color - Cyan Blue",
+      "category": "brand"
+    },
+    "secondary-light": {
+      "value": "#4bb8e8",
+      "type": "color",
+      "description": "Light variant of secondary color",
+      "category": "brand"
+    },
+    "secondary-dark": {
+      "value": "#056b9a",
+      "type": "color",
+      "description": "Dark variant of secondary color",
+      "category": "brand"
+    },
+    "secondary-50": {
+      "value": "#f0f9fd",
+      "type": "color",
+      "description": "Secondary color tint 50",
+      "category": "brand"
+    },
+    "secondary-100": {
+      "value": "#e0f3fb",
+      "type": "color",
+      "description": "Secondary color tint 100",
+      "category": "brand"
+    },
+    "secondary-200": {
+      "value": "#bae6f7",
+      "type": "color",
+      "description": "Secondary color tint 200",
+      "category": "brand"
+    },
+    "secondary-300": {
+      "value": "#7dd0f0",
+      "type": "color",
+      "description": "Secondary color tint 300",
+      "category": "brand"
+    },
+    "secondary-400": {
+      "value": "#4bb8e8",
+      "type": "color",
+      "description": "Secondary color tint 400",
+      "category": "brand"
+    },
+    "secondary-500": {
+      "value": "#0797d5",
+      "type": "color",
+      "description": "Secondary color base 500 (main)",
+      "category": "brand"
+    },
+    "secondary-600": {
+      "value": "#0579b0",
+      "type": "color",
+      "description": "Secondary color shade 600",
+      "category": "brand"
+    },
+    "secondary-700": {
+      "value": "#056b9a",
+      "type": "color",
+      "description": "Secondary color shade 700",
+      "category": "brand"
+    },
+    "secondary-800": {
+      "value": "#045170",
+      "type": "color",
+      "description": "Secondary color shade 800",
+      "category": "brand"
+    },
+    "secondary-900": {
+      "value": "#02394d",
+      "type": "color",
+      "description": "Secondary color shade 900",
+      "category": "brand"
+    },
+    "accent": {
+      "value": "#009b90",
+      "type": "color",
+      "description": "Accent color - Teal (also used for success)",
+      "category": "brand"
+    },
+    "accent-light": {
+      "value": "#00c9ba",
+      "type": "color",
+      "description": "Light variant of accent color",
+      "category": "brand"
+    },
+    "accent-dark": {
+      "value": "#007167",
+      "type": "color",
+      "description": "Dark variant of accent color",
+      "category": "brand"
+    },
+    "accent-50": {
+      "value": "#f0fffe",
+      "type": "color",
+      "description": "Accent color tint 50",
+      "category": "brand"
+    },
+    "accent-100": {
+      "value": "#ccfff9",
+      "type": "color",
+      "description": "Accent color tint 100",
+      "category": "brand"
+    },
+    "accent-200": {
+      "value": "#99fff4",
+      "type": "color",
+      "description": "Accent color tint 200",
+      "category": "brand"
+    },
+    "accent-300": {
+      "value": "#4dffeb",
+      "type": "color",
+      "description": "Accent color tint 300",
+      "category": "brand"
+    },
+    "accent-400": {
+      "value": "#00e6d8",
+      "type": "color",
+      "description": "Accent color tint 400",
+      "category": "brand"
+    },
+    "accent-500": {
+      "value": "#009b90",
+      "type": "color",
+      "description": "Accent color base 500 (main)",
+      "category": "brand"
+    },
+    "accent-600": {
+      "value": "#008075",
+      "type": "color",
+      "description": "Accent color shade 600",
+      "category": "brand"
+    },
+    "accent-700": {
+      "value": "#007167",
+      "type": "color",
+      "description": "Accent color shade 700",
+      "category": "brand"
+    },
+    "accent-800": {
+      "value": "#005650",
+      "type": "color",
+      "description": "Accent color shade 800",
+      "category": "brand"
+    },
+    "accent-900": {
+      "value": "#003d39",
+      "type": "color",
+      "description": "Accent color shade 900",
+      "category": "brand"
+    },
+    "success": {
+      "value": "#009b90",
+      "type": "color",
+      "description": "Success state color (matches accent)",
+      "category": "semantic"
+    },
+    "warning": {
+      "value": "#e0176e",
+      "type": "color",
+      "description": "Warning state color (matches primary-light)",
+      "category": "semantic"
+    },
+    "error": {
+      "value": "#c97505",
+      "type": "color",
+      "description": "Error state color - Orange",
+      "category": "semantic"
+    },
+    "info": {
+      "value": "#114276",
+      "type": "color",
+      "description": "Info state color - Dark Blue",
+      "category": "semantic"
+    },
+    "neutral-base": {
+      "value": "#d8d8d8",
+      "type": "color",
+      "description": "Neutral base color - Light Gray",
+      "category": "neutral"
+    },
+    "neutral-50": {
+      "value": "#f9f9f9",
+      "type": "color",
+      "description": "Neutral tint 50 - Lightest",
+      "category": "neutral"
+    },
+    "neutral-100": {
+      "value": "#e8e8e8",
+      "type": "color",
+      "description": "Neutral tint 100",
+      "category": "neutral"
+    },
+    "neutral-200": {
+      "value": "#d8d8d8",
+      "type": "color",
+      "description": "Neutral tint 200 (base)",
+      "category": "neutral"
+    },
+    "neutral-300": {
+      "value": "#c0c0c0",
+      "type": "color",
+      "description": "Neutral tint 300",
+      "category": "neutral"
+    },
+    "neutral-400": {
+      "value": "#a8a8a8",
+      "type": "color",
+      "description": "Neutral tint 400",
+      "category": "neutral"
+    },
+    "neutral-500": {
+      "value": "#888888",
+      "type": "color",
+      "description": "Neutral base 500 - Mid Gray",
+      "category": "neutral"
+    },
+    "neutral-600": {
+      "value": "#707070",
+      "type": "color",
+      "description": "Neutral shade 600",
+      "category": "neutral"
+    },
+    "neutral-700": {
+      "value": "#555555",
+      "type": "color",
+      "description": "Neutral shade 700",
+      "category": "neutral"
+    },
+    "neutral-800": {
+      "value": "#333333",
+      "type": "color",
+      "description": "Neutral shade 800",
+      "category": "neutral"
+    },
+    "neutral-900": {
+      "value": "#222222",
+      "type": "color",
+      "description": "Neutral shade 900 - Darkest",
+      "category": "neutral"
+    },
+    "white": {
+      "value": "#ffffff",
+      "type": "color",
+      "description": "Pure white",
+      "category": "neutral"
+    },
+    "black": {
+      "value": "#000000",
+      "type": "color",
+      "description": "Pure black",
+      "category": "neutral"
+    }
+  },
+  
+  "typography": {
+    "font-family": {
+      "primary": {
+        "value": "Arial, Helvetica, sans-serif",
+        "type": "fontFamily",
+        "description": "Primary font family for body text",
+        "category": "typography"
+      },
+      "heading": {
+        "value": "Georgia, 'Times New Roman', serif",
+        "type": "fontFamily",
+        "description": "Font family for headings",
+        "category": "typography"
+      },
+      "body": {
+        "value": "Arial, Helvetica, sans-serif",
+        "type": "fontFamily",
+        "description": "Alias for primary font family",
+        "category": "typography"
+      },
+      "sans": {
+        "value": "Arial, Helvetica, sans-serif",
+        "type": "fontFamily",
+        "description": "Sans-serif font stack",
+        "category": "typography"
+      },
+      "serif": {
+        "value": "Georgia, 'Times New Roman', serif",
+        "type": "fontFamily",
+        "description": "Serif font stack",
+        "category": "typography"
+      }
+    },
+    "font-size": {
+      "xs": {
+        "value": "12px",
+        "type": "dimension",
+        "description": "Extra small font size",
+        "category": "typography"
+      },
+      "sm": {
+        "value": "14px",
+        "type": "dimension",
+        "description": "Small font size",
+        "category": "typography"
+      },
+      "base": {
+        "value": "16px",
+        "type": "dimension",
+        "description": "Base font size (body text default)",
+        "category": "typography"
+      },
+      "lg": {
+        "value": "18px",
+        "type": "dimension",
+        "description": "Large font size",
+        "category": "typography"
+      },
+      "xl": {
+        "value": "20px",
+        "type": "dimension",
+        "description": "Extra large font size",
+        "category": "typography"
+      },
+      "2xl": {
+        "value": "24px",
+        "type": "dimension",
+        "description": "2x extra large font size",
+        "category": "typography"
+      },
+      "3xl": {
+        "value": "30px",
+        "type": "dimension",
+        "description": "3x extra large font size",
+        "category": "typography"
+      },
+      "4xl": {
+        "value": "36px",
+        "type": "dimension",
+        "description": "4x extra large font size",
+        "category": "typography"
+      }
+    },
+    "font-weight": {
+      "normal": {
+        "value": "400",
+        "type": "number",
+        "description": "Normal font weight",
+        "category": "typography"
+      },
+      "bold": {
+        "value": "700",
+        "type": "number",
+        "description": "Bold font weight",
+        "category": "typography"
+      }
+    },
+    "line-height": {
+      "tight": {
+        "value": "1.25",
+        "type": "number",
+        "description": "Tight line height for headings",
+        "category": "typography"
+      },
+      "normal": {
+        "value": "1.5",
+        "type": "number",
+        "description": "Normal line height for body text",
+        "category": "typography"
+      },
+      "relaxed": {
+        "value": "1.75",
+        "type": "number",
+        "description": "Relaxed line height for large text blocks",
+        "category": "typography"
+      }
+    }
+  },
+  
+  "spacing": {
+    "xs": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "Extra small spacing (0.25rem)",
+      "category": "spacing"
+    },
+    "sm": {
+      "value": "8px",
+      "type": "dimension",
+      "description": "Small spacing (0.5rem)",
+      "category": "spacing"
+    },
+    "md": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "Medium spacing (1rem)",
+      "category": "spacing"
+    },
+    "lg": {
+      "value": "24px",
+      "type": "dimension",
+      "description": "Large spacing (1.5rem)",
+      "category": "spacing"
+    },
+    "xl": {
+      "value": "32px",
+      "type": "dimension",
+      "description": "Extra large spacing (2rem)",
+      "category": "spacing"
+    },
+    "2xl": {
+      "value": "48px",
+      "type": "dimension",
+      "description": "2x extra large spacing (3rem)",
+      "category": "spacing"
+    },
+    "3xl": {
+      "value": "64px",
+      "type": "dimension",
+      "description": "3x extra large spacing (4rem)",
+      "category": "spacing"
+    },
+    "4xl": {
+      "value": "80px",
+      "type": "dimension",
+      "description": "4x extra large spacing (5rem)",
+      "category": "spacing"
+    }
+  },
+  
+  "border-radius": {
+    "sm": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "Small border radius",
+      "category": "border"
+    },
+    "md": {
+      "value": "8px",
+      "type": "dimension",
+      "description": "Medium border radius (default)",
+      "category": "border"
+    },
+    "lg": {
+      "value": "12px",
+      "type": "dimension",
+      "description": "Large border radius",
+      "category": "border"
+    },
+    "xl": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "Extra large border radius",
+      "category": "border"
+    },
+    "2xl": {
+      "value": "24px",
+      "type": "dimension",
+      "description": "2x extra large border radius",
+      "category": "border"
+    },
+    "full": {
+      "value": "9999px",
+      "type": "dimension",
+      "description": "Full border radius (pill shape)",
+      "category": "border"
+    }
+  },
+  
+  "border-width": {
+    "thin": {
+      "value": "1px",
+      "type": "dimension",
+      "description": "Thin border width",
+      "category": "border"
+    },
+    "medium": {
+      "value": "2px",
+      "type": "dimension",
+      "description": "Medium border width",
+      "category": "border"
+    },
+    "thick": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "Thick border width",
+      "category": "border"
+    }
+  },
+  
+  "shadow": {
+    "sm": {
+      "value": "0 1px 2px rgba(148, 19, 77, 0.05)",
+      "type": "shadow",
+      "description": "Small shadow with primary color tint",
+      "category": "shadow"
+    },
+    "md": {
+      "value": "0 4px 6px rgba(148, 19, 77, 0.1)",
+      "type": "shadow",
+      "description": "Medium shadow with primary color tint",
+      "category": "shadow"
+    },
+    "lg": {
+      "value": "0 10px 15px rgba(148, 19, 77, 0.1)",
+      "type": "shadow",
+      "description": "Large shadow with primary color tint",
+      "category": "shadow"
+    },
+    "xl": {
+      "value": "0 20px 25px rgba(148, 19, 77, 0.15)",
+      "type": "shadow",
+      "description": "Extra large shadow with primary color tint",
+      "category": "shadow"
+    },
+    "none": {
+      "value": "none",
+      "type": "shadow",
+      "description": "No shadow",
+      "category": "shadow"
+    }
+  },
+  
+  "opacity": {
+    "0": {
+      "value": "0",
+      "type": "number",
+      "description": "Fully transparent",
+      "category": "opacity"
+    },
+    "5": {
+      "value": "0.05",
+      "type": "number",
+      "description": "5% opacity",
+      "category": "opacity"
+    },
+    "10": {
+      "value": "0.1",
+      "type": "number",
+      "description": "10% opacity",
+      "category": "opacity"
+    },
+    "20": {
+      "value": "0.2",
+      "type": "number",
+      "description": "20% opacity (badges)",
+      "category": "opacity"
+    },
+    "25": {
+      "value": "0.25",
+      "type": "number",
+      "description": "25% opacity",
+      "category": "opacity"
+    },
+    "50": {
+      "value": "0.5",
+      "type": "number",
+      "description": "50% opacity",
+      "category": "opacity"
+    },
+    "75": {
+      "value": "0.75",
+      "type": "number",
+      "description": "75% opacity",
+      "category": "opacity"
+    },
+    "80": {
+      "value": "0.8",
+      "type": "number",
+      "description": "80% opacity",
+      "category": "opacity"
+    },
+    "90": {
+      "value": "0.9",
+      "type": "number",
+      "description": "90% opacity",
+      "category": "opacity"
+    },
+    "100": {
+      "value": "1",
+      "type": "number",
+      "description": "Fully opaque",
+      "category": "opacity"
+    }
+  },
+  
+  "transition": {
+    "duration": {
+      "fast": {
+        "value": "150ms",
+        "type": "time",
+        "description": "Fast transition duration",
+        "category": "animation"
+      },
+      "normal": {
+        "value": "200ms",
+        "type": "time",
+        "description": "Normal transition duration (default)",
+        "category": "animation"
+      },
+      "slow": {
+        "value": "300ms",
+        "type": "time",
+        "description": "Slow transition duration",
+        "category": "animation"
+      }
+    },
+    "timing": {
+      "ease": {
+        "value": "ease",
+        "type": "cubicBezier",
+        "description": "Standard easing function",
+        "category": "animation"
+      },
+      "ease-in": {
+        "value": "ease-in",
+        "type": "cubicBezier",
+        "description": "Ease in timing function",
+        "category": "animation"
+      },
+      "ease-out": {
+        "value": "ease-out",
+        "type": "cubicBezier",
+        "description": "Ease out timing function",
+        "category": "animation"
+      },
+      "ease-in-out": {
+        "value": "ease-in-out",
+        "type": "cubicBezier",
+        "description": "Ease in-out timing function",
+        "category": "animation"
+      }
+    }
+  },
+  
+  "breakpoint": {
+    "sm": {
+      "value": "640px",
+      "type": "dimension",
+      "description": "Small breakpoint (mobile landscape)",
+      "category": "responsive"
+    },
+    "md": {
+      "value": "768px",
+      "type": "dimension",
+      "description": "Medium breakpoint (tablet)",
+      "category": "responsive"
+    },
+    "lg": {
+      "value": "1024px",
+      "type": "dimension",
+      "description": "Large breakpoint (desktop)",
+      "category": "responsive"
+    },
+    "xl": {
+      "value": "1280px",
+      "type": "dimension",
+      "description": "Extra large breakpoint (wide desktop)",
+      "category": "responsive"
+    },
+    "2xl": {
+      "value": "1536px",
+      "type": "dimension",
+      "description": "2x extra large breakpoint (ultra-wide)",
+      "category": "responsive"
+    }
+  },
+  
+  "z-index": {
+    "dropdown": {
+      "value": "1000",
+      "type": "number",
+      "description": "Z-index for dropdown menus",
+      "category": "layout"
+    },
+    "sticky": {
+      "value": "1020",
+      "type": "number",
+      "description": "Z-index for sticky elements",
+      "category": "layout"
+    },
+    "fixed": {
+      "value": "1030",
+      "type": "number",
+      "description": "Z-index for fixed elements",
+      "category": "layout"
+    },
+    "modal-backdrop": {
+      "value": "1040",
+      "type": "number",
+      "description": "Z-index for modal backdrop",
+      "category": "layout"
+    },
+    "modal": {
+      "value": "1050",
+      "type": "number",
+      "description": "Z-index for modal dialogs",
+      "category": "layout"
+    },
+    "popover": {
+      "value": "1060",
+      "type": "number",
+      "description": "Z-index for popovers",
+      "category": "layout"
+    },
+    "tooltip": {
+      "value": "1070",
+      "type": "number",
+      "description": "Z-index for tooltips",
+      "category": "layout"
+    }
+  }
+}

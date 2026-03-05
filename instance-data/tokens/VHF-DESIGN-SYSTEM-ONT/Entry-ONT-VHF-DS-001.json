@@ -1,0 +1,60 @@
+{
+  "@context": "https://platformcore.io/ontology/registry/",
+  "@type": "OntologyInstanceEntry",
+  "@id": "Entry-ONT-VHF-DS-001",
+  "name": "VHF Viridian Design System Instance Data",
+  "description": "Instance data conforming to DS-ONT schema (Azlan-EA-AAA PE-Series/DS-ONT v1.0.0). Populates DesignSystem, PrimitiveToken, SemanticToken, ComponentToken, DesignComponent, BrandVariant, FigmaSource, ThemeMode, TokenCategory, and DesignPattern entities with VHF Viridian brand data extracted from Figma via MCP.",
+  "version": "1.0.0",
+  "status": "draft",
+  "series": "VHF-Domain",
+
+  "schemaRef": {
+    "ontology": "DS-ONT",
+    "version": "1.0.0",
+    "oaaVersion": "6.1.0",
+    "namespace": "https://platformcore.io/ontology/ds/",
+    "sourceRepo": "Azlan-EA-AAA",
+    "sourcePath": "PBS/ONTOLOGIES/ontology-library/PE-Series/DS-ONT/ds-v1.0.0-oaa-v6.json",
+    "entryRef": "Entry-ONT-DS-001"
+  },
+
+  "figmaSource": {
+    "fileKey": "CWQqQv1fk9SLYjZFQKA2lE",
+    "fileName": "VHF-Design-System-v1.1",
+    "fileUrl": "https://www.figma.com/design/CWQqQv1fk9SLYjZFQKA2lE/VHF-Design-System-v1.1",
+    "extractedAt": "2026-02-10",
+    "extractionMethod": "Figma MCP (get_variable_defs, get_metadata, get_design_context)"
+  },
+
+  "instanceCounts": {
+    "DesignSystem": 1,
+    "TokenCategory": 7,
+    "PrimitiveToken": 43,
+    "SemanticToken": 75,
+    "ComponentToken": 0,
+    "DesignComponent": 0,
+    "BrandVariant": 1,
+    "FigmaSource": 1,
+    "ThemeMode": 1,
+    "DesignPattern": 3
+  },
+
+  "artifacts": {
+    "instanceData": "./vhf-viridian-ds-instance-v1.0.0.jsonld",
+    "extractionLog": "./instance-data/figma-extraction-log.json",
+    "registry": "./Entry-ONT-VHF-DS-001.json"
+  },
+
+  "dependencies": ["DS-ONT v1.0.0 (Azlan-EA-AAA)"],
+
+  "crossProjectBridge": {
+    "azlanRepo": "ajrmooreuk/Azlan-EA-AAA",
+    "azlanEntryRef": "Entry-ONT-DS-001",
+    "azlanConfigRef": "PBS/ONTOLOGIES/ontology-library/PE-Series/DS-ONT/source/azlan-ds-config.json",
+    "registeredAsBrand": "vhf-viridian"
+  },
+
+  "dateCreated": "2026-02-10",
+  "creator": "Viridian Health & Fitness",
+  "lastModified": "2026-02-10"
+}

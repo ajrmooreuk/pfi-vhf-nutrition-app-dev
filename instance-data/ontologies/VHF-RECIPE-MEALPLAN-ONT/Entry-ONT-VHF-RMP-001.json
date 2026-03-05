@@ -1,0 +1,32 @@
+{
+  "registryId": "ONT-VHF-RMP-001",
+  "name": "VHF Recipe & Meal Plan Ontology",
+  "shortCode": "VHF-RMP-ONT",
+  "version": "1.0.0",
+  "status": "draft",
+  "series": "VHF-Domain",
+  "description": "Domain ontology for Viridian Nutrition Intelligence Platform covering recipes, meal plans, client health profiles, coaching relationships, thematic meal curation, and UK-specific nutrition requirements.",
+  "schemaOrgAlignment": ["Recipe", "NutritionInformation", "Patient", "MedicalCondition", "HowToStep", "Person", "RestrictedDiet"],
+  "entityCount": {
+    "classes": 39,
+    "themes": 16,
+    "goals": 5,
+    "allergens": 14,
+    "dietTypes": 30,
+    "relationships": 10,
+    "propertyDefinitions": 2,
+    "flows": 1,
+    "dbMappings": 14
+  },
+  "files": {
+    "ontology": "VHF-Recipe-MealPlan-Ontology-v1.0.0.jsonld",
+    "registry": "Entry-ONT-VHF-RMP-001.json"
+  },
+  "dependencies": [],
+  "futureAlignment": {
+    "note": "To be aligned with PFC/PFI ontology patterns from Azlan-EA-AAA. DS-ONT for design system tokens also pending.",
+    "targetOntologies": ["PFC-Foundation-ONT", "PFI-Instance-ONT", "DS-ONT", "RRR-ONT"]
+  },
+  "dateCreated": "2026-02-10",
+  "creator": "Viridian Health & Fitness"
+}

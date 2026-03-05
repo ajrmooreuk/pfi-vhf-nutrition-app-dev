@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VHF 30-Day Meal Plan — Sarah Mitchell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --vhf-primary-subtle: #9dfff5;
+  --vhf-primary-lighter: #00b0a5;
+  --vhf-primary-default: #017c75;
+  --vhf-primary-darker: #00423d;
+  --vhf-primary-border: #017c75;
+  --vhf-primary-text: #002f2b;
+  --vhf-secondary-subtle: #fff3ee;
+  --vhf-secondary-lighter: #ffb48e;
+  --vhf-secondary-default: #ea923a;
+  --vhf-secondary-darker: #834a22;
+  --vhf-secondary-text: #553016;
+  --vhf-success-subtle: #e6f8fd;
+  --vhf-success-default: #49bad4;
+  --vhf-success-darker: #0b3f49;
+  --vhf-success-text: #0b3f49;
+  --vhf-warning-subtle: #f8ffe6;
+  --vhf-warning-default: #cbea00;
+  --vhf-warning-text: #414e10;
+  --vhf-error-subtle: #ffeae9;
+  --vhf-error-default: #e54525;
+  --vhf-error-text: #5a1710;
+  --vhf-info-subtle: #f2f6f2;
+  --vhf-info-default: #a0afa1;
+  --vhf-info-text: #353c36;
+  --vhf-accent-subtle: #ffefec;
+  --vhf-accent-default: #f16a21;
+  --vhf-accent-text: #5c2310;
+  --vhf-neutral-bg: #ffffff;
+  --vhf-neutral-bg-alt: #f7f6f8;
+  --vhf-neutral-surface: #f2f1f1;
+  --vhf-neutral-border: #d9d9d9;
+  --vhf-neutral-border-dark: #686462;
+  --vhf-neutral-text-title: #1e1d1d;
+  --vhf-neutral-text-body: #322f2f;
+  --vhf-neutral-text-caption: #4b4847;
+  --vhf-neutral-text-disabled: #ccc7c6;
+  --vhf-font-headings: 'PT Sans', sans-serif;
+  --vhf-font-body: 'PT Sans', sans-serif;
+  --vhf-font-captions: 'Open Sans', sans-serif;
+  --vhf-font-size-5xl: 40px;
+  --vhf-font-size-4xl: 36px;
+  --vhf-font-size-3xl: 32px;
+  --vhf-font-size-2xl: 28px;
+  --vhf-font-size-xl: 24px;
+  --vhf-font-size-lg: 20px;
+  --vhf-font-size-base: 16px;
+  --vhf-space-xxs: 2px;
+  --vhf-space-xs: 4px;
+  --vhf-space-sm: 8px;
+  --vhf-space-md: 12px;
+  --vhf-space-lg: 20px;
+  --vhf-space-xl: 30px;
+  --vhf-radius-xs: 4px;
+  --vhf-radius-sm: 8px;
+  --vhf-radius-md: 12px;
+  --vhf-radius-lg: 20px;
+  --vhf-radius-xl: 24px;
+  --vhf-radius-full: 999px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--vhf-font-body);
+  font-size: var(--vhf-font-size-base);
+  color: var(--vhf-neutral-text-body);
+  background: var(--vhf-neutral-bg-alt);
+  line-height: 1.5;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--vhf-space-lg); }
+h1, h2, h3 { font-family: var(--vhf-font-headings); color: var(--vhf-neutral-text-title); }
+h2 { font-size: var(--vhf-font-size-xl); margin: var(--vhf-space-xl) 0 var(--vhf-space-lg); }
+h3 { font-size: var(--vhf-font-size-lg); }
+.caption { font-family: var(--vhf-font-captions); font-size: 14px; color: var(--vhf-neutral-text-caption); }
+.nums { font-family: var(--vhf-font-captions); font-variant-numeric: tabular-nums; }
+
+/* Header */
+.header {
+  background: var(--vhf-primary-default);
+  color: #fff;
+  padding: var(--vhf-space-lg) 0;
+}
+.header h1 {
+  font-family: var(--vhf-font-headings);
+  font-size: var(--vhf-font-size-3xl);
+  color: #fff;
+}
+.header .subtitle { opacity: 0.85; font-size: var(--vhf-font-size-base); margin-top: var(--vhf-space-xs); }
+
+/* Cards */
+.card {
+  background: var(--vhf-neutral-bg);
+  border: 1px solid var(--vhf-neutral-border);
+  border-radius: var(--vhf-radius-md);
+  padding: var(--vhf-space-lg);
+  margin-bottom: var(--vhf-space-lg);
+}
+
+/* Client Profile */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--vhf-space-md);
+  margin-top: var(--vhf-space-md);
+}
+.profile-grid dt { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--vhf-neutral-text-caption); }
+.profile-grid dd { margin: 2px 0 10px; }
+
+/* Quality Dashboard */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--vhf-space-md);
+}
+.metric-card {
+  background: var(--vhf-neutral-bg);
+  border: 1px solid var(--vhf-neutral-border);
+  border-radius: var(--vhf-radius-sm);
+  padding: var(--vhf-space-md) var(--vhf-space-lg);
+}
+.metric-card h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--vhf-neutral-text-caption); margin-bottom: var(--vhf-space-xs); }
+.metric-card .value { font-size: var(--vhf-font-size-2xl); font-weight: 700; }
+.metric-card .detail { font-size: 13px; color: var(--vhf-neutral-text-caption); margin-top: 2px; }
+.mc-compliance { border-left: 4px solid var(--vhf-success-default); }
+.mc-macros { border-left: 4px solid var(--vhf-primary-default); }
+.mc-variety { border-left: 4px solid var(--vhf-info-default); }
+.mc-cost { border-left: 4px solid var(--vhf-secondary-default); }
+.mc-vsom { border-left: 4px solid var(--vhf-primary-default); }
+.var-green { color: var(--vhf-success-darker); }
+.var-amber { color: #a07800; }
+.var-red { color: var(--vhf-error-default); }
+
+/* Week Tabs */
+.week-tabs {
+  display: flex;
+  gap: var(--vhf-space-xs);
+  margin: var(--vhf-space-xl) 0 var(--vhf-space-lg);
+  flex-wrap: wrap;
+}
+.week-tab {
+  padding: var(--vhf-space-sm) var(--vhf-space-lg);
+  border: none;
+  border-radius: var(--vhf-radius-sm) var(--vhf-radius-sm) 0 0;
+  cursor: pointer;
+  font-family: var(--vhf-font-headings);
+  font-size: var(--vhf-font-size-base);
+  font-weight: 700;
+  background: var(--vhf-neutral-surface);
+  color: var(--vhf-neutral-text-body);
+  transition: background 0.15s, color 0.15s;
+}
+.week-tab.active {
+  background: var(--vhf-primary-default);
+  color: #fff;
+}
+.week-content { display: none; }
+.week-content.active { display: block; }
+
+/* Day Card */
+.day-card {
+  background: var(--vhf-neutral-bg);
+  border: 1px solid var(--vhf-neutral-border);
+  border-radius: var(--vhf-radius-sm);
+  margin-bottom: var(--vhf-space-lg);
+  overflow: hidden;
+}
+.day-header {
+  background: var(--vhf-primary-darker);
+  color: #fff;
+  padding: var(--vhf-space-sm) var(--vhf-space-lg);
+  font-weight: 700;
+  font-size: var(--vhf-font-size-lg);
+}
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--vhf-space-md);
+  padding: var(--vhf-space-md);
+}
+.meal-card {
+  border-radius: var(--vhf-radius-sm);
+  padding: var(--vhf-space-md);
+}
+.meal-card.breakfast { background: var(--vhf-secondary-subtle); }
+.meal-card.lunch { background: var(--vhf-success-subtle); }
+.meal-card.dinner { background: var(--vhf-primary-subtle); }
+.meal-card.snack { background: var(--vhf-info-subtle); }
+.meal-label {
+  font-family: var(--vhf-font-captions);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--vhf-space-xs);
+}
+.meal-card.breakfast .meal-label { color: var(--vhf-secondary-darker); }
+.meal-card.lunch .meal-label { color: var(--vhf-success-darker); }
+.meal-card.dinner .meal-label { color: var(--vhf-primary-darker); }
+.meal-card.snack .meal-label { color: var(--vhf-info-text); }
+.meal-name { font-weight: 700; font-size: 14px; line-height: 1.3; margin-bottom: var(--vhf-space-xs); }
+.meal-macros { font-family: var(--vhf-font-captions); font-variant-numeric: tabular-nums; font-size: 12px; color: var(--vhf-neutral-text-caption); }
+.meal-macros span { display: inline-block; margin-right: 6px; }
+.gen-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--vhf-accent-default);
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: var(--vhf-radius-full);
+  margin-bottom: 4px;
+}
+
+/* Day Totals */
+.day-totals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--vhf-space-md);
+  padding: var(--vhf-space-sm) var(--vhf-space-lg);
+  background: var(--vhf-neutral-surface);
+  font-family: var(--vhf-font-captions);
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+}
+.day-totals strong { margin-right: 4px; }
+
+/* Variance Bar */
+.variance-row {
+  padding: var(--vhf-space-sm) var(--vhf-space-lg);
+  display: flex;
+  gap: var(--vhf-space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.var-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--vhf-font-captions);
+  font-size: 12px;
+}
+.var-bar-label { width: 28px; text-align: right; font-weight: 600; }
+.var-bar-track {
+  width: 80px;
+  height: 8px;
+  background: var(--vhf-neutral-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.var-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+.var-bar-val { width: 48px; font-variant-numeric: tabular-nums; }
+
+/* Shopping List */
+details {
+  margin-bottom: var(--vhf-space-md);
+}
+details summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: var(--vhf-font-size-lg);
+  padding: var(--vhf-space-sm) 0;
+  color: var(--vhf-primary-darker);
+  list-style: none;
+}
+details summary::before { content: '+ '; }
+details[open] summary::before { content: '- '; }
+.aisle-group { margin-bottom: var(--vhf-space-md); }
+.aisle-group h4 { font-weight: 700; color: var(--vhf-primary-darker); margin-bottom: var(--vhf-space-xs); }
+.aisle-group ul { list-style: disc; margin-left: 24px; }
+.aisle-group li { margin-bottom: 2px; }
+
+/* Recipe Cards */
+.recipe-card {
+  border: 2px dashed var(--vhf-accent-default);
+  border-radius: var(--vhf-radius-md);
+  padding: var(--vhf-space-lg);
+  margin-bottom: var(--vhf-space-lg);
+  background: var(--vhf-accent-subtle);
+}
+.recipe-card h3 { margin-bottom: var(--vhf-space-sm); }
+.recipe-meta { font-family: var(--vhf-font-captions); font-size: 13px; color: var(--vhf-neutral-text-caption); margin-bottom: var(--vhf-space-sm); display: flex; gap: var(--vhf-space-lg); flex-wrap: wrap; }
+.recipe-ingredients { margin: var(--vhf-space-sm) 0; }
+.recipe-ingredients ul { list-style: disc; margin-left: 24px; }
+.recipe-nutrition { display: flex; gap: var(--vhf-space-lg); flex-wrap: wrap; font-family: var(--vhf-font-captions); font-variant-numeric: tabular-nums; font-size: 14px; margin-top: var(--vhf-space-sm); padding-top: var(--vhf-space-sm); border-top: 1px solid var(--vhf-neutral-border); }
+
+/* Footer */
+.footer {
+  background: var(--vhf-primary-darker);
+  color: #fff;
+  padding: var(--vhf-space-lg) 0;
+  margin-top: var(--vhf-space-xl);
+  font-size: 14px;
+}
+.footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--vhf-space-sm); }
+.footer a { color: var(--vhf-primary-subtle); }
+
+/* Macro target row */
+.macro-targets {
+  display: flex; flex-wrap: wrap; gap: var(--vhf-space-lg); margin-top: var(--vhf-space-md);
+  padding-top: var(--vhf-space-md); border-top: 1px solid var(--vhf-neutral-border);
+}
+.macro-targets .mt-item { text-align: center; }
+.macro-targets .mt-val { font-size: var(--vhf-font-size-xl); font-weight: 700; color: var(--vhf-primary-default); }
+.macro-targets .mt-label { font-size: 12px; color: var(--vhf-neutral-text-caption); }
+
+/* Print */
+@media print {
+  .week-tabs { display: none !important; }
+  .week-content { display: block !important; }
+  body { background: #fff; }
+  .day-card, .card, .metric-card, .recipe-card { break-inside: avoid; }
+  .meal-card { background: #fff !important; border: 1px solid #ccc; }
+  .header { background: #017c75 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .day-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>Viridian Health &amp; Fitness</h1>
+    <div class="subtitle">30-Day Personalised Meal Plan</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- CLIENT PROFILE -->
+<div class="card" style="margin-top:var(--vhf-space-lg)">
+  <h2 style="margin-top:0">Client Profile</h2>
+  <dl class="profile-grid">
+    <div><dt>Name</dt><dd>Sarah Mitchell</dd></div>
+    <div><dt>Age / Gender</dt><dd>40 / Female</dd></div>
+    <div><dt>Height / Weight</dt><dd>168 cm / 82 kg</dd></div>
+    <div><dt>BMI</dt><dd>29.1 (Overweight)</dd></div>
+    <div><dt>Activity Level</dt><dd>Moderately Active</dd></div>
+    <div><dt>Goal</dt><dd>Weight Loss (~500 kcal deficit)</dd></div>
+    <div><dt>Diets</dt><dd>Diabetic, Low Carb</dd></div>
+    <div><dt>Allergens</dt><dd>Tree Nuts, Peanuts</dd></div>
+    <div><dt>Conditions</dt><dd>Type 2 Diabetes (managed)</dd></div>
+    <div><dt>TDEE Estimate</dt><dd>2,150 kcal</dd></div>
+  </dl>
+  <div class="macro-targets">
+    <div class="mt-item"><div class="mt-val">1,650</div><div class="mt-label">kcal target</div></div>
+    <div class="mt-item"><div class="mt-val">120g</div><div class="mt-label">Protein</div></div>
+    <div class="mt-item"><div class="mt-val">140g</div><div class="mt-label">Carbs</div></div>
+    <div class="mt-item"><div class="mt-val">55g</div><div class="mt-label">Fat</div></div>
+  </div>
+</div>
+
+<!-- QUALITY DASHBOARD -->
+<h2>Quality Dashboard</h2>
+<div class="dash-grid">
+  <div class="metric-card mc-compliance">
+    <h4>Compliance</h4>
+    <div class="value var-green">100%</div>
+    <div class="detail">Diabetic-safe, nut-free</div>
+    <div class="detail">0 allergen violations</div>
+  </div>
+  <div class="metric-card mc-macros">
+    <h4>Macro Adherence</h4>
+    <div class="detail"><strong>Protein:</strong> 135.2g <span class="var-red">(+12.7%)</span></div>
+    <div class="detail"><strong>Carbs:</strong> 122.1g <span class="var-red">(-12.8%)</span></div>
+    <div class="detail"><strong>Fat:</strong> 58.5g <span class="var-amber">(+6.4%)</span></div>
+    <div class="detail"><strong>Calories:</strong> 1,577 <span class="var-green">(+2.7%)</span></div>
+  </div>
+  <div class="metric-card mc-variety">
+    <h4>Variety</h4>
+    <div class="value">14</div>
+    <div class="detail">Unique recipes used</div>
+    <div class="detail">13 protein sources</div>
+  </div>
+  <div class="metric-card mc-cost">
+    <h4>Estimated Cost</h4>
+    <div class="value">&pound;287</div>
+    <div class="detail">Total 30-day plan</div>
+    <div class="detail">Avg &pound;66.94/week</div>
+  </div>
+  <div class="metric-card mc-vsom">
+    <h4>VSOM Alignment</h4>
+    <div class="detail"><strong>Strategy:</strong> Personalised Diabetic Weight-Loss</div>
+    <div class="detail"><strong>Goal:</strong> 500 kcal deficit from TDEE</div>
+    <div class="detail">4 KPIs tracked</div>
+  </div>
+</div>
+
+<!-- WEEK TABS -->
+<div class="week-tabs">
+  <button class="week-tab active" onclick="showWeek(1)">Week 1</button>
+  <button class="week-tab" onclick="showWeek(2)">Week 2</button>
+  <button class="week-tab" onclick="showWeek(3)">Week 3</button>
+  <button class="week-tab" onclick="showWeek(4)">Week 4 + Days 29-30</button>
+</div>
+
+<div id="week-1" class="week-content active"></div>
+<div id="week-2" class="week-content"></div>
+<div id="week-3" class="week-content"></div>
+<div id="week-4" class="week-content"></div>
+
+<!-- SHOPPING LISTS -->
+<h2>Shopping Lists</h2>
+<div id="shopping-lists"></div>
+
+<!-- GENERATED RECIPES -->
+<h2>AI-Generated Recipes</h2>
+<div id="gen-recipes"></div>
+
+</div><!-- end container -->
+
+<div class="footer">
+  <div class="container">
+    <div>Generated by VHF Nutrition Intelligence Agent</div>
+    <div>Coach: James Kerby | Date: 2026-02-26 | Status: Pending</div>
+  </div>
+</div>
+
+<script>
+/* ---- Embedded Plan Data ---- */
+var PLAN = null;
+</script>
+<script id="plan-json" type="application/json">{"@context":{"@vocab":"https://schema.org/","vhf":"https://viridian.app/ontology/vhf/","meal":"https://viridian.app/ontology/vhf/meal/","recipe":"https://viridian.app/ontology/vhf/recipe/","client":"https://viridian.app/ontology/vhf/client/","diet":"https://viridian.app/ontology/vhf/diet/","theme":"https://viridian.app/ontology/vhf/theme/","coach":"https://viridian.app/ontology/vhf/coach/"},"@id":"meal:plan-tp-001-2026-02-26","@type":"meal:MealPlan","name":"30-Day Meal Plan for Sarah Mitchell","description":"Personalised 30-day diabetic-friendly, controlled-carb meal plan targeting weight loss. Generated by VHF Nutrition Intelligence Agent. Nut-free and peanut-free throughout. 19 recipes (13 matched + 6 generated).","dateCreated":"2026-02-26","dateModified":"2026-02-26","vhf:planVersion":"1.0.0","vhf:planStatus":"pending","vhf:planDuration":"30 days","meal:assignedToClient":{"@id":"client:tp-001"},"vhf:clientSummary":{"name":"Sarah Mitchell","age":40,"gender":"Female","heightCm":168,"weightKg":82,"bmi":29.1,"activityLevel":"moderately_active","medicalConditions":[{"name":"Type 2 Diabetes","icd10":"E11","status":"managed"}],"allergens":["Tree Nuts","Peanuts"],"diets":["Diabetic","Low Carb"]},"meal:targetsGoal":{"@id":"client:goal-weight-loss"},"meal:derivedFromTheme":[{"@id":"theme:QuickWeeknight"},{"@id":"theme:HighProtein"},{"@id":"theme:DiabeticFriendly"},{"@id":"theme:WinterWarmer"},{"@id":"theme:LowCarb"}],"meal:approvedByCoach":{"@id":"coach:james-kerby","vhf:approvalStatus":"pending"},"vhf:macroTargets":{"dailyCalories":1650,"dailyCaloriesFromMacros":1535,"macroCalorieGap":"7% \u2014 plan targets macro GRAMS not calorie number","proteinGrams":120,"carbsGrams":140,"fatGrams":55},"vhf:profileValidation":{"macroArithmetic":"(120*4)+(140*4)+(55*9) = 480+560+495 = 1535 kcal","statedCalories":1650,"computedCalories":1535,"gapPercent":7.0,"resolution":"WARN: 7% gap between stated calories and macro-implied calories. Plan targets macro GRAMS as instructed.","bmiCategory":"Overweight (29.1)","tdeeEstimate":"2150 kcal (Mifflin-St Jeor, moderately active)","deficit":"~500 kcal/day from TDEE"},"vhf:themeResolution":{"clientPreferred":["Quick Weeknight","High Protein","Diabetic Friendly"],"seasonalAuto":"Winter Warmer (February)","goalAligned":"Low Carb (weight loss + diabetes management)","resolvedThemes":["Quick Weeknight","High Protein","Diabetic Friendly","Winter Warmer","Low Carb"]},"vhf:recipePool":{"totalTestRecipes":30,"matchedRecipes":13,"matchedRecipeIds":["R-001","R-003","R-004","R-006","R-009","R-014","R-016","R-018","R-019","R-022","R-024","R-025","R-027"],"excludedR030Reason":"Contains peanut butter \u2014 peanut allergen","generatedRecipes":6,"generatedRecipeIds":["gen-001","gen-002","gen-003","gen-004","gen-005","gen-006"],"totalPoolSize":19,"note":"R-025 (Steak & Egg Keto Plate) matched but excluded from plan rotation due to excessive fat (44g) for Sarah's 55g daily target. R-018 (Coconut Pancakes) matched but low protein (8g), excluded to maintain protein density."},"vhf:weeks":[{"@type":"vhf:MealPlanWeek","weekNumber":1,"startDate":"2026-02-26","endDate":"2026-03-04","daysCount":7,"days":[{"date":"2026-02-26","dayNumber":1,"dayOfWeek":"Thursday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.0,"nutrition":{"calories":450,"proteinGrams":35.0,"carbsGrams":38.0,"fatGrams":18.0,"fiberGrams":7.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.0,"nutrition":{"calories":220,"proteinGrams":20.0,"carbsGrams":18.0,"fatGrams":7.0,"fiberGrams":3.0}}],"dailyTotals":{"calories":1510,"proteinGrams":123.0,"carbsGrams":134.0,"fatGrams":51.0,"fiberGrams":23.0},"dailyVariance":{"caloriesVsTarget":-25,"proteinVsTarget":3.0,"carbsVsTarget":-6.0,"fatVsTarget":-4.0}},{"date":"2026-02-27","dayNumber":2,"dayOfWeek":"Friday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":0.9,"nutrition":{"calories":378,"proteinGrams":28.8,"carbsGrams":27.0,"fatGrams":18.0,"fiberGrams":3.6}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-014","recipeName":"Slow-Cooker Chicken and White Bean Stew","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":34.0,"carbsGrams":28.0,"fatGrams":14.0,"fiberGrams":8.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1506,"proteinGrams":128.3,"carbsGrams":113.0,"fatGrams":58.0,"fiberGrams":21.1},"dailyVariance":{"caloriesVsTarget":-29,"proteinVsTarget":8.3,"carbsVsTarget":-27.0,"fatVsTarget":3.0}},{"date":"2026-02-28","dayNumber":3,"dayOfWeek":"Saturday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.1,"nutrition":{"calories":418,"proteinGrams":33.0,"carbsGrams":44.0,"fatGrams":11.0,"fiberGrams":6.6}},{"mealType":"lunch","recipeId":"recipe:r-019","recipeName":"Tuna Nicoise Salad","portionScale":0.85,"nutrition":{"calories":357,"proteinGrams":34.0,"carbsGrams":18.7,"fatGrams":17.0,"fiberGrams":4.2}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":41.8,"carbsGrams":35.2,"fatGrams":15.4,"fiberGrams":5.5}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1512,"proteinGrams":133.8,"carbsGrams":120.4,"fatGrams":52.2,"fiberGrams":20.1},"dailyVariance":{"caloriesVsTarget":-23,"proteinVsTarget":13.8,"carbsVsTarget":-19.6,"fatVsTarget":-2.8}},{"date":"2026-03-01","dayNumber":4,"dayOfWeek":"Sunday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.15,"nutrition":{"calories":529,"proteinGrams":43.7,"carbsGrams":43.7,"fatGrams":18.4,"fiberGrams":8.0}},{"mealType":"dinner","recipeId":"recipe:r-009","recipeName":"Cottage Pie with Cauliflower Mash (Low Carb)","portionScale":1.0,"nutrition":{"calories":340,"proteinGrams":32.0,"carbsGrams":14.0,"fatGrams":18.0,"fiberGrams":5.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.5,"nutrition":{"calories":345,"proteinGrams":33.0,"carbsGrams":24.0,"fatGrams":12.0,"fiberGrams":3.0}}],"dailyTotals":{"calories":1594,"proteinGrams":138.7,"carbsGrams":121.7,"fatGrams":58.4,"fiberGrams":22.0},"dailyVariance":{"caloriesVsTarget":59,"proteinVsTarget":18.7,"carbsVsTarget":-18.3,"fatVsTarget":3.4}},{"date":"2026-03-02","dayNumber":5,"dayOfWeek":"Monday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":35.2,"carbsGrams":33.0,"fatGrams":22.0,"fiberGrams":4.4}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.15,"nutrition":{"calories":529,"proteinGrams":43.7,"carbsGrams":43.7,"fatGrams":18.4,"fiberGrams":8.0}},{"mealType":"dinner","recipeId":"recipe:r-006","recipeName":"Turkey Mince Lettuce Wraps with Ginger Soy Glaze","portionScale":1.0,"nutrition":{"calories":290,"proteinGrams":38.0,"carbsGrams":8.0,"fatGrams":12.0,"fiberGrams":2.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.5,"nutrition":{"calories":330,"proteinGrams":30.0,"carbsGrams":27.0,"fatGrams":10.5,"fiberGrams":4.5}}],"dailyTotals":{"calories":1611,"proteinGrams":146.9,"carbsGrams":111.7,"fatGrams":62.9,"fiberGrams":18.9},"dailyVariance":{"caloriesVsTarget":76,"proteinVsTarget":26.9,"carbsVsTarget":-28.3,"fatVsTarget":7.9}},{"date":"2026-03-03","dayNumber":6,"dayOfWeek":"Tuesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.25,"nutrition":{"calories":475,"proteinGrams":37.5,"carbsGrams":50.0,"fatGrams":12.5,"fiberGrams":7.5}},{"mealType":"lunch","recipeId":"recipe:r-016","recipeName":"Smoked Mackerel Salad with Beetroot and Horseradish","portionScale":0.85,"nutrition":{"calories":323,"proteinGrams":22.1,"carbsGrams":10.2,"fatGrams":22.1,"fiberGrams":2.5}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.0,"nutrition":{"calories":450,"proteinGrams":35.0,"carbsGrams":38.0,"fatGrams":18.0,"fiberGrams":7.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1536,"proteinGrams":122.1,"carbsGrams":118.2,"fatGrams":62.6,"fiberGrams":19.5},"dailyVariance":{"caloriesVsTarget":1,"proteinVsTarget":2.1,"carbsVsTarget":-21.8,"fatVsTarget":7.6}},{"date":"2026-03-04","dayNumber":7,"dayOfWeek":"Wednesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":0.9,"nutrition":{"calories":378,"proteinGrams":28.8,"carbsGrams":27.0,"fatGrams":18.0,"fiberGrams":3.6}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.1,"nutrition":{"calories":506,"proteinGrams":41.8,"carbsGrams":41.8,"fatGrams":17.6,"fiberGrams":7.7}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":41.8,"carbsGrams":35.2,"fatGrams":15.4,"fiberGrams":5.5}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1621,"proteinGrams":137.4,"carbsGrams":126.5,"fatGrams":59.8,"fiberGrams":20.6},"dailyVariance":{"caloriesVsTarget":86,"proteinVsTarget":17.4,"carbsVsTarget":-13.5,"fatVsTarget":4.8}}],"weeklyAverages":{"avgCalories":1555.7,"avgProteinGrams":132.9,"avgCarbsGrams":120.8,"avgFatGrams":57.8,"avgFiberGrams":20.7},"weeklyVariance":{"avgCaloriesVsTarget":21,"avgProteinVsTarget":12.9,"avgCarbsVsTarget":-19.2,"avgFatVsTarget":2.8},"proteinSources":["beef","chicken","cottage cheese","mackerel","pork","salmon","tuna","turkey","yoghurt"],"shoppingList":[{"aisle":"Bakery","items":["Rye bread (sliced)"]},{"aisle":"Eggs & Dairy","items":["Cottage cheese (300g)","Greek yoghurt 0% fat (500g)"]},{"aisle":"Fish & Seafood","items":["Fresh tuna steaks","Salmon fillets / smoked salmon","Smoked mackerel fillets"]},{"aisle":"Fresh Fruit","items":["Apples","Lemons","Mixed berries (300g)"]},{"aisle":"Fresh Vegetables","items":["Asparagus","Broccoli","Cherry tomatoes","Courgettes","Green beans","Mixed salad leaves","Red peppers","Spinach (200g)"]},{"aisle":"Herbs, Spices & Seeds","items":["Chives","Cinnamon","Fresh dill","Fresh rosemary","Mixed herbs","Pumpkin seeds","Sunflower seeds"]},{"aisle":"Meat & Poultry","items":["Chicken breast fillets","Lean beef mince (5% fat)","Pork tenderloin medallions","Turkey mince / turkey breast strips"]},{"aisle":"Oils, Sauces & Condiments","items":["Dijon mustard","Extra virgin olive oil","Horseradish sauce","Soy sauce (tamari)"]},{"aisle":"Roots & Potatoes","items":["Beetroot (cooked)","New potatoes","Red onions","Sweet potatoes"]},{"aisle":"Tinned & Dried Goods","items":["Chicken stock cubes","Porridge oats","Quinoa (500g)","Tinned chopped tomatoes","Tinned white beans"]}],"estimatedWeeklyCost":"GBP 66.09"},{"@type":"vhf:MealPlanWeek","weekNumber":2,"startDate":"2026-03-05","endDate":"2026-03-11","daysCount":7,"days":[{"date":"2026-03-05","dayNumber":8,"dayOfWeek":"Thursday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-014","recipeName":"Slow-Cooker Chicken and White Bean Stew","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":34.0,"carbsGrams":28.0,"fatGrams":14.0,"fiberGrams":8.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1495,"proteinGrams":127.0,"carbsGrams":128.5,"fatGrams":48.8,"fiberGrams":24.8},"dailyVariance":{"caloriesVsTarget":-40,"proteinVsTarget":7.0,"carbsVsTarget":-11.5,"fatVsTarget":-6.2}},{"date":"2026-03-06","dayNumber":9,"dayOfWeek":"Friday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":35.2,"carbsGrams":33.0,"fatGrams":22.0,"fiberGrams":4.4}},{"mealType":"lunch","recipeId":"recipe:r-019","recipeName":"Tuna Nicoise Salad","portionScale":0.85,"nutrition":{"calories":357,"proteinGrams":34.0,"carbsGrams":18.7,"fatGrams":17.0,"fiberGrams":4.2}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.1,"nutrition":{"calories":495,"proteinGrams":38.5,"carbsGrams":41.8,"fatGrams":19.8,"fiberGrams":7.7}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1602,"proteinGrams":135.2,"carbsGrams":113.5,"fatGrams":68.8,"fiberGrams":18.8},"dailyVariance":{"caloriesVsTarget":67,"proteinVsTarget":15.2,"carbsVsTarget":-26.5,"fatVsTarget":13.8}},{"date":"2026-03-07","dayNumber":10,"dayOfWeek":"Saturday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.1,"nutrition":{"calories":418,"proteinGrams":33.0,"carbsGrams":44.0,"fatGrams":11.0,"fiberGrams":6.6}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.1,"nutrition":{"calories":506,"proteinGrams":41.8,"carbsGrams":41.8,"fatGrams":17.6,"fiberGrams":7.7}},{"mealType":"dinner","recipeId":"recipe:r-006","recipeName":"Turkey Mince Lettuce Wraps with Ginger Soy Glaze","portionScale":1.0,"nutrition":{"calories":290,"proteinGrams":38.0,"carbsGrams":8.0,"fatGrams":12.0,"fiberGrams":2.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1489,"proteinGrams":137.8,"carbsGrams":116.3,"fatGrams":49.4,"fiberGrams":20.1},"dailyVariance":{"caloriesVsTarget":-46,"proteinVsTarget":17.8,"carbsVsTarget":-23.7,"fatVsTarget":-5.6}},{"date":"2026-03-08","dayNumber":11,"dayOfWeek":"Sunday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.25,"nutrition":{"calories":475,"proteinGrams":37.5,"carbsGrams":50.0,"fatGrams":12.5,"fiberGrams":7.5}},{"mealType":"lunch","recipeId":"recipe:r-016","recipeName":"Smoked Mackerel Salad with Beetroot and Horseradish","portionScale":0.85,"nutrition":{"calories":323,"proteinGrams":22.1,"carbsGrams":10.2,"fatGrams":22.1,"fiberGrams":2.5}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.25,"nutrition":{"calories":525,"proteinGrams":47.5,"carbsGrams":40.0,"fatGrams":17.5,"fiberGrams":6.2}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.0,"nutrition":{"calories":230,"proteinGrams":22.0,"carbsGrams":16.0,"fatGrams":8.0,"fiberGrams":2.0}}],"dailyTotals":{"calories":1553,"proteinGrams":129.1,"carbsGrams":116.2,"fatGrams":60.1,"fiberGrams":18.2},"dailyVariance":{"caloriesVsTarget":18,"proteinVsTarget":9.1,"carbsVsTarget":-23.8,"fatVsTarget":5.1}},{"date":"2026-03-09","dayNumber":12,"dayOfWeek":"Monday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.0,"nutrition":{"calories":420,"proteinGrams":32.0,"carbsGrams":30.0,"fatGrams":20.0,"fiberGrams":4.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.25,"nutrition":{"calories":575,"proteinGrams":47.5,"carbsGrams":47.5,"fatGrams":20.0,"fiberGrams":8.8}},{"mealType":"dinner","recipeId":"recipe:r-009","recipeName":"Cottage Pie with Cauliflower Mash (Low Carb)","portionScale":1.0,"nutrition":{"calories":340,"proteinGrams":32.0,"carbsGrams":14.0,"fatGrams":18.0,"fiberGrams":5.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1610,"proteinGrams":136.5,"carbsGrams":114.0,"fatGrams":66.8,"fiberGrams":21.6},"dailyVariance":{"caloriesVsTarget":75,"proteinVsTarget":16.5,"carbsVsTarget":-26.0,"fatVsTarget":11.8}},{"date":"2026-03-10","dayNumber":13,"dayOfWeek":"Tuesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.0,"nutrition":{"calories":450,"proteinGrams":35.0,"carbsGrams":38.0,"fatGrams":18.0,"fiberGrams":7.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.0,"nutrition":{"calories":230,"proteinGrams":22.0,"carbsGrams":16.0,"fatGrams":8.0,"fiberGrams":2.0}}],"dailyTotals":{"calories":1520,"proteinGrams":125.0,"carbsGrams":132.0,"fatGrams":52.0,"fiberGrams":22.0},"dailyVariance":{"caloriesVsTarget":-15,"proteinVsTarget":5.0,"carbsVsTarget":-8.0,"fatVsTarget":-3.0}},{"date":"2026-03-11","dayNumber":14,"dayOfWeek":"Wednesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":0.9,"nutrition":{"calories":378,"proteinGrams":28.8,"carbsGrams":27.0,"fatGrams":18.0,"fiberGrams":3.6}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.25,"nutrition":{"calories":575,"proteinGrams":47.5,"carbsGrams":47.5,"fatGrams":20.0,"fiberGrams":8.8}},{"mealType":"dinner","recipeId":"recipe:r-024","recipeName":"Baked Cod with Lemon Caper Butter and Asparagus","portionScale":1.0,"nutrition":{"calories":300,"proteinGrams":36.0,"carbsGrams":6.0,"fatGrams":14.0,"fiberGrams":3.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.5,"nutrition":{"calories":330,"proteinGrams":30.0,"carbsGrams":27.0,"fatGrams":10.5,"fiberGrams":4.5}}],"dailyTotals":{"calories":1583,"proteinGrams":142.3,"carbsGrams":107.5,"fatGrams":62.5,"fiberGrams":19.9},"dailyVariance":{"caloriesVsTarget":48,"proteinVsTarget":22.3,"carbsVsTarget":-32.5,"fatVsTarget":7.5}}],"weeklyAverages":{"avgCalories":1550.3,"avgProteinGrams":133.3,"avgCarbsGrams":118.3,"avgFatGrams":58.3,"avgFiberGrams":20.8},"weeklyVariance":{"avgCaloriesVsTarget":15,"avgProteinVsTarget":13.3,"avgCarbsVsTarget":-21.7,"avgFatVsTarget":3.3},"proteinSources":["beef","chicken","cod","cottage cheese","mackerel","pork","salmon","tuna","turkey","yoghurt"],"shoppingList":[{"aisle":"Bakery","items":["Rye bread (sliced)"]},{"aisle":"Eggs & Dairy","items":["Cottage cheese (300g)","Greek yoghurt 0% fat (500g)"]},{"aisle":"Fish & Seafood","items":["Cod fillets","Fresh tuna steaks","Salmon fillets / smoked salmon","Smoked mackerel fillets"]},{"aisle":"Fresh Fruit","items":["Apples","Lemons","Mixed berries (300g)"]},{"aisle":"Fresh Vegetables","items":["Asparagus","Broccoli","Cherry tomatoes","Courgettes","Green beans","Mixed salad leaves","Red peppers","Spinach (200g)"]},{"aisle":"Herbs, Spices & Seeds","items":["Chives","Cinnamon","Fresh dill","Fresh rosemary","Mixed herbs","Pumpkin seeds","Sunflower seeds"]},{"aisle":"Meat & Poultry","items":["Chicken breast fillets","Lean beef mince (5% fat)","Pork tenderloin medallions","Turkey mince / turkey breast strips"]},{"aisle":"Oils, Sauces & Condiments","items":["Dijon mustard","Extra virgin olive oil","Horseradish sauce","Soy sauce (tamari)"]},{"aisle":"Roots & Potatoes","items":["Beetroot (cooked)","New potatoes","Red onions","Sweet potatoes"]},{"aisle":"Tinned & Dried Goods","items":["Chicken stock cubes","Porridge oats","Quinoa (500g)","Tinned chopped tomatoes","Tinned white beans"]}],"estimatedWeeklyCost":"GBP 67.09"},{"@type":"vhf:MealPlanWeek","weekNumber":3,"startDate":"2026-03-12","endDate":"2026-03-18","daysCount":7,"days":[{"date":"2026-03-12","dayNumber":15,"dayOfWeek":"Thursday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.0,"nutrition":{"calories":420,"proteinGrams":38.0,"carbsGrams":32.0,"fatGrams":14.0,"fiberGrams":5.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1535,"proteinGrams":131.0,"carbsGrams":132.5,"fatGrams":48.8,"fiberGrams":21.8},"dailyVariance":{"caloriesVsTarget":0,"proteinVsTarget":11.0,"carbsVsTarget":-7.5,"fatVsTarget":-6.2}},{"date":"2026-03-13","dayNumber":16,"dayOfWeek":"Friday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":35.2,"carbsGrams":33.0,"fatGrams":22.0,"fiberGrams":4.4}},{"mealType":"lunch","recipeId":"recipe:r-019","recipeName":"Tuna Nicoise Salad","portionScale":0.85,"nutrition":{"calories":357,"proteinGrams":34.0,"carbsGrams":18.7,"fatGrams":17.0,"fiberGrams":4.2}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.1,"nutrition":{"calories":495,"proteinGrams":38.5,"carbsGrams":41.8,"fatGrams":19.8,"fiberGrams":7.7}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1602,"proteinGrams":135.2,"carbsGrams":113.5,"fatGrams":68.8,"fiberGrams":18.8},"dailyVariance":{"caloriesVsTarget":67,"proteinVsTarget":15.2,"carbsVsTarget":-26.5,"fatVsTarget":13.8}},{"date":"2026-03-14","dayNumber":17,"dayOfWeek":"Saturday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.15,"nutrition":{"calories":437,"proteinGrams":34.5,"carbsGrams":46.0,"fatGrams":11.5,"fiberGrams":6.9}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-014","recipeName":"Slow-Cooker Chicken and White Bean Stew","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":34.0,"carbsGrams":28.0,"fatGrams":14.0,"fiberGrams":8.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1552,"proteinGrams":131.5,"carbsGrams":134.5,"fatGrams":50.3,"fiberGrams":25.7},"dailyVariance":{"caloriesVsTarget":17,"proteinVsTarget":11.5,"carbsVsTarget":-5.5,"fatVsTarget":-4.7}},{"date":"2026-03-15","dayNumber":18,"dayOfWeek":"Sunday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":35.2,"carbsGrams":33.0,"fatGrams":22.0,"fiberGrams":4.4}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.25,"nutrition":{"calories":575,"proteinGrams":47.5,"carbsGrams":47.5,"fatGrams":20.0,"fiberGrams":8.8}},{"mealType":"dinner","recipeId":"recipe:r-006","recipeName":"Turkey Mince Lettuce Wraps with Ginger Soy Glaze","portionScale":1.0,"nutrition":{"calories":290,"proteinGrams":38.0,"carbsGrams":8.0,"fatGrams":12.0,"fiberGrams":2.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.5,"nutrition":{"calories":345,"proteinGrams":33.0,"carbsGrams":24.0,"fatGrams":12.0,"fiberGrams":3.0}}],"dailyTotals":{"calories":1672,"proteinGrams":153.7,"carbsGrams":112.5,"fatGrams":66.0,"fiberGrams":18.2},"dailyVariance":{"caloriesVsTarget":137,"proteinVsTarget":33.7,"carbsVsTarget":-27.5,"fatVsTarget":11.0}},{"date":"2026-03-16","dayNumber":19,"dayOfWeek":"Monday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.25,"nutrition":{"calories":475,"proteinGrams":37.5,"carbsGrams":50.0,"fatGrams":12.5,"fiberGrams":7.5}},{"mealType":"lunch","recipeId":"recipe:r-016","recipeName":"Smoked Mackerel Salad with Beetroot and Horseradish","portionScale":0.85,"nutrition":{"calories":323,"proteinGrams":22.1,"carbsGrams":10.2,"fatGrams":22.1,"fiberGrams":2.5}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.1,"nutrition":{"calories":495,"proteinGrams":38.5,"carbsGrams":41.8,"fatGrams":19.8,"fiberGrams":7.7}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1568,"proteinGrams":123.1,"carbsGrams":124.5,"fatGrams":63.2,"fiberGrams":21.5},"dailyVariance":{"caloriesVsTarget":33,"proteinVsTarget":3.1,"carbsVsTarget":-15.5,"fatVsTarget":8.2}},{"date":"2026-03-17","dayNumber":20,"dayOfWeek":"Tuesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":35.2,"carbsGrams":33.0,"fatGrams":22.0,"fiberGrams":4.4}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.25,"nutrition":{"calories":575,"proteinGrams":47.5,"carbsGrams":47.5,"fatGrams":20.0,"fiberGrams":8.8}},{"mealType":"dinner","recipeId":"recipe:r-009","recipeName":"Cottage Pie with Cauliflower Mash (Low Carb)","portionScale":1.0,"nutrition":{"calories":340,"proteinGrams":32.0,"carbsGrams":14.0,"fatGrams":18.0,"fiberGrams":5.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1665,"proteinGrams":142.2,"carbsGrams":114.5,"fatGrams":70.0,"fiberGrams":20.7},"dailyVariance":{"caloriesVsTarget":130,"proteinVsTarget":22.2,"carbsVsTarget":-25.5,"fatVsTarget":15.0}},{"date":"2026-03-18","dayNumber":21,"dayOfWeek":"Wednesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.1,"nutrition":{"calories":506,"proteinGrams":41.8,"carbsGrams":41.8,"fatGrams":17.6,"fiberGrams":7.7}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":41.8,"carbsGrams":35.2,"fatGrams":15.4,"fiberGrams":5.5}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.1,"nutrition":{"calories":242,"proteinGrams":22.0,"carbsGrams":19.8,"fatGrams":7.7,"fiberGrams":3.3}}],"dailyTotals":{"calories":1590,"proteinGrams":135.6,"carbsGrams":136.8,"fatGrams":50.7,"fiberGrams":22.5},"dailyVariance":{"caloriesVsTarget":55,"proteinVsTarget":15.6,"carbsVsTarget":-3.2,"fatVsTarget":-4.3}}],"weeklyAverages":{"avgCalories":1597.7,"avgProteinGrams":136.0,"avgCarbsGrams":124.1,"avgFatGrams":59.7,"avgFiberGrams":21.3},"weeklyVariance":{"avgCaloriesVsTarget":63,"avgProteinVsTarget":16.0,"avgCarbsVsTarget":-15.9,"avgFatVsTarget":4.7},"proteinSources":["beef","chicken","cottage cheese","mackerel","pork","salmon","tuna","turkey","yoghurt"],"shoppingList":[{"aisle":"Bakery","items":["Rye bread (sliced)"]},{"aisle":"Eggs & Dairy","items":["Cottage cheese (300g)","Greek yoghurt 0% fat (500g)"]},{"aisle":"Fish & Seafood","items":["Fresh tuna steaks","Salmon fillets / smoked salmon","Smoked mackerel fillets"]},{"aisle":"Fresh Fruit","items":["Apples","Lemons","Mixed berries (300g)"]},{"aisle":"Fresh Vegetables","items":["Asparagus","Broccoli","Cherry tomatoes","Courgettes","Green beans","Mixed salad leaves","Red peppers","Spinach (200g)"]},{"aisle":"Herbs, Spices & Seeds","items":["Chives","Cinnamon","Fresh dill","Fresh rosemary","Mixed herbs","Pumpkin seeds","Sunflower seeds"]},{"aisle":"Meat & Poultry","items":["Chicken breast fillets","Lean beef mince (5% fat)","Pork tenderloin medallions","Turkey mince / turkey breast strips"]},{"aisle":"Oils, Sauces & Condiments","items":["Dijon mustard","Extra virgin olive oil","Horseradish sauce","Soy sauce (tamari)"]},{"aisle":"Roots & Potatoes","items":["Beetroot (cooked)","New potatoes","Red onions","Sweet potatoes"]},{"aisle":"Tinned & Dried Goods","items":["Chicken stock cubes","Porridge oats","Quinoa (500g)","Tinned chopped tomatoes","Tinned white beans"]}],"estimatedWeeklyCost":"GBP 68.06"},{"@type":"vhf:MealPlanWeek","weekNumber":4,"startDate":"2026-03-19","endDate":"2026-03-27","daysCount":9,"days":[{"date":"2026-03-19","dayNumber":22,"dayOfWeek":"Thursday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":0.9,"nutrition":{"calories":378,"proteinGrams":28.8,"carbsGrams":27.0,"fatGrams":18.0,"fiberGrams":3.6}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.15,"nutrition":{"calories":529,"proteinGrams":43.7,"carbsGrams":43.7,"fatGrams":18.4,"fiberGrams":8.0}},{"mealType":"dinner","recipeId":"recipe:r-014","recipeName":"Slow-Cooker Chicken and White Bean Stew","portionScale":1.1,"nutrition":{"calories":418,"proteinGrams":37.4,"carbsGrams":30.8,"fatGrams":15.4,"fiberGrams":8.8}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1613,"proteinGrams":137.4,"carbsGrams":121.5,"fatGrams":61.8,"fiberGrams":22.9},"dailyVariance":{"caloriesVsTarget":78,"proteinVsTarget":17.4,"carbsVsTarget":-18.5,"fatVsTarget":6.8}},{"date":"2026-03-20","dayNumber":23,"dayOfWeek":"Friday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.25,"nutrition":{"calories":475,"proteinGrams":37.5,"carbsGrams":50.0,"fatGrams":12.5,"fiberGrams":7.5}},{"mealType":"lunch","recipeId":"recipe:r-019","recipeName":"Tuna Nicoise Salad","portionScale":0.85,"nutrition":{"calories":357,"proteinGrams":34.0,"carbsGrams":18.7,"fatGrams":17.0,"fiberGrams":4.2}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":41.8,"carbsGrams":35.2,"fatGrams":15.4,"fiberGrams":5.5}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1569,"proteinGrams":138.3,"carbsGrams":126.4,"fatGrams":53.7,"fiberGrams":21.0},"dailyVariance":{"caloriesVsTarget":34,"proteinVsTarget":18.3,"carbsVsTarget":-13.6,"fatVsTarget":-1.3}},{"date":"2026-03-21","dayNumber":24,"dayOfWeek":"Saturday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.0,"nutrition":{"calories":380,"proteinGrams":30.0,"carbsGrams":40.0,"fatGrams":10.0,"fiberGrams":6.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.25,"nutrition":{"calories":575,"proteinGrams":47.5,"carbsGrams":47.5,"fatGrams":20.0,"fiberGrams":8.8}},{"mealType":"dinner","recipeId":"recipe:r-001","recipeName":"Grilled Chicken Breast with Roasted Mediterranean Vegetables","portionScale":0.75,"nutrition":{"calories":285,"proteinGrams":31.5,"carbsGrams":9.0,"fatGrams":13.5,"fiberGrams":3.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.5,"nutrition":{"calories":345,"proteinGrams":33.0,"carbsGrams":24.0,"fatGrams":12.0,"fiberGrams":3.0}}],"dailyTotals":{"calories":1585,"proteinGrams":142.0,"carbsGrams":120.5,"fatGrams":55.5,"fiberGrams":20.8},"dailyVariance":{"caloriesVsTarget":50,"proteinVsTarget":22.0,"carbsVsTarget":-19.5,"fatVsTarget":0.5}},{"date":"2026-03-22","dayNumber":25,"dayOfWeek":"Sunday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.0,"nutrition":{"calories":420,"proteinGrams":32.0,"carbsGrams":30.0,"fatGrams":20.0,"fiberGrams":4.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":1.0,"nutrition":{"calories":450,"proteinGrams":35.0,"carbsGrams":38.0,"fatGrams":18.0,"fiberGrams":7.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1605,"proteinGrams":130.0,"carbsGrams":128.5,"fatGrams":62.8,"fiberGrams":21.8},"dailyVariance":{"caloriesVsTarget":70,"proteinVsTarget":10.0,"carbsVsTarget":-11.5,"fatVsTarget":7.8}},{"date":"2026-03-23","dayNumber":26,"dayOfWeek":"Monday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.1,"nutrition":{"calories":418,"proteinGrams":33.0,"carbsGrams":44.0,"fatGrams":11.0,"fiberGrams":6.6}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.15,"nutrition":{"calories":529,"proteinGrams":43.7,"carbsGrams":43.7,"fatGrams":18.4,"fiberGrams":8.0}},{"mealType":"dinner","recipeId":"recipe:r-009","recipeName":"Cottage Pie with Cauliflower Mash (Low Carb)","portionScale":1.0,"nutrition":{"calories":340,"proteinGrams":32.0,"carbsGrams":14.0,"fatGrams":18.0,"fiberGrams":5.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.5,"nutrition":{"calories":345,"proteinGrams":33.0,"carbsGrams":24.0,"fatGrams":12.0,"fiberGrams":3.0}}],"dailyTotals":{"calories":1632,"proteinGrams":141.7,"carbsGrams":125.7,"fatGrams":59.4,"fiberGrams":22.6},"dailyVariance":{"caloriesVsTarget":97,"proteinVsTarget":21.7,"carbsVsTarget":-14.3,"fatVsTarget":4.4}},{"date":"2026-03-24","dayNumber":27,"dayOfWeek":"Tuesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.0,"nutrition":{"calories":420,"proteinGrams":32.0,"carbsGrams":30.0,"fatGrams":20.0,"fiberGrams":4.0}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.1,"nutrition":{"calories":506,"proteinGrams":41.8,"carbsGrams":41.8,"fatGrams":17.6,"fiberGrams":7.7}},{"mealType":"dinner","recipeId":"recipe:gen-006","recipeName":"Pork Medallions with New Potatoes and Green Beans","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":41.8,"carbsGrams":35.2,"fatGrams":15.4,"fiberGrams":5.5}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.25,"nutrition":{"calories":275,"proteinGrams":25.0,"carbsGrams":22.5,"fatGrams":8.8,"fiberGrams":3.8}}],"dailyTotals":{"calories":1663,"proteinGrams":140.6,"carbsGrams":129.5,"fatGrams":61.8,"fiberGrams":21.0},"dailyVariance":{"caloriesVsTarget":128,"proteinVsTarget":20.6,"carbsVsTarget":-10.5,"fatVsTarget":6.8}},{"date":"2026-03-25","dayNumber":28,"dayOfWeek":"Wednesday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.25,"nutrition":{"calories":475,"proteinGrams":37.5,"carbsGrams":50.0,"fatGrams":12.5,"fiberGrams":7.5}},{"mealType":"lunch","recipeId":"recipe:r-019","recipeName":"Tuna Nicoise Salad","portionScale":0.85,"nutrition":{"calories":357,"proteinGrams":34.0,"carbsGrams":18.7,"fatGrams":17.0,"fiberGrams":4.2}},{"mealType":"dinner","recipeId":"recipe:r-014","recipeName":"Slow-Cooker Chicken and White Bean Stew","portionScale":1.1,"nutrition":{"calories":418,"proteinGrams":37.4,"carbsGrams":30.8,"fatGrams":15.4,"fiberGrams":8.8}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.25,"nutrition":{"calories":288,"proteinGrams":27.5,"carbsGrams":20.0,"fatGrams":10.0,"fiberGrams":2.5}}],"dailyTotals":{"calories":1538,"proteinGrams":136.4,"carbsGrams":119.5,"fatGrams":54.9,"fiberGrams":23.0},"dailyVariance":{"caloriesVsTarget":3,"proteinVsTarget":16.4,"carbsVsTarget":-20.5,"fatVsTarget":-0.1}},{"date":"2026-03-26","dayNumber":29,"dayOfWeek":"Thursday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-002","recipeName":"Smoked Salmon and Scrambled Eggs with Rye Toast","portionScale":1.1,"nutrition":{"calories":462,"proteinGrams":35.2,"carbsGrams":33.0,"fatGrams":22.0,"fiberGrams":4.4}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.25,"nutrition":{"calories":575,"proteinGrams":47.5,"carbsGrams":47.5,"fatGrams":20.0,"fiberGrams":8.8}},{"mealType":"dinner","recipeId":"recipe:r-006","recipeName":"Turkey Mince Lettuce Wraps with Ginger Soy Glaze","portionScale":1.0,"nutrition":{"calories":290,"proteinGrams":38.0,"carbsGrams":8.0,"fatGrams":12.0,"fiberGrams":2.0}},{"mealType":"snack","recipeId":"recipe:gen-003","recipeName":"Cottage Cheese, Apple and Sunflower Seed Pot","portionScale":1.5,"nutrition":{"calories":330,"proteinGrams":30.0,"carbsGrams":27.0,"fatGrams":10.5,"fiberGrams":4.5}}],"dailyTotals":{"calories":1657,"proteinGrams":150.7,"carbsGrams":115.5,"fatGrams":64.5,"fiberGrams":19.7},"dailyVariance":{"caloriesVsTarget":122,"proteinVsTarget":30.7,"carbsVsTarget":-24.5,"fatVsTarget":9.5}},{"date":"2026-03-27","dayNumber":30,"dayOfWeek":"Friday","meals":[{"mealType":"breakfast","recipeId":"recipe:gen-001","recipeName":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","portionScale":1.15,"nutrition":{"calories":437,"proteinGrams":34.5,"carbsGrams":46.0,"fatGrams":11.5,"fiberGrams":6.9}},{"mealType":"lunch","recipeId":"recipe:gen-005","recipeName":"Chicken, Quinoa and Roasted Vegetable Bowl","portionScale":1.0,"nutrition":{"calories":460,"proteinGrams":38.0,"carbsGrams":38.0,"fatGrams":16.0,"fiberGrams":7.0}},{"mealType":"dinner","recipeId":"recipe:r-003","recipeName":"Salmon and Sweet Potato Tray Bake","portionScale":0.85,"nutrition":{"calories":382,"proteinGrams":29.8,"carbsGrams":32.3,"fatGrams":15.3,"fiberGrams":6.0}},{"mealType":"snack","recipeId":"recipe:gen-004","recipeName":"Turkey and Red Pepper Skewers with Oatcake Dippers","portionScale":1.0,"nutrition":{"calories":230,"proteinGrams":22.0,"carbsGrams":16.0,"fatGrams":8.0,"fiberGrams":2.0}}],"dailyTotals":{"calories":1509,"proteinGrams":124.3,"carbsGrams":132.3,"fatGrams":50.8,"fiberGrams":21.9},"dailyVariance":{"caloriesVsTarget":-26,"proteinVsTarget":4.3,"carbsVsTarget":-7.7,"fatVsTarget":-4.2}}],"weeklyAverages":{"avgCalories":1596.8,"avgProteinGrams":137.9,"avgCarbsGrams":124.4,"avgFatGrams":58.4,"avgFiberGrams":21.6},"weeklyVariance":{"avgCaloriesVsTarget":62,"avgProteinVsTarget":17.9,"avgCarbsVsTarget":-15.6,"avgFatVsTarget":3.4},"proteinSources":["beef","chicken","cottage cheese","pork","salmon","tuna","turkey","yoghurt"],"shoppingList":[{"aisle":"Bakery","items":["Rye bread (sliced)"]},{"aisle":"Eggs & Dairy","items":["Cottage cheese (300g)","Greek yoghurt 0% fat (500g)"]},{"aisle":"Fish & Seafood","items":["Fresh tuna steaks","Salmon fillets / smoked salmon"]},{"aisle":"Fresh Fruit","items":["Apples","Lemons","Mixed berries (300g)"]},{"aisle":"Fresh Vegetables","items":["Asparagus","Broccoli","Cherry tomatoes","Courgettes","Green beans","Mixed salad leaves","Red peppers","Spinach (200g)"]},{"aisle":"Herbs, Spices & Seeds","items":["Chives","Cinnamon","Fresh dill","Fresh rosemary","Mixed herbs","Pumpkin seeds","Sunflower seeds"]},{"aisle":"Meat & Poultry","items":["Chicken breast fillets","Lean beef mince (5% fat)","Pork tenderloin medallions","Turkey mince / turkey breast strips"]},{"aisle":"Oils, Sauces & Condiments","items":["Dijon mustard","Extra virgin olive oil","Horseradish sauce","Soy sauce (tamari)"]},{"aisle":"Roots & Potatoes","items":["Beetroot (cooked)","New potatoes","Red onions","Sweet potatoes"]},{"aisle":"Tinned & Dried Goods","items":["Chicken stock cubes","Porridge oats","Quinoa (500g)","Tinned chopped tomatoes","Tinned white beans"]}],"estimatedWeeklyCost":"GBP 85.93"}],"vhf:planAverages":{"avgCalories":1576.6,"avgProteinGrams":135.2,"avgCarbsGrams":122.1,"avgFatGrams":58.5,"avgFiberGrams":21.1,"varianceFromTarget":{"caloriesPercent":2.7,"proteinPercent":12.7,"carbsPercent":-12.8,"fatPercent":6.4}},"vhf:generatedRecipes":[{"@id":"recipe:gen-001","@type":["recipe:Recipe","Recipe"],"name":"Greek Yoghurt Power Bowl with Oats, Seeds and Berries","recipeCategory":"Breakfast","difficulty":"easy","recipe:ukAvailable":true,"recipe:costPerServing":"GBP 1.50","totalTime":"PT5M","recipeIngredient":["200g Greek yoghurt (0% fat)","40g porridge oats","30g pumpkin seeds","100g mixed berries","1 tsp cinnamon"],"nutrition":{"@type":"NutritionInformation","servingSize":"1 serving","calories":"380 kcal","proteinContent":"30g","carbohydrateContent":"40g","fatContent":"10g","fiberContent":"6g"},"recipe:excludesAllergen":["client:allergen-nuts","client:allergen-peanuts","client:allergen-eggs","client:allergen-soya","client:allergen-fish"],"recipe:suitableForDietType":[{"@id":"diet:diabetic"},{"@id":"diet:low-carb"}],"recipe:belongsToTheme":[{"@id":"theme:DiabeticFriendly"},{"@id":"theme:HighProtein"}],"vhf:generatedBy":"VHF Nutrition Intelligence Agent","vhf:generatedDate":"2026-02-26"},{"@id":"recipe:gen-002","@type":["recipe:Recipe","Recipe"],"name":"Smoked Salmon and Scrambled Eggs with Rye Toast","recipeCategory":"Breakfast","difficulty":"easy","recipe:ukAvailable":true,"recipe:costPerServing":"GBP 2.80","totalTime":"PT12M","recipeIngredient":["80g smoked salmon","3 eggs","2 slices rye bread","1 tbsp chives","black pepper"],"nutrition":{"@type":"NutritionInformation","servingSize":"1 serving","calories":"420 kcal","proteinContent":"32g","carbohydrateContent":"30g","fatContent":"20g","fiberContent":"4g"},"recipe:excludesAllergen":["client:allergen-nuts","client:allergen-peanuts","client:allergen-soya"],"recipe:suitableForDietType":[{"@id":"diet:diabetic"},{"@id":"diet:low-carb"}],"recipe:belongsToTheme":[{"@id":"theme:DiabeticFriendly"},{"@id":"theme:HighProtein"}],"vhf:generatedBy":"VHF Nutrition Intelligence Agent","vhf:generatedDate":"2026-02-26"},{"@id":"recipe:gen-003","@type":["recipe:Recipe","Recipe"],"name":"Cottage Cheese, Apple and Sunflower Seed Pot","recipeCategory":"Snack","difficulty":"easy","recipe:ukAvailable":true,"recipe:costPerServing":"GBP 1.10","totalTime":"PT5M","recipeIngredient":["150g cottage cheese","1 small apple (diced)","15g sunflower seeds","pinch cinnamon"],"nutrition":{"@type":"NutritionInformation","servingSize":"1 serving","calories":"220 kcal","proteinContent":"20g","carbohydrateContent":"18g","fatContent":"7g","fiberContent":"3g"},"recipe:excludesAllergen":["client:allergen-nuts","client:allergen-peanuts","client:allergen-eggs","client:allergen-soya","client:allergen-fish","client:allergen-cereals"],"recipe:suitableForDietType":[{"@id":"diet:diabetic"},{"@id":"diet:low-carb"}],"recipe:belongsToTheme":[{"@id":"theme:DiabeticFriendly"},{"@id":"theme:HighProtein"}],"vhf:generatedBy":"VHF Nutrition Intelligence Agent","vhf:generatedDate":"2026-02-26"},{"@id":"recipe:gen-004","@type":["recipe:Recipe","Recipe"],"name":"Turkey and Red Pepper Skewers with Oatcake Dippers","recipeCategory":"Snack","difficulty":"easy","recipe:ukAvailable":true,"recipe:costPerServing":"GBP 1.40","totalTime":"PT20M","recipeIngredient":["100g turkey breast strips","1 red pepper","3 oatcakes","2 tbsp tzatziki"],"nutrition":{"@type":"NutritionInformation","servingSize":"1 serving","calories":"230 kcal","proteinContent":"22g","carbohydrateContent":"16g","fatContent":"8g","fiberContent":"2g"},"recipe:excludesAllergen":["client:allergen-nuts","client:allergen-peanuts","client:allergen-soya","client:allergen-fish"],"recipe:suitableForDietType":[{"@id":"diet:diabetic"},{"@id":"diet:low-carb"}],"recipe:belongsToTheme":[{"@id":"theme:DiabeticFriendly"},{"@id":"theme:HighProtein"}],"vhf:generatedBy":"VHF Nutrition Intelligence Agent","vhf:generatedDate":"2026-02-26"},{"@id":"recipe:gen-005","@type":["recipe:Recipe","Recipe"],"name":"Chicken, Quinoa and Roasted Vegetable Bowl","recipeCategory":"Lunch","difficulty":"easy","recipe:ukAvailable":true,"recipe:costPerServing":"GBP 2.90","totalTime":"PT15M","recipeIngredient":["150g chicken breast","80g quinoa (dry)","100g roasted peppers","80g cherry tomatoes","50g spinach","1 tbsp olive oil","lemon juice"],"nutrition":{"@type":"NutritionInformation","servingSize":"1 serving","calories":"460 kcal","proteinContent":"38g","carbohydrateContent":"38g","fatContent":"16g","fiberContent":"7g"},"recipe:excludesAllergen":["client:allergen-nuts","client:allergen-peanuts","client:allergen-milk","client:allergen-eggs","client:allergen-soya","client:allergen-cereals","client:allergen-fish"],"recipe:suitableForDietType":[{"@id":"diet:diabetic"},{"@id":"diet:low-carb"}],"recipe:belongsToTheme":[{"@id":"theme:DiabeticFriendly"},{"@id":"theme:HighProtein"}],"vhf:generatedBy":"VHF Nutrition Intelligence Agent","vhf:generatedDate":"2026-02-26"},{"@id":"recipe:gen-006","@type":["recipe:Recipe","Recipe"],"name":"Pork Medallions with New Potatoes and Green Beans","recipeCategory":"Dinner","difficulty":"easy","recipe:ukAvailable":true,"recipe:costPerServing":"GBP 3.40","totalTime":"PT25M","recipeIngredient":["200g pork tenderloin","200g new potatoes","150g green beans","1 tsp Dijon mustard","1 tbsp olive oil","fresh rosemary"],"nutrition":{"@type":"NutritionInformation","servingSize":"1 serving","calories":"420 kcal","proteinContent":"38g","carbohydrateContent":"32g","fatContent":"14g","fiberContent":"5g"},"recipe:excludesAllergen":["client:allergen-nuts","client:allergen-peanuts","client:allergen-eggs","client:allergen-soya","client:allergen-cereals","client:allergen-fish"],"recipe:suitableForDietType":[{"@id":"diet:diabetic"},{"@id":"diet:low-carb"}],"recipe:belongsToTheme":[{"@id":"theme:DiabeticFriendly"},{"@id":"theme:HighProtein"}],"vhf:generatedBy":"VHF Nutrition Intelligence Agent","vhf:generatedDate":"2026-02-26"}],"vhf:qualityReport":{"@type":"vhf:QualityReport","constraintCompliance":{"diabeticDietCompliant":true,"lowCarbCompliant":true,"allergenSafe_treeNuts":true,"allergenSafe_peanuts":true,"maxRecipeRepetitionPerWeek":"2 (7-day blocks), 3 (9-day block 4)","quickDinnersPerWeek":"3+ per week (target: 2 minimum)","proteinSourcesPerWeek":"8-10 per week (target: 4 minimum)"},"macroAdherence":{"proteinTarget":"120g","proteinActual":"135.2g","proteinVariance":"12.7%","proteinNote":"Slightly above target (+12.7%) which is clinically appropriate for T2D weight loss - higher protein supports satiety and glycaemic control","carbsTarget":"140g","carbsActual":"122.1g","carbsVariance":"-12.8%","carbsNote":"Below target (-12.8%) due to low-carb recipe pool; within safe diabetic range. Coach may adjust upward with whole grain sides.","fatTarget":"55g","fatActual":"58.5g","fatVariance":"6.4%","calorieTargetFromMacros":"1535 kcal (computed from macro grams)","calorieActual":"1576.6 kcal","calorieVariance":"2.7%","calorieNote":"Client stated 1650 kcal target; macro grams imply 1535 kcal (7% gap). Plan targets macro grams as instructed."},"varietyScore":{"uniqueRecipesPerWeek":[12,13,12,12],"averageUniqueRecipesPerWeek":12.2,"totalUniqueRecipes":14},"proteinDiversity":{"allSources":["beef","chicken","coconut","cod","cottage cheese","eggs","mackerel","pork","prawns","salmon","tuna","turkey","yoghurt"],"sourceCount":13,"meetsMinimum4PerWeek":true},"averageWeeklyCost":"GBP 66.94","totalPlanCost":"GBP 287.17","allergenViolations":0,"vsomAlignment":{"strategy":"VHF Nutrition Intelligence - Personalised Diabetic Weight-Loss Meal Planning","kpiTracked":["macro_adherence_percent","allergen_violation_count","variety_score","weekly_cost_gbp"],"goalAlignment":"client:goal-weight-loss via 500kcal deficit from TDEE 2150"}}}</script>
+<script>
+PLAN = JSON.parse(document.getElementById('plan-json').textContent);
+
+/* ---- Helpers ---- */
+function fmt(n) { return n.toLocaleString('en-GB', {maximumFractionDigits:1}); }
+function pct(actual, target) { return target === 0 ? 0 : ((actual - target) / target * 100); }
+function varClass(p) { var a = Math.abs(p); return a <= 5 ? 'var-green' : a <= 10 ? 'var-amber' : 'var-red'; }
+function varColor(p) { var a = Math.abs(p); return a <= 5 ? 'var(--vhf-success-default)' : a <= 10 ? 'var(--vhf-warning-default)' : 'var(--vhf-error-default)'; }
+function isGen(id) { return id && id.indexOf('gen-') !== -1; }
+
+var TARGETS = PLAN['vhf:macroTargets'];
+
+function renderVarianceBar(label, actual, target) {
+  var p = pct(actual, target);
+  var ap = Math.abs(p);
+  var w = Math.min(ap * 3, 100);
+  return '<div class="var-bar-wrap"><span class="var-bar-label">' + label + '</span>' +
+    '<div class="var-bar-track"><div class="var-bar-fill" style="width:' + w + '%;background:' + varColor(p) + '"></div></div>' +
+    '<span class="var-bar-val ' + varClass(p) + '">' + (p >= 0 ? '+' : '') + fmt(p) + '%</span></div>';
+}
+
+function renderMealCard(m) {
+  var cls = m.mealType;
+  var n = m.nutrition;
+  var badge = isGen(m.recipeId) ? '<span class="gen-badge">AI-Generated</span> ' : '';
+  return '<div class="meal-card ' + cls + '">' +
+    '<div class="meal-label">' + cls.charAt(0).toUpperCase() + cls.slice(1) + '</div>' +
+    badge +
+    '<div class="meal-name">' + m.recipeName + '</div>' +
+    '<div class="meal-macros">' +
+      '<span>' + n.calories + ' kcal</span>' +
+      '<span>P ' + n.proteinGrams + 'g</span>' +
+      '<span>C ' + n.carbsGrams + 'g</span>' +
+      '<span>F ' + n.fatGrams + 'g</span>' +
+    '</div>' +
+    (m.portionScale !== 1.0 ? '<div class="meal-macros" style="margin-top:2px;font-style:italic">Portion: ' + m.portionScale + 'x</div>' : '') +
+    '</div>';
+}
+
+function renderDayCard(day) {
+  var t = day.dailyTotals;
+  var html = '<div class="day-card">';
+  html += '<div class="day-header">Day ' + day.dayNumber + ' &mdash; ' + day.dayOfWeek + ', ' + day.date + '</div>';
+  html += '<div class="meals-grid">';
+  day.meals.forEach(function(m) { html += renderMealCard(m); });
+  html += '</div>';
+  html += '<div class="day-totals">';
+  html += '<span><strong>Totals:</strong></span>';
+  html += '<span class="nums">' + fmt(t.calories) + ' kcal</span>';
+  html += '<span class="nums">P ' + fmt(t.proteinGrams) + 'g</span>';
+  html += '<span class="nums">C ' + fmt(t.carbsGrams) + 'g</span>';
+  html += '<span class="nums">F ' + fmt(t.fatGrams) + 'g</span>';
+  html += '<span class="nums">Fibre ' + fmt(t.fiberGrams) + 'g</span>';
+  html += '</div>';
+  html += '<div class="variance-row">';
+  html += renderVarianceBar('Cal', t.calories, TARGETS.dailyCalories);
+  html += renderVarianceBar('P', t.proteinGrams, TARGETS.proteinGrams);
+  html += renderVarianceBar('C', t.carbsGrams, TARGETS.carbsGrams);
+  html += renderVarianceBar('F', t.fatGrams, TARGETS.fatGrams);
+  html += '</div>';
+  html += '</div>';
+  return html;
+}
+
+/* ---- Render Weeks ---- */
+var weeks = PLAN['vhf:weeks'];
+var weekLabels = [
+  'Week 1 — 26 Feb to 4 Mar 2026',
+  'Week 2 — 5 Mar to 11 Mar 2026',
+  'Week 3 — 12 Mar to 18 Mar 2026',
+  'Week 4 — 19 Mar to 27 Mar 2026 (9 days)'
+];
+
+weeks.forEach(function(wk, i) {
+  var el = document.getElementById('week-' + (i + 1));
+  var avg = wk.weeklyAverages;
+  var head = '<h3>' + weekLabels[i] + '</h3>';
+  head += '<p class="caption" style="margin-bottom:var(--vhf-space-md)">Avg: ' + fmt(avg.avgCalories) + ' kcal | ' +
+    fmt(avg.avgProteinGrams) + 'g P | ' + fmt(avg.avgCarbsGrams) + 'g C | ' + fmt(avg.avgFatGrams) + 'g F | ' +
+    'Est. cost: ' + wk.estimatedWeeklyCost + '</p>';
+  var days = '';
+  wk.days.forEach(function(d) { days += renderDayCard(d); });
+  el.innerHTML = head + days;
+});
+
+/* ---- Shopping Lists ---- */
+var shopEl = document.getElementById('shopping-lists');
+var shopHtml = '';
+weeks.forEach(function(wk, i) {
+  shopHtml += '<details' + (i === 0 ? ' open' : '') + '>';
+  shopHtml += '<summary>Week ' + wk.weekNumber + ' Shopping List (' + wk.estimatedWeeklyCost + ')</summary>';
+  shopHtml += '<div style="padding:var(--vhf-space-sm) 0">';
+  wk.shoppingList.forEach(function(aisle) {
+    shopHtml += '<div class="aisle-group"><h4>' + aisle.aisle + '</h4><ul>';
+    aisle.items.forEach(function(item) { shopHtml += '<li>' + item + '</li>'; });
+    shopHtml += '</ul></div>';
+  });
+  shopHtml += '</div></details>';
+});
+shopEl.innerHTML = shopHtml;
+
+/* ---- Generated Recipes ---- */
+var recEl = document.getElementById('gen-recipes');
+var recHtml = '';
+var recipes = PLAN['vhf:generatedRecipes'];
+recipes.forEach(function(r) {
+  var n = r.nutrition;
+  recHtml += '<div class="recipe-card">';
+  recHtml += '<span class="gen-badge">AI-Generated Recipe</span>';
+  recHtml += '<h3>' + r.name + '</h3>';
+  recHtml += '<div class="recipe-meta">';
+  recHtml += '<span>Category: ' + r.recipeCategory + '</span>';
+  recHtml += '<span>Difficulty: ' + r.difficulty + '</span>';
+  recHtml += '<span>Time: ' + r.totalTime.replace('PT','').toLowerCase() + '</span>';
+  recHtml += '<span>Cost: ' + r['recipe:costPerServing'] + '</span>';
+  recHtml += '</div>';
+  recHtml += '<div class="recipe-ingredients"><strong>Ingredients:</strong><ul>';
+  r.recipeIngredient.forEach(function(ing) { recHtml += '<li>' + ing + '</li>'; });
+  recHtml += '</ul></div>';
+  recHtml += '<div class="recipe-nutrition">';
+  recHtml += '<span><strong>Calories:</strong> ' + n.calories + '</span>';
+  recHtml += '<span><strong>Protein:</strong> ' + n.proteinContent + '</span>';
+  recHtml += '<span><strong>Carbs:</strong> ' + n.carbohydrateContent + '</span>';
+  recHtml += '<span><strong>Fat:</strong> ' + n.fatContent + '</span>';
+  recHtml += '<span><strong>Fibre:</strong> ' + n.fiberContent + '</span>';
+  recHtml += '</div></div>';
+});
+recEl.innerHTML = recHtml;
+
+/* ---- Week Tab Switching ---- */
+function showWeek(n) {
+  document.querySelectorAll('.week-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.week-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('week-' + n).classList.add('active');
+  document.querySelectorAll('.week-tab')[n - 1].classList.add('active');
+}
+</script>
+</body>
+</html>

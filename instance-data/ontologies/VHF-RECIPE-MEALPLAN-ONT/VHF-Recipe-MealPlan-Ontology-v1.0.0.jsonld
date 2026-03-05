@@ -1,0 +1,746 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "vhf": "https://viridian.app/ontology/vhf/",
+    "recipe": "https://viridian.app/ontology/vhf/recipe/",
+    "meal": "https://viridian.app/ontology/vhf/meal/",
+    "client": "https://viridian.app/ontology/vhf/client/",
+    "coach": "https://viridian.app/ontology/vhf/coach/",
+    "theme": "https://viridian.app/ontology/vhf/theme/",
+    "diet": "https://viridian.app/ontology/vhf/diet/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "recipe:containsIngredient": { "@type": "@id" },
+    "recipe:hasNutrition": { "@type": "@id" },
+    "recipe:suitableForDiet": { "@type": "@id" },
+    "recipe:suitableForCondition": { "@type": "@id" },
+    "recipe:excludesAllergen": { "@type": "@id" },
+    "recipe:belongsToTheme": { "@type": "@id" },
+    "recipe:substitutableWith": { "@type": "@id" },
+    "meal:containsRecipe": { "@type": "@id" },
+    "meal:assignedToClient": { "@type": "@id" },
+    "meal:approvedByCoach": { "@type": "@id" },
+    "meal:derivedFromTheme": { "@type": "@id" },
+    "meal:targetsGoal": { "@type": "@id" },
+    "meal:meetsRequirement": { "@type": "@id" },
+    "client:hasProfile": { "@type": "@id" },
+    "client:hasMealPlan": { "@type": "@id" },
+    "client:hasGoal": { "@type": "@id" },
+    "client:hasDietaryRestriction": { "@type": "@id" },
+    "client:hasAllergen": { "@type": "@id" },
+    "client:hasCondition": { "@type": "@id" },
+    "client:coachedBy": { "@type": "@id" },
+    "client:prefersTheme": { "@type": "@id" },
+    "theme:includesRecipe": { "@type": "@id" },
+    "theme:targetsDiet": { "@type": "@id" },
+    "theme:targetsSeason": { "@type": "@id" },
+    "theme:targetsGoal": { "@type": "@id" },
+    "diet:excludesFood": { "@type": "@id" },
+    "diet:requiresCertification": { "@type": "@id" },
+    "diet:alignsWithGoal": { "@type": "@id" },
+    "diet:schemaOrgUri": { "@type": "@id" },
+    "client:followsDiet": { "@type": "@id" },
+    "recipe:suitableForDietType": { "@type": "@id" },
+    "coach:manages": { "@type": "@id" },
+    "coach:approves": { "@type": "@id" },
+    "coach:authors": { "@type": "@id" }
+  },
+
+  "@graph": [
+
+    {
+      "@id": "vhf:RecipeMealPlanOntology",
+      "@type": "DefinedTermSet",
+      "name": "VHF Recipe & Meal Plan Ontology",
+      "description": "Domain ontology for the Viridian Nutrition Intelligence Platform covering recipes, meal plans, client profiles, coaching relationships, and thematic meal curation. Built on Schema.org Recipe, NutritionInformation, and Patient types with VHF-specific extensions for UK clinical nutrition coaching.",
+      "version": "1.0.0",
+      "dateCreated": "2026-02-10",
+      "creator": { "@type": "Organization", "name": "Viridian Health & Fitness" },
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    },
+
+
+    { "@type": "rdfs:Class", "@id": "vhf:Entity", "rdfs:subClassOf": { "@id": "schema:Thing" }, "rdfs:label": "VHF Entity", "rdfs:comment": "Base class for all VHF ontology entities" },
+
+
+    { "@type": "rdfs:Class", "@id": "recipe:Recipe", "rdfs:subClassOf": [{ "@id": "schema:Recipe" }, { "@id": "vhf:Entity" }], "rdfs:label": "Recipe", "rdfs:comment": "A nutritionally-profiled recipe in the VHF database. Schema.org Recipe compliant with VHF clinical extensions." },
+    { "@type": "rdfs:Class", "@id": "recipe:Ingredient", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Ingredient", "rdfs:comment": "A food ingredient with UK availability and allergen classification" },
+    { "@type": "rdfs:Class", "@id": "recipe:NutritionProfile", "rdfs:subClassOf": [{ "@id": "schema:NutritionInformation" }, { "@id": "vhf:Entity" }], "rdfs:label": "Nutrition Profile", "rdfs:comment": "Macro and micronutrient breakdown per serving" },
+    { "@type": "rdfs:Class", "@id": "recipe:Instruction", "rdfs:subClassOf": [{ "@id": "schema:HowToStep" }, { "@id": "vhf:Entity" }], "rdfs:label": "Recipe Instruction", "rdfs:comment": "A single step in a recipe's preparation method" },
+    { "@type": "rdfs:Class", "@id": "recipe:Substitution", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Ingredient Substitution", "rdfs:comment": "An alternative ingredient for dietary restriction or allergen avoidance" },
+
+
+    { "@type": "rdfs:Class", "@id": "meal:MealPlan", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Meal Plan", "rdfs:comment": "A 7-day structured meal plan generated for a specific client, aligned to their goals, restrictions, and preferred themes" },
+    { "@type": "rdfs:Class", "@id": "meal:MealPlanDay", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Meal Plan Day", "rdfs:comment": "A single day within a meal plan containing breakfast, lunch, dinner, and optional snacks" },
+    { "@type": "rdfs:Class", "@id": "meal:Meal", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Meal", "rdfs:comment": "A single meal slot (breakfast, lunch, dinner, snack) with a recipe reference and serving size" },
+    { "@type": "rdfs:Class", "@id": "meal:MealType", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Meal Type", "rdfs:comment": "Classification of meal slots: breakfast, lunch, dinner, snack" },
+    { "@type": "rdfs:Class", "@id": "meal:DailyTotals", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Daily Totals", "rdfs:comment": "Aggregated nutrition totals for a single day" },
+    { "@type": "rdfs:Class", "@id": "meal:WeeklyTotals", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Weekly Totals", "rdfs:comment": "Aggregated nutrition totals for the full 7-day plan" },
+    { "@type": "rdfs:Class", "@id": "meal:ShoppingList", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Shopping List", "rdfs:comment": "Consolidated ingredient list for a meal plan, grouped by supermarket aisle, UK-availability checked" },
+    { "@type": "rdfs:Class", "@id": "meal:MealPrepGuide", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Meal Prep Guide", "rdfs:comment": "Batch cooking and prep instructions to minimise daily effort" },
+    { "@type": "rdfs:Class", "@id": "meal:PlanStatus", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Plan Status", "rdfs:comment": "Lifecycle state of a meal plan: pending, approved, active, completed, archived" },
+
+
+    { "@type": "rdfs:Class", "@id": "client:Client", "rdfs:subClassOf": [{ "@id": "schema:Patient" }, { "@id": "vhf:Entity" }], "rdfs:label": "Client", "rdfs:comment": "An individual receiving nutrition coaching. Schema.org Patient compliant with VHF clinical extensions." },
+    { "@type": "rdfs:Class", "@id": "client:HealthProfile", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Health Profile", "rdfs:comment": "Client health data: height, weight, medical conditions, allergens, dietary restrictions" },
+    { "@type": "rdfs:Class", "@id": "client:Goal", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Client Goal", "rdfs:comment": "A nutrition/fitness goal: weight_loss, muscle_gain, maintenance, medical_management, sports_performance" },
+    { "@type": "rdfs:Class", "@id": "client:MacroTarget", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Macro Target", "rdfs:comment": "Daily macro targets (protein, carbs, fats, calories) set by coach or calculated from goal" },
+    { "@type": "rdfs:Class", "@id": "client:DietaryRestriction", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Dietary Restriction", "rdfs:comment": "A dietary constraint applied to a client, references a specific diet:DietType" },
+
+    { "@type": "rdfs:Class", "@id": "diet:DietType", "rdfs:subClassOf": [{ "@id": "schema:RestrictedDiet" }, { "@id": "vhf:Entity" }], "rdfs:label": "Diet Type", "rdfs:comment": "A named dietary pattern or restriction. Covers ethical, religious, medical, macronutrient, and lifestyle diets." },
+    { "@type": "rdfs:Class", "@id": "diet:EthicalDiet", "rdfs:subClassOf": { "@id": "diet:DietType" }, "rdfs:label": "Ethical Diet", "rdfs:comment": "Diets motivated by animal welfare or environmental ethics" },
+    { "@type": "rdfs:Class", "@id": "diet:ReligiousDiet", "rdfs:subClassOf": { "@id": "diet:DietType" }, "rdfs:label": "Religious Diet", "rdfs:comment": "Diets governed by religious dietary law" },
+    { "@type": "rdfs:Class", "@id": "diet:MedicalDiet", "rdfs:subClassOf": { "@id": "diet:DietType" }, "rdfs:label": "Medical Diet", "rdfs:comment": "Diets prescribed or recommended for medical conditions" },
+    { "@type": "rdfs:Class", "@id": "diet:MacroDiet", "rdfs:subClassOf": { "@id": "diet:DietType" }, "rdfs:label": "Macronutrient Diet", "rdfs:comment": "Diets defined by macronutrient ratios (high-protein, low-carb, etc.)" },
+    { "@type": "rdfs:Class", "@id": "diet:LifestyleDiet", "rdfs:subClassOf": { "@id": "diet:DietType" }, "rdfs:label": "Lifestyle Diet", "rdfs:comment": "Diets adopted as a lifestyle philosophy rather than strict medical or ethical requirement" },
+    { "@type": "rdfs:Class", "@id": "diet:AllergenFreeDiet", "rdfs:subClassOf": { "@id": "diet:DietType" }, "rdfs:label": "Allergen-Free Diet", "rdfs:comment": "Diets that exclude specific allergens" },
+    { "@type": "rdfs:Class", "@id": "client:Allergen", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Allergen", "rdfs:comment": "A food allergen (UK 14 major allergens): celery, cereals, crustaceans, eggs, fish, lupin, milk, molluscs, mustard, nuts, peanuts, sesame, soya, sulphites" },
+    { "@type": "rdfs:Class", "@id": "client:MedicalCondition", "rdfs:subClassOf": [{ "@id": "schema:MedicalCondition" }, { "@id": "vhf:Entity" }], "rdfs:label": "Medical Condition", "rdfs:comment": "A diagnosed condition affecting nutrition planning: Type 2 Diabetes, PCOS, IBS, hypothyroidism, etc." },
+    { "@type": "rdfs:Class", "@id": "client:ProgressLog", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Progress Log", "rdfs:comment": "Daily tracking: weight, adherence score, energy level, notes" },
+
+
+    { "@type": "rdfs:Class", "@id": "theme:MealTheme", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Meal Theme", "rdfs:comment": "A curated collection of recipes grouped by dietary philosophy, season, cuisine, or wellness goal. Themes drive meal plan generation and recipe discovery in the UI." },
+    { "@type": "rdfs:Class", "@id": "theme:SeasonalTheme", "rdfs:subClassOf": { "@id": "theme:MealTheme" }, "rdfs:label": "Seasonal Theme", "rdfs:comment": "Theme tied to UK seasonal produce availability: spring, summer, autumn, winter" },
+    { "@type": "rdfs:Class", "@id": "theme:CuisineTheme", "rdfs:subClassOf": { "@id": "theme:MealTheme" }, "rdfs:label": "Cuisine Theme", "rdfs:comment": "Theme by cuisine: British Comfort, Mediterranean, Asian Fusion, Middle Eastern, Latin American" },
+    { "@type": "rdfs:Class", "@id": "theme:GoalTheme", "rdfs:subClassOf": { "@id": "theme:MealTheme" }, "rdfs:label": "Goal Theme", "rdfs:comment": "Theme aligned to a fitness/health goal: High Protein, Low Carb, Anti-Inflammatory, Gut Health, Energy Boost" },
+    { "@type": "rdfs:Class", "@id": "theme:LifestyleTheme", "rdfs:subClassOf": { "@id": "theme:MealTheme" }, "rdfs:label": "Lifestyle Theme", "rdfs:comment": "Theme by lifestyle pattern: Quick Weeknight, Batch Cook Sunday, Budget Friendly, Family Meals, Desk Lunch" },
+    { "@type": "rdfs:Class", "@id": "theme:ClinicalTheme", "rdfs:subClassOf": { "@id": "theme:MealTheme" }, "rdfs:label": "Clinical Theme", "rdfs:comment": "Coach-curated theme for medical conditions: Diabetic Friendly, PCOS Support, IBS Low-FODMAP, Thyroid Support" },
+
+
+    { "@type": "rdfs:Class", "@id": "coach:Coach", "rdfs:subClassOf": [{ "@id": "schema:Person" }, { "@id": "vhf:Entity" }], "rdfs:label": "Coach", "rdfs:comment": "A clinical nutrition coach who manages clients, approves meal plans, and authors protocols" },
+    { "@type": "rdfs:Class", "@id": "coach:Protocol", "rdfs:subClassOf": { "@id": "vhf:Entity" }, "rdfs:label": "Clinical Protocol", "rdfs:comment": "Evidence-based nutrition protocol authored by coach, used by AI agents via RAG" },
+
+
+    {
+      "@id": "recipe:RecipeProperties",
+      "@type": "vhf:Entity",
+      "name": "Recipe Property Definitions",
+      "description": "Standard properties for all VHF recipes",
+      "recipe:properties": {
+        "name": { "type": "string", "required": true, "schemaOrg": "name" },
+        "description": { "type": "string", "required": true, "schemaOrg": "description" },
+        "prepTime": { "type": "duration", "format": "ISO 8601", "schemaOrg": "prepTime" },
+        "cookTime": { "type": "duration", "format": "ISO 8601", "schemaOrg": "cookTime" },
+        "totalTime": { "type": "duration", "format": "ISO 8601", "schemaOrg": "totalTime" },
+        "recipeYield": { "type": "string", "schemaOrg": "recipeYield" },
+        "recipeCategory": { "type": "string", "enum": ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert"], "schemaOrg": "recipeCategory" },
+        "recipeCuisine": { "type": "string", "schemaOrg": "recipeCuisine" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "ukAvailable": { "type": "boolean", "default": true },
+        "seasonal": { "type": "boolean", "default": false },
+        "seasonalMonths": { "type": "array", "items": "integer", "description": "1-12 for months when seasonal ingredients peak" },
+        "suitableForDiet": { "type": "array", "items": "uri", "schemaOrg": "suitableForDiet", "description": "Schema.org diet URIs: VegetarianDiet, VeganDiet, GlutenFreeDiet, DiabeticDiet, etc." },
+        "keywords": { "type": "array", "items": "string", "schemaOrg": "keywords" }
+      }
+    },
+
+    {
+      "@id": "recipe:NutritionProperties",
+      "@type": "vhf:Entity",
+      "name": "Nutrition Property Definitions",
+      "description": "Standard nutrition data per serving, Schema.org NutritionInformation compliant",
+      "recipe:properties": {
+        "calories": { "type": "string", "unit": "kcal", "schemaOrg": "calories" },
+        "proteinContent": { "type": "string", "unit": "g", "schemaOrg": "proteinContent" },
+        "carbohydrateContent": { "type": "string", "unit": "g", "schemaOrg": "carbohydrateContent" },
+        "fatContent": { "type": "string", "unit": "g", "schemaOrg": "fatContent" },
+        "fiberContent": { "type": "string", "unit": "g", "schemaOrg": "fiberContent" },
+        "sugarContent": { "type": "string", "unit": "g", "schemaOrg": "sugarContent" },
+        "sodiumContent": { "type": "string", "unit": "mg", "schemaOrg": "sodiumContent" },
+        "saturatedFatContent": { "type": "string", "unit": "g", "schemaOrg": "saturatedFatContent" },
+        "servingSize": { "type": "string", "schemaOrg": "servingSize" }
+      }
+    },
+
+
+    {
+      "@id": "theme:HighProtein",
+      "@type": "theme:GoalTheme",
+      "name": "High Protein",
+      "description": "Recipes with 30g+ protein per serving. Supports muscle gain, weight loss, and sports performance goals.",
+      "theme:targetsGoal": [{ "@id": "client:goal-muscle-gain" }, { "@id": "client:goal-weight-loss" }, { "@id": "client:goal-sports-performance" }],
+      "theme:filterCriteria": { "nutrition.proteinContent": { "$gte": "30g" } }
+    },
+    {
+      "@id": "theme:LowCarb",
+      "@type": "theme:GoalTheme",
+      "name": "Low Carb",
+      "description": "Recipes with <25g carbs per serving. Supports diabetes management and weight loss.",
+      "theme:targetsGoal": [{ "@id": "client:goal-medical-management" }, { "@id": "client:goal-weight-loss" }],
+      "theme:filterCriteria": { "nutrition.carbohydrateContent": { "$lte": "25g" } }
+    },
+    {
+      "@id": "theme:AntiInflammatory",
+      "@type": "theme:GoalTheme",
+      "name": "Anti-Inflammatory",
+      "description": "Recipes rich in omega-3, turmeric, ginger, leafy greens. Supports autoimmune and joint health.",
+      "theme:targetsGoal": [{ "@id": "client:goal-medical-management" }],
+      "theme:filterCriteria": { "keywords": { "$contains": ["anti-inflammatory"] } }
+    },
+    {
+      "@id": "theme:GutHealth",
+      "@type": "theme:GoalTheme",
+      "name": "Gut Health",
+      "description": "Fermented foods, prebiotic fibre, gentle-on-gut recipes. Supports IBS and digestive wellness.",
+      "theme:targetsGoal": [{ "@id": "client:goal-medical-management" }],
+      "theme:filterCriteria": { "keywords": { "$contains": ["gut-health", "prebiotic", "fermented"] } }
+    },
+    {
+      "@id": "theme:EnergyBoost",
+      "@type": "theme:GoalTheme",
+      "name": "Energy Boost",
+      "description": "Complex carbs, B-vitamins, iron-rich meals. Combats fatigue and supports active lifestyles.",
+      "theme:targetsGoal": [{ "@id": "client:goal-maintenance" }, { "@id": "client:goal-sports-performance" }],
+      "theme:filterCriteria": { "keywords": { "$contains": ["energy", "iron-rich"] } }
+    },
+
+    {
+      "@id": "theme:BritishComfort",
+      "@type": "theme:CuisineTheme",
+      "name": "British Comfort",
+      "description": "Healthified versions of classic British dishes. Cottage pie, fish pie, roast dinners, hearty soups.",
+      "theme:targetsCuisine": "British"
+    },
+    {
+      "@id": "theme:Mediterranean",
+      "@type": "theme:CuisineTheme",
+      "name": "Mediterranean",
+      "description": "Olive oil, fresh vegetables, lean proteins, whole grains. Evidence-based heart health benefits.",
+      "theme:targetsCuisine": "Mediterranean"
+    },
+    {
+      "@id": "theme:AsianFusion",
+      "@type": "theme:CuisineTheme",
+      "name": "Asian Fusion",
+      "description": "Stir-fries, curries, noodle bowls, sushi bowls. High protein, vibrant flavours.",
+      "theme:targetsCuisine": "Asian"
+    },
+
+    {
+      "@id": "theme:SpringFresh",
+      "@type": "theme:SeasonalTheme",
+      "name": "Spring Fresh",
+      "description": "Asparagus, new potatoes, spring lamb, watercress, rhubarb. Light and refreshing.",
+      "theme:targetsSeason": "spring",
+      "theme:seasonalMonths": [3, 4, 5]
+    },
+    {
+      "@id": "theme:SummerLight",
+      "@type": "theme:SeasonalTheme",
+      "name": "Summer Light",
+      "description": "Salads, grilled proteins, berries, courgettes, fresh herbs. Peak UK produce season.",
+      "theme:targetsSeason": "summer",
+      "theme:seasonalMonths": [6, 7, 8]
+    },
+    {
+      "@id": "theme:AutumnHarvest",
+      "@type": "theme:SeasonalTheme",
+      "name": "Autumn Harvest",
+      "description": "Squash, root vegetables, apples, game, warming spices. Hearty and grounding.",
+      "theme:targetsSeason": "autumn",
+      "theme:seasonalMonths": [9, 10, 11]
+    },
+    {
+      "@id": "theme:WinterWarmer",
+      "@type": "theme:SeasonalTheme",
+      "name": "Winter Warmer",
+      "description": "Stews, casseroles, citrus, brassicas, slow-cooked proteins. Comfort and nourishment.",
+      "theme:targetsSeason": "winter",
+      "theme:seasonalMonths": [12, 1, 2]
+    },
+
+    {
+      "@id": "theme:QuickWeeknight",
+      "@type": "theme:LifestyleTheme",
+      "name": "Quick Weeknight",
+      "description": "Under 30 minutes total. For busy professionals who want nutritious meals fast.",
+      "theme:filterCriteria": { "totalTimeMinutes": { "$lte": 30 } }
+    },
+    {
+      "@id": "theme:BatchCookSunday",
+      "@type": "theme:LifestyleTheme",
+      "name": "Batch Cook Sunday",
+      "description": "Prep-ahead recipes that store well. Cook once, eat for 3-4 days.",
+      "theme:filterCriteria": { "keywords": { "$contains": ["batch-cook", "meal-prep"] } }
+    },
+    {
+      "@id": "theme:BudgetFriendly",
+      "@type": "theme:LifestyleTheme",
+      "name": "Budget Friendly",
+      "description": "Cost-effective meals under £3 per serving. Pulses, seasonal veg, smart protein choices.",
+      "theme:filterCriteria": { "keywords": { "$contains": ["budget"] } }
+    },
+    {
+      "@id": "theme:FamilyMeals",
+      "@type": "theme:LifestyleTheme",
+      "name": "Family Meals",
+      "description": "Recipes that scale for families. Kid-friendly with hidden veg options.",
+      "theme:filterCriteria": { "keywords": { "$contains": ["family", "kid-friendly"] } }
+    },
+
+    {
+      "@id": "theme:DiabeticFriendly",
+      "@type": "theme:ClinicalTheme",
+      "name": "Diabetic Friendly",
+      "description": "Low glycemic index, controlled carbs, balanced meals for Type 1 and Type 2 diabetes management.",
+      "theme:targetsDiet": ["https://schema.org/DiabeticDiet"],
+      "theme:filterCriteria": { "suitableForDiet": { "$contains": ["https://schema.org/DiabeticDiet"] } }
+    },
+    {
+      "@id": "theme:PCOSSupport",
+      "@type": "theme:ClinicalTheme",
+      "name": "PCOS Support",
+      "description": "Anti-inflammatory, insulin-sensitising meals. High fibre, lean protein, low refined sugar.",
+      "theme:filterCriteria": { "keywords": { "$contains": ["pcos", "anti-inflammatory", "insulin-sensitising"] } }
+    },
+    {
+      "@id": "theme:LowFODMAP",
+      "@type": "theme:ClinicalTheme",
+      "name": "IBS Low-FODMAP",
+      "description": "Monash University Low-FODMAP compliant recipes for IBS symptom management.",
+      "theme:filterCriteria": { "keywords": { "$contains": ["low-fodmap"] } }
+    },
+
+
+    {
+      "@id": "client:goal-weight-loss",
+      "@type": "client:Goal",
+      "name": "Weight Loss",
+      "description": "Caloric deficit with adequate protein to preserve muscle. Typical: 500kcal daily deficit.",
+      "client:defaultMacroSplit": { "protein": "30%", "carbs": "35%", "fats": "35%" }
+    },
+    {
+      "@id": "client:goal-muscle-gain",
+      "@type": "client:Goal",
+      "name": "Muscle Gain",
+      "description": "Caloric surplus with high protein. Typical: 300kcal surplus, 1.6-2.2g protein/kg.",
+      "client:defaultMacroSplit": { "protein": "35%", "carbs": "40%", "fats": "25%" }
+    },
+    {
+      "@id": "client:goal-maintenance",
+      "@type": "client:Goal",
+      "name": "Maintenance",
+      "description": "Balanced intake at maintenance calories. Focus on nutrient density and variety.",
+      "client:defaultMacroSplit": { "protein": "25%", "carbs": "45%", "fats": "30%" }
+    },
+    {
+      "@id": "client:goal-medical-management",
+      "@type": "client:Goal",
+      "name": "Medical Management",
+      "description": "Nutrition plan tailored to a diagnosed medical condition. Coach-directed, protocol-driven.",
+      "client:defaultMacroSplit": null
+    },
+    {
+      "@id": "client:goal-sports-performance",
+      "@type": "client:Goal",
+      "name": "Sports Performance",
+      "description": "Periodised nutrition supporting training cycles. Carb loading, recovery meals, hydration.",
+      "client:defaultMacroSplit": { "protein": "25%", "carbs": "50%", "fats": "25%" }
+    },
+
+
+    {
+      "@id": "vhf:UK14Allergens",
+      "@type": "vhf:Entity",
+      "name": "UK 14 Major Allergens",
+      "description": "The 14 allergens that must be declared under UK food law (Food Information Regulations 2014)",
+      "vhf:allergens": [
+        { "@id": "client:allergen-celery", "name": "Celery" },
+        { "@id": "client:allergen-cereals", "name": "Cereals containing gluten" },
+        { "@id": "client:allergen-crustaceans", "name": "Crustaceans" },
+        { "@id": "client:allergen-eggs", "name": "Eggs" },
+        { "@id": "client:allergen-fish", "name": "Fish" },
+        { "@id": "client:allergen-lupin", "name": "Lupin" },
+        { "@id": "client:allergen-milk", "name": "Milk" },
+        { "@id": "client:allergen-molluscs", "name": "Molluscs" },
+        { "@id": "client:allergen-mustard", "name": "Mustard" },
+        { "@id": "client:allergen-nuts", "name": "Tree nuts" },
+        { "@id": "client:allergen-peanuts", "name": "Peanuts" },
+        { "@id": "client:allergen-sesame", "name": "Sesame" },
+        { "@id": "client:allergen-soya", "name": "Soya" },
+        { "@id": "client:allergen-sulphites", "name": "Sulphur dioxide and sulphites" }
+      ]
+    },
+
+
+    {
+      "@id": "vhf:DietTypes",
+      "@type": "vhf:Entity",
+      "name": "Diet Type Catalogue",
+      "description": "Comprehensive catalogue of dietary patterns recognised by the VHF platform, organised by motivation category",
+      "vhf:diets": {
+
+        "ethical": [
+          {
+            "@id": "diet:vegetarian",
+            "@type": "diet:EthicalDiet",
+            "name": "Vegetarian",
+            "description": "Excludes meat and fish. Permits dairy and eggs.",
+            "diet:excludesFood": ["meat", "poultry", "fish", "shellfish"],
+            "diet:schemaOrgUri": "https://schema.org/VegetarianDiet"
+          },
+          {
+            "@id": "diet:vegan",
+            "@type": "diet:EthicalDiet",
+            "name": "Vegan",
+            "description": "Excludes all animal products including dairy, eggs, and honey.",
+            "diet:excludesFood": ["meat", "poultry", "fish", "shellfish", "dairy", "eggs", "honey", "gelatin"],
+            "diet:schemaOrgUri": "https://schema.org/VeganDiet"
+          },
+          {
+            "@id": "diet:pescatarian",
+            "@type": "diet:EthicalDiet",
+            "name": "Pescatarian",
+            "description": "Excludes meat but permits fish, dairy, and eggs.",
+            "diet:excludesFood": ["meat", "poultry"]
+          },
+          {
+            "@id": "diet:flexitarian",
+            "@type": "diet:EthicalDiet",
+            "name": "Flexitarian",
+            "description": "Primarily plant-based with occasional meat and fish. Flexible approach to reducing animal products.",
+            "diet:excludesFood": []
+          },
+          {
+            "@id": "diet:plant-based",
+            "@type": "diet:EthicalDiet",
+            "name": "Plant-Based",
+            "description": "Whole food plant-based. Avoids animal products and processed foods.",
+            "diet:excludesFood": ["meat", "poultry", "fish", "shellfish", "dairy", "eggs", "processed-foods"]
+          }
+        ],
+
+        "religious": [
+          {
+            "@id": "diet:halal",
+            "@type": "diet:ReligiousDiet",
+            "name": "Halal",
+            "description": "Compliant with Islamic dietary law. No pork, no alcohol, meat must be halal-certified.",
+            "diet:excludesFood": ["pork", "alcohol", "non-halal-meat", "blood"],
+            "diet:requiresCertification": "Halal certification body"
+          },
+          {
+            "@id": "diet:kosher",
+            "@type": "diet:ReligiousDiet",
+            "name": "Kosher",
+            "description": "Compliant with Jewish dietary law (kashrut). No mixing of meat and dairy, no shellfish, no pork.",
+            "diet:excludesFood": ["pork", "shellfish", "non-kosher-meat"],
+            "diet:requiresCertification": "Kosher certification (hechsher)"
+          },
+          {
+            "@id": "diet:hindu-vegetarian",
+            "@type": "diet:ReligiousDiet",
+            "name": "Hindu Vegetarian",
+            "description": "Lacto-vegetarian as practised in Hindu tradition. No meat, fish, or eggs. Dairy permitted.",
+            "diet:excludesFood": ["meat", "poultry", "fish", "shellfish", "eggs"]
+          },
+          {
+            "@id": "diet:jain",
+            "@type": "diet:ReligiousDiet",
+            "name": "Jain",
+            "description": "Strict vegetarian. No meat, fish, eggs, root vegetables, or honey. Avoids harm to all living beings.",
+            "diet:excludesFood": ["meat", "poultry", "fish", "shellfish", "eggs", "root-vegetables", "honey", "alcohol"]
+          }
+        ],
+
+        "macronutrient": [
+          {
+            "@id": "diet:keto",
+            "@type": "diet:MacroDiet",
+            "name": "Ketogenic (Keto)",
+            "description": "Very low carb (<20-50g/day), high fat, moderate protein. Induces ketosis for fat burning.",
+            "diet:macroRatio": { "protein": "20%", "carbs": "5-10%", "fats": "70-75%" },
+            "diet:alignsWithGoal": [{ "@id": "client:goal-weight-loss" }]
+          },
+          {
+            "@id": "diet:low-carb",
+            "@type": "diet:MacroDiet",
+            "name": "Low Carb",
+            "description": "Reduced carbohydrate intake (<100g/day) without strict ketosis. Flexible protein and fat.",
+            "diet:macroRatio": { "protein": "30%", "carbs": "20%", "fats": "50%" },
+            "diet:alignsWithGoal": [{ "@id": "client:goal-weight-loss" }, { "@id": "client:goal-medical-management" }]
+          },
+          {
+            "@id": "diet:high-protein",
+            "@type": "diet:MacroDiet",
+            "name": "High Protein",
+            "description": "Protein-focused (1.6-2.2g/kg bodyweight). Supports muscle building and satiety.",
+            "diet:macroRatio": { "protein": "35-40%", "carbs": "30%", "fats": "30%" },
+            "diet:alignsWithGoal": [{ "@id": "client:goal-muscle-gain" }, { "@id": "client:goal-sports-performance" }]
+          },
+          {
+            "@id": "diet:low-fat",
+            "@type": "diet:MacroDiet",
+            "name": "Low Fat",
+            "description": "Fat intake below 30% of total calories. Higher carb and protein.",
+            "diet:macroRatio": { "protein": "25%", "carbs": "50%", "fats": "25%" },
+            "diet:alignsWithGoal": [{ "@id": "client:goal-weight-loss" }]
+          },
+          {
+            "@id": "diet:carnivore",
+            "@type": "diet:MacroDiet",
+            "name": "Carnivore",
+            "description": "Animal products only. Zero carb, high fat, high protein. Excludes all plant foods.",
+            "diet:excludesFood": ["vegetables", "fruits", "grains", "legumes", "nuts", "seeds"],
+            "diet:macroRatio": { "protein": "35%", "carbs": "0%", "fats": "65%" }
+          }
+        ],
+
+        "medical": [
+          {
+            "@id": "diet:diabetic",
+            "@type": "diet:MedicalDiet",
+            "name": "Diabetic",
+            "description": "Low glycemic index, controlled carbohydrate intake. For Type 1 and Type 2 diabetes management.",
+            "diet:schemaOrgUri": "https://schema.org/DiabeticDiet",
+            "diet:alignsWithGoal": [{ "@id": "client:goal-medical-management" }]
+          },
+          {
+            "@id": "diet:low-fodmap",
+            "@type": "diet:MedicalDiet",
+            "name": "Low-FODMAP",
+            "description": "Eliminates fermentable carbohydrates (Monash University protocol). For IBS symptom management.",
+            "diet:excludesFood": ["garlic", "onion", "wheat", "certain-fruits", "lactose-rich-dairy"],
+            "diet:alignsWithGoal": [{ "@id": "client:goal-medical-management" }]
+          },
+          {
+            "@id": "diet:anti-inflammatory",
+            "@type": "diet:MedicalDiet",
+            "name": "Anti-Inflammatory",
+            "description": "Rich in omega-3, antioxidants, turmeric, ginger. Reduces systemic inflammation.",
+            "diet:excludesFood": ["refined-sugar", "processed-foods", "trans-fats", "excessive-alcohol"],
+            "diet:alignsWithGoal": [{ "@id": "client:goal-medical-management" }]
+          },
+          {
+            "@id": "diet:renal",
+            "@type": "diet:MedicalDiet",
+            "name": "Renal (Kidney-Friendly)",
+            "description": "Low sodium, low potassium, low phosphorus. For chronic kidney disease management.",
+            "diet:excludesFood": ["high-sodium-foods", "high-potassium-foods", "high-phosphorus-foods"],
+            "diet:alignsWithGoal": [{ "@id": "client:goal-medical-management" }]
+          },
+          {
+            "@id": "diet:low-sodium",
+            "@type": "diet:MedicalDiet",
+            "name": "Low Sodium",
+            "description": "Sodium intake below 2000mg/day. For hypertension and cardiovascular health.",
+            "diet:excludesFood": ["high-sodium-foods", "processed-foods", "cured-meats"],
+            "diet:alignsWithGoal": [{ "@id": "client:goal-medical-management" }]
+          }
+        ],
+
+        "lifestyle": [
+          {
+            "@id": "diet:mediterranean",
+            "@type": "diet:LifestyleDiet",
+            "name": "Mediterranean",
+            "description": "Olive oil, fish, whole grains, legumes, fresh vegetables, moderate wine. Evidence-based heart health.",
+            "diet:alignsWithGoal": [{ "@id": "client:goal-maintenance" }, { "@id": "client:goal-medical-management" }]
+          },
+          {
+            "@id": "diet:paleo",
+            "@type": "diet:LifestyleDiet",
+            "name": "Paleo",
+            "description": "Pre-agricultural foods only. No grains, legumes, dairy, or processed foods.",
+            "diet:excludesFood": ["grains", "legumes", "dairy", "processed-foods", "refined-sugar"]
+          },
+          {
+            "@id": "diet:whole30",
+            "@type": "diet:LifestyleDiet",
+            "name": "Whole30",
+            "description": "30-day elimination protocol. No sugar, alcohol, grains, legumes, soya, or dairy.",
+            "diet:excludesFood": ["sugar", "alcohol", "grains", "legumes", "soya", "dairy", "carrageenan", "MSG", "sulphites"]
+          },
+          {
+            "@id": "diet:intermittent-fasting",
+            "@type": "diet:LifestyleDiet",
+            "name": "Intermittent Fasting",
+            "description": "Time-restricted eating patterns (16:8, 5:2, etc.). No food restrictions, timing-based.",
+            "diet:excludesFood": []
+          },
+          {
+            "@id": "diet:raw-food",
+            "@type": "diet:LifestyleDiet",
+            "name": "Raw Food",
+            "description": "Uncooked, unprocessed plant foods. Nothing heated above 48°C (118°F).",
+            "diet:excludesFood": ["cooked-foods", "processed-foods", "meat", "dairy"]
+          }
+        ],
+
+        "allergen-free": [
+          {
+            "@id": "diet:gluten-free",
+            "@type": "diet:AllergenFreeDiet",
+            "name": "Gluten-Free",
+            "description": "Excludes wheat, barley, rye, and oats (unless certified GF). For coeliac disease or gluten sensitivity.",
+            "diet:excludesFood": ["wheat", "barley", "rye", "oats"],
+            "diet:schemaOrgUri": "https://schema.org/GlutenFreeDiet",
+            "diet:relatedAllergen": { "@id": "client:allergen-cereals" }
+          },
+          {
+            "@id": "diet:dairy-free",
+            "@type": "diet:AllergenFreeDiet",
+            "name": "Dairy-Free",
+            "description": "Excludes all cow's milk products. For lactose intolerance or milk allergy.",
+            "diet:excludesFood": ["milk", "cheese", "butter", "cream", "yoghurt", "whey"],
+            "diet:relatedAllergen": { "@id": "client:allergen-milk" }
+          },
+          {
+            "@id": "diet:egg-free",
+            "@type": "diet:AllergenFreeDiet",
+            "name": "Egg-Free",
+            "description": "Excludes eggs and egg-derived ingredients (albumin, lysozyme, mayonnaise).",
+            "diet:excludesFood": ["eggs", "albumin", "mayonnaise"],
+            "diet:relatedAllergen": { "@id": "client:allergen-eggs" }
+          },
+          {
+            "@id": "diet:nut-free",
+            "@type": "diet:AllergenFreeDiet",
+            "name": "Nut-Free",
+            "description": "Excludes tree nuts (almonds, cashews, walnuts, etc.) and peanuts. Strict cross-contamination avoidance.",
+            "diet:excludesFood": ["tree-nuts", "peanuts", "nut-oils", "nut-butters"],
+            "diet:relatedAllergen": [{ "@id": "client:allergen-nuts" }, { "@id": "client:allergen-peanuts" }]
+          },
+          {
+            "@id": "diet:soya-free",
+            "@type": "diet:AllergenFreeDiet",
+            "name": "Soya-Free",
+            "description": "Excludes soya beans and soya-derived products (tofu, tempeh, soy sauce, lecithin).",
+            "diet:excludesFood": ["soya", "tofu", "tempeh", "soy-sauce", "soy-lecithin"],
+            "diet:relatedAllergen": { "@id": "client:allergen-soya" }
+          },
+          {
+            "@id": "diet:shellfish-free",
+            "@type": "diet:AllergenFreeDiet",
+            "name": "Shellfish-Free",
+            "description": "Excludes crustaceans (prawns, crab, lobster) and molluscs (mussels, oysters, squid).",
+            "diet:excludesFood": ["prawns", "crab", "lobster", "mussels", "oysters", "squid"],
+            "diet:relatedAllergen": [{ "@id": "client:allergen-crustaceans" }, { "@id": "client:allergen-molluscs" }]
+          }
+        ]
+      }
+    },
+
+
+    {
+      "@id": "vhf:ClientToMealPlanRelationship",
+      "@type": "vhf:Entity",
+      "name": "Client-MealPlan Relationship Model",
+      "description": "How clients, themes, recipes, and meal plans connect in the VHF platform",
+      "vhf:relationships": [
+        {
+          "subject": "client:Client",
+          "predicate": "client:hasGoal",
+          "object": "client:Goal",
+          "cardinality": "1:1",
+          "description": "Each client has one active primary goal"
+        },
+        {
+          "subject": "client:Client",
+          "predicate": "client:prefersTheme",
+          "object": "theme:MealTheme",
+          "cardinality": "1:N",
+          "description": "Client selects preferred themes; AI uses these to curate meal plans"
+        },
+        {
+          "subject": "client:Client",
+          "predicate": "client:hasMealPlan",
+          "object": "meal:MealPlan",
+          "cardinality": "1:N",
+          "description": "Client receives weekly meal plans over time"
+        },
+        {
+          "subject": "meal:MealPlan",
+          "predicate": "meal:derivedFromTheme",
+          "object": "theme:MealTheme",
+          "cardinality": "N:N",
+          "description": "A meal plan may blend multiple themes (e.g. High Protein + Quick Weeknight)"
+        },
+        {
+          "subject": "meal:MealPlan",
+          "predicate": "meal:targetsGoal",
+          "object": "client:Goal",
+          "cardinality": "N:1",
+          "description": "Each plan targets the client's active goal"
+        },
+        {
+          "subject": "meal:MealPlan",
+          "predicate": "meal:approvedByCoach",
+          "object": "coach:Coach",
+          "cardinality": "N:1",
+          "description": "Coach approves AI-generated plans before client sees them"
+        },
+        {
+          "subject": "meal:MealPlanDay",
+          "predicate": "meal:containsRecipe",
+          "object": "recipe:Recipe",
+          "cardinality": "N:N",
+          "description": "Each day slot references specific recipes"
+        },
+        {
+          "subject": "recipe:Recipe",
+          "predicate": "recipe:belongsToTheme",
+          "object": "theme:MealTheme",
+          "cardinality": "N:N",
+          "description": "Recipes tagged to multiple themes for discovery"
+        },
+        {
+          "subject": "theme:MealTheme",
+          "predicate": "theme:targetsGoal",
+          "object": "client:Goal",
+          "cardinality": "N:N",
+          "description": "Themes align to one or more client goals"
+        },
+        {
+          "subject": "coach:Coach",
+          "predicate": "coach:manages",
+          "object": "client:Client",
+          "cardinality": "1:N",
+          "description": "Coach manages a caseload of clients"
+        }
+      ]
+    },
+
+
+    {
+      "@id": "vhf:MealPlanGenerationFlow",
+      "@type": "vhf:Entity",
+      "name": "Meal Plan Generation Flow",
+      "description": "The AI-driven flow from client profile to delivered meal plan",
+      "vhf:steps": [
+        { "step": 1, "action": "Assemble client context", "inputs": ["client:HealthProfile", "client:Goal", "client:MacroTarget", "client:DietaryRestriction", "client:Allergen", "client:MedicalCondition"], "agent": "Context Engine" },
+        { "step": 2, "action": "Resolve applicable themes", "inputs": ["client:prefersTheme", "theme:SeasonalTheme (current month)", "client:Goal"], "agent": "Meal Planner Agent" },
+        { "step": 3, "action": "Search recipe database", "inputs": ["theme:filterCriteria", "client:Allergen exclusions", "client:DietaryRestriction filters", "recipe:ukAvailable = true"], "agent": "Recipe Search Tool" },
+        { "step": 4, "action": "Generate 7-day plan", "inputs": ["Filtered recipes", "client:MacroTarget", "meal:MealType slots"], "agent": "Meal Planner Agent", "output": "meal:MealPlan (status: pending)" },
+        { "step": 5, "action": "Calculate totals", "inputs": ["meal:MealPlanDay nutrition"], "output": ["meal:DailyTotals", "meal:WeeklyTotals"] },
+        { "step": 6, "action": "Generate shopping list", "inputs": ["All recipe:Ingredient across plan"], "output": "meal:ShoppingList" },
+        { "step": 7, "action": "Coach review", "inputs": ["meal:MealPlan"], "agent": "coach:Coach", "output": "meal:PlanStatus = approved" },
+        { "step": 8, "action": "Deliver to client", "inputs": ["Approved meal:MealPlan"], "output": "meal:PlanStatus = active" }
+      ]
+    },
+
+
+    {
+      "@id": "vhf:DatabaseMapping",
+      "@type": "vhf:Entity",
+      "name": "Ontology-to-Database Mapping",
+      "description": "How ontology entities map to Supabase tables and JSONB columns",
+      "vhf:mappings": [
+        { "ontologyClass": "client:Client", "table": "clients", "storagePattern": "Flat columns + profile JSONB" },
+        { "ontologyClass": "client:HealthProfile", "table": "clients.profile", "storagePattern": "JSONB (Schema.org Patient)" },
+        { "ontologyClass": "client:MacroTarget", "table": "clients.profile._custom.macroTargets", "storagePattern": "Nested JSONB" },
+        { "ontologyClass": "recipe:Recipe", "table": "recipes", "storagePattern": "Flat columns + recipe_schema JSONB" },
+        { "ontologyClass": "recipe:NutritionProfile", "table": "recipes.nutrition", "storagePattern": "Denormalized JSONB" },
+        { "ontologyClass": "recipe:Ingredient", "table": "recipes.ingredients", "storagePattern": "JSONB array" },
+        { "ontologyClass": "meal:MealPlan", "table": "meal_plans", "storagePattern": "Flat columns + plan_data JSONB" },
+        { "ontologyClass": "meal:MealPlanDay", "table": "meal_plans.plan_data.days[]", "storagePattern": "Nested JSONB array" },
+        { "ontologyClass": "meal:Meal", "table": "meal_plans.plan_data.days[].meals[]", "storagePattern": "Nested JSONB array" },
+        { "ontologyClass": "meal:ShoppingList", "table": "meal_plans.plan_data.shoppingList", "storagePattern": "Nested JSONB" },
+        { "ontologyClass": "theme:MealTheme", "table": "meal_themes", "storagePattern": "New table (to be created)" },
+        { "ontologyClass": "coach:Coach", "table": "coaches", "storagePattern": "Flat columns" },
+        { "ontologyClass": "coach:Protocol", "table": "protocols", "storagePattern": "Flat columns + metadata JSONB" },
+        { "ontologyClass": "client:ProgressLog", "table": "progress_logs", "storagePattern": "Flat columns" }
+      ]
+    }
+  ]
+}

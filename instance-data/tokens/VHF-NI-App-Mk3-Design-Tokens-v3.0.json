@@ -1,0 +1,955 @@
+{
+  "$schema": "https://schemas.opendesignsystems.org/token-schema.json",
+  "name": "Viridian Health & Fitness - Nutrition Intelligence Platform",
+  "version": "3.0.0",
+  "description": "Complete design token system aligned with James Kerby's actual brand identity",
+  "lastUpdated": "2024-12-09",
+  "changeControl": {
+    "version": "3.0.0",
+    "date": "2024-12-09",
+    "author": "VHF Team",
+    "changes": [
+      "BREAKING: Updated all brand colors to match actual Viridian brand (#007c74 primary)",
+      "BREAKING: Updated typography to PT Sans from Google Fonts",
+      "ADDED: Asset URLs for logos, hero images, OG images from Google Drive",
+      "ADDED: Comprehensive change control and version tracking",
+      "FIXED: Color palette now matches viridian-hf.com actual brand",
+      "VERIFIED: All tokens mapped to Figma design system"
+    ],
+    "breakingChanges": true,
+    "migrationNotes": "All components must update color references. Primary is now teal (#007c74) not magenta.",
+    "verifiedBy": "James Kerby",
+    "figmaSync": true
+  },
+  "platforms": ["web", "ios", "android"],
+  "brand": {
+    "name": "Viridian Health & Fitness",
+    "domain": "viridian-hf.com",
+    "tagline": "Expert Clinical Nutrition Coaching",
+    "philosophy": "No gimmicks, no potions, no drinks, no pills"
+  },
+  
+  "color": {
+    "_meta": {
+      "description": "Brand colors verified from viridian-hf.com and James Kerby brand guidelines",
+      "lastVerified": "2024-12-09",
+      "source": "James Kerby brand specifications"
+    },
+    
+    "primary": {
+      "value": "#007c74",
+      "type": "color",
+      "description": "Primary brand color - Viridian Teal",
+      "category": "brand",
+      "usage": ["buttons", "links", "primary-actions", "brand-elements"],
+      "a11y": {
+        "contrastOnWhite": "AAA",
+        "contrastOnBase": "AA"
+      }
+    },
+    "primary-light": {
+      "value": "#65c0c0",
+      "type": "color",
+      "description": "Light variant of primary - Soft Teal",
+      "category": "brand",
+      "usage": ["hover-states", "backgrounds", "highlights"]
+    },
+    "primary-dark": {
+      "value": "#1e414f",
+      "type": "color",
+      "description": "Dark variant of primary - Deep Teal Navy",
+      "category": "brand",
+      "usage": ["headers", "dark-mode", "emphasis"]
+    },
+    
+    "primary-50": {
+      "value": "#e6f5f4",
+      "type": "color",
+      "description": "Primary tint 50 - Lightest",
+      "category": "brand",
+      "usage": ["backgrounds", "subtle-highlights"]
+    },
+    "primary-100": {
+      "value": "#ccebe9",
+      "type": "color",
+      "description": "Primary tint 100",
+      "category": "brand"
+    },
+    "primary-200": {
+      "value": "#99d7d3",
+      "type": "color",
+      "description": "Primary tint 200",
+      "category": "brand"
+    },
+    "primary-300": {
+      "value": "#65c0c0",
+      "type": "color",
+      "description": "Primary tint 300 (primary-light)",
+      "category": "brand"
+    },
+    "primary-400": {
+      "value": "#33a9a1",
+      "type": "color",
+      "description": "Primary tint 400",
+      "category": "brand"
+    },
+    "primary-500": {
+      "value": "#007c74",
+      "type": "color",
+      "description": "Primary base 500 (main brand color)",
+      "category": "brand"
+    },
+    "primary-600": {
+      "value": "#00635d",
+      "type": "color",
+      "description": "Primary shade 600",
+      "category": "brand"
+    },
+    "primary-700": {
+      "value": "#004a46",
+      "type": "color",
+      "description": "Primary shade 700",
+      "category": "brand"
+    },
+    "primary-800": {
+      "value": "#003530",
+      "type": "color",
+      "description": "Primary shade 800",
+      "category": "brand"
+    },
+    "primary-900": {
+      "value": "#1e414f",
+      "type": "color",
+      "description": "Primary shade 900 (primary-dark)",
+      "category": "brand"
+    },
+    
+    "secondary": {
+      "value": "#f16a21",
+      "type": "color",
+      "description": "Secondary brand color - Vibrant Orange",
+      "category": "brand",
+      "usage": ["accents", "calls-to-action", "highlights", "energy"]
+    },
+    "secondary-light": {
+      "value": "#ff8c4a",
+      "type": "color",
+      "description": "Light variant of secondary",
+      "category": "brand"
+    },
+    "secondary-dark": {
+      "value": "#c24d0a",
+      "type": "color",
+      "description": "Dark variant of secondary",
+      "category": "brand"
+    },
+    
+    "secondary-50": {
+      "value": "#fff4ed",
+      "type": "color",
+      "description": "Secondary tint 50",
+      "category": "brand"
+    },
+    "secondary-100": {
+      "value": "#ffe8d5",
+      "type": "color",
+      "description": "Secondary tint 100",
+      "category": "brand"
+    },
+    "secondary-200": {
+      "value": "#ffd1ab",
+      "type": "color",
+      "description": "Secondary tint 200",
+      "category": "brand"
+    },
+    "secondary-300": {
+      "value": "#ffb380",
+      "type": "color",
+      "description": "Secondary tint 300",
+      "category": "brand"
+    },
+    "secondary-400": {
+      "value": "#ff8c4a",
+      "type": "color",
+      "description": "Secondary tint 400 (secondary-light)",
+      "category": "brand"
+    },
+    "secondary-500": {
+      "value": "#f16a21",
+      "type": "color",
+      "description": "Secondary base 500 (main)",
+      "category": "brand"
+    },
+    "secondary-600": {
+      "value": "#d9560d",
+      "type": "color",
+      "description": "Secondary shade 600",
+      "category": "brand"
+    },
+    "secondary-700": {
+      "value": "#c24d0a",
+      "type": "color",
+      "description": "Secondary shade 700 (secondary-dark)",
+      "category": "brand"
+    },
+    "secondary-800": {
+      "value": "#993d08",
+      "type": "color",
+      "description": "Secondary shade 800",
+      "category": "brand"
+    },
+    "secondary-900": {
+      "value": "#732e06",
+      "type": "color",
+      "description": "Secondary shade 900",
+      "category": "brand"
+    },
+    
+    "accent": {
+      "value": "#a0afa1",
+      "type": "color",
+      "description": "Accent color - Sage Green",
+      "category": "brand",
+      "usage": ["subtle-emphasis", "natural-elements", "calm-accents"]
+    },
+    "accent-light": {
+      "value": "#c5d1c6",
+      "type": "color",
+      "description": "Light variant of accent",
+      "category": "brand"
+    },
+    "accent-dark": {
+      "value": "#7a8a7b",
+      "type": "color",
+      "description": "Dark variant of accent",
+      "category": "brand"
+    },
+    
+    "neutral-base": {
+      "value": "#c2d8cc",
+      "type": "color",
+      "description": "Neutral base - Soft Mint Gray",
+      "category": "neutral",
+      "usage": ["backgrounds", "borders", "dividers"]
+    },
+    
+    "neutral-50": {
+      "value": "#f5f9f6",
+      "type": "color",
+      "description": "Neutral tint 50 - Lightest",
+      "category": "neutral"
+    },
+    "neutral-100": {
+      "value": "#e8f0eb",
+      "type": "color",
+      "description": "Neutral tint 100",
+      "category": "neutral"
+    },
+    "neutral-200": {
+      "value": "#c2d8cc",
+      "type": "color",
+      "description": "Neutral tint 200 (neutral-base)",
+      "category": "neutral"
+    },
+    "neutral-300": {
+      "value": "#a8c3b3",
+      "type": "color",
+      "description": "Neutral tint 300",
+      "category": "neutral"
+    },
+    "neutral-400": {
+      "value": "#8dae9a",
+      "type": "color",
+      "description": "Neutral tint 400",
+      "category": "neutral"
+    },
+    "neutral-500": {
+      "value": "#6f9179",
+      "type": "color",
+      "description": "Neutral base 500",
+      "category": "neutral"
+    },
+    "neutral-600": {
+      "value": "#597461",
+      "type": "color",
+      "description": "Neutral shade 600",
+      "category": "neutral"
+    },
+    "neutral-700": {
+      "value": "#435749",
+      "type": "color",
+      "description": "Neutral shade 700",
+      "category": "neutral"
+    },
+    "neutral-800": {
+      "value": "#2d3a31",
+      "type": "color",
+      "description": "Neutral shade 800",
+      "category": "neutral"
+    },
+    "neutral-900": {
+      "value": "#1a2219",
+      "type": "color",
+      "description": "Neutral shade 900 - Darkest",
+      "category": "neutral"
+    },
+    
+    "success": {
+      "value": "#49bad4",
+      "type": "color",
+      "description": "Success state - Sky Blue",
+      "category": "semantic",
+      "usage": ["success-messages", "positive-feedback", "completed-states"]
+    },
+    "success-light": {
+      "value": "#7dd1e3",
+      "type": "color",
+      "description": "Light success",
+      "category": "semantic"
+    },
+    "success-dark": {
+      "value": "#3a9ab0",
+      "type": "color",
+      "description": "Dark success",
+      "category": "semantic"
+    },
+    
+    "warning": {
+      "value": "#e54525",
+      "type": "color",
+      "description": "Warning state - Red Orange",
+      "category": "semantic",
+      "usage": ["warnings", "caution", "attention-needed"]
+    },
+    "warning-light": {
+      "value": "#ff6b47",
+      "type": "color",
+      "description": "Light warning",
+      "category": "semantic"
+    },
+    "warning-dark": {
+      "value": "#c2341a",
+      "type": "color",
+      "description": "Dark warning",
+      "category": "semantic"
+    },
+    
+    "error": {
+      "value": "#cece3e",
+      "type": "color",
+      "description": "Error state - Yellow (Alert)",
+      "category": "semantic",
+      "usage": ["errors", "validation-failures", "critical-alerts"]
+    },
+    "error-light": {
+      "value": "#e0e070",
+      "type": "color",
+      "description": "Light error",
+      "category": "semantic"
+    },
+    "error-dark": {
+      "value": "#a3a330",
+      "type": "color",
+      "description": "Dark error",
+      "category": "semantic"
+    },
+    
+    "info": {
+      "value": "#822212",
+      "type": "color",
+      "description": "Info state - Deep Rust",
+      "category": "semantic",
+      "usage": ["information", "tips", "guidance"]
+    },
+    "info-light": {
+      "value": "#b54a3a",
+      "type": "color",
+      "description": "Light info",
+      "category": "semantic"
+    },
+    "info-dark": {
+      "value": "#5a180d",
+      "type": "color",
+      "description": "Dark info",
+      "category": "semantic"
+    },
+    
+    "background": {
+      "default": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Default background",
+        "category": "surface"
+      },
+      "subtle": {
+        "value": "#f5f9f6",
+        "type": "color",
+        "description": "Subtle background (neutral-50)",
+        "category": "surface"
+      },
+      "muted": {
+        "value": "#e8f0eb",
+        "type": "color",
+        "description": "Muted background (neutral-100)",
+        "category": "surface"
+      }
+    },
+    
+    "text": {
+      "primary": {
+        "value": "#1a2219",
+        "type": "color",
+        "description": "Primary text color (neutral-900)",
+        "category": "text"
+      },
+      "secondary": {
+        "value": "#435749",
+        "type": "color",
+        "description": "Secondary text color (neutral-700)",
+        "category": "text"
+      },
+      "tertiary": {
+        "value": "#6f9179",
+        "type": "color",
+        "description": "Tertiary text color (neutral-500)",
+        "category": "text"
+      },
+      "disabled": {
+        "value": "#a8c3b3",
+        "type": "color",
+        "description": "Disabled text color (neutral-300)",
+        "category": "text"
+      },
+      "on-primary": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Text on primary color backgrounds",
+        "category": "text"
+      },
+      "on-secondary": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Text on secondary color backgrounds",
+        "category": "text"
+      }
+    },
+    
+    "border": {
+      "default": {
+        "value": "#c2d8cc",
+        "type": "color",
+        "description": "Default border color (neutral-base)",
+        "category": "border"
+      },
+      "subtle": {
+        "value": "#e8f0eb",
+        "type": "color",
+        "description": "Subtle border (neutral-100)",
+        "category": "border"
+      },
+      "strong": {
+        "value": "#8dae9a",
+        "type": "color",
+        "description": "Strong border (neutral-400)",
+        "category": "border"
+      },
+      "focus": {
+        "value": "#007c74",
+        "type": "color",
+        "description": "Focus ring border (primary)",
+        "category": "border"
+      }
+    }
+  },
+  
+  "typography": {
+    "_meta": {
+      "description": "Typography using PT Sans from Google Fonts",
+      "lastVerified": "2024-12-09",
+      "source": "James Kerby brand specifications"
+    },
+    
+    "font-family": {
+      "primary": {
+        "value": "'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "type": "fontFamily",
+        "description": "Primary font family - PT Sans",
+        "category": "typography",
+        "webfontUrl": "https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
+      },
+      "heading": {
+        "value": "'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "type": "fontFamily",
+        "description": "Heading font family - PT Sans",
+        "category": "typography",
+        "webfontUrl": "https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
+      },
+      "mono": {
+        "value": "'Monaco', 'Courier New', monospace",
+        "type": "fontFamily",
+        "description": "Monospace font family (for code)",
+        "category": "typography"
+      }
+    },
+    
+    "font-weight": {
+      "normal": {
+        "value": "400",
+        "type": "fontWeight",
+        "description": "Normal font weight",
+        "category": "typography"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeight",
+        "description": "Bold font weight",
+        "category": "typography"
+      }
+    },
+    
+    "font-size": {
+      "xs": {
+        "value": "12px",
+        "type": "dimension",
+        "description": "Extra small text (0.75rem)",
+        "category": "typography"
+      },
+      "sm": {
+        "value": "14px",
+        "type": "dimension",
+        "description": "Small text (0.875rem)",
+        "category": "typography"
+      },
+      "base": {
+        "value": "16px",
+        "type": "dimension",
+        "description": "Base text size (1rem)",
+        "category": "typography"
+      },
+      "lg": {
+        "value": "18px",
+        "type": "dimension",
+        "description": "Large text (1.125rem)",
+        "category": "typography"
+      },
+      "xl": {
+        "value": "20px",
+        "type": "dimension",
+        "description": "Extra large text (1.25rem)",
+        "category": "typography"
+      },
+      "2xl": {
+        "value": "24px",
+        "type": "dimension",
+        "description": "2x extra large (1.5rem)",
+        "category": "typography"
+      },
+      "3xl": {
+        "value": "30px",
+        "type": "dimension",
+        "description": "3x extra large (1.875rem)",
+        "category": "typography"
+      },
+      "4xl": {
+        "value": "36px",
+        "type": "dimension",
+        "description": "4x extra large (2.25rem)",
+        "category": "typography"
+      },
+      "5xl": {
+        "value": "48px",
+        "type": "dimension",
+        "description": "5x extra large (3rem)",
+        "category": "typography"
+      },
+      "6xl": {
+        "value": "60px",
+        "type": "dimension",
+        "description": "6x extra large (3.75rem)",
+        "category": "typography"
+      }
+    },
+    
+    "line-height": {
+      "tight": {
+        "value": "1.25",
+        "type": "number",
+        "description": "Tight line height (headings)",
+        "category": "typography"
+      },
+      "normal": {
+        "value": "1.5",
+        "type": "number",
+        "description": "Normal line height (body text)",
+        "category": "typography"
+      },
+      "relaxed": {
+        "value": "1.75",
+        "type": "number",
+        "description": "Relaxed line height (long-form content)",
+        "category": "typography"
+      }
+    },
+    
+    "letter-spacing": {
+      "tight": {
+        "value": "-0.025em",
+        "type": "dimension",
+        "description": "Tight letter spacing",
+        "category": "typography"
+      },
+      "normal": {
+        "value": "0",
+        "type": "dimension",
+        "description": "Normal letter spacing",
+        "category": "typography"
+      },
+      "wide": {
+        "value": "0.025em",
+        "type": "dimension",
+        "description": "Wide letter spacing",
+        "category": "typography"
+      },
+      "wider": {
+        "value": "0.05em",
+        "type": "dimension",
+        "description": "Wider letter spacing",
+        "category": "typography"
+      },
+      "widest": {
+        "value": "0.1em",
+        "type": "dimension",
+        "description": "Widest letter spacing",
+        "category": "typography"
+      }
+    }
+  },
+  
+  "spacing": {
+    "0": {
+      "value": "0px",
+      "type": "dimension",
+      "description": "Zero spacing",
+      "category": "spacing"
+    },
+    "px": {
+      "value": "1px",
+      "type": "dimension",
+      "description": "1 pixel spacing",
+      "category": "spacing"
+    },
+    "0.5": {
+      "value": "2px",
+      "type": "dimension",
+      "description": "0.125rem spacing",
+      "category": "spacing"
+    },
+    "1": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "0.25rem spacing",
+      "category": "spacing"
+    },
+    "2": {
+      "value": "8px",
+      "type": "dimension",
+      "description": "0.5rem spacing",
+      "category": "spacing"
+    },
+    "3": {
+      "value": "12px",
+      "type": "dimension",
+      "description": "0.75rem spacing",
+      "category": "spacing"
+    },
+    "4": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "1rem spacing (base unit)",
+      "category": "spacing"
+    },
+    "5": {
+      "value": "20px",
+      "type": "dimension",
+      "description": "1.25rem spacing",
+      "category": "spacing"
+    },
+    "6": {
+      "value": "24px",
+      "type": "dimension",
+      "description": "1.5rem spacing",
+      "category": "spacing"
+    },
+    "8": {
+      "value": "32px",
+      "type": "dimension",
+      "description": "2rem spacing",
+      "category": "spacing"
+    },
+    "10": {
+      "value": "40px",
+      "type": "dimension",
+      "description": "2.5rem spacing",
+      "category": "spacing"
+    },
+    "12": {
+      "value": "48px",
+      "type": "dimension",
+      "description": "3rem spacing",
+      "category": "spacing"
+    },
+    "16": {
+      "value": "64px",
+      "type": "dimension",
+      "description": "4rem spacing",
+      "category": "spacing"
+    },
+    "20": {
+      "value": "80px",
+      "type": "dimension",
+      "description": "5rem spacing",
+      "category": "spacing"
+    },
+    "24": {
+      "value": "96px",
+      "type": "dimension",
+      "description": "6rem spacing",
+      "category": "spacing"
+    },
+    "32": {
+      "value": "128px",
+      "type": "dimension",
+      "description": "8rem spacing",
+      "category": "spacing"
+    }
+  },
+  
+  "border-radius": {
+    "none": {
+      "value": "0px",
+      "type": "dimension",
+      "description": "No border radius",
+      "category": "border"
+    },
+    "sm": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "Small border radius",
+      "category": "border"
+    },
+    "md": {
+      "value": "8px",
+      "type": "dimension",
+      "description": "Medium border radius (default)",
+      "category": "border"
+    },
+    "lg": {
+      "value": "12px",
+      "type": "dimension",
+      "description": "Large border radius",
+      "category": "border"
+    },
+    "xl": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "Extra large border radius",
+      "category": "border"
+    },
+    "2xl": {
+      "value": "24px",
+      "type": "dimension",
+      "description": "2x extra large border radius",
+      "category": "border"
+    },
+    "full": {
+      "value": "9999px",
+      "type": "dimension",
+      "description": "Full border radius (pill/circle)",
+      "category": "border"
+    }
+  },
+  
+  "border-width": {
+    "0": {
+      "value": "0px",
+      "type": "dimension",
+      "description": "No border",
+      "category": "border"
+    },
+    "thin": {
+      "value": "1px",
+      "type": "dimension",
+      "description": "Thin border (default)",
+      "category": "border"
+    },
+    "medium": {
+      "value": "2px",
+      "type": "dimension",
+      "description": "Medium border",
+      "category": "border"
+    },
+    "thick": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "Thick border",
+      "category": "border"
+    }
+  },
+  
+  "shadow": {
+    "none": {
+      "value": "none",
+      "type": "shadow",
+      "description": "No shadow",
+      "category": "shadow"
+    },
+    "sm": {
+      "value": "0 1px 2px rgba(0, 124, 116, 0.05)",
+      "type": "shadow",
+      "description": "Small shadow with primary tint",
+      "category": "shadow"
+    },
+    "md": {
+      "value": "0 4px 6px rgba(0, 124, 116, 0.1)",
+      "type": "shadow",
+      "description": "Medium shadow with primary tint (default)",
+      "category": "shadow"
+    },
+    "lg": {
+      "value": "0 10px 15px rgba(0, 124, 116, 0.1)",
+      "type": "shadow",
+      "description": "Large shadow with primary tint",
+      "category": "shadow"
+    },
+    "xl": {
+      "value": "0 20px 25px rgba(0, 124, 116, 0.15)",
+      "type": "shadow",
+      "description": "Extra large shadow with primary tint",
+      "category": "shadow"
+    },
+    "2xl": {
+      "value": "0 25px 50px rgba(0, 124, 116, 0.2)",
+      "type": "shadow",
+      "description": "2x extra large shadow",
+      "category": "shadow"
+    },
+    "inner": {
+      "value": "inset 0 2px 4px rgba(0, 124, 116, 0.06)",
+      "type": "shadow",
+      "description": "Inner shadow",
+      "category": "shadow"
+    }
+  },
+  
+  "opacity": {
+    "0": { "value": "0", "type": "number", "description": "Fully transparent", "category": "opacity" },
+    "5": { "value": "0.05", "type": "number", "description": "5% opacity", "category": "opacity" },
+    "10": { "value": "0.1", "type": "number", "description": "10% opacity", "category": "opacity" },
+    "20": { "value": "0.2", "type": "number", "description": "20% opacity", "category": "opacity" },
+    "25": { "value": "0.25", "type": "number", "description": "25% opacity", "category": "opacity" },
+    "30": { "value": "0.3", "type": "number", "description": "30% opacity", "category": "opacity" },
+    "40": { "value": "0.4", "type": "number", "description": "40% opacity", "category": "opacity" },
+    "50": { "value": "0.5", "type": "number", "description": "50% opacity", "category": "opacity" },
+    "60": { "value": "0.6", "type": "number", "description": "60% opacity", "category": "opacity" },
+    "70": { "value": "0.7", "type": "number", "description": "70% opacity", "category": "opacity" },
+    "75": { "value": "0.75", "type": "number", "description": "75% opacity", "category": "opacity" },
+    "80": { "value": "0.8", "type": "number", "description": "80% opacity", "category": "opacity" },
+    "90": { "value": "0.9", "type": "number", "description": "90% opacity", "category": "opacity" },
+    "95": { "value": "0.95", "type": "number", "description": "95% opacity", "category": "opacity" },
+    "100": { "value": "1", "type": "number", "description": "Fully opaque", "category": "opacity" }
+  },
+  
+  "transition": {
+    "duration": {
+      "instant": { "value": "75ms", "type": "time", "description": "Instant transition", "category": "animation" },
+      "fast": { "value": "150ms", "type": "time", "description": "Fast transition", "category": "animation" },
+      "normal": { "value": "200ms", "type": "time", "description": "Normal transition (default)", "category": "animation" },
+      "slow": { "value": "300ms", "type": "time", "description": "Slow transition", "category": "animation" },
+      "slower": { "value": "500ms", "type": "time", "description": "Slower transition", "category": "animation" }
+    },
+    "timing": {
+      "linear": { "value": "linear", "type": "cubicBezier", "description": "Linear timing", "category": "animation" },
+      "ease": { "value": "ease", "type": "cubicBezier", "description": "Standard easing (default)", "category": "animation" },
+      "ease-in": { "value": "ease-in", "type": "cubicBezier", "description": "Ease in", "category": "animation" },
+      "ease-out": { "value": "ease-out", "type": "cubicBezier", "description": "Ease out", "category": "animation" },
+      "ease-in-out": { "value": "ease-in-out", "type": "cubicBezier", "description": "Ease in-out", "category": "animation" }
+    }
+  },
+  
+  "breakpoint": {
+    "xs": { "value": "480px", "type": "dimension", "description": "Extra small (mobile)", "category": "responsive" },
+    "sm": { "value": "640px", "type": "dimension", "description": "Small (mobile landscape)", "category": "responsive" },
+    "md": { "value": "768px", "type": "dimension", "description": "Medium (tablet)", "category": "responsive" },
+    "lg": { "value": "1024px", "type": "dimension", "description": "Large (desktop)", "category": "responsive" },
+    "xl": { "value": "1280px", "type": "dimension", "description": "Extra large (wide desktop)", "category": "responsive" },
+    "2xl": { "value": "1536px", "type": "dimension", "description": "2x extra large (ultra-wide)", "category": "responsive" }
+  },
+  
+  "z-index": {
+    "base": { "value": "0", "type": "number", "description": "Base z-index", "category": "layout" },
+    "dropdown": { "value": "1000", "type": "number", "description": "Dropdown menus", "category": "layout" },
+    "sticky": { "value": "1020", "type": "number", "description": "Sticky elements", "category": "layout" },
+    "fixed": { "value": "1030", "type": "number", "description": "Fixed elements", "category": "layout" },
+    "modal-backdrop": { "value": "1040", "type": "number", "description": "Modal backdrop", "category": "layout" },
+    "modal": { "value": "1050", "type": "number", "description": "Modal dialogs", "category": "layout" },
+    "popover": { "value": "1060", "type": "number", "description": "Popovers", "category": "layout" },
+    "tooltip": { "value": "1070", "type": "number", "description": "Tooltips", "category": "layout" }
+  },
+  
+  "assets": {
+    "_meta": {
+      "description": "Brand assets from Google Drive",
+      "lastVerified": "2024-12-09",
+      "source": "James Kerby Google Drive"
+    },
+    "logo": {
+      "primary": {
+        "value": "https://drive.google.com/file/d/136vHQXcwasJLz6u8S91eZvGrPYWV8c_O/view?usp=drive_link",
+        "type": "asset",
+        "description": "Primary logo",
+        "category": "brand",
+        "format": "SVG/PNG"
+      },
+      "favicon-svg": {
+        "value": "https://drive.google.com/file/d/136vHQXcwasJLz6u8S91eZvGrPYWV8c_O/view?usp=drive_link",
+        "type": "asset",
+        "description": "Favicon SVG",
+        "category": "brand",
+        "format": "SVG"
+      }
+    },
+    "imagery": {
+      "hero": {
+        "value": "https://drive.google.com/file/d/1M-6QLo0ZHOoO80JGw-QH6fVrHu3LVoEk/view?usp=drive_link",
+        "type": "asset",
+        "description": "Hero image for landing pages",
+        "category": "marketing",
+        "format": "JPG/PNG"
+      },
+      "og-image": {
+        "value": "https://drive.google.com/file/d/1vA0btPB9bajoR4xF3t17BgPCmSKDIgmf/view?usp=drive_link",
+        "type": "asset",
+        "description": "Open Graph (social media) image",
+        "category": "marketing",
+        "format": "JPG/PNG",
+        "dimensions": "1200x630px recommended"
+      }
+    }
+  },
+  
+  "platform-config": {
+    "web": {
+      "enabled": true,
+      "themeColor": "#007c74",
+      "description": "Web platform configuration"
+    },
+    "ios": {
+      "enabled": false,
+      "description": "iOS platform (future)"
+    },
+    "android": {
+      "enabled": false,
+      "description": "Android platform (future)"
+    }
+  }
+}

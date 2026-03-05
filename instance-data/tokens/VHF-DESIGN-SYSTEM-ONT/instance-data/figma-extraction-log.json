@@ -1,0 +1,159 @@
+{
+  "extractionMetadata": {
+    "date": "2026-02-10",
+    "method": "Figma MCP (Claude Code)",
+    "figmaFileKey": "CWQqQv1fk9SLYjZFQKA2lE",
+    "figmaFileName": "VHF-Design-System-v1.1",
+    "figmaFileUrl": "https://www.figma.com/design/CWQqQv1fk9SLYjZFQKA2lE/VHF-Design-System-v1.1?node-id=0-1&m=dev",
+    "toolsUsed": ["get_variable_defs", "get_metadata", "get_design_context", "get_screenshot"],
+    "targetOntology": "DS-ONT v1.0.0 (Azlan-EA-AAA)"
+  },
+  "extractedNodes": {
+    "Primary (32:128)": {
+      "surface/subtle": "#9dfff5",
+      "surface/lighter": "#00b0a5",
+      "surface/default": "#017c75",
+      "surface/darker": "#00423d",
+      "border/subtle": "#00f9e8",
+      "border/lighter": "#00b0a5",
+      "border/default": "#017c75",
+      "border/darker": "#002f2b",
+      "text/label": "#002f2b"
+    },
+    "Secondary (32:152)": {
+      "surface/subtle": "#fff3ee",
+      "surface/lighter": "#ffb48e",
+      "surface/default": "#ea923a",
+      "surface/darker": "#834a22",
+      "border/subtle": "#ffe7de",
+      "border/lighter": "#ffb48e",
+      "border/default": "#ea923a",
+      "border/darker": "#553016",
+      "text/label": "#553016"
+    },
+    "Error (32:175)": {
+      "surface/subtle": "#ffeae9",
+      "surface/lighter": "#ff8a84",
+      "surface/default": "#e54525",
+      "surface/darker": "#872318",
+      "border/subtle": "#ffd9d9",
+      "border/lighter": "#ff8a84",
+      "border/default": "#e54525",
+      "border/darker": "#5a1710",
+      "text/label": "#5a1710"
+    },
+    "Warning (32:221)": {
+      "surface/subtle": "#f8ffe6",
+      "surface/lighter": "#d2f934",
+      "surface/default": "#cbea00",
+      "surface/darker": "#687b1a",
+      "border/subtle": "#f1ffc9",
+      "border/lighter": "#d2f934",
+      "border/default": "#cbea00",
+      "border/darker": "#414e10",
+      "text/label": "#414e10"
+    },
+    "Information (32:245)": {
+      "surface/subtle": "#f2f6f2",
+      "surface/lighter": "#b5cab9",
+      "surface/default": "#a0afa1",
+      "surface/darker": "#515b53",
+      "border/subtle": "#e4eee5",
+      "border/lighter": "#b5cab9",
+      "border/default": "#a0afa1",
+      "border/darker": "#353c36",
+      "text/label": "#353c36"
+    },
+    "Success (32:268)": {
+      "surface/subtle": "#e6f8fd",
+      "surface/lighter": "#43d6f4",
+      "surface/default": "#49bad4",
+      "surface/darker": "#0b3f49",
+      "border/subtle": "#cef1fb",
+      "border/lighter": "#43d6f4",
+      "border/default": "#49bad4",
+      "border/darker": "#0b3f49",
+      "text/label": "#0b3f49"
+    },
+    "Accent (32:314)": {
+      "surface/subtle": "#ffefec",
+      "surface/lighter": "#ffa08d",
+      "surface/default": "#f16a21",
+      "surface/darker": "#8d3518",
+      "border/subtle": "#ffded9",
+      "border/lighter": "#ffa08d",
+      "border/default": "#f16a21",
+      "border/darker": "#5c2310",
+      "text/label": "#5c2310"
+    },
+    "Neutral (36:59)": {
+      "surface/subtle": "#f2f1f1",
+      "surface/default": "#ccc7c6",
+      "surface/disabled": "#ccc7c6",
+      "border/default": "#9f9896",
+      "border/disabled": "#b4afad",
+      "border/darker": "#686462",
+      "text/title": "#1e1d1d",
+      "text/body": "#322f2f",
+      "text/footnote": "#4b4847",
+      "text/caption": "#4b4847",
+      "text/negative": "#f2f1f1",
+      "text/disabled": "#ccc7c6"
+    },
+    "Typography (28:145)": {
+      "Font Headings": "PT Sans",
+      "Font Body": "PT Sans",
+      "Font Captions": "Open Sans",
+      "Weight/Regular": "Regular",
+      "Weight/Bold": "Bold",
+      "Size/5xl": "40",
+      "Size/4xl": "36",
+      "Size/3xl": "32",
+      "Size/2xl": "28",
+      "Size/xl": "24",
+      "Size/lg": "20",
+      "Letter-spacing/Normal": "0",
+      "Letter-spacing/Easy": "0.05",
+      "Letter-spacing/Looser": "0.1",
+      "Text/Headings Color": "#1c1f1f",
+      "Text/Body Color": "#303535"
+    },
+    "Size (28:169)": {
+      "spacing/xxsml": "0.25",
+      "spacing/xsml": "0.5",
+      "spacing/xxs": "2",
+      "spacing/xs": "4",
+      "spacing/sml": "8",
+      "spacing/med": "12",
+      "spacing/lrg": "20",
+      "spacing/xlrg": "30",
+      "radius/xs": "4",
+      "radius/sml": "8",
+      "radius/med": "12",
+      "radius/lrg": "20",
+      "radius/xl": "24",
+      "radius/xlrg": "30",
+      "radius/full": "999",
+      "border/stroke": "1"
+    }
+  },
+  "designContextCode": {
+    "nodeId": "32:128",
+    "framework": "React + Tailwind",
+    "fontDiscovered": "Jura (in Figma labels), PT Sans (in typography section)",
+    "cssVariablesUsed": ["--surface/subtle", "--surface/lighter", "--surface/default", "--surface/darker", "--border/subtle", "--border/lighter", "--border/default", "--border/darker", "--text/label", "--lrg"]
+  },
+  "screenshotCaptured": {
+    "nodeId": "0:1",
+    "description": "Full page screenshot showing all semantic token frames, neutral colours, typography section, and size/radii section"
+  },
+  "deltaFromSeed": {
+    "note": "The Figma file v1.1 has evolved from the seed file (vhf-seed-design-system.json v1.1.0). Key differences:",
+    "fontFamily": "Figma uses PT Sans (heading + body) + Open Sans (captions) vs seed Jura",
+    "secondaryMapping": "Figma secondary = orange palette; seed secondary = jade",
+    "warningMapping": "Figma warning = chartreuse/yellow-green (#cbea00); seed warning = orange (#ea923a)",
+    "informationMapping": "Figma information = jade (#a0afa1); seed information = cyan (#06b6d4)",
+    "successMapping": "Figma success = sky blue (#49bad4); seed success = green (#22c55e)",
+    "neutralColors": "Figma neutrals are warmer (brownish tints) vs seed cooler greys"
+  }
+}

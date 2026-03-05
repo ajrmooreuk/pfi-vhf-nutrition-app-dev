@@ -1,0 +1,960 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "vhf": "https://viridian.app/ontology/vhf/",
+    "recipe": "https://viridian.app/ontology/vhf/recipe/",
+    "diet": "https://viridian.app/ontology/vhf/diet/",
+    "theme": "https://viridian.app/ontology/vhf/theme/"
+  },
+
+  "@graph": [
+
+    {
+      "@id": "recipe:r-001",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Grilled Chicken Breast with Roasted Mediterranean Vegetables",
+      "description": "Simple high-protein dinner with colourful roasted veg. UK supermarket staples.",
+      "prepTime": "PT15M", "cookTime": "PT25M", "totalTime": "PT40M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.80",
+      "recipeIngredient": ["2 chicken breasts (300g)", "1 courgette", "1 red pepper", "1 red onion", "2 tbsp olive oil", "1 tsp mixed herbs", "salt and pepper"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "380 kcal", "proteinContent": "42g", "carbohydrateContent": "12g",
+        "fatContent": "18g", "fiberContent": "4g", "sodiumContent": "180mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:halal", "note": "if halal chicken used" },
+        { "@id": "diet:kosher", "note": "if kosher chicken used" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:paleo" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:low-fodmap", "note": "sub onion for chives" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:Mediterranean" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-002",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Paneer Tikka with Cucumber Raita and Brown Rice",
+      "description": "High-protein lacto-vegetarian meal. Paneer marinated in spiced yoghurt, grilled.",
+      "prepTime": "PT20M", "cookTime": "PT15M", "totalTime": "PT35M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Indian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.50",
+      "recipeIngredient": ["225g paneer", "150g Greek yoghurt", "1 tsp turmeric", "1 tsp garam masala", "1 tsp cumin", "1 cucumber", "200g brown rice", "fresh mint"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "520 kcal", "proteinContent": "32g", "carbohydrateContent": "48g",
+        "fatContent": "22g", "fiberContent": "4g", "sodiumContent": "220mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:hindu-vegetarian" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:halal", "note": "vegetarian, no meat needed" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:BudgetFriendly" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-003",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Salmon and Sweet Potato Tray Bake",
+      "description": "Omega-3 rich one-tray dinner. Anti-inflammatory, heart-healthy.",
+      "prepTime": "PT10M", "cookTime": "PT30M", "totalTime": "PT40M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 3.50",
+      "recipeIngredient": ["2 salmon fillets (250g)", "2 medium sweet potatoes", "1 broccoli head", "1 tbsp olive oil", "1 lemon", "2 garlic cloves", "fresh dill"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "450 kcal", "proteinContent": "35g", "carbohydrateContent": "38g",
+        "fatContent": "18g", "fiberContent": "7g", "sodiumContent": "120mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:pescatarian" },
+        { "@id": "diet:anti-inflammatory" },
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:high-protein" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:AntiInflammatory" },
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:QuickWeeknight" },
+        { "@id": "theme:WinterWarmer" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-004",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Keto Bacon Avocado Egg Cups",
+      "description": "High-fat, ultra-low carb breakfast. Avocado halves filled with bacon and baked egg.",
+      "prepTime": "PT5M", "cookTime": "PT15M", "totalTime": "PT20M",
+      "recipeYield": "2 servings", "recipeCategory": "Breakfast", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.80",
+      "recipeIngredient": ["2 ripe avocados", "4 rashers back bacon", "4 eggs", "black pepper", "chilli flakes"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving (2 halves)",
+        "calories": "420 kcal", "proteinContent": "24g", "carbohydrateContent": "4g",
+        "fatContent": "35g", "fiberContent": "7g", "sodiumContent": "680mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:keto" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:paleo" },
+        { "@id": "diet:gluten-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-005",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Chickpea and Spinach Coconut Curry (Vegan)",
+      "description": "Creamy plant-based curry. High fibre, budget-friendly. No nuts or soya.",
+      "prepTime": "PT10M", "cookTime": "PT25M", "totalTime": "PT35M",
+      "recipeYield": "4 servings", "recipeCategory": "Dinner", "recipeCuisine": "Indian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.20",
+      "recipeIngredient": ["2 tins chickpeas (800g)", "400ml coconut milk", "200g spinach", "1 tin chopped tomatoes", "2 tsp curry powder", "1 tsp turmeric", "1 onion", "3 garlic cloves", "fresh coriander", "rice to serve"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving with rice",
+        "calories": "380 kcal", "proteinContent": "16g", "carbohydrateContent": "48g",
+        "fatContent": "14g", "fiberContent": "10g", "sodiumContent": "150mg"
+      },
+      "suitableForDiet": ["https://schema.org/VeganDiet", "https://schema.org/VegetarianDiet", "https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:hindu-vegetarian" },
+        { "@id": "diet:halal" },
+        { "@id": "diet:kosher" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:anti-inflammatory" },
+        { "@id": "diet:mediterranean" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-peanuts", "client:allergen-soya", "client:allergen-cereals", "client:allergen-fish", "client:allergen-crustaceans"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:BudgetFriendly" },
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:AntiInflammatory" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-006",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Turkey Mince Lettuce Wraps with Ginger Soy Glaze",
+      "description": "Low-carb, high-protein Asian-style wraps. Quick weeknight dinner.",
+      "prepTime": "PT10M", "cookTime": "PT12M", "totalTime": "PT22M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Asian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.20",
+      "recipeIngredient": ["300g turkey mince", "1 gem lettuce", "2 tbsp soy sauce", "1 tbsp rice vinegar", "1 thumb ginger", "1 spring onion", "1 carrot (julienned)", "1 tsp sesame oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "290 kcal", "proteinContent": "38g", "carbohydrateContent": "8g",
+        "fatContent": "12g", "fiberContent": "2g", "sodiumContent": "820mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:halal", "note": "if halal turkey" },
+        { "@id": "diet:paleo", "note": "sub coconut aminos for soy" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:egg-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-007",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Overnight Protein Oats with Berries",
+      "description": "No-cook breakfast. Oats soaked in protein shake overnight. Grab-and-go.",
+      "prepTime": "PT5M", "cookTime": "PT0M", "totalTime": "PT5M",
+      "recipeYield": "1 serving", "recipeCategory": "Breakfast", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [6, 7, 8],
+      "recipe:costPerServing": "GBP 1.10",
+      "recipeIngredient": ["50g rolled oats", "1 scoop whey protein (30g)", "150ml semi-skimmed milk", "50g mixed berries", "1 tbsp chia seeds"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "380 kcal", "proteinContent": "32g", "carbohydrateContent": "42g",
+        "fatContent": "10g", "fiberContent": "8g", "sodiumContent": "90mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:high-protein" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:QuickWeeknight" },
+        { "@id": "theme:SummerLight" },
+        { "@id": "theme:BudgetFriendly" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-008",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Lamb Kofta with Tabbouleh Salad",
+      "description": "Middle Eastern spiced lamb with fresh herb bulgur salad. Halal-friendly.",
+      "prepTime": "PT20M", "cookTime": "PT15M", "totalTime": "PT35M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Middle Eastern",
+      "difficulty": "medium", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 3.20",
+      "recipeIngredient": ["400g lamb mince", "1 tsp cumin", "1 tsp coriander", "1 tsp paprika", "100g bulgur wheat", "1 bunch flat-leaf parsley", "1 bunch mint", "2 tomatoes", "1 lemon", "2 tbsp olive oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "520 kcal", "proteinContent": "36g", "carbohydrateContent": "35g",
+        "fatContent": "25g", "fiberContent": "6g", "sodiumContent": "280mg"
+      },
+      "recipe:suitableForDietType": [
+        { "@id": "diet:halal", "note": "use halal lamb" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:dairy-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:Mediterranean" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-009",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Cottage Pie with Cauliflower Mash (Low Carb)",
+      "description": "British comfort classic. Swapped potato mash for cauliflower to cut carbs by 60%.",
+      "prepTime": "PT20M", "cookTime": "PT35M", "totalTime": "PT55M",
+      "recipeYield": "4 servings", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "medium", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.00",
+      "recipeIngredient": ["500g beef mince (5% fat)", "1 large cauliflower", "1 onion", "2 carrots", "200ml beef stock", "2 tbsp tomato puree", "1 tsp Worcestershire sauce", "30g cheddar cheese", "1 tbsp olive oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "340 kcal", "proteinContent": "32g", "carbohydrateContent": "14g",
+        "fatContent": "18g", "fiberContent": "5g", "sodiumContent": "450mg"
+      },
+      "recipe:suitableForDietType": [
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:halal", "note": "sub halal beef, halal Worcestershire" },
+        { "@id": "diet:gluten-free", "note": "check Worcestershire sauce is GF" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:BritishComfort" },
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:FamilyMeals" },
+        { "@id": "theme:WinterWarmer" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-010",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Lentil and Roasted Aubergine Bowl (Vegan, Nut-Free)",
+      "description": "Protein-rich vegan bowl. No nuts, no soya. Uses lentils and seeds for protein.",
+      "prepTime": "PT15M", "cookTime": "PT30M", "totalTime": "PT45M",
+      "recipeYield": "2 servings", "recipeCategory": "Lunch", "recipeCuisine": "Mediterranean",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.60",
+      "recipeIngredient": ["200g puy lentils", "1 large aubergine", "100g cherry tomatoes", "1 tbsp tahini", "1 lemon", "2 tbsp olive oil", "1 tsp cumin", "fresh parsley", "2 tbsp pumpkin seeds"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "420 kcal", "proteinContent": "22g", "carbohydrateContent": "42g",
+        "fatContent": "18g", "fiberContent": "14g", "sodiumContent": "95mg"
+      },
+      "suitableForDiet": ["https://schema.org/VeganDiet", "https://schema.org/VegetarianDiet", "https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:hindu-vegetarian" },
+        { "@id": "diet:halal" },
+        { "@id": "diet:kosher" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:anti-inflammatory" },
+        { "@id": "diet:mediterranean" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-peanuts", "client:allergen-soya", "client:allergen-cereals", "client:allergen-fish", "client:allergen-crustaceans"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:Mediterranean" },
+        { "@id": "theme:BudgetFriendly" },
+        { "@id": "theme:AntiInflammatory" },
+        { "@id": "theme:BatchCookSunday" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-011",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Scrambled Tofu on Sourdough (Vegan Breakfast)",
+      "description": "Plant-based scramble with turmeric, nutritional yeast, and spinach on toast.",
+      "prepTime": "PT5M", "cookTime": "PT8M", "totalTime": "PT13M",
+      "recipeYield": "1 serving", "recipeCategory": "Breakfast", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.40",
+      "recipeIngredient": ["200g firm tofu", "2 slices sourdough", "50g spinach", "1 tsp turmeric", "2 tbsp nutritional yeast", "1 tsp olive oil", "black pepper"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "350 kcal", "proteinContent": "24g", "carbohydrateContent": "32g",
+        "fatContent": "14g", "fiberContent": "5g", "sodiumContent": "380mg"
+      },
+      "suitableForDiet": ["https://schema.org/VeganDiet", "https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:halal" },
+        { "@id": "diet:kosher" },
+        { "@id": "diet:dairy-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:QuickWeeknight" },
+        { "@id": "theme:BudgetFriendly" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-012",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Beef Stir-Fry with Pak Choi and Rice Noodles",
+      "description": "Quick high-protein Asian stir-fry. Gluten-free with tamari instead of soy.",
+      "prepTime": "PT10M", "cookTime": "PT10M", "totalTime": "PT20M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Asian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 3.00",
+      "recipeIngredient": ["300g beef sirloin strips", "200g rice noodles", "2 pak choi", "2 tbsp tamari", "1 thumb ginger", "2 garlic cloves", "1 red chilli", "1 tbsp sesame oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "480 kcal", "proteinContent": "38g", "carbohydrateContent": "45g",
+        "fatContent": "16g", "fiberContent": "3g", "sodiumContent": "720mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:halal", "note": "if halal beef" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-013",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Greek Yoghurt Parfait with Granola and Honey",
+      "description": "High-protein breakfast. Layer yoghurt, homemade granola, seasonal fruit, drizzle of honey.",
+      "prepTime": "PT5M", "cookTime": "PT0M", "totalTime": "PT5M",
+      "recipeYield": "1 serving", "recipeCategory": "Breakfast", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.30",
+      "recipeIngredient": ["200g Greek yoghurt (0% fat)", "40g granola (oat-based)", "1 tbsp honey", "80g seasonal berries"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "310 kcal", "proteinContent": "24g", "carbohydrateContent": "38g",
+        "fatContent": "6g", "fiberContent": "3g", "sodiumContent": "60mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:high-protein" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-eggs", "client:allergen-soya", "client:allergen-nuts", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:QuickWeeknight" },
+        { "@id": "theme:SummerLight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-014",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Slow-Cooker Chicken and White Bean Stew",
+      "description": "Batch-cook Sunday hero. Set and forget for 6 hours. Freezes brilliantly.",
+      "prepTime": "PT15M", "cookTime": "PT360M", "totalTime": "PT375M",
+      "recipeYield": "6 servings", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [10, 11, 12, 1, 2],
+      "recipe:costPerServing": "GBP 1.50",
+      "recipeIngredient": ["6 chicken thighs (bone-in)", "2 tins white beans (800g)", "2 carrots", "2 celery sticks", "1 onion", "3 garlic cloves", "500ml chicken stock", "1 tsp thyme", "1 bay leaf"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "380 kcal", "proteinContent": "34g", "carbohydrateContent": "28g",
+        "fatContent": "14g", "fiberContent": "8g", "sodiumContent": "520mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:halal", "note": "if halal chicken" },
+        { "@id": "diet:anti-inflammatory" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:BritishComfort" },
+        { "@id": "theme:WinterWarmer" },
+        { "@id": "theme:BudgetFriendly" },
+        { "@id": "theme:FamilyMeals" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-015",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Jain Dal Tadka with Jeera Rice (No Onion/Garlic)",
+      "description": "Jain-compliant lentil dal. No root vegetables, no onion, no garlic. Uses asafoetida for flavour.",
+      "prepTime": "PT10M", "cookTime": "PT25M", "totalTime": "PT35M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Indian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 0.90",
+      "recipeIngredient": ["200g yellow moong dal", "1 tomato", "1 green chilli", "1/4 tsp asafoetida (hing)", "1 tsp cumin seeds", "1 tsp turmeric", "200g basmati rice", "1 tbsp ghee", "fresh coriander"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving with rice",
+        "calories": "440 kcal", "proteinContent": "20g", "carbohydrateContent": "68g",
+        "fatContent": "8g", "fiberContent": "10g", "sodiumContent": "45mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:jain" },
+        { "@id": "diet:hindu-vegetarian" },
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:halal" },
+        { "@id": "diet:gluten-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-peanuts", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish", "client:allergen-cereals", "client:allergen-crustaceans"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:BudgetFriendly" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-016",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Smoked Mackerel Salad with Beetroot and Horseradish",
+      "description": "Omega-3 rich lunch. Low-FODMAP friendly. Excellent for anti-inflammatory diets.",
+      "prepTime": "PT10M", "cookTime": "PT0M", "totalTime": "PT10M",
+      "recipeYield": "1 serving", "recipeCategory": "Lunch", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [9, 10, 11],
+      "recipe:costPerServing": "GBP 2.50",
+      "recipeIngredient": ["1 smoked mackerel fillet (120g)", "2 cooked beetroot", "1 tbsp horseradish sauce", "60g mixed leaves", "1 tbsp olive oil", "1 lemon"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "380 kcal", "proteinContent": "26g", "carbohydrateContent": "12g",
+        "fatContent": "26g", "fiberContent": "3g", "sodiumContent": "680mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:pescatarian" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:anti-inflammatory" },
+        { "@id": "diet:low-fodmap" },
+        { "@id": "diet:paleo" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:AntiInflammatory" },
+        { "@id": "theme:AutumnHarvest" },
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-017",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Seitan Stir-Fry with Broccoli and Sesame (Vegan, Nut-Free, Soya-Free)",
+      "description": "High-protein vegan stir-fry using seitan. No soya, no nuts. Uses coconut aminos.",
+      "prepTime": "PT10M", "cookTime": "PT10M", "totalTime": "PT20M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Asian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.80",
+      "recipeIngredient": ["250g seitan", "1 broccoli head", "2 tbsp coconut aminos", "1 tbsp sesame oil", "1 thumb ginger", "1 red chilli", "1 tbsp sesame seeds", "200g jasmine rice"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving with rice",
+        "calories": "480 kcal", "proteinContent": "38g", "carbohydrateContent": "52g",
+        "fatContent": "12g", "fiberContent": "6g", "sodiumContent": "420mg"
+      },
+      "suitableForDiet": ["https://schema.org/VeganDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:dairy-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-peanuts", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:QuickWeeknight" }
+      ],
+      "vhf:note": "Contains gluten (seitan = wheat gluten). NOT suitable for coeliac/gluten-free."
+    },
+
+    {
+      "@id": "recipe:r-018",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Egg-Free Coconut Pancakes (Keto)",
+      "description": "Keto breakfast. No eggs, no dairy. Uses coconut flour and flax eggs.",
+      "prepTime": "PT10M", "cookTime": "PT10M", "totalTime": "PT20M",
+      "recipeYield": "2 servings", "recipeCategory": "Breakfast", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.60",
+      "recipeIngredient": ["30g coconut flour", "2 tbsp ground flaxseed", "100ml coconut cream", "1 tsp vanilla extract", "1/2 tsp baking powder", "coconut oil for frying", "50g raspberries"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving (3 pancakes)",
+        "calories": "320 kcal", "proteinContent": "8g", "carbohydrateContent": "10g",
+        "fatContent": "28g", "fiberContent": "8g", "sodiumContent": "120mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet", "https://schema.org/VeganDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:keto" },
+        { "@id": "diet:vegan" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:egg-free" },
+        { "@id": "diet:paleo" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-019",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Tuna Niçoise Salad",
+      "description": "Classic French protein salad. Low-FODMAP compatible. Anti-inflammatory omega-3.",
+      "prepTime": "PT15M", "cookTime": "PT10M", "totalTime": "PT25M",
+      "recipeYield": "2 servings", "recipeCategory": "Lunch", "recipeCuisine": "French",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [5, 6, 7, 8],
+      "recipe:costPerServing": "GBP 2.80",
+      "recipeIngredient": ["2 fresh tuna steaks (200g)", "200g green beans", "4 eggs", "100g cherry tomatoes", "50g black olives", "200g new potatoes", "1 tbsp olive oil", "1 tbsp Dijon mustard", "1 lemon"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "420 kcal", "proteinContent": "40g", "carbohydrateContent": "22g",
+        "fatContent": "20g", "fiberContent": "5g", "sodiumContent": "380mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:pescatarian" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:anti-inflammatory" },
+        { "@id": "diet:low-fodmap" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:Mediterranean" },
+        { "@id": "theme:SummerLight" },
+        { "@id": "theme:AntiInflammatory" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-020",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Chicken Shawarma Bowl with Hummus and Pickled Red Cabbage",
+      "description": "Middle Eastern spiced chicken bowl. Halal-friendly. High protein, moderate carbs.",
+      "prepTime": "PT20M", "cookTime": "PT15M", "totalTime": "PT35M",
+      "recipeYield": "2 servings", "recipeCategory": "Lunch", "recipeCuisine": "Middle Eastern",
+      "difficulty": "medium", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.60",
+      "recipeIngredient": ["300g chicken thigh", "2 flatbreads", "100g hummus", "100g pickled red cabbage", "1 cucumber", "2 tomatoes", "1 tsp cumin", "1 tsp coriander", "1 tsp turmeric", "1 tsp paprika", "2 tbsp olive oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "520 kcal", "proteinContent": "38g", "carbohydrateContent": "42g",
+        "fatContent": "22g", "fiberContent": "8g", "sodiumContent": "520mg"
+      },
+      "recipe:suitableForDietType": [
+        { "@id": "diet:halal", "note": "use halal chicken" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:dairy-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:Mediterranean" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-021",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Venison Sausage Casserole with Root Vegetables",
+      "description": "Low-fat game meat casserole. Rich in iron and B12. Autumn/winter seasonal.",
+      "prepTime": "PT15M", "cookTime": "PT45M", "totalTime": "PT60M",
+      "recipeYield": "4 servings", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [9, 10, 11, 12, 1, 2],
+      "recipe:costPerServing": "GBP 2.80",
+      "recipeIngredient": ["8 venison sausages", "2 parsnips", "2 carrots", "1 swede", "1 onion", "400ml beef stock", "2 tbsp tomato puree", "1 tsp rosemary", "1 tsp thyme"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "380 kcal", "proteinContent": "28g", "carbohydrateContent": "32g",
+        "fatContent": "14g", "fiberContent": "8g", "sodiumContent": "580mg"
+      },
+      "recipe:suitableForDietType": [
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:gluten-free", "note": "check sausage casings are GF" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:BritishComfort" },
+        { "@id": "theme:AutumnHarvest" },
+        { "@id": "theme:WinterWarmer" },
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:FamilyMeals" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-022",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Prawn and Courgette Noodles (Low Carb)",
+      "description": "Spiralised courgette replaces noodles. High protein, low carb, very quick.",
+      "prepTime": "PT10M", "cookTime": "PT8M", "totalTime": "PT18M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Asian",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [6, 7, 8, 9],
+      "recipe:costPerServing": "GBP 3.50",
+      "recipeIngredient": ["300g king prawns", "2 large courgettes (spiralised)", "2 tbsp tamari", "1 tbsp sesame oil", "1 red chilli", "2 garlic cloves", "1 lime"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "220 kcal", "proteinContent": "32g", "carbohydrateContent": "8g",
+        "fatContent": "8g", "fiberContent": "2g", "sodiumContent": "720mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:pescatarian" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:keto" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:paleo" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:SummerLight" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-023",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Quinoa Power Bowl with Roasted Chickpeas and Tahini",
+      "description": "Complete vegan protein bowl. Quinoa + chickpeas = complete amino acid profile.",
+      "prepTime": "PT10M", "cookTime": "PT25M", "totalTime": "PT35M",
+      "recipeYield": "2 servings", "recipeCategory": "Lunch", "recipeCuisine": "Mediterranean",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 1.80",
+      "recipeIngredient": ["150g quinoa", "1 tin chickpeas (400g)", "1 sweet potato", "100g kale", "2 tbsp tahini", "1 lemon", "1 tsp cumin", "1 tsp smoked paprika", "2 tbsp olive oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "480 kcal", "proteinContent": "20g", "carbohydrateContent": "58g",
+        "fatContent": "18g", "fiberContent": "12g", "sodiumContent": "140mg"
+      },
+      "suitableForDiet": ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:hindu-vegetarian" },
+        { "@id": "diet:halal" },
+        { "@id": "diet:kosher" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" },
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:anti-inflammatory" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-peanuts", "client:allergen-soya", "client:allergen-cereals", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:BudgetFriendly" },
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:EnergyBoost" },
+        { "@id": "theme:AntiInflammatory" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-024",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Baked Cod with Lemon Caper Butter and Asparagus",
+      "description": "Light spring fish dish. Low-FODMAP, gluten-free, anti-inflammatory.",
+      "prepTime": "PT10M", "cookTime": "PT18M", "totalTime": "PT28M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [3, 4, 5],
+      "recipe:costPerServing": "GBP 3.80",
+      "recipeIngredient": ["2 cod fillets (300g)", "200g asparagus", "30g butter", "2 tbsp capers", "1 lemon", "fresh dill", "black pepper"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "300 kcal", "proteinContent": "36g", "carbohydrateContent": "6g",
+        "fatContent": "14g", "fiberContent": "3g", "sodiumContent": "380mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:pescatarian" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:keto" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:low-fodmap" },
+        { "@id": "diet:anti-inflammatory" },
+        { "@id": "diet:mediterranean" },
+        { "@id": "diet:kosher" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-eggs", "client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:SpringFresh" },
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:AntiInflammatory" },
+        { "@id": "theme:LowFODMAP" },
+        { "@id": "theme:HighProtein" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-025",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Steak and Egg Keto Plate",
+      "description": "Carnivore/keto breakfast or dinner. Ribeye with fried eggs and wilted spinach.",
+      "prepTime": "PT5M", "cookTime": "PT12M", "totalTime": "PT17M",
+      "recipeYield": "1 serving", "recipeCategory": "Dinner", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 5.50",
+      "recipeIngredient": ["1 ribeye steak (250g)", "2 eggs", "100g spinach", "1 tbsp butter", "salt and pepper"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "620 kcal", "proteinContent": "52g", "carbohydrateContent": "3g",
+        "fatContent": "44g", "fiberContent": "2g", "sodiumContent": "320mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:keto" },
+        { "@id": "diet:carnivore" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:paleo" },
+        { "@id": "diet:gluten-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:HighProtein" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-026",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Butternut Squash and Sage Risotto",
+      "description": "Creamy autumn risotto. Vegetarian comfort food. Rich in beta-carotene.",
+      "prepTime": "PT15M", "cookTime": "PT30M", "totalTime": "PT45M",
+      "recipeYield": "4 servings", "recipeCategory": "Dinner", "recipeCuisine": "Italian",
+      "difficulty": "medium", "recipe:ukAvailable": true, "recipe:seasonal": true,
+      "recipe:seasonalMonths": [9, 10, 11],
+      "recipe:costPerServing": "GBP 1.50",
+      "recipeIngredient": ["300g arborio rice", "1 butternut squash", "1 onion", "150ml white wine", "800ml vegetable stock", "30g parmesan", "fresh sage", "2 tbsp butter"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving",
+        "calories": "420 kcal", "proteinContent": "10g", "carbohydrateContent": "68g",
+        "fatContent": "12g", "fiberContent": "4g", "sodiumContent": "480mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:gluten-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:AutumnHarvest" },
+        { "@id": "theme:BritishComfort" },
+        { "@id": "theme:BatchCookSunday" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-027",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Egg Muffins Three Ways (Meal Prep)",
+      "description": "Batch-cook breakfast muffins. Make 12, fridge for 4 days. Three flavour combos.",
+      "prepTime": "PT15M", "cookTime": "PT20M", "totalTime": "PT35M",
+      "recipeYield": "12 muffins (4 servings of 3)", "recipeCategory": "Breakfast", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 0.80",
+      "recipeIngredient": ["12 eggs", "100g spinach", "100g cherry tomatoes", "50g feta cheese", "4 rashers bacon", "1 red pepper", "salt and pepper"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "3 muffins",
+        "calories": "280 kcal", "proteinContent": "22g", "carbohydrateContent": "4g",
+        "fatContent": "20g", "fiberContent": "1g", "sodiumContent": "450mg"
+      },
+      "suitableForDiet": ["https://schema.org/GlutenFreeDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:keto" },
+        { "@id": "diet:low-carb" },
+        { "@id": "diet:high-protein" },
+        { "@id": "diet:gluten-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-soya", "client:allergen-cereals", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:LowCarb" },
+        { "@id": "theme:BudgetFriendly" },
+        { "@id": "theme:QuickWeeknight" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-028",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Thai Green Curry with Tofu (Vegan)",
+      "description": "Fragrant coconut curry. Soya-based tofu but can sub chickpeas for soya-free.",
+      "prepTime": "PT15M", "cookTime": "PT20M", "totalTime": "PT35M",
+      "recipeYield": "2 servings", "recipeCategory": "Dinner", "recipeCuisine": "Thai",
+      "difficulty": "medium", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.20",
+      "recipeIngredient": ["300g firm tofu", "400ml coconut milk", "2 tbsp green curry paste", "1 courgette", "100g mangetout", "100g baby corn", "fresh basil", "200g jasmine rice"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 serving with rice",
+        "calories": "520 kcal", "proteinContent": "22g", "carbohydrateContent": "54g",
+        "fatContent": "24g", "fiberContent": "5g", "sodiumContent": "480mg"
+      },
+      "suitableForDiet": ["https://schema.org/VeganDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegan" },
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:halal" },
+        { "@id": "diet:gluten-free" },
+        { "@id": "diet:dairy-free" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-nuts", "client:allergen-cereals", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:AsianFusion" },
+        { "@id": "theme:BudgetFriendly" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-029",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Grilled Halloumi and Roasted Veg Wrap",
+      "description": "Vegetarian lunch. High protein from halloumi. Quick assembly.",
+      "prepTime": "PT10M", "cookTime": "PT12M", "totalTime": "PT22M",
+      "recipeYield": "2 servings", "recipeCategory": "Lunch", "recipeCuisine": "Mediterranean",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 2.40",
+      "recipeIngredient": ["200g halloumi", "2 large wholemeal wraps", "1 courgette", "1 red pepper", "50g rocket", "2 tbsp hummus", "1 tbsp olive oil"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "1 wrap",
+        "calories": "480 kcal", "proteinContent": "26g", "carbohydrateContent": "36g",
+        "fatContent": "26g", "fiberContent": "6g", "sodiumContent": "680mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegetarian" },
+        { "@id": "diet:halal", "note": "if halal halloumi" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-nuts", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:QuickWeeknight" },
+        { "@id": "theme:Mediterranean" }
+      ]
+    },
+
+    {
+      "@id": "recipe:r-030",
+      "@type": ["recipe:Recipe", "Recipe"],
+      "name": "Banana Oat Energy Balls (Snack)",
+      "description": "No-bake snack. 5 ingredients. Great for pre/post workout energy.",
+      "prepTime": "PT10M", "cookTime": "PT0M", "totalTime": "PT10M",
+      "recipeYield": "12 balls (4 servings of 3)", "recipeCategory": "Snack", "recipeCuisine": "British",
+      "difficulty": "easy", "recipe:ukAvailable": true, "recipe:seasonal": false,
+      "recipe:costPerServing": "GBP 0.60",
+      "recipeIngredient": ["2 ripe bananas", "100g rolled oats", "2 tbsp peanut butter", "1 tbsp honey", "2 tbsp dark chocolate chips"],
+      "nutrition": {
+        "@type": "NutritionInformation", "servingSize": "3 balls",
+        "calories": "210 kcal", "proteinContent": "6g", "carbohydrateContent": "32g",
+        "fatContent": "7g", "fiberContent": "3g", "sodiumContent": "40mg"
+      },
+      "suitableForDiet": ["https://schema.org/VegetarianDiet"],
+      "recipe:suitableForDietType": [
+        { "@id": "diet:vegetarian" }
+      ],
+      "recipe:excludesAllergen": ["client:allergen-milk", "client:allergen-eggs", "client:allergen-soya", "client:allergen-fish"],
+      "recipe:belongsToTheme": [
+        { "@id": "theme:EnergyBoost" },
+        { "@id": "theme:BatchCookSunday" },
+        { "@id": "theme:BudgetFriendly" }
+      ]
+    }
+  ]
+}

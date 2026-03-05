@@ -1,14 +1,16 @@
 {
   "id": "PFI-VHF",
   "name": "VHF Nutrition App",
-  "version": "0.1.0",
-  "status": "poc",
+  "version": "0.2.0",
+  "status": "development",
   "industry": "HealthTech / Nutrition",
   "orgProfile": {
-    "name": "VHF Nutrition",
-    "type": "PoC Instance",
+    "name": "Viridian Health & Fitness",
+    "type": "PFI Instance",
     "vertical": "HealthTech",
-    "jurisdictions": ["UK"]
+    "jurisdictions": ["UK"],
+    "coach": "James Kerby",
+    "location": "Winchester, UK"
   },
   "pfcPin": "latest",
   "license": "pfc-enterprise",
@@ -19,14 +21,52 @@
     "Foundation",
     "Orchestration"
   ],
-  "requirementScopes": ["PRODUCT", "COMPLIANCE", "SECURITY"],
-  "maturityLevel": 0,
+  "instanceOntologies": ["NUT", "VP", "RRR", "KPI", "BSC", "EMC", "DS"],
+  "requirementScopes": ["PRODUCT", "OPERATIONAL", "COMPLIANCE", "SECURITY"],
+  "maturityLevel": 1,
   "brandConfig": {
-    "theme": "pfc"
+    "theme": "vhf-viridian",
+    "primaryColor": "#007c74",
+    "secondaryColor": "#f16a21",
+    "fontFamily": "PT Sans",
+    "figmaFileKey": "CWQqQv1fk9SLYjZFQKA2lE",
+    "dsOntInstance": "instance-data/tokens/VHF-DESIGN-SYSTEM-ONT/vhf-viridian-ds-instance-v1.0.0.jsonld"
+  },
+  "skeleton": {
+    "pfiOverride": "instance-data/config/vhf-app-skeleton-v1.0.0.jsonld",
+    "zones": 10,
+    "navItemsL4": 6,
+    "actions": 12
+  },
+  "epics": {
+    "delivered": ["Epic 1: VHF Custom Skills — 30-Day Meal Plan Generator (#7)"],
+    "planned": [
+      "Epic 2: VHF Application Skeleton & Zone Framework",
+      "Epic 3: NUT-ONT Integration & OAA Compliance",
+      "Epic 4: DS-ONT Token Bridge & Brand Rendering",
+      "Epic 5: Meal Plan UI — Skeleton Zone Views",
+      "Epic 6: Coach Workflow & Plan Lifecycle",
+      "Epic 7: Pencil Design Artefacts",
+      "Epic 8: Supabase Persistence & Security"
+    ],
+    "planRef": "PBS/PLAN-VHF-Skeleton-Application-Epics-2026-03-05.md"
+  },
+  "skills": {
+    "mealPlan": ".claude/commands/meal-plan.md",
+    "mealPlanView": ".claude/commands/meal-plan-view.md",
+    "mealPlanHtml": ".claude/commands/meal-plan-html.md",
+    "mealPlanTest": ".claude/commands/meal-plan-test.md"
   },
   "repos": {
     "dev": "ajrmooreuk/pfi-vhf-nutrition-app-dev",
     "test": "ajrmooreuk/pfi-vhf-nutrition-app-test",
-    "prod": "ajrmooreuk/pfi-vhf-nutrition-app-prod"
+    "prod": "ajrmooreuk/pfi-vhf-nutrition-app-prod",
+    "legacy": "ajrmooreuk/VHF-App-Mk3"
+  },
+  "azlanCrossRefs": {
+    "nutOnt": "Azlan-EA-AAA Epic 50 (#748)",
+    "dsOnt": "Azlan-EA-AAA Epic 8 (#80)",
+    "securityMvp": "Azlan-EA-AAA Epic 10A (#127)",
+    "buildPipeline": "Azlan-EA-AAA Epic 56 (#834)"
   }
 }
