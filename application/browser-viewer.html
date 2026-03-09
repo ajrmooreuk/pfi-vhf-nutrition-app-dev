@@ -76,6 +76,10 @@
           <div class="stat-card-value" id="stat-total-recipes">0</div>
           <div class="stat-card-label">Recipes</div>
         </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="stat-avg-kcal">—</div>
+          <div class="stat-card-label">Avg Target kcal</div>
+        </div>
       </div>
 
       <div class="client-grid" id="client-grid">
@@ -105,6 +109,9 @@
           </div>
           <div style="display:flex; gap: var(--ds-spacing-sm)">
             <button class="btn-approve" onclick="window.VHF_ACTIONS?.approvePlan()">Approve</button>
+            <button class="btn-reject" onclick="window.VHF_ACTIONS?.rejectPlan()">Reject</button>
+            <button class="btn-secondary" onclick="window.VHF_ACTIONS?.showShoppingList()">Shopping List</button>
+            <button class="btn-secondary" onclick="window.VHF_ACTIONS?.showQualityDashboard()">Quality Report</button>
           </div>
         </div>
 
@@ -165,8 +172,13 @@
           >
         </div>
         <div id="recipe-count" class="text-sm text-muted" style="margin-bottom: var(--ds-spacing-sm)"></div>
-        <div class="recipe-card-grid" id="recipe-grid">
-          <div class="empty-state"><p>Loading recipes…</p></div>
+        <div class="recipe-browser-layout">
+          <div class="recipe-card-grid" id="recipe-grid">
+            <div class="empty-state"><p>Loading recipes…</p></div>
+          </div>
+          <div class="recipe-detail-panel" id="recipe-detail" style="display:none">
+            <div id="recipe-detail-content"></div>
+          </div>
         </div>
       </div>
     </section>

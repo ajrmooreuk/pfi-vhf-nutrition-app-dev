@@ -127,6 +127,16 @@ function renderDashboard() {
     state.plans.filter(p => p['vhf:planStatus'] === 'pending' || p['vhf:planStatus'] === 'pending_review').length;
   document.getElementById('stat-total-recipes').textContent = state.recipes.length;
 
+  // Avg daily calorie target across clients with macro targets set
+  const kcalValues = state.personas
+    .map(p => parseInt(p['client:hasMacroTarget']?.dailyCalories || p['vhf:macroTargets']?.['vhf:calories'] || 0))
+    .filter(v => v > 0);
+  const avgKcal = kcalValues.length > 0
+    ? Math.round(kcalValues.reduce((s, v) => s + v, 0) / kcalValues.length)
+    : null;
+  const avgKcalEl = document.getElementById('stat-avg-kcal');
+  if (avgKcalEl) avgKcalEl.textContent = avgKcal ? `${avgKcal}` : '—';
+
   const lastUpdated = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   document.getElementById('dashboard-last-updated').textContent = lastUpdated;
   document.getElementById('header-client-count').textContent = `${state.personas.length} clients`;

@@ -641,11 +641,185 @@ button {
   margin-bottom: 4px;
 }
 
+.recipe-card.active { border-color: var(--ds-color-primary); background: var(--ds-color-primary-light); }
+
 .recipe-card-meta {
   font-size: 0.75rem;
   color: var(--ds-text-secondary);
   display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.recipe-meta-tag {
+  background: var(--ds-surface-muted);
+  padding: 1px 6px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.recipe-cost { color: var(--ds-color-primary); font-weight: var(--ds-font-weight-medium); }
+
+.recipe-nutrition-row {
+  display: flex;
+  gap: var(--ds-spacing-xs);
+  margin-top: 4px;
+}
+
+.recipe-nut-badge {
+  background: #ecfdf5;
+  color: #065f46;
+  border-radius: var(--ds-radius-sm);
+  padding: 1px 6px;
+  font-size: 0.7rem;
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.recipe-nut-protein {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+/* Recipe browser two-column layout when detail is open */
+.recipe-browser-layout {
+  display: flex;
+  gap: var(--ds-spacing-md);
+  align-items: flex-start;
+}
+
+.recipe-browser-layout .recipe-card-grid {
+  flex: 0 0 320px;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+}
+
+.recipe-detail-panel {
+  flex: 1;
+  background: var(--ds-surface-subtle);
+  border-radius: var(--ds-radius-lg);
+  border: 1px solid var(--ds-border-default);
+  padding: var(--ds-spacing-md);
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+  flex-direction: column;
+  gap: var(--ds-spacing-md);
+}
+
+.recipe-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--ds-spacing-sm);
+}
+
+.recipe-detail-name {
+  font-size: var(--ds-font-size-lg);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-text-primary);
+  margin: 0;
+}
+
+.recipe-detail-desc {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-text-secondary);
+  margin-bottom: var(--ds-spacing-md);
+}
+
+.recipe-detail-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: var(--ds-spacing-sm);
+  margin-bottom: var(--ds-spacing-md);
+  padding: var(--ds-spacing-sm);
+  background: var(--ds-surface-default);
+  border-radius: var(--ds-radius-md);
+}
+
+.recipe-detail-meta-item label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ds-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recipe-detail-meta-item span {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.recipe-detail-nutrition {
+  margin-bottom: var(--ds-spacing-md);
+}
+
+.recipe-detail-nutrition h4,
+.recipe-detail-ingredients h4,
+.recipe-detail-diets h4 {
+  font-size: 0.75rem;
+  font-weight: var(--ds-font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ds-text-muted);
+  margin-bottom: var(--ds-spacing-xs);
+}
+
+.recipe-nut-grid {
+  display: flex;
+  gap: var(--ds-spacing-sm);
+  flex-wrap: wrap;
+}
+
+.recipe-nut-item {
+  background: var(--ds-surface-default);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-spacing-xs) var(--ds-spacing-sm);
+  text-align: center;
+  min-width: 70px;
+  border: 1px solid var(--ds-border-subtle);
+}
+
+.nut-value {
+  display: block;
+  font-size: var(--ds-font-size-base);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-color-primary);
+}
+
+.nut-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ds-text-muted);
+}
+
+.recipe-detail-ingredients {
+  margin-bottom: var(--ds-spacing-md);
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-list li {
+  font-size: var(--ds-font-size-sm);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--ds-border-subtle);
+  color: var(--ds-text-primary);
+}
+
+.ingredient-list li:last-child { border-bottom: none; }
+.ingredient-list li::before { content: '• '; color: var(--ds-color-primary); }
+
+.recipe-detail-diets { margin-bottom: var(--ds-spacing-sm); }
+
+/* Day kcal total in meal plan grid */
+.day-kcal-total {
+  font-size: 0.7rem;
+  color: var(--ds-color-primary);
+  font-weight: var(--ds-font-weight-medium);
+  margin-top: 4px;
+  text-align: right;
 }
 
 /* ========================================
@@ -743,6 +917,23 @@ button {
 }
 
 .btn-reject:hover { background: #fef2f2; }
+
+.btn-secondary {
+  padding: var(--ds-spacing-xs) var(--ds-spacing-md);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-surface-subtle);
+  color: var(--ds-text-secondary);
+  border: 1px solid var(--ds-border-default);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  cursor: pointer;
+  transition: all var(--ds-transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--ds-color-primary);
+  color: var(--ds-color-primary);
+}
 
 /* ========================================
    Zone: Z-VHF-007 — Quality Dashboard (Sliding left)

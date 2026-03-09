@@ -272,9 +272,10 @@ function _renderPlanViewer(plan) {
   const titleEl = document.getElementById('plan-viewer-title');
   const clientNameEl = document.getElementById('plan-viewer-client-name');
   const statusEl = document.getElementById('plan-viewer-status');
-  const gridEl = document.getElementById('plan-day-grid');
+  const weekTabsEl = document.getElementById('week-tabs');
 
   if (!plan) {
+    const gridEl = document.getElementById('plan-day-grid');
     if (gridEl) gridEl.innerHTML = '<div class="empty-state"><p>No plan loaded.</p></div>';
     return;
   }
@@ -289,7 +290,15 @@ function _renderPlanViewer(plan) {
     statusEl.className = `plan-status-badge status-${planStatus.replace('_', '-')}`;
   }
 
-  // Select first week by default
+  // Generate week tabs dynamically from plan data
+  const weeks = plan['vhf:weeks'] || [];
+  if (weekTabsEl && weeks.length > 0) {
+    weekTabsEl.innerHTML = weeks.map((w, i) => {
+      const label = w['vhf:weekLabel'] || w.weekLabel || `Week ${i + 1}`;
+      return `<button class="week-tab${i === 0 ? ' active' : ''}" data-week="${i}" onclick="window.vhfSelectWeek(${i})">${label}</button>`;
+    }).join('');
+  }
+
   window.vhfSelectWeek(0);
 }
 
@@ -302,7 +311,6 @@ window.vhfSelectWeek = function(weekIndex) {
   const weeks = plan['vhf:weeks'] || [];
   const week = weeks[weekIndex];
 
-  // Update tab active state
   document.querySelectorAll('.week-tab').forEach((tab, i) => {
     tab.classList.toggle('active', i === weekIndex);
   });
@@ -318,6 +326,11 @@ window.vhfSelectWeek = function(weekIndex) {
   gridEl.innerHTML = days.map((day, i) => {
     const meals = day['meals'] || day['vhf:meals'] || [];
     const dayLabel = day.dayOfWeek?.slice(0, 3) || dayLabels[i] || `D${i + 1}`;
+    // Sum kcal from meal nutrition if available
+    const totalKcal = meals.reduce((sum, meal) => {
+      const kcal = parseInt(meal.calories || meal['vhf:calories'] || 0);
+      return sum + (isNaN(kcal) ? 0 : kcal);
+    }, 0);
     return `
       <div class="day-card">
         <div class="day-label">${dayLabel}</div>
@@ -327,6 +340,7 @@ window.vhfSelectWeek = function(weekIndex) {
             ${meal.recipeName || meal['vhf:recipeName'] || '—'}
           </div>
         `).join('') || '<div class="meal-slot text-muted">No meals</div>'}
+        ${totalKcal > 0 ? `<div class="day-kcal-total">${totalKcal} kcal</div>` : ''}
       </div>
     `;
   }).join('') || '<div class="empty-state"><p>No day data for this week.</p></div>';
@@ -354,16 +368,24 @@ function _renderRecipeCards(recipes) {
     const category = r.recipeCategory || r['vhf:mealType'] || '';
     const cuisine = r.recipeCuisine || '';
     const cost = r['recipe:costPerServing'] || '';
-    const prepTime = r.prepTime ? r.prepTime.replace('PT', '').replace('M', 'min') : '—';
+    const prepTime = r.prepTime ? r.prepTime.replace('PT', '').replace('M', ' min') : '—';
+    const nut = r.nutrition || {};
+    const kcal = nut.calories ? nut.calories.replace(' kcal', '') : null;
+    const protein = nut.proteinContent || null;
     return `
       <div class="recipe-card" onclick="window.vhfSelectRecipe(this)" data-recipe-id="${r['@id'] || ''}">
         <div class="recipe-card-name">${name}</div>
         <div class="recipe-card-meta">
-          ${category ? `<span>${category}</span>` : ''}
-          <span>${prepTime}</span>
-          ${cuisine ? `<span>${cuisine}</span>` : ''}
-          ${cost ? `<span>${cost}</span>` : ''}
+          ${category ? `<span class="recipe-meta-tag">${category}</span>` : ''}
+          ${cuisine ? `<span class="recipe-meta-tag">${cuisine}</span>` : ''}
+          <span class="recipe-meta-tag">${prepTime}</span>
+          ${cost ? `<span class="recipe-meta-tag recipe-cost">${cost}</span>` : ''}
         </div>
+        ${kcal || protein ? `
+        <div class="recipe-nutrition-row">
+          ${kcal ? `<span class="recipe-nut-badge">${kcal} kcal</span>` : ''}
+          ${protein ? `<span class="recipe-nut-badge recipe-nut-protein">${protein} protein</span>` : ''}
+        </div>` : ''}
       </div>
     `;
   }).join('');
@@ -387,12 +409,77 @@ window.vhfFilterRecipes = function(query) {
 window.vhfSelectRecipe = function(el) {
   const recipeId = el.dataset.recipeId;
   const recipe = state.recipes.find(r => r['@id'] === recipeId);
-  if (recipe) {
-    state.activeRecipe = recipe;
-    document.querySelectorAll('.recipe-card').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-  }
+  if (!recipe) return;
+  state.activeRecipe = recipe;
+  document.querySelectorAll('.recipe-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  _renderRecipeDetail(recipe);
 };
+
+function _renderRecipeDetail(r) {
+  const panel = document.getElementById('recipe-detail');
+  const content = document.getElementById('recipe-detail-content');
+  if (!panel || !content) return;
+
+  const name = r.name || 'Unnamed Recipe';
+  const desc = r.description || '';
+  const nut = r.nutrition || {};
+  const prepTime = r.prepTime ? r.prepTime.replace('PT', '').replace('M', ' min') : null;
+  const cookTime = r.cookTime ? r.cookTime.replace('PT', '').replace('M', ' min') : null;
+  const serves = r.recipeYield || '';
+  const cost = r['recipe:costPerServing'] || '';
+  const difficulty = r.difficulty || '';
+  const ingredients = Array.isArray(r.recipeIngredient) ? r.recipeIngredient : [];
+  const dietTypes = Array.isArray(r['recipe:suitableForDietType'])
+    ? r['recipe:suitableForDietType'].map(d => (d['@id'] || d).replace('diet:', '').replace(/-/g, ' '))
+    : [];
+
+  content.innerHTML = `
+    <div class="recipe-detail-header">
+      <h3 class="recipe-detail-name">${name}</h3>
+      <button class="zone-close-btn" onclick="document.getElementById('recipe-detail').style.display='none';document.querySelectorAll('.recipe-card').forEach(c=>c.classList.remove('active'));" aria-label="Close detail">×</button>
+    </div>
+    ${desc ? `<p class="recipe-detail-desc">${desc}</p>` : ''}
+
+    <div class="recipe-detail-meta">
+      ${prepTime ? `<div class="recipe-detail-meta-item"><label>Prep</label><span>${prepTime}</span></div>` : ''}
+      ${cookTime ? `<div class="recipe-detail-meta-item"><label>Cook</label><span>${cookTime}</span></div>` : ''}
+      ${serves ? `<div class="recipe-detail-meta-item"><label>Serves</label><span>${serves}</span></div>` : ''}
+      ${cost ? `<div class="recipe-detail-meta-item"><label>Cost</label><span>${cost}</span></div>` : ''}
+      ${difficulty ? `<div class="recipe-detail-meta-item"><label>Level</label><span>${difficulty}</span></div>` : ''}
+    </div>
+
+    ${Object.keys(nut).length > 1 ? `
+    <div class="recipe-detail-nutrition">
+      <h4>Nutrition (per serving)</h4>
+      <div class="recipe-nut-grid">
+        ${nut.calories ? `<div class="recipe-nut-item"><span class="nut-value">${nut.calories.replace(' kcal', '')}</span><span class="nut-label">kcal</span></div>` : ''}
+        ${nut.proteinContent ? `<div class="recipe-nut-item"><span class="nut-value">${nut.proteinContent}</span><span class="nut-label">protein</span></div>` : ''}
+        ${nut.carbohydrateContent ? `<div class="recipe-nut-item"><span class="nut-value">${nut.carbohydrateContent}</span><span class="nut-label">carbs</span></div>` : ''}
+        ${nut.fatContent ? `<div class="recipe-nut-item"><span class="nut-value">${nut.fatContent}</span><span class="nut-label">fat</span></div>` : ''}
+        ${nut.fiberContent ? `<div class="recipe-nut-item"><span class="nut-value">${nut.fiberContent}</span><span class="nut-label">fibre</span></div>` : ''}
+      </div>
+    </div>` : ''}
+
+    ${ingredients.length > 0 ? `
+    <div class="recipe-detail-ingredients">
+      <h4>Ingredients</h4>
+      <ul class="ingredient-list">
+        ${ingredients.map(ing => `<li>${ing}</li>`).join('')}
+      </ul>
+    </div>` : ''}
+
+    ${dietTypes.length > 0 ? `
+    <div class="recipe-detail-diets">
+      <h4>Suitable For</h4>
+      <div class="tag-list">
+        ${dietTypes.slice(0, 6).map(d => `<span class="diet-tag">${d}</span>`).join('')}
+      </div>
+    </div>` : ''}
+  `;
+
+  panel.style.display = 'flex';
+}
 
 function _renderShoppingList(plan) {
   const container = document.getElementById('shopping-list-content');
