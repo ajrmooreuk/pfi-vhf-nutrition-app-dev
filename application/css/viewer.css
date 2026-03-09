@@ -1,0 +1,916 @@
+/**
+ * VHF Nutrition App — Zone Layout & Base Styles
+ * F2.3 — Browser Viewer CSS
+ *
+ * CSS custom properties are set here as defaults.
+ * The token-bridge.js overwrites them at runtime from DS-ONT JSONLD.
+ * Brand: Viridian Teal #007c74 | Orange #f16a21 | PT Sans
+ */
+
+/* ========================================
+   CSS Custom Properties (Viridian defaults)
+   Overridden at runtime by token-bridge.js
+   ======================================== */
+
+:root {
+  --ds-color-primary:         #007c74;
+  --ds-color-primary-hover:   #006660;
+  --ds-color-primary-light:   #e6f5f4;
+  --ds-color-secondary:       #f16a21;
+  --ds-color-secondary-hover: #d4561a;
+  --ds-surface-default:       #ffffff;
+  --ds-surface-brand:         #007c74;
+  --ds-surface-subtle:        #f8fafa;
+  --ds-surface-muted:         #f1f5f9;
+  --ds-text-primary:          #1f2937;
+  --ds-text-secondary:        #6b7280;
+  --ds-text-muted:            #9ca3af;
+  --ds-text-on-brand:         #ffffff;
+  --ds-border-default:        #e5e7eb;
+  --ds-border-subtle:         #f3f4f6;
+  --ds-font-family:           'PT Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-size-base:        16px;
+  --ds-font-size-sm:          0.875rem;
+  --ds-font-size-lg:          1.125rem;
+  --ds-font-size-xl:          1.25rem;
+  --ds-font-size-2xl:         1.5rem;
+  --ds-font-weight-normal:    400;
+  --ds-font-weight-medium:    500;
+  --ds-font-weight-bold:      700;
+  --ds-spacing-xs:            0.25rem;
+  --ds-spacing-sm:            0.5rem;
+  --ds-spacing-md:            1rem;
+  --ds-spacing-lg:            1.5rem;
+  --ds-spacing-xl:            2rem;
+  --ds-radius-sm:             0.25rem;
+  --ds-radius-md:             0.5rem;
+  --ds-radius-lg:             0.75rem;
+  --ds-radius-full:           9999px;
+  --ds-shadow-sm:             0 1px 3px rgba(0,0,0,0.1);
+  --ds-shadow-md:             0 4px 6px rgba(0,0,0,0.1);
+  --ds-shadow-lg:             0 10px 25px rgba(0,0,0,0.15);
+  --ds-transition-fast:       150ms ease;
+  --ds-transition-base:       250ms ease;
+  --z-header:                 100;
+  --z-nav:                    90;
+  --z-panel:                  80;
+  --z-overlay:                200;
+  --z-modal:                  300;
+  --header-height:            56px;
+  --nav-height:               48px;
+  --panel-width:              380px;
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--ds-font-family);
+  font-size: var(--ds-font-size-base);
+  color: var(--ds-text-primary);
+  background: var(--ds-surface-subtle);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ========================================
+   App Layout Shell
+   ======================================== */
+
+#vhf-app {
+  display: grid;
+  grid-template-rows: var(--header-height) var(--nav-height) 1fr;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ========================================
+   Zone: Z1 — Header (Fixed top)
+   ======================================== */
+
+#zone-Z1 {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--ds-spacing-lg);
+  background: var(--ds-surface-brand);
+  color: var(--ds-text-on-brand);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.vhf-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-sm);
+}
+
+.vhf-brand-mark {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--ds-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--ds-font-weight-bold);
+  font-size: var(--ds-font-size-sm);
+  letter-spacing: -0.5px;
+}
+
+.vhf-brand-name {
+  font-size: var(--ds-font-size-lg);
+  font-weight: var(--ds-font-weight-bold);
+  letter-spacing: -0.3px;
+}
+
+.vhf-brand-tagline {
+  font-size: var(--ds-font-size-sm);
+  opacity: 0.75;
+  margin-left: var(--ds-spacing-xs);
+}
+
+.vhf-header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-md);
+  font-size: var(--ds-font-size-sm);
+  opacity: 0.85;
+}
+
+.vhf-version-badge {
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--ds-radius-full);
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: var(--ds-font-weight-medium);
+}
+
+/* ========================================
+   Zone: Z2 — Navigation (Fixed below header)
+   ======================================== */
+
+#zone-Z2 {
+  grid-row: 2;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 var(--ds-spacing-md);
+  background: var(--ds-surface-default);
+  border-bottom: 1px solid var(--ds-border-default);
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-nav);
+  overflow-x: auto;
+}
+
+/* Nav Layers */
+.nav-layer {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-xs);
+  padding: 0 var(--ds-spacing-xs);
+}
+
+.nav-layer + .nav-layer {
+  border-left: 1px solid var(--ds-border-subtle);
+  margin-left: var(--ds-spacing-xs);
+  padding-left: var(--ds-spacing-sm);
+}
+
+/* Nav Items */
+.nav-item {
+  height: 32px;
+  padding: 0 var(--ds-spacing-sm);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-text-secondary);
+  white-space: nowrap;
+  transition: background var(--ds-transition-fast), color var(--ds-transition-fast);
+}
+
+.nav-item:hover {
+  background: var(--ds-color-primary-light);
+  color: var(--ds-color-primary);
+}
+
+.nav-item.active,
+.nav-item[aria-pressed="true"] {
+  background: var(--ds-color-primary-light);
+  color: var(--ds-color-primary);
+  font-weight: var(--ds-font-weight-bold);
+}
+
+.nav-button {
+  /* Inherits .nav-item */
+}
+
+.nav-toggle {
+  position: relative;
+}
+
+.nav-separator {
+  width: 1px;
+  height: 20px;
+  background: var(--ds-border-default);
+  margin: 0 var(--ds-spacing-xs);
+}
+
+/* L4-VHF items get the brand accent on hover */
+[data-cascade-tier="PFI"].nav-item:hover {
+  background: var(--ds-color-primary-light);
+  color: var(--ds-color-primary);
+}
+
+/* ========================================
+   Main Content Area
+   ======================================== */
+
+#vhf-main {
+  grid-row: 3;
+  grid-column: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========================================
+   Zone Visibility System
+   ======================================== */
+
+.vhf-zone {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.zone-hidden {
+  display: none !important;
+}
+
+.zone-visible {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Zone type: Fixed — fills the content area */
+.zone-fixed {
+  position: absolute;
+  inset: 0;
+}
+
+/* Zone type: Sliding — panel from a side */
+.zone-sliding {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--panel-width);
+  background: var(--ds-surface-default);
+  box-shadow: var(--ds-shadow-lg);
+  z-index: var(--z-panel);
+  overflow-y: auto;
+}
+
+.zone-sliding.from-right {
+  right: 0;
+}
+
+.zone-sliding.from-left {
+  left: 0;
+}
+
+.zone-sliding.from-center {
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--panel-width), 100%);
+}
+
+/* Zone type: Overlay — floats above everything */
+.zone-overlay {
+  position: fixed;
+  top: calc(var(--header-height) + var(--nav-height));
+  right: 0;
+  bottom: 0;
+  width: var(--panel-width);
+  background: var(--ds-surface-default);
+  box-shadow: var(--ds-shadow-lg);
+  z-index: var(--z-overlay);
+  overflow-y: auto;
+}
+
+/* ========================================
+   Zone: Z-VHF-001 — Dashboard (Fixed, default)
+   ======================================== */
+
+#zone-Z-VHF-001 {
+  padding: var(--ds-spacing-lg);
+  background: var(--ds-surface-subtle);
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  margin-bottom: var(--ds-spacing-lg);
+}
+
+.dashboard-header h2 {
+  font-size: var(--ds-font-size-2xl);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-text-primary);
+}
+
+.dashboard-header p {
+  color: var(--ds-text-secondary);
+  font-size: var(--ds-font-size-sm);
+  margin-top: var(--ds-spacing-xs);
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--ds-spacing-md);
+  margin-bottom: var(--ds-spacing-xl);
+}
+
+.stat-card {
+  background: var(--ds-surface-default);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-spacing-md);
+  box-shadow: var(--ds-shadow-sm);
+  border: 1px solid var(--ds-border-subtle);
+}
+
+.stat-card-value {
+  font-size: var(--ds-font-size-2xl);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-color-primary);
+}
+
+.stat-card-label {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-text-secondary);
+  margin-top: var(--ds-spacing-xs);
+}
+
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--ds-spacing-md);
+}
+
+.client-card {
+  background: var(--ds-surface-default);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-spacing-md);
+  box-shadow: var(--ds-shadow-sm);
+  border: 1px solid var(--ds-border-subtle);
+  cursor: pointer;
+  transition: box-shadow var(--ds-transition-fast), transform var(--ds-transition-fast);
+}
+
+.client-card:hover {
+  box-shadow: var(--ds-shadow-md);
+  transform: translateY(-1px);
+}
+
+.client-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ds-spacing-sm);
+}
+
+.client-name {
+  font-weight: var(--ds-font-weight-bold);
+  font-size: var(--ds-font-size-base);
+}
+
+.client-id {
+  font-size: 0.75rem;
+  color: var(--ds-text-muted);
+  font-family: monospace;
+}
+
+.client-diet-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-xs);
+  margin-bottom: var(--ds-spacing-sm);
+}
+
+.diet-tag {
+  background: var(--ds-color-primary-light);
+  color: var(--ds-color-primary);
+  border-radius: var(--ds-radius-full);
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.client-macros {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-text-secondary);
+}
+
+.plan-status-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--ds-radius-full);
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.status-no-plan      { background: #f3f4f6; color: var(--ds-text-muted); }
+.status-draft        { background: #fef3c7; color: #92400e; }
+.status-pending      { background: #dbeafe; color: #1e40af; }
+.status-approved     { background: var(--ds-color-primary-light); color: var(--ds-color-primary); }
+.status-active       { background: #d1fae5; color: #065f46; }
+.status-completed    { background: #f3f4f6; color: var(--ds-text-secondary); }
+
+/* ========================================
+   Zone: Z-VHF-002 — Meal Plan Viewer
+   ======================================== */
+
+#zone-Z-VHF-002 {
+  padding: var(--ds-spacing-lg);
+  overflow-y: auto;
+  background: var(--ds-surface-default);
+}
+
+.plan-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ds-spacing-lg);
+  padding-bottom: var(--ds-spacing-md);
+  border-bottom: 1px solid var(--ds-border-default);
+}
+
+.week-tabs {
+  display: flex;
+  gap: var(--ds-spacing-xs);
+  margin-bottom: var(--ds-spacing-md);
+}
+
+.week-tab {
+  padding: var(--ds-spacing-xs) var(--ds-spacing-md);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-text-secondary);
+  border: 1px solid var(--ds-border-default);
+  cursor: pointer;
+  transition: all var(--ds-transition-fast);
+}
+
+.week-tab.active, .week-tab:hover {
+  background: var(--ds-color-primary);
+  color: var(--ds-text-on-brand);
+  border-color: var(--ds-color-primary);
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--ds-spacing-sm);
+}
+
+.day-card {
+  background: var(--ds-surface-subtle);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-spacing-sm);
+  border: 1px solid var(--ds-border-subtle);
+}
+
+.day-label {
+  font-size: 0.75rem;
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ds-spacing-xs);
+}
+
+.meal-slot {
+  font-size: 0.75rem;
+  color: var(--ds-text-primary);
+  padding: 2px 0;
+  border-bottom: 1px solid var(--ds-border-subtle);
+  cursor: pointer;
+}
+
+.meal-slot:hover { color: var(--ds-color-primary); }
+.meal-slot:last-child { border-bottom: none; }
+
+.meal-type-label {
+  color: var(--ds-text-muted);
+  font-size: 0.7rem;
+  display: block;
+}
+
+/* ========================================
+   Zone: Z-VHF-003 — Client Profile (Sliding right)
+   ======================================== */
+
+#zone-Z-VHF-003 {
+  padding: var(--ds-spacing-lg);
+  overflow-y: auto;
+}
+
+.profile-section {
+  margin-bottom: var(--ds-spacing-lg);
+}
+
+.profile-section h3 {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ds-text-muted);
+  margin-bottom: var(--ds-spacing-sm);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ds-spacing-sm);
+}
+
+.profile-field label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ds-text-muted);
+  margin-bottom: 2px;
+}
+
+.profile-field span {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-xs);
+}
+
+.allergen-tag {
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: var(--ds-radius-full);
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+/* ========================================
+   Zone: Z-VHF-004 — Recipe Browser (Sliding right)
+   ======================================== */
+
+#zone-Z-VHF-004 {
+  padding: var(--ds-spacing-md);
+  overflow-y: auto;
+}
+
+.recipe-filters {
+  margin-bottom: var(--ds-spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-xs);
+}
+
+.recipe-filter-input {
+  padding: var(--ds-spacing-xs) var(--ds-spacing-sm);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-md);
+  font-family: inherit;
+  font-size: var(--ds-font-size-sm);
+  width: 100%;
+}
+
+.recipe-filter-input:focus {
+  outline: none;
+  border-color: var(--ds-color-primary);
+  box-shadow: 0 0 0 2px var(--ds-color-primary-light);
+}
+
+.recipe-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ds-spacing-sm);
+}
+
+.recipe-card {
+  background: var(--ds-surface-default);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-spacing-sm);
+  border: 1px solid var(--ds-border-subtle);
+  cursor: pointer;
+  transition: border-color var(--ds-transition-fast);
+}
+
+.recipe-card:hover { border-color: var(--ds-color-primary); }
+
+.recipe-card-name {
+  font-weight: var(--ds-font-weight-bold);
+  font-size: var(--ds-font-size-sm);
+  margin-bottom: 4px;
+}
+
+.recipe-card-meta {
+  font-size: 0.75rem;
+  color: var(--ds-text-secondary);
+  display: flex;
+  gap: var(--ds-spacing-sm);
+}
+
+/* ========================================
+   Zone: Z-VHF-005 — Shopping List (Sliding right)
+   ======================================== */
+
+#zone-Z-VHF-005 {
+  padding: var(--ds-spacing-md);
+  overflow-y: auto;
+}
+
+.shopping-aisle {
+  margin-bottom: var(--ds-spacing-md);
+}
+
+.shopping-aisle-header {
+  font-weight: var(--ds-font-weight-bold);
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: var(--ds-spacing-xs);
+  border-bottom: 2px solid var(--ds-color-primary-light);
+  margin-bottom: var(--ds-spacing-xs);
+}
+
+.shopping-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ds-spacing-xs) 0;
+  font-size: var(--ds-font-size-sm);
+  border-bottom: 1px solid var(--ds-border-subtle);
+}
+
+.shopping-item-qty {
+  font-size: 0.75rem;
+  color: var(--ds-text-muted);
+}
+
+/* ========================================
+   Zone: Z-VHF-006 — Coach Panel (Sliding left)
+   ======================================== */
+
+#zone-Z-VHF-006 {
+  padding: var(--ds-spacing-md);
+  overflow-y: auto;
+}
+
+.coach-section {
+  margin-bottom: var(--ds-spacing-lg);
+}
+
+.coach-section h3 {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ds-spacing-sm);
+}
+
+.coach-action-bar {
+  display: flex;
+  gap: var(--ds-spacing-sm);
+  margin-top: var(--ds-spacing-md);
+}
+
+.btn-approve {
+  flex: 1;
+  padding: var(--ds-spacing-sm) var(--ds-spacing-md);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-primary);
+  color: var(--ds-text-on-brand);
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  cursor: pointer;
+  border: none;
+  transition: background var(--ds-transition-fast);
+}
+
+.btn-approve:hover { background: var(--ds-color-primary-hover); }
+
+.btn-reject {
+  flex: 1;
+  padding: var(--ds-spacing-sm) var(--ds-spacing-md);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-surface-default);
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+  cursor: pointer;
+  transition: all var(--ds-transition-fast);
+}
+
+.btn-reject:hover { background: #fef2f2; }
+
+/* ========================================
+   Zone: Z-VHF-007 — Quality Dashboard (Sliding left)
+   ======================================== */
+
+#zone-Z-VHF-007 {
+  padding: var(--ds-spacing-md);
+  overflow-y: auto;
+}
+
+.quality-metric {
+  margin-bottom: var(--ds-spacing-md);
+}
+
+.quality-metric-label {
+  font-size: var(--ds-font-size-sm);
+  color: var(--ds-text-secondary);
+  margin-bottom: 4px;
+}
+
+.quality-bar-track {
+  height: 8px;
+  background: var(--ds-border-default);
+  border-radius: var(--ds-radius-full);
+  overflow: hidden;
+}
+
+.quality-bar-fill {
+  height: 100%;
+  background: var(--ds-color-primary);
+  border-radius: var(--ds-radius-full);
+  transition: width var(--ds-transition-base);
+}
+
+.quality-bar-fill.warning { background: var(--ds-color-secondary); }
+.quality-bar-fill.danger  { background: #dc2626; }
+
+.quality-metric-value {
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-bold);
+  color: var(--ds-color-primary);
+  margin-top: 4px;
+}
+
+/* ========================================
+   Zone: Z-VHF-008 — AI Chat (Overlay)
+   ======================================== */
+
+#zone-Z-VHF-008 {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ds-spacing-md);
+}
+
+.chat-input-bar {
+  padding: var(--ds-spacing-sm) var(--ds-spacing-md);
+  border-top: 1px solid var(--ds-border-default);
+  display: flex;
+  gap: var(--ds-spacing-sm);
+}
+
+.chat-input {
+  flex: 1;
+  padding: var(--ds-spacing-xs) var(--ds-spacing-sm);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-md);
+  font-family: inherit;
+  font-size: var(--ds-font-size-sm);
+}
+
+/* ========================================
+   Zone Panel Headers (shared)
+   ======================================== */
+
+.zone-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ds-spacing-md);
+  border-bottom: 1px solid var(--ds-border-default);
+  background: var(--ds-surface-default);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.zone-panel-title {
+  font-size: var(--ds-font-size-base);
+  font-weight: var(--ds-font-weight-bold);
+}
+
+.zone-close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ds-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--ds-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: background var(--ds-transition-fast);
+}
+
+.zone-close-btn:hover {
+  background: var(--ds-surface-muted);
+  color: var(--ds-text-primary);
+}
+
+/* ========================================
+   Loading & Error States
+   ======================================== */
+
+#vhf-loading {
+  position: fixed;
+  inset: 0;
+  background: var(--ds-surface-default);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  gap: var(--ds-spacing-md);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--ds-color-primary-light);
+  border-top-color: var(--ds-color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: var(--ds-text-secondary);
+  font-size: var(--ds-font-size-sm);
+}
+
+/* ========================================
+   Utility
+   ======================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-muted { color: var(--ds-text-muted); }
+.text-sm    { font-size: var(--ds-font-size-sm); }
+.font-bold  { font-weight: var(--ds-font-weight-bold); }
+
+.empty-state {
+  text-align: center;
+  padding: var(--ds-spacing-xl);
+  color: var(--ds-text-muted);
+}
+
+.empty-state p { font-size: var(--ds-font-size-sm); }

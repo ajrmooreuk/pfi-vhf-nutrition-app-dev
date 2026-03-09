@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VHF Nutrition Coaching — Powered by PFC Platform</title>
+  <meta name="description" content="VHF AI-Powered Nutrition Coaching Application — James Kerby's methodology, digitised.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/viewer.css">
+</head>
+
+<body>
+
+<!-- Loading overlay (removed once skeleton + data loaded) -->
+<div id="vhf-loading" role="status" aria-live="polite">
+  <div class="loading-spinner" aria-hidden="true"></div>
+  <div class="loading-text" id="loading-status-text">Loading VHF…</div>
+</div>
+
+<!-- ============================================================
+     App Shell — zones are shown/hidden by skeleton-loader.js
+     ============================================================ -->
+
+<div id="vhf-app" style="visibility:hidden">
+
+  <!-- ── Z1: Header (Fixed) ── -->
+  <header id="zone-Z1" class="vhf-zone zone-fixed" role="banner">
+    <div class="vhf-brand">
+      <div class="vhf-brand-mark" aria-hidden="true">VHF</div>
+      <span class="vhf-brand-name">VHF Nutrition</span>
+      <span class="vhf-brand-tagline">Coaching Platform</span>
+    </div>
+    <div class="vhf-header-meta">
+      <span id="header-client-count">— clients</span>
+      <span class="vhf-version-badge">v1.0.0</span>
+    </div>
+  </header>
+
+  <!-- ── Z2: Navigation (Dynamic, rendered from skeleton) ── -->
+  <nav id="zone-Z2" class="vhf-zone zone-fixed" role="navigation" aria-label="Main navigation">
+    <!-- Populated by renderNavFromSkeleton() in skeleton-loader.js -->
+  </nav>
+
+  <!-- ── Main Content Area ── -->
+  <main id="vhf-main" role="main">
+
+    <!-- Z-VHF-001: Dashboard (default visible) -->
+    <section
+      id="zone-Z-VHF-001"
+      class="vhf-zone zone-fixed"
+      data-zone-id="Z-VHF-001"
+      data-zone-type="Fixed"
+      aria-label="Client Dashboard"
+    >
+      <div class="dashboard-header">
+        <h2>Dashboard</h2>
+        <p>Client overview — <span id="dashboard-last-updated">Loading…</span></p>
+      </div>
+
+      <div class="dashboard-stats" id="dashboard-stats">
+        <div class="stat-card">
+          <div class="stat-card-value" id="stat-total-clients">0</div>
+          <div class="stat-card-label">Clients</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="stat-active-plans">0</div>
+          <div class="stat-card-label">Active Plans</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="stat-pending-review">0</div>
+          <div class="stat-card-label">Pending Review</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" id="stat-total-recipes">0</div>
+          <div class="stat-card-label">Recipes</div>
+        </div>
+      </div>
+
+      <div class="client-grid" id="client-grid">
+        <!-- Populated by app.js renderDashboard() -->
+        <div class="empty-state"><p>Loading clients…</p></div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-002: Meal Plan Viewer (hidden by default) -->
+    <section
+      id="zone-Z-VHF-002"
+      class="vhf-zone zone-fixed zone-hidden"
+      data-zone-id="Z-VHF-002"
+      data-zone-type="Sliding"
+      aria-label="Meal Plan Viewer"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title" id="plan-viewer-title">30-Day Meal Plan</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.showDashboard()" aria-label="Back to dashboard">×</button>
+      </div>
+
+      <div style="padding: var(--ds-spacing-md)">
+        <div class="plan-viewer-header">
+          <div>
+            <span id="plan-viewer-client-name" class="font-bold"></span>
+            <span class="plan-status-badge status-draft" id="plan-viewer-status">Draft</span>
+          </div>
+          <div style="display:flex; gap: var(--ds-spacing-sm)">
+            <button class="btn-approve" onclick="window.VHF_ACTIONS?.approvePlan()">Approve</button>
+          </div>
+        </div>
+
+        <div class="week-tabs" id="week-tabs">
+          <button class="week-tab active" data-week="0" onclick="window.vhfSelectWeek(0)">Week 1</button>
+          <button class="week-tab" data-week="1" onclick="window.vhfSelectWeek(1)">Week 2</button>
+          <button class="week-tab" data-week="2" onclick="window.vhfSelectWeek(2)">Week 3</button>
+          <button class="week-tab" data-week="3" onclick="window.vhfSelectWeek(3)">Week 4</button>
+        </div>
+
+        <div class="day-grid" id="plan-day-grid">
+          <!-- Populated by app.js renderPlanViewer() -->
+          <div class="empty-state"><p>Select a client to view their plan.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-003: Client Profile (hidden by default, sliding right) -->
+    <section
+      id="zone-Z-VHF-003"
+      class="vhf-zone zone-sliding from-right zone-hidden"
+      data-zone-id="Z-VHF-003"
+      data-zone-type="Sliding"
+      aria-label="Client Profile"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title">Client Profile</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.showDashboard()" aria-label="Close profile">×</button>
+      </div>
+
+      <div id="client-profile-content" style="padding: var(--ds-spacing-md)">
+        <div class="empty-state"><p>Select a client to view their profile.</p></div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-004: Recipe Browser (hidden by default, sliding right) -->
+    <section
+      id="zone-Z-VHF-004"
+      class="vhf-zone zone-sliding from-right zone-hidden"
+      data-zone-id="Z-VHF-004"
+      data-zone-type="Sliding"
+      aria-label="Recipe Browser"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title">Recipe Browser</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.showDashboard()" aria-label="Close recipes">×</button>
+      </div>
+
+      <div style="padding: var(--ds-spacing-md)">
+        <div class="recipe-filters">
+          <input
+            type="search"
+            class="recipe-filter-input"
+            id="recipe-search"
+            placeholder="Search recipes…"
+            oninput="window.vhfFilterRecipes(this.value)"
+            aria-label="Search recipes"
+          >
+        </div>
+        <div id="recipe-count" class="text-sm text-muted" style="margin-bottom: var(--ds-spacing-sm)"></div>
+        <div class="recipe-card-grid" id="recipe-grid">
+          <div class="empty-state"><p>Loading recipes…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-005: Shopping List (hidden by default, sliding right) -->
+    <section
+      id="zone-Z-VHF-005"
+      class="vhf-zone zone-sliding from-right zone-hidden"
+      data-zone-id="Z-VHF-005"
+      data-zone-type="Sliding"
+      aria-label="Shopping List"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title">Shopping List</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.showDashboard()" aria-label="Close shopping list">×</button>
+      </div>
+
+      <div id="shopping-list-content" style="padding: var(--ds-spacing-md)">
+        <div class="empty-state"><p>Select a plan to generate a shopping list.</p></div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-006: Coach Panel (hidden by default, sliding left) -->
+    <section
+      id="zone-Z-VHF-006"
+      class="vhf-zone zone-sliding from-left zone-hidden"
+      data-zone-id="Z-VHF-006"
+      data-zone-type="Sliding"
+      aria-label="Coach Panel"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title">Coach Panel</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.showDashboard()" aria-label="Close coach panel">×</button>
+      </div>
+
+      <div style="padding: var(--ds-spacing-md)">
+        <div class="coach-section">
+          <h3>Client List</h3>
+          <div id="coach-client-list">
+            <div class="empty-state"><p>Loading clients…</p></div>
+          </div>
+        </div>
+        <div class="coach-section">
+          <h3>Active Plan Actions</h3>
+          <div id="coach-plan-actions" class="coach-action-bar">
+            <button class="btn-approve" onclick="window.VHF_ACTIONS?.approvePlan()">Approve Plan</button>
+            <button class="btn-reject" onclick="window.VHF_ACTIONS?.rejectPlan()">Reject</button>
+          </div>
+        </div>
+        <div class="coach-section">
+          <h3>Generate Plan</h3>
+          <p class="text-sm text-muted" style="margin-bottom: var(--ds-spacing-sm)">
+            Select a client on the dashboard, then generate a new 30-day plan.
+          </p>
+          <button class="btn-approve" onclick="window.VHF_ACTIONS?.openPlanGenerator()" style="width:100%">
+            Generate New Plan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-007: Quality Dashboard (hidden by default, sliding left) -->
+    <section
+      id="zone-Z-VHF-007"
+      class="vhf-zone zone-sliding from-left zone-hidden"
+      data-zone-id="Z-VHF-007"
+      data-zone-type="Sliding"
+      aria-label="Quality Dashboard"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title">Quality Report</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.showDashboard()" aria-label="Close quality dashboard">×</button>
+      </div>
+
+      <div id="quality-content" style="padding: var(--ds-spacing-md)">
+        <div class="empty-state"><p>Select a plan to view quality metrics.</p></div>
+      </div>
+    </section>
+
+    <!-- Z-VHF-008: AI Chat (hidden by default, overlay right) -->
+    <aside
+      id="zone-Z-VHF-008"
+      class="vhf-zone zone-overlay zone-hidden"
+      data-zone-id="Z-VHF-008"
+      data-zone-type="Overlay"
+      aria-label="Nutrition Advisor Chat"
+    >
+      <div class="zone-panel-header">
+        <span class="zone-panel-title">Nutrition Advisor</span>
+        <button class="zone-close-btn" onclick="window.VHF_ACTIONS?.toggleNutritionChat()" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="empty-state"><p>Ask a nutrition question…</p></div>
+      </div>
+      <div class="chat-input-bar">
+        <input type="text" class="chat-input" id="chat-input" placeholder="Ask about nutrition…" aria-label="Chat input">
+        <button class="btn-approve" onclick="window.vhfSendChat()" style="white-space:nowrap">Send</button>
+      </div>
+    </aside>
+
+  </main><!-- end #vhf-main -->
+</div><!-- end #vhf-app -->
+
+<!-- ES Modules — load order: state → skeleton-loader → token-bridge → nav-actions → app -->
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
