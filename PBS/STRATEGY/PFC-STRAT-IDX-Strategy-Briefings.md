@@ -333,6 +333,28 @@ Documents supporting registered skill families. These follow the PFC naming conv
 
 ---
 
+## PFI-VHF Documents (Added 2026-03-09)
+
+| Filename | Doc Type | Product Code | Epic/Feature | Status |
+|----------|----------|-------------|-------------|--------|
+| `PFI-VHF-BRIEF-Decisions-Required-To-Proceed-v1.0.0.md` | BRIEF | PFI-VHF | Epics 1–6 | Active |
+
+*Note: Other VHF docs (STATUS, ARCH, OPS, DEV, TEST) are located in `PBS/` root and `PBS/ARCHITECTURE/`, `PBS/IMPLEMENTATION/` — not in `PBS/STRATEGY/`. See below for links.*
+
+### VHF Document Suite (2026-03-09 Sprint)
+
+| Document | Location | Type | Epic |
+|----------|----------|------|------|
+| [PFI-VHF-STATUS-Epic-1-5-Complete-Status-Report-v1.0.0.md](../PFI-VHF-STATUS-Epic-1-5-Complete-Status-Report-v1.0.0.md) | `PBS/` | STATUS | 1–5 |
+| [PFI-VHF-ARCH-Application-Architecture-Guide-v1.0.0.md](../ARCHITECTURE/PFI-VHF-ARCH-Application-Architecture-Guide-v1.0.0.md) | `PBS/ARCHITECTURE/` | ARCH | 2, 4 |
+| [PFI-VHF-OPS-Application-Operations-Guide-v1.0.0.md](../PFI-VHF-OPS-Application-Operations-Guide-v1.0.0.md) | `PBS/` | OPS | 2, 5 |
+| [PFI-VHF-DEV-Technical-Development-Guide-v1.0.0.md](../IMPLEMENTATION/PFI-VHF-DEV-Technical-Development-Guide-v1.0.0.md) | `PBS/IMPLEMENTATION/` | DEV | 2, 4, 5 |
+| [PFI-VHF-TEST-Test-Plan-v1.0.0.md](../PFI-VHF-TEST-Test-Plan-v1.0.0.md) | `PBS/` | TEST | 2, 4, 5 |
+| [PFI-VHF-BRIEF-Decisions-Required-To-Proceed-v1.0.0.md](PFI-VHF-BRIEF-Decisions-Required-To-Proceed-v1.0.0.md) | `PBS/STRATEGY/` | BRIEF | 1–6 |
+
+---
+
 *PFC-STRAT: Document Register — Strategy, Architecture & Governance*
 *This register is the source of truth for all PBS/STRATEGY/ documents.*
 *Updated: 2026-03-07 — All legacy docs renamed to PFC convention (64 files, batches B0–B6). Cross-refs fixed in 23 files. Trace log: `PFC-PBS-TRACE-Document-Rename-Log-v1.0.0.json`*
+*Updated: 2026-03-09 — VHF document suite added (6 docs: STATUS, ARCH, OPS, DEV, TEST, BRIEF).*
