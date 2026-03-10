@@ -226,11 +226,13 @@ async function init() {
     setLoadingStatus('Rendering…');
     renderDashboard();
 
-    // 7. Expose action registry globally
+    // 7. Expose action registry + state globally
     window.VHF_ACTIONS = VHF_ACTIONS;
+    window.vhfState = state;
 
     // 8. Done
     hideLoading();
+    window.dispatchEvent(new CustomEvent('vhf-ready'));
     console.log('[app] VHF ready — PFC Platform v1.0.0');
 
   } catch (err) {

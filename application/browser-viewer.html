@@ -282,8 +282,55 @@
   </main><!-- end #vhf-main -->
 </div><!-- end #vhf-app -->
 
-<!-- ES Modules — load order: state → skeleton-loader → token-bridge → nav-actions → app -->
+<!-- ============================================================
+     Admin Overlay — Skeleton Zone Inspector + Token Map
+     Toggled via the admin toolbar (bottom-right corner)
+     ============================================================ -->
+
+<!-- Admin toolbar -->
+<div id="vhf-admin-toolbar" aria-label="Admin tools">
+  <button id="admin-toggle-zones" class="admin-btn" onclick="window.vhfAdminToggleZones()" title="Toggle zone overlay" aria-pressed="false">
+    <span class="admin-btn-icon">⬡</span> Zones
+  </button>
+  <button id="admin-toggle-tokens" class="admin-btn" onclick="window.vhfAdminToggleTokens()" title="Toggle token map" aria-pressed="false">
+    <span class="admin-btn-icon">◈</span> Tokens
+  </button>
+</div>
+
+<!-- Zone overlay labels (injected by admin-overlay.js) -->
+<div id="vhf-zone-overlay" aria-hidden="true" style="display:none"></div>
+
+<!-- Token map panel -->
+<div id="vhf-token-map" role="dialog" aria-label="Design System Token Map" style="display:none">
+  <div class="token-map-header">
+    <span class="token-map-title">DS Token Map</span>
+    <div class="token-map-controls">
+      <select id="token-map-filter" onchange="window.vhfTokenMapFilter(this.value)" aria-label="Filter tokens">
+        <option value="">All tokens</option>
+        <option value="color">Colour</option>
+        <option value="surface">Surface</option>
+        <option value="text">Text</option>
+        <option value="border">Border</option>
+        <option value="font">Typography</option>
+        <option value="spacing">Spacing</option>
+        <option value="radius">Radius</option>
+        <option value="shadow">Shadow</option>
+      </select>
+      <button class="admin-btn" onclick="window.vhfAdminToggleTokens()" aria-label="Close token map">×</button>
+    </div>
+  </div>
+  <div class="token-map-tabs" role="tablist">
+    <button id="tab-css-live" class="token-map-tab active" role="tab" aria-selected="true"
+      onclick="window.vhfTokenMapTab('css-live')">CSS Live</button>
+    <button id="tab-ds-ont" class="token-map-tab" role="tab" aria-selected="false"
+      onclick="window.vhfTokenMapTab('ds-ont')">DS-ONT Source</button>
+  </div>
+  <div id="token-map-grid" class="token-map-grid"></div>
+</div>
+
+<!-- ES Modules — load order: state → skeleton-loader → token-bridge → nav-actions → app → admin-overlay -->
 <script type="module" src="js/app.js"></script>
+<script type="module" src="js/admin-overlay.js"></script>
 
 </body>
 </html>

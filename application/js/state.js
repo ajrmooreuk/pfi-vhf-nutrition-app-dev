@@ -27,7 +27,9 @@ export const state = {
   plans: [],                   // Array of loaded plan JSONLD objects
 
   // Tokens
-  tokenOverrides: {},          // CSS var overrides from skeleton + DS-ONT
+  tokenOverrides: {},          // CSS var overrides from skeleton + DS-ONT (merged, applied)
+  dsOntTokenNodes: [],         // Raw ds:DesignToken nodes from DS-ONT JSONLD (for admin overlay)
+  skeletonTokenOverrides: {},  // Token overrides from skeleton ZoneComponent only
 
   // UI state
   chatEnabled: false,

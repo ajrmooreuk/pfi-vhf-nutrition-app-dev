@@ -65,9 +65,10 @@ async function loadTokensFromDSONT(tokenPath) {
     const jsonld = await resp.json();
     const graph = jsonld?.['@graph'] || [];
 
-    for (const node of graph) {
-      // ds:DesignToken nodes have ds:tokenName and ds:tokenValue
-      if (!node['ds:tokenName']) continue;
+    // Store raw nodes for admin overlay DS-ONT tab
+    state.dsOntTokenNodes = graph.filter(n => n['ds:tokenName']);
+
+    for (const node of state.dsOntTokenNodes) {
       const name = node['ds:tokenName'];
       const value = node['ds:tokenValue'] || node['ds:resolvedValue'];
       if (!value) continue;
@@ -138,6 +139,7 @@ export async function initTokenBridge(tokenPath, skeleton) {
 
   // Store for reference
   state.tokenOverrides = merged;
+  state.skeletonTokenOverrides = skeletonTokens;
 
   console.log(`[tokens] Applied ${Object.keys(merged).length} CSS custom properties`);
 }
