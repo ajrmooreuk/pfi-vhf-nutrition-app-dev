@@ -351,6 +351,7 @@ Documents supporting registered skill families. These follow the PFC naming conv
 | [PFI-VHF-DEV-Technical-Development-Guide-v1.0.0.md](../IMPLEMENTATION/PFI-VHF-DEV-Technical-Development-Guide-v1.0.0.md) | `PBS/IMPLEMENTATION/` | DEV | 2, 4, 5 |
 | [PFI-VHF-TEST-Test-Plan-v1.0.0.md](../PFI-VHF-TEST-Test-Plan-v1.0.0.md) | `PBS/` | TEST | 2, 4, 5 |
 | [PFI-VHF-BRIEF-Decisions-Required-To-Proceed-v1.0.0.md](PFI-VHF-BRIEF-Decisions-Required-To-Proceed-v1.0.0.md) | `PBS/STRATEGY/` | BRIEF | 1–6 |
+| [PFI-VHF-BRIEF-DS-Token-Map-Component-Extension-VE-v1.0.0.md](PFI-VHF-BRIEF-DS-Token-Map-Component-Extension-VE-v1.0.0.md) | `PBS/STRATEGY/` | BRIEF | 4, 7 |
 
 ---
 
@@ -358,3 +359,4 @@ Documents supporting registered skill families. These follow the PFC naming conv
 *This register is the source of truth for all PBS/STRATEGY/ documents.*
 *Updated: 2026-03-07 — All legacy docs renamed to PFC convention (64 files, batches B0–B6). Cross-refs fixed in 23 files. Trace log: `PFC-PBS-TRACE-Document-Rename-Log-v1.0.0.json`*
 *Updated: 2026-03-09 — VHF document suite added (6 docs: STATUS, ARCH, OPS, DEV, TEST, BRIEF).*
+*Updated: 2026-03-10 — VHF DS Token Map VE briefing added (admin overlay + DS-ONT extension path).*
