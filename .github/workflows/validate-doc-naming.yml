@@ -1,0 +1,242 @@
+name: Validate Document Naming Convention
+
+on:
+  pull_request:
+    paths:
+      - 'PBS/STRATEGY/**/*.md'
+      - 'PBS/ARCHITECTURE/**/*.md'
+      - 'PBS/DESIGN-SYSTEM/**/*.md'
+      - 'docs/**/*.md'
+      - 'azlan-github-workflow/skills/**/*.md'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate-naming:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed MD files
+        id: changed
+        run: |
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          FILES=$(git diff --name-only --diff-filter=ACR "$BASE_SHA" "$HEAD_SHA" -- '*.md' | grep -v '^README\.md$' | grep -v '^CHANGELOG\.md$' | grep -v '^CLAUDE\.md$' | grep -v 'node_modules/' || true)
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$FILES" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          if [ -z "$FILES" ]; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "count=$(echo "$FILES" | wc -l | tr -d ' ')" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Detect repo tier context
+        id: tier
+        run: |
+          # ─── Tier-Aware Enforcement ────────────────────────────────────
+          # Determines allowed tier prefixes based on the repo name.
+          # PFI repos (pfi-*) can only create PFI-prefixed docs.
+          # Hub repo (Azlan-EA-AAA) allows all tiers.
+          # Convention repos (azlan-workflow-*) allow PFC only.
+
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+
+          if [[ "$REPO_NAME" =~ ^pfi- ]]; then
+            # Extract instance ID from repo name for allowed prefix
+            # pfi-baiv-aiv-dev → BAIV, pfi-w4m-wwg-dev → WWG, pfi-airl-caf-aza-dev → AIRL
+            INSTANCE=""
+            case "$REPO_NAME" in
+              pfi-baiv-*)    INSTANCE="BAIV" ;;
+              pfi-w4m-wwg-*) INSTANCE="WWG" ;;
+              pfi-w4m-eoms-*) INSTANCE="EOMS" ;;
+              pfi-w4m-rcs-*) INSTANCE="RCS" ;;
+              pfi-w4m-*)     INSTANCE="W4M" ;;
+              pfi-airl-*)    INSTANCE="AIRL" ;;
+              pfi-vhf-*)     INSTANCE="VHF" ;;
+              pfi-dice-*)    INSTANCE="DICE" ;;
+              *)             INSTANCE="UNKNOWN" ;;
+            esac
+            echo "context=pfi" >> "$GITHUB_OUTPUT"
+            echo "instance=$INSTANCE" >> "$GITHUB_OUTPUT"
+            echo "allowed_tiers=PFI-${INSTANCE}|PRD-[A-Z0-9-]+|APP-[A-Z0-9-]+" >> "$GITHUB_OUTPUT"
+            echo "blocked_tiers=PFC" >> "$GITHUB_OUTPUT"
+          elif [[ "$REPO_NAME" =~ ^azlan-workflow- ]]; then
+            echo "context=convention" >> "$GITHUB_OUTPUT"
+            echo "instance=" >> "$GITHUB_OUTPUT"
+            echo "allowed_tiers=PFC" >> "$GITHUB_OUTPUT"
+            echo "blocked_tiers=" >> "$GITHUB_OUTPUT"
+          else
+            echo "context=hub" >> "$GITHUB_OUTPUT"
+            echo "instance=" >> "$GITHUB_OUTPUT"
+            echo "allowed_tiers=PFC|PFI-[A-Z0-9-]+|PRD-[A-Z0-9-]+|APP-[A-Z0-9-]+" >> "$GITHUB_OUTPUT"
+            echo "blocked_tiers=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate naming convention
+        if: steps.changed.outputs.count != '0'
+        id: validate
+        run: |
+          # ─── Naming Convention Regex ───────────────────────────────────
+          # Pattern: [TIER]-[PRODUCT]-[DOC-TYPE]-<Subject>-v<MAJOR.MINOR.PATCH>.md
+          #
+          # Tier codes: PFC, PFI-<ID>, PRD-<ID>, APP-<ID>
+          # Product codes: See PFC-PBS-STD-Document-Controls-Naming-Convention-v1.0.0.md
+          # Doc types: ARCH, OPS, REL, BRIEF, STD, PLAN, GUIDE, TRAIN, AGENDA, IDX, SPEC, TEST, UPDATE, CONV, DISC, MANIFEST, CATALOGUE
+
+          TIER_PATTERN="(PFC|PFI-[A-Z0-9-]+|PRD-[A-Z0-9-]+|APP-[A-Z0-9-]+)"
+          PRODUCT_PATTERN="[A-Z][A-Z0-9-]+"
+          DOCTYPE_PATTERN="(ARCH|OPS|REL|BRIEF|STD|PLAN|GUIDE|TRAIN|AGENDA|IDX|SPEC|TEST|UPDATE|CONV|DISC|MANIFEST|CATALOGUE)"
+          SUBJECT_PATTERN="[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?"
+          VERSION_PATTERN="v[0-9]+\.[0-9]+(\.[0-9]+)?"
+
+          FULL_REGEX="^${TIER_PATTERN}-${PRODUCT_PATTERN}-${DOCTYPE_PATTERN}-${SUBJECT_PATTERN}-${VERSION_PATTERN}\.md$"
+
+          # Tier-aware enforcement from previous step
+          REPO_CONTEXT="${{ steps.tier.outputs.context }}"
+          BLOCKED_TIERS="${{ steps.tier.outputs.blocked_tiers }}"
+          INSTANCE="${{ steps.tier.outputs.instance }}"
+
+          # Legacy prefixes that are acceptable (not yet renamed)
+          LEGACY_PREFIXES="BRIEFING-|CONVERGENCE-|DISCUSSION-|TRAINING-|AGENDA-|OUTSTANDING-|PROGRAMME-|OPERATING-GUIDE-|TEST-PLAN-|PLAN-|ARCH-|CATALOGUE-|MANIFEST-"
+
+          # Files in enforced directories that MUST follow new convention
+          ENFORCED_DIRS="PBS/STRATEGY/ PBS/ARCHITECTURE/ docs/"
+
+          ERRORS=""
+          WARNINGS=""
+          PASS=0
+          LEGACY=0
+          FAIL=0
+          TIER_BLOCK=0
+
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            basename=$(basename "$file")
+
+            # Skip convention-exempt files
+            if echo "$basename" | grep -qE "^(README|CHANGELOG|CLAUDE|readme|LICENSE)"; then
+              continue
+            fi
+
+            # ─── Tier-Aware Check: Block wrong-tier docs ─────────────────
+            # In PFI repos, block any new file with PFC- prefix
+            if [[ -n "$BLOCKED_TIERS" ]]; then
+              IS_NEW=$(git diff --name-only --diff-filter=A "$BASE_SHA" "$HEAD_SHA" -- "$file" || true)
+              if [[ -n "$IS_NEW" ]] && echo "$basename" | grep -qE "^${BLOCKED_TIERS}-"; then
+                TIER_BLOCK=$((TIER_BLOCK + 1))
+                FAIL=$((FAIL + 1))
+                ERRORS="${ERRORS}\n- **${file}** — \`${BLOCKED_TIERS}-\` prefix is not allowed in this repo. PFI repos must use \`PFI-${INSTANCE}-\` prefix."
+                continue
+              fi
+            fi
+
+            # Check if file matches new convention
+            if echo "$basename" | grep -qE "$FULL_REGEX"; then
+              PASS=$((PASS + 1))
+              continue
+            fi
+
+            # Check if file matches legacy prefix (acceptable but flagged)
+            if echo "$basename" | grep -qE "^(${LEGACY_PREFIXES})"; then
+              LEGACY=$((LEGACY + 1))
+              WARNINGS="${WARNINGS}\n- **${file}** — Legacy naming. Suggested: rename per convention when next revised."
+              continue
+            fi
+
+            # File doesn't match either pattern — fail for new files in enforced dirs
+            IS_NEW=$(git diff --name-only --diff-filter=A "$BASE_SHA" "$HEAD_SHA" -- "$file" || true)
+            if [ -n "$IS_NEW" ]; then
+              FAIL=$((FAIL + 1))
+              ERRORS="${ERRORS}\n- **${file}** — New file does not follow naming convention: \`[TIER]-[PRODUCT]-[DOC-TYPE]-<Subject>-v<VERSION>.md\`"
+            else
+              WARNINGS="${WARNINGS}\n- **${file}** — Modified file does not follow naming convention (not blocked — rename when next revised)."
+            fi
+          done <<< "${{ steps.changed.outputs.files }}"
+
+          # Output results
+          echo "pass=$PASS" >> "$GITHUB_OUTPUT"
+          echo "legacy=$LEGACY" >> "$GITHUB_OUTPUT"
+          echo "fail=$FAIL" >> "$GITHUB_OUTPUT"
+          echo "tier_block=$TIER_BLOCK" >> "$GITHUB_OUTPUT"
+          echo "context=$REPO_CONTEXT" >> "$GITHUB_OUTPUT"
+          echo "errors<<EOF" >> "$GITHUB_OUTPUT"
+          echo -e "$ERRORS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          echo "warnings<<EOF" >> "$GITHUB_OUTPUT"
+          echo -e "$WARNINGS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          if [ "$FAIL" -gt 0 ]; then
+            echo "status=failure" >> "$GITHUB_OUTPUT"
+          else
+            echo "status=success" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Comment on PR
+        if: steps.changed.outputs.count != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pass = parseInt('${{ steps.validate.outputs.pass }}') || 0;
+            const legacy = parseInt('${{ steps.validate.outputs.legacy }}') || 0;
+            const fail = parseInt('${{ steps.validate.outputs.fail }}') || 0;
+            const tierBlock = parseInt('${{ steps.validate.outputs.tier_block }}') || 0;
+            const repoContext = '${{ steps.validate.outputs.context }}';
+            const errors = `${{ steps.validate.outputs.errors }}`.trim();
+            const warnings = `${{ steps.validate.outputs.warnings }}`.trim();
+            const status = '${{ steps.validate.outputs.status }}';
+
+            let body = `## Document Naming Convention Check\n\n`;
+            body += `**Repo context:** ${repoContext}`;
+            if (repoContext === 'pfi') body += ` (PFC-prefixed docs blocked)`;
+            body += `\n\n`;
+            body += `| Compliant | Legacy | Non-Compliant | Tier Blocked |\n|---|---|---|---|\n| ${pass} | ${legacy} | ${fail} | ${tierBlock} |\n\n`;
+            body += `**Standard:** \`[TIER]-[PRODUCT]-[DOC-TYPE]-<Subject>-v<VERSION>.md\`\n`;
+            body += `**Reference:** [PFC-PBS-STD-Document-Controls-Naming-Convention-v1.0.0.md](PBS/STRATEGY/PFC-PBS-STD-Document-Controls-Naming-Convention-v1.0.0.md)\n\n`;
+
+            if (errors) {
+              body += `### Errors (blocking)\n${errors}\n\n`;
+            }
+            if (warnings) {
+              body += `### Warnings (non-blocking)\n${warnings}\n\n`;
+            }
+            if (status === 'success') {
+              body += `All new documents follow the naming convention.\n`;
+            }
+
+            // Find existing comment to update
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            const existing = comments.find(c => c.body.includes('Document Naming Convention Check'));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            }
+
+      - name: Fail if non-compliant new files
+        if: steps.validate.outputs.status == 'failure'
+        run: |
+          echo "::error::New documents must follow the naming convention: [TIER]-[PRODUCT]-[DOC-TYPE]-<Subject>-v<VERSION>.md"
+          exit 1
