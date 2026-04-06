@@ -1,6 +1,6 @@
 # PFI-VHF Research Wiki Schema
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Inherited From:** [PFC Research Wiki Schema](https://github.com/ajrmooreuk/Azlan-EA-AAA/blob/main/PBS/RESEARCH/_schema.md)
 **Epic:** [Epic 17 (pfc-dev #86)](https://github.com/ajrmooreuk/pfc-dev/issues/86)
 **Status:** Active
@@ -37,6 +37,9 @@ Every wiki page follows this structure:
     | **Last Compiled** | {ISO date} |
     | **Sources** | {count} strategy docs |
     | **Cross-Refs** | [{linked page}]({path}), ... |
+    | **Published** | false |
+    | **Security Classification** | INTERNAL |
+    | **Source Epic** | E17 |
 
     ---
 
@@ -56,6 +59,20 @@ Every wiki page follows this structure:
     | Date | Action | Sources Ingested |
     |------|--------|-----------------|
     | {date} | Initial compilation | {list} |
+
+---
+
+## Publication Metadata
+
+Three metadata fields enable future external hosting (F17.12). All default to safe values.
+
+| Field | Values | Default | Purpose |
+|-------|--------|---------|---------|
+| **Published** | `true` / `false` | `false` | Opt-in for external content library |
+| **Security Classification** | `PUBLIC` / `INTERNAL` / `CONFIDENTIAL` / `SENSITIVE` | `INTERNAL` | URG-aligned visibility control |
+| **Source Epic** | `E17` / `E18` / etc. | `E17` | Content source tracking |
+
+Inherited from [PFC schema v1.1.0](https://github.com/ajrmooreuk/Azlan-EA-AAA/blob/main/PBS/RESEARCH/_schema.md). See PFC schema for full classification rules and tagging guidelines.
 
 ---
 
