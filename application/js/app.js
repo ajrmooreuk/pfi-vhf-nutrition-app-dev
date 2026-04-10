@@ -17,6 +17,7 @@ import { state } from './state.js';
 import { loadAppSkeleton, renderNavFromSkeleton, initZoneVisibility } from './skeleton-loader.js';
 import { initTokenBridge } from './token-bridge.js';
 import { VHF_ACTIONS } from './nav-actions.js';
+import { fetchClients, fetchRecipes, fetchPlans } from './supabase-client.js';
 
 // ── Data paths (relative to application/) ──────────────────────────────────
 const PATHS = {
@@ -85,6 +86,153 @@ async function loadPlans() {
     if (data) state.plans.push(data);
   }
   console.log(`[app] Loaded ${state.plans.length} plans`);
+}
+
+// ── Supabase data loading ───────────────────────────────────────────────────
+
+/**
+ * Map a Supabase vhf_clients row to the JSONLD persona shape used by the
+ * dashboard render code (client cards, profile panel, etc.).
+ */
+function _mapClientToPersona(c) {
+  return {
+    // Supabase fields (kept for direct access)
+    ...c,
+    // JSONLD-compatible fields the render code expects
+    '@id': `client:${c.id}`,
+    '@type': 'client:Client',
+    name: `${c.given_name || ''} ${c.family_name || ''}`.trim(),
+    givenName: c.given_name,
+    familyName: c.family_name,
+    'client:hasProfile': {
+      weight: c.weight_kg ? { value: c.weight_kg } : null,
+      activityLevel: c.activity_level || null,
+    },
+    'client:hasMacroTarget': {
+      dailyCalories: c.daily_calories,
+      proteinGrams: c.protein_grams,
+      carbsGrams: c.carbs_grams,
+      fatsGrams: c.fats_grams,
+    },
+    'client:hasGoal': c.goal
+      ? { '@id': `client:${c.goal}` }
+      : null,
+    'client:followsDiet': (c.diets || []).map(d => ({ '@id': `diet:${d}` })),
+    'client:hasAllergen': (c.allergens || []).map(a => ({ '@id': `client:allergen-${a}` })),
+    'client:hasDietaryRestriction': c.dietary_restrictions || [],
+    'vhf:personaId': c.id,
+    'vhf:macroTargets': {
+      'vhf:calories': c.daily_calories,
+      'vhf:protein': c.protein_grams,
+      'vhf:carbs': c.carbs_grams,
+      'vhf:fat': c.fats_grams,
+    },
+  };
+}
+
+/**
+ * Map a Supabase vhf_recipes row to the JSONLD recipe shape.
+ */
+function _mapRecipeToJsonld(r) {
+  return {
+    ...r,
+    '@id': `recipe:${r.id}`,
+    '@type': 'Recipe',
+    name: r.name,
+    recipeCategory: r.category,
+    prepTime: r.prep_time_mins ? `PT${r.prep_time_mins}M` : null,
+    cookTime: r.cook_time_mins ? `PT${r.cook_time_mins}M` : null,
+    recipeYield: r.servings ? `${r.servings} servings` : null,
+    difficulty: r.difficulty || null,
+    recipeCuisine: (r.themes || [])[0] || '',
+    nutrition: {
+      '@type': 'NutritionInformation',
+      calories: r.calories ? `${r.calories} kcal` : null,
+      proteinContent: r.protein_g ? `${r.protein_g}g` : null,
+      carbohydrateContent: r.carbs_g ? `${r.carbs_g}g` : null,
+      fatContent: r.fat_g ? `${r.fat_g}g` : null,
+    },
+    recipeIngredient: r.ingredients || [],
+    'recipe:suitableForDietType': (r.suitable_diets || []).map(d => ({ '@id': `diet:${d}` })),
+    'recipe:costPerServing': r.cost_per_serving_gbp ? `£${r.cost_per_serving_gbp.toFixed(2)}` : null,
+    'vhf:recipeName': r.name,
+    'vhf:mealType': r.category,
+  };
+}
+
+/**
+ * Map a Supabase vhf_meal_plans row (with nested days/entries) to the JSONLD
+ * plan shape used by _renderPlanViewer.
+ */
+function _mapPlanToJsonld(plan) {
+  const days = plan.vhf_meal_plan_days || [];
+  // Sort days by day_number
+  days.sort((a, b) => (a.day_number || 0) - (b.day_number || 0));
+
+  const daysPerWeek = 7;
+  const weeks = [];
+  const dayOfWeekNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  for (let w = 0; w < Math.ceil(days.length / daysPerWeek); w++) {
+    const weekDays = days.slice(w * daysPerWeek, (w + 1) * daysPerWeek);
+    weeks.push({
+      'vhf:weekLabel': `Week ${w + 1}`,
+      weekLabel: `Week ${w + 1}`,
+      days: weekDays.map((d, i) => {
+        const entries = d.vhf_meal_plan_entries || [];
+        return {
+          dayOfWeek: dayOfWeekNames[i % 7],
+          meals: entries.map(e => ({
+            mealType: (e.meal_type || '').replace('_', ' '),
+            'vhf:mealType': (e.meal_type || '').replace('_', ' '),
+            recipeName: e.recipe_name,
+            'vhf:recipeName': e.recipe_name,
+            calories: e.calories ? String(e.calories) : '',
+            'vhf:calories': e.calories ? String(e.calories) : '',
+          })),
+          'vhf:meals': entries.map(e => ({
+            mealType: (e.meal_type || '').replace('_', ' '),
+            recipeName: e.recipe_name,
+            calories: e.calories ? String(e.calories) : '',
+          })),
+        };
+      }),
+    });
+  }
+
+  return {
+    _supabaseId: plan.id,
+    'vhf:planStatus': plan.status || 'draft',
+    'vhf:weeks': weeks,
+    'meal:assignedToClient': { '@id': `client:${plan.client_id}` },
+    'vhf:testPersonaId': plan.client_id,
+    'vhf:notes': plan.notes,
+  };
+}
+
+/**
+ * Attempt to load all data from Supabase.
+ * @returns {boolean} true if Supabase load succeeded
+ */
+async function loadFromSupabase() {
+  try {
+    const [clients, recipes, plans] = await Promise.all([
+      fetchClients(),
+      fetchRecipes(),
+      fetchPlans(),
+    ]);
+
+    state.personas = clients.map(_mapClientToPersona);
+    state.recipes = recipes.map(_mapRecipeToJsonld);
+    state.plans = plans.map(_mapPlanToJsonld);
+
+    console.log(`[app] Supabase: ${state.personas.length} clients, ${state.recipes.length} recipes, ${state.plans.length} plans`);
+    state.dataSource = 'supabase';
+    return true;
+  } catch (err) {
+    console.warn('[app] Supabase load failed, will fall back to JSONLD:', err.message);
+    return false;
+  }
 }
 
 // ── Dashboard rendering ─────────────────────────────────────────────────────
@@ -218,9 +366,13 @@ async function init() {
     // 4. Init zone visibility
     initZoneVisibility(skeleton);
 
-    // 5. Load data (parallel)
+    // 5. Load data — try Supabase first, fall back to JSONLD
     setLoadingStatus('Loading data…');
-    await Promise.all([loadPersonas(), loadRecipes(), loadPlans()]);
+    const supabaseOk = await loadFromSupabase();
+    if (!supabaseOk) {
+      console.log('[app] Falling back to local JSONLD files');
+      await Promise.all([loadPersonas(), loadRecipes(), loadPlans()]);
+    }
 
     // 6. Render dashboard
     setLoadingStatus('Rendering…');

@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="importmap">
+  {
+    "imports": {
+      "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2"
+    }
+  }
+  </script>
   <title>VHF Nutrition Coaching — Powered by PFC Platform</title>
   <meta name="description" content="VHF AI-Powered Nutrition Coaching Application — James Kerby's methodology, digitised.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -231,11 +238,12 @@
         <div class="coach-section">
           <h3>Generate Plan</h3>
           <p class="text-sm text-muted" style="margin-bottom: var(--ds-spacing-sm)">
-            Select a client on the dashboard, then generate a new 30-day plan.
+            Select a client on the dashboard, then generate a new 7-day meal plan powered by Claude AI.
           </p>
-          <button class="btn-approve" onclick="window.VHF_ACTIONS?.openPlanGenerator()" style="width:100%">
-            Generate New Plan
+          <button id="generate-plan-btn" class="btn-approve" onclick="window.VHF_ACTIONS?.openPlanGenerator()" style="width:100%">
+            Generate 7-Day Meal Plan
           </button>
+          <div id="plan-generation-status" style="margin-top: var(--ds-spacing-sm)"></div>
         </div>
       </div>
     </section>

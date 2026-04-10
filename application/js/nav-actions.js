@@ -10,6 +10,7 @@
 
 import { state } from './state.js';
 import { showZone, hideZone, activateZone } from './skeleton-loader.js';
+import { generateMealPlan, updatePlanStatus } from './supabase-client.js';
 
 // ========================================
 // ACTION IMPLEMENTATIONS
@@ -54,17 +55,150 @@ function showRecipeBrowser() {
 }
 
 /**
- * Open the plan generator (triggers Claude Code skill invocation).
- * Action: openPlanGenerator → Z-VHF-002
+ * Open the plan generator — calls the Supabase Edge Function to generate
+ * a 7-day meal plan via Claude, then renders the result.
+ * Action: openPlanGenerator → Z-VHF-006 (loading) → Z-VHF-002 (result)
  */
-function openPlanGenerator() {
+async function openPlanGenerator() {
   if (!state.activeClient) {
     _setStatus('Select a client first to generate a plan.');
     return;
   }
-  const clientName = state.activeClient.name || state.activeClient['givenName'] || 'this client';
-  _setStatus(`Plan generation for ${clientName} — run /meal-plan in Claude Code, then reload.`);
+
+  const clientId = state.activeClient.id || state.activeClient['@id'] || '';
+  const clientName = state.activeClient.name
+    || state.activeClient.given_name
+    || state.activeClient['givenName']
+    || 'this client';
+
+  // Show loading state in coach panel
   showZone('Z-VHF-006');
+  const statusEl = document.getElementById('plan-generation-status');
+  const generateBtn = document.getElementById('generate-plan-btn');
+  if (statusEl) {
+    statusEl.innerHTML = `
+      <div class="plan-gen-loading">
+        <div class="loading-spinner-sm"></div>
+        <span>Generating 7-day meal plan for ${clientName}...</span>
+        <p class="text-sm text-muted" style="margin-top: var(--ds-spacing-sm)">This may take 30-60 seconds while Claude analyses recipes and builds the plan.</p>
+      </div>
+    `;
+  }
+  if (generateBtn) generateBtn.disabled = true;
+
+  try {
+    const plan = await generateMealPlan(clientId, 7);
+
+    if (!plan || plan.error) {
+      throw new Error(plan?.error || 'No plan returned');
+    }
+
+    // Convert Supabase plan format to the JSONLD shape the viewer expects
+    const viewerPlan = _supabasePlanToViewerFormat(plan);
+
+    // Store in state
+    state.activePlan = viewerPlan;
+    if (!state.plans.find(p => p._supabaseId === plan.id)) {
+      state.plans.push(viewerPlan);
+    }
+
+    // Show success
+    if (statusEl) {
+      statusEl.innerHTML = `
+        <div class="plan-gen-success">
+          <span style="color: var(--ds-color-primary); font-weight: 600;">Plan generated successfully.</span>
+          <p class="text-sm text-muted">${plan.duration_days}-day plan for ${clientName} — ${plan.days?.length ?? 0} days created.</p>
+        </div>
+      `;
+    }
+
+    _setStatus(`Plan generated for ${clientName}`);
+
+    // Navigate to plan viewer after a brief pause
+    setTimeout(() => {
+      _renderPlanViewer(viewerPlan);
+      activateZone('Z-VHF-002');
+    }, 1000);
+
+  } catch (err) {
+    console.error('[VHF] Plan generation failed:', err);
+    if (statusEl) {
+      statusEl.innerHTML = `
+        <div class="plan-gen-error">
+          <span style="color: #dc2626; font-weight: 600;">Plan generation failed</span>
+          <p class="text-sm" style="color: #dc2626;">${err.message || 'Unknown error'}</p>
+          <p class="text-sm text-muted" style="margin-top: var(--ds-spacing-xs)">Check the browser console for details. You can also run /meal-plan in Claude Code as a fallback.</p>
+        </div>
+      `;
+    }
+    _setStatus(`Plan generation failed: ${err.message}`);
+  } finally {
+    if (generateBtn) generateBtn.disabled = false;
+  }
+}
+
+/**
+ * Convert a Supabase Edge Function plan response to the JSONLD viewer format
+ * used by _renderPlanViewer / vhfSelectWeek.
+ */
+function _supabasePlanToViewerFormat(plan) {
+  const days = plan.days || [];
+  const daysPerWeek = 7;
+  const weeks = [];
+
+  for (let w = 0; w < Math.ceil(days.length / daysPerWeek); w++) {
+    const weekDays = days.slice(w * daysPerWeek, (w + 1) * daysPerWeek);
+    weeks.push({
+      'vhf:weekLabel': `Week ${w + 1}`,
+      weekLabel: `Week ${w + 1}`,
+      days: weekDays.map(d => {
+        const meals = d.meals || {};
+        const mealTypes = ['breakfast', 'snack_am', 'lunch', 'snack_pm', 'dinner'];
+        const mealEntries = mealTypes
+          .filter(mt => meals[mt])
+          .map(mt => ({
+            mealType: mt.replace('_', ' '),
+            'vhf:mealType': mt.replace('_', ' '),
+            recipeName: meals[mt].recipe_name,
+            'vhf:recipeName': meals[mt].recipe_name,
+            calories: String(meals[mt].nutrition?.calories ?? ''),
+            'vhf:calories': String(meals[mt].nutrition?.calories ?? ''),
+          }));
+
+        const dayOfWeekNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const dayIndex = ((d.day - 1) % 7);
+
+        return {
+          dayOfWeek: dayOfWeekNames[dayIndex] || `Day ${d.day}`,
+          meals: mealEntries,
+          'vhf:meals': mealEntries,
+        };
+      }),
+      'vhf:days': weekDays.map(d => {
+        const meals = d.meals || {};
+        const mealTypes = ['breakfast', 'snack_am', 'lunch', 'snack_pm', 'dinner'];
+        return {
+          meals: mealTypes
+            .filter(mt => meals[mt])
+            .map(mt => ({
+              mealType: mt.replace('_', ' '),
+              recipeName: meals[mt].recipe_name,
+              calories: String(meals[mt].nutrition?.calories ?? ''),
+            })),
+        };
+      }),
+    });
+  }
+
+  return {
+    _supabaseId: plan.id,
+    'vhf:planStatus': plan.status || 'pending_review',
+    'vhf:weeks': weeks,
+    'meal:assignedToClient': { '@id': `client:${plan.client_id}` },
+    'vhf:testPersonaId': plan.client_id,
+    'vhf:notes': plan.notes,
+    'vhf:dailyTargets': plan.daily_targets,
+  };
 }
 
 /**
@@ -118,27 +252,53 @@ function showQualityDashboard() {
 }
 
 /**
- * Approve the active plan (draft → approved).
+ * Approve the active plan (draft/pending → approved).
+ * Persists to Supabase if the plan has a _supabaseId.
  * Action: approvePlan
  */
-function approvePlan() {
+async function approvePlan() {
   if (!state.activePlan) return;
   state.activePlan['vhf:planStatus'] = 'approved';
   _updatePlanStatusDisplay('approved');
   _setStatus('Plan approved.');
+
+  // Persist to Supabase if this plan came from the DB
+  const planId = state.activePlan._supabaseId;
+  if (planId) {
+    try {
+      await updatePlanStatus(planId, 'approved');
+      _setStatus('Plan approved and saved to database.');
+    } catch (err) {
+      console.error('[VHF] Failed to persist approval:', err);
+      _setStatus('Plan approved locally but failed to save to database.');
+    }
+  }
 }
 
 /**
  * Reject the active plan with a note.
+ * Persists to Supabase if the plan has a _supabaseId.
  * Action: rejectPlan
  */
-function rejectPlan() {
+async function rejectPlan() {
   if (!state.activePlan) return;
   const note = prompt('Rejection reason (optional):') || '';
   state.activePlan['vhf:planStatus'] = 'rejected';
   state.activePlan['vhf:coachNote'] = note;
   _updatePlanStatusDisplay('rejected');
   _setStatus('Plan rejected.');
+
+  // Persist to Supabase if this plan came from the DB
+  const planId = state.activePlan._supabaseId;
+  if (planId) {
+    try {
+      await updatePlanStatus(planId, 'rejected', note);
+      _setStatus('Plan rejected and saved to database.');
+    } catch (err) {
+      console.error('[VHF] Failed to persist rejection:', err);
+      _setStatus('Plan rejected locally but failed to save to database.');
+    }
+  }
 }
 
 /**
