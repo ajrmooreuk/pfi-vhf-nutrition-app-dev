@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* DS-ONT Viridian Brand Tokens */
+    --ds-color-primary: #007c74;
+    --ds-color-primary-foreground: #ffffff;
+    --ds-color-secondary: #f16a21;
+    --ds-color-secondary-foreground: #ffffff;
+    --ds-color-background: #ffffff;
+    --ds-color-foreground: #1a1a1a;
+    --ds-color-muted: #f4f4f5;
+    --ds-color-muted-foreground: #71717a;
+    --ds-color-accent: #e6f5f4;
+    --ds-color-accent-foreground: #005a54;
+    --ds-color-card: #ffffff;
+    --ds-color-card-foreground: #1a1a1a;
+    --ds-color-border: #e4e4e7;
+    --ds-color-input: #e4e4e7;
+    --ds-color-ring: #007c74;
+    --ds-color-destructive: #ef4444;
+    --ds-color-destructive-foreground: #ffffff;
+
+    /* DS-ONT Typography */
+    --ds-font-family: "PT Sans", sans-serif;
+
+    /* DS-ONT Radii */
+    --ds-radius-lg: 0.5rem;
+    --ds-radius-md: 0.375rem;
+    --ds-radius-sm: 0.25rem;
+
+    /* shadcn/ui slot mappings */
+    --background: var(--ds-color-background);
+    --foreground: var(--ds-color-foreground);
+    --primary: var(--ds-color-primary);
+    --primary-foreground: var(--ds-color-primary-foreground);
+    --secondary: var(--ds-color-secondary);
+    --secondary-foreground: var(--ds-color-secondary-foreground);
+    --muted: var(--ds-color-muted);
+    --muted-foreground: var(--ds-color-muted-foreground);
+    --accent: var(--ds-color-accent);
+    --accent-foreground: var(--ds-color-accent-foreground);
+    --card: var(--ds-color-card);
+    --card-foreground: var(--ds-color-card-foreground);
+    --border: var(--ds-color-border);
+    --input: var(--ds-color-input);
+    --ring: var(--ds-color-ring);
+    --destructive: var(--ds-color-destructive);
+    --destructive-foreground: var(--ds-color-destructive-foreground);
+    --radius: var(--ds-radius-md);
+  }
+
+  * {
+    border-color: var(--ds-color-border);
+  }
+
+  body {
+    background-color: var(--ds-color-background);
+    color: var(--ds-color-foreground);
+    font-family: var(--ds-font-family);
+  }
+}
