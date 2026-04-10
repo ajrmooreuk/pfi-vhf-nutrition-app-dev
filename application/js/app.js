@@ -18,6 +18,7 @@ import { loadAppSkeleton, renderNavFromSkeleton, initZoneVisibility } from './sk
 import { initTokenBridge } from './token-bridge.js';
 import { VHF_ACTIONS } from './nav-actions.js';
 import { fetchClients, fetchRecipes, fetchPlans } from './supabase-client.js';
+import { requireAuth, signOut } from './auth.js';
 
 // ── Data paths (relative to application/) ──────────────────────────────────
 const PATHS = {
@@ -350,6 +351,15 @@ window.vhfDashboardSelectClient = function(el) {
 
 async function init() {
   try {
+    // 0. Authenticate — show login if no session
+    const user = await requireAuth();
+    state.authUser = user;
+    console.log(`[app] Authenticated as ${user.email}`);
+
+    // Show loading overlay after auth
+    const loadingEl = document.getElementById('vhf-loading');
+    if (loadingEl) loadingEl.style.display = 'flex';
+
     // 1. Skeleton
     setLoadingStatus('Loading skeleton…');
     const skeleton = await loadAppSkeleton(PATHS.skeleton);
@@ -378,9 +388,10 @@ async function init() {
     setLoadingStatus('Rendering…');
     renderDashboard();
 
-    // 7. Expose action registry + state globally
+    // 7. Expose action registry + state + sign out globally
     window.VHF_ACTIONS = VHF_ACTIONS;
     window.vhfState = state;
+    window.vhfSignOut = signOut;
 
     // 8. Done
     hideLoading();
@@ -391,7 +402,6 @@ async function init() {
     state.loadError = err.message;
     setLoadingStatus(`Error: ${err.message}`);
     console.error('[app] Init failed:', err);
-    // Still show the app shell so partial content is accessible
     hideLoading();
   }
 }

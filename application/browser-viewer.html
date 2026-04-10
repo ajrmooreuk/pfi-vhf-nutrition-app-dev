@@ -20,8 +20,37 @@
 
 <body>
 
+<!-- Login overlay (shown when not authenticated) -->
+<div id="vhf-login" style="display:none">
+  <div class="login-card">
+    <div class="vhf-brand" style="justify-content:center; margin-bottom:1.5rem">
+      <div class="vhf-brand-mark" aria-hidden="true">VHF</div>
+      <span class="vhf-brand-name">VHF Nutrition</span>
+    </div>
+    <h2 style="text-align:center; margin-bottom:1rem; color:var(--ds-text-primary)">Sign In</h2>
+    <form id="login-form" onsubmit="return false">
+      <div style="margin-bottom:0.75rem">
+        <label for="login-email" style="display:block; font-size:0.875rem; margin-bottom:0.25rem; color:var(--ds-text-secondary)">Email</label>
+        <input type="email" id="login-email" required placeholder="james@viridian.fitness"
+          style="width:100%; padding:0.5rem 0.75rem; border:1px solid var(--ds-border-default); border-radius:var(--ds-radius-md); font-family:var(--ds-font-family); font-size:0.875rem">
+      </div>
+      <div style="margin-bottom:1rem">
+        <label for="login-password" style="display:block; font-size:0.875rem; margin-bottom:0.25rem; color:var(--ds-text-secondary)">Password</label>
+        <input type="password" id="login-password" required placeholder="Password"
+          style="width:100%; padding:0.5rem 0.75rem; border:1px solid var(--ds-border-default); border-radius:var(--ds-radius-md); font-family:var(--ds-font-family); font-size:0.875rem">
+      </div>
+      <div id="login-error" style="display:none; color:#dc2626; font-size:0.875rem; margin-bottom:0.75rem"></div>
+      <button type="submit" id="login-btn"
+        style="width:100%; padding:0.625rem; background:var(--ds-color-primary); color:var(--ds-text-on-brand); border:none; border-radius:var(--ds-radius-md); font-family:var(--ds-font-family); font-size:0.875rem; font-weight:700; cursor:pointer">
+        Sign In
+      </button>
+    </form>
+    <p style="text-align:center; margin-top:1rem; font-size:0.75rem; color:var(--ds-text-muted)">Viridian Health &amp; Fitness — Winchester, UK</p>
+  </div>
+</div>
+
 <!-- Loading overlay (removed once skeleton + data loaded) -->
-<div id="vhf-loading" role="status" aria-live="polite">
+<div id="vhf-loading" role="status" aria-live="polite" style="display:none">
   <div class="loading-spinner" aria-hidden="true"></div>
   <div class="loading-text" id="loading-status-text">Loading VHF…</div>
 </div>

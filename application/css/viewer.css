@@ -1084,6 +1084,45 @@ button {
 }
 
 /* ========================================
+   Login Overlay
+   ======================================== */
+
+#vhf-login {
+  position: fixed;
+  inset: 0;
+  background: var(--ds-surface-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: calc(var(--z-modal) + 1);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 2rem;
+  background: var(--ds-surface-default);
+  border: 1px solid var(--ds-border-default);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.login-card input:focus {
+  outline: 2px solid var(--ds-color-primary);
+  outline-offset: -1px;
+  border-color: var(--ds-color-primary);
+}
+
+.login-card button[type="submit"]:hover {
+  background: var(--ds-color-primary-hover);
+}
+
+.login-card button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========================================
    Utility
    ======================================== */
 
