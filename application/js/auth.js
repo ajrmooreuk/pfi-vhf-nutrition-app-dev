@@ -16,24 +16,24 @@ export let currentUser = null;
  * @returns {Promise<object>} The authenticated user
  */
 export async function requireAuth() {
+  const loginOverlay = document.getElementById('vhf-login');
+
   // Check existing session
   const { data: { session } } = await supabase.auth.getSession();
 
   if (session?.user) {
     currentUser = session.user;
+    if (loginOverlay) loginOverlay.style.display = 'none';
     return currentUser;
   }
 
-  // No session — show login
+  // No session — login overlay is already visible (default state)
   return new Promise((resolve) => {
-    const loginOverlay = document.getElementById('vhf-login');
     const loginForm = document.getElementById('login-form');
     const loginBtn = document.getElementById('login-btn');
     const loginError = document.getElementById('login-error');
     const emailInput = document.getElementById('login-email');
     const passwordInput = document.getElementById('login-password');
-
-    if (loginOverlay) loginOverlay.style.display = 'flex';
 
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -58,7 +58,7 @@ export async function requireAuth() {
       }
 
       currentUser = data.user;
-      loginOverlay.style.display = 'none';
+      if (loginOverlay) loginOverlay.style.display = 'none';
       resolve(currentUser);
     });
   });
