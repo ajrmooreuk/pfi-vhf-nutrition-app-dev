@@ -1,0 +1,552 @@
+{
+  "version": "2.0.0",
+  "manifestVersion": "2.0.0",
+  "description": "All PFC skills distributed as sealed artifacts via pfc-release.yml. These skills are executable but not editable in PFI triad repos \u2014 protected by guard-core.yml.",
+  "sealedSkills": [
+    {
+      "name": "close-out",
+      "sourcePath": "azlan-github-workflow/skills/close-out/SKILL.md",
+      "targetPath": "pfc-core/skills/close-out/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Post-change housekeeping pipeline \u2014 issue close-out, architecture docs, operating guides, test plans, bulletins, deployment requirements. Supports PR, story, feature, commit, and session entry points."
+    },
+    {
+      "name": "create-epic",
+      "sourcePath": "azlan-github-workflow/skills/create-epic/SKILL.md",
+      "targetPath": "pfc-core/skills/create-epic/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates a correctly-formatted Epic issue with auto-detected numbering, labels, and project board integration."
+    },
+    {
+      "name": "create-feature",
+      "sourcePath": "azlan-github-workflow/skills/create-feature/SKILL.md",
+      "targetPath": "pfc-core/skills/create-feature/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates a correctly-formatted Feature issue linked to a parent Epic."
+    },
+    {
+      "name": "create-story",
+      "sourcePath": "azlan-github-workflow/skills/create-story/SKILL.md",
+      "targetPath": "pfc-core/skills/create-story/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates a correctly-formatted Story issue linked to a parent Feature."
+    },
+    {
+      "name": "review-hierarchy",
+      "sourcePath": "azlan-github-workflow/skills/review-hierarchy/SKILL.md",
+      "targetPath": "pfc-core/skills/review-hierarchy/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Audits a GitHub repository for Azlan workflow compliance \u2014 naming conventions, labels, parent references, project board assignment."
+    },
+    {
+      "name": "setup-project-board",
+      "sourcePath": "azlan-github-workflow/skills/setup-project-board/SKILL.md",
+      "targetPath": "pfc-core/skills/setup-project-board/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Creates or configures a GitHub Projects v2 board with standard Azlan workflow fields and views."
+    },
+    {
+      "name": "setup-repo",
+      "sourcePath": "azlan-github-workflow/skills/setup-repo/SKILL.md",
+      "targetPath": "pfc-core/skills/setup-repo/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "lifecycle",
+      "userInvocable": true,
+      "description": "Provisions a GitHub repository with the full Azlan workflow \u2014 labels, branch protection, and project board."
+    },
+    {
+      "name": "pfc-org-context",
+      "sourcePath": "azlan-github-workflow/skills/pfc-org-context/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-org-context/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Establishes organizational context \u2014 products, brands, competitive landscape, market context, and maturity assessment."
+    },
+    {
+      "name": "pfc-macro-analysis",
+      "sourcePath": "azlan-github-workflow/skills/pfc-macro-analysis/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-macro-analysis/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "PESTEL analysis and scenario planning providing 5-10 year macro-environment context for VE strategy formulation."
+    },
+    {
+      "name": "pfc-industry-analysis",
+      "sourcePath": "azlan-github-workflow/skills/pfc-industry-analysis/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-industry-analysis/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Porter's Five Forces, SWOT/TOWS, and Ansoff growth matrix for competitive environment context."
+    },
+    {
+      "name": "pfc-vsom",
+      "sourcePath": "azlan-github-workflow/skills/pfc-vsom/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-vsom/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Vision-Strategy-Objectives-Metrics formulation with Balanced Scorecard strategy mapping."
+    },
+    {
+      "name": "pfc-okr",
+      "sourcePath": "azlan-github-workflow/skills/pfc-okr/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-okr/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Cascades VSOM strategic objectives into quarterly OKRs with 2-5 key results each."
+    },
+    {
+      "name": "pfc-kpi",
+      "sourcePath": "azlan-github-workflow/skills/pfc-kpi/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-kpi/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Defines KPIs with formulas, thresholds, data sources, and BSC perspective classification."
+    },
+    {
+      "name": "pfc-vp",
+      "sourcePath": "azlan-github-workflow/skills/pfc-vp/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-vp/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Builds a complete Value Proposition for a given ICP with mandatory VP-RRR alignment."
+    },
+    {
+      "name": "pfc-kano",
+      "sourcePath": "azlan-github-workflow/skills/pfc-kano/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-kano/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Kano satisfaction analysis \u2014 classifies VP features by 5 categories with decay tracking and PMF signal enrichment."
+    },
+    {
+      "name": "pfc-efs",
+      "sourcePath": "azlan-github-workflow/skills/pfc-efs/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-efs/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ve-pipeline",
+      "userInvocable": true,
+      "description": "Generates PRDs with Epic-Feature-Story hierarchies from Terms of Reference and VSOM context."
+    },
+    {
+      "name": "pfc-ve-pipeline",
+      "sourcePath": "azlan-github-workflow/skills/pfc-ve-pipeline/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-ve-pipeline/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "orchestrator",
+      "userInvocable": true,
+      "description": "Master orchestrator for the VE process chain \u2014 sequences 7 skills from org-context through value proposition."
+    },
+    {
+      "name": "pfc-delta-scope",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-scope/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-scope/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 1 (Discover) of DELTA \u2014 scopes discovery engagement, stakeholder mapping, context layer identification."
+    },
+    {
+      "name": "pfc-delta-evaluate",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-evaluate/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-evaluate/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 2 (Evaluate) of DELTA \u2014 Comparative Gap Analysis engine, scores current vs future state."
+    },
+    {
+      "name": "pfc-delta-leverage",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-leverage/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-leverage/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 3 (Leverage) of DELTA \u2014 sensitivity analysis, hypothesis testing, impact-effort prioritisation."
+    },
+    {
+      "name": "pfc-delta-narrate",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-narrate/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-narrate/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 4 (Transform) of DELTA \u2014 client-facing narrative generation using VE-SC communication patterns."
+    },
+    {
+      "name": "pfc-delta-adapt",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-adapt/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-adapt/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "delta-pipeline",
+      "userInvocable": true,
+      "description": "Phase 5 (Adapt) of DELTA \u2014 variance analysis, threshold breach detection, cycle determination."
+    },
+    {
+      "name": "pfc-delta-pipeline",
+      "sourcePath": "azlan-github-workflow/skills/pfc-delta-pipeline/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-delta-pipeline/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "orchestrator",
+      "userInvocable": true,
+      "description": "Master orchestrator for DELTA 5-phase discovery process \u2014 sequences scope, evaluate, leverage, narrate, adapt."
+    },
+    {
+      "name": "pfc-reason",
+      "sourcePath": "azlan-github-workflow/skills/pfc-reason/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-reason/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "plugin",
+      "userInvocable": false,
+      "description": "MECE decomposition, logic tree analysis, hypothesis testing, and synthesis. Cross-cutting reasoning substrate."
+    },
+    {
+      "name": "pfc-oaa-v7",
+      "sourcePath": "azlan-github-workflow/skills/pfc-oaa-v7/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-oaa-v7/SKILL.md",
+      "sealed": true,
+      "scope": "core",
+      "category": "ontology",
+      "userInvocable": true,
+      "description": "Ontology Architect Agent v7.1 \u2014 creates, converts, and validates OAA v7.0.0 compliant ontologies."
+    },
+    {
+      "name": "pfc-alz-assess-waf",
+      "sourcePath": "azlan-github-workflow/skills/pfc-alz-assess/waf/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-alz-assess-waf/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "alz-assess",
+      "userInvocable": true,
+      "description": "WAF Pillar assessment \u2014 evaluates Azure estate against Well-Architected Framework pillars."
+    },
+    {
+      "name": "pfc-alz-assess-caf",
+      "sourcePath": "azlan-github-workflow/skills/pfc-alz-assess/caf/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-alz-assess-caf/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "alz-assess",
+      "userInvocable": true,
+      "description": "CAF Readiness assessment \u2014 scores Cloud Adoption Framework readiness across Azure estate."
+    },
+    {
+      "name": "pfc-alz-assess-cyber",
+      "sourcePath": "azlan-github-workflow/skills/pfc-alz-assess/cyber/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-alz-assess-cyber/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "alz-assess",
+      "userInvocable": true,
+      "description": "Cyber & Security Posture assessment \u2014 MCSB + OWASP + AI security scoring."
+    },
+    {
+      "name": "pfc-alz-assess-health",
+      "sourcePath": "azlan-github-workflow/skills/pfc-alz-assess/health/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-alz-assess-health/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "alz-assess",
+      "userInvocable": true,
+      "description": "ALZ Healthcheck \u2014 automated Azure Landing Zone health and compliance check."
+    },
+    {
+      "name": "pfc-alz-strategy",
+      "sourcePath": "azlan-github-workflow/skills/pfc-alz-assess/common/pfc-alz-strategy-SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-alz-strategy/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "alz-assess",
+      "userInvocable": true,
+      "description": "ALZ Strategy \u2014 DMAIC backcasting, OKR framework, and investment case from assessment findings."
+    },
+    {
+      "name": "pfc-grc-mcsb-assess",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/assess/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-mcsb-assess/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "MCSB v3 control assessment against Azure estate."
+    },
+    {
+      "name": "pfc-grc-baseline",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/baseline/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-baseline/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "GRC baseline establishment \u2014 captures current compliance state as reference point."
+    },
+    {
+      "name": "pfc-grc-mcsb-benchmark",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/benchmark/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-mcsb-benchmark/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "MCSB benchmark \u2014 compares estate against industry peers and best practice."
+    },
+    {
+      "name": "pfc-grc-drift",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/drift/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-drift/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "GRC drift detection \u2014 monitors deviation from established baseline."
+    },
+    {
+      "name": "pfc-grc-mcsb-migrate",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/migrate/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-mcsb-migrate/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "ASB\u2192MCSB migration \u2014 maps legacy Azure Security Benchmark to MCSB v3."
+    },
+    {
+      "name": "pfc-grc-plan",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/plan/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-plan/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "GRC remediation planning \u2014 generates prioritised remediation roadmap from findings."
+    },
+    {
+      "name": "pfc-grc-mcsb-policy",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/policy/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-mcsb-policy/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "MCSB policy assessment \u2014 evaluates Azure Policy assignments against MCSB controls."
+    },
+    {
+      "name": "pfc-grc-posture",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/posture/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-posture/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "Aggregate posture score \u2014 weighted composite (MCSB 0.40 + OWASP 0.25 + WAF 0.20 + AI 0.15)."
+    },
+    {
+      "name": "pfc-grc-remediate",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/remediate/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-remediate/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "GRC remediation execution \u2014 generates Azure CLI/PowerShell remediation scripts from findings."
+    },
+    {
+      "name": "pfc-grc-mcsb-report",
+      "sourcePath": "azlan-github-workflow/skills/pfc-grc-mcsb/report/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-grc-mcsb-report/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "grc-mcsb",
+      "userInvocable": true,
+      "description": "MCSB compliance report \u2014 structured compliance report against MCSB v3 control families."
+    },
+    {
+      "name": "pfc-qvf-cyber-impact",
+      "sourcePath": "azlan-github-workflow/skills/pfc-qvf-cyber/cyber-impact/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-qvf-cyber-impact/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "qvf-cyber",
+      "userInvocable": true,
+      "description": "Cyber impact quantification \u2014 ALE (Annual Loss Expectancy) calculation from findings."
+    },
+    {
+      "name": "pfc-qvf-threat-econ",
+      "sourcePath": "azlan-github-workflow/skills/pfc-qvf-cyber/threat-econ/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-qvf-threat-econ/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "qvf-cyber",
+      "userInvocable": true,
+      "description": "Threat economics \u2014 models attacker economics and defence investment optimisation."
+    },
+    {
+      "name": "pfc-qvf-breach-model",
+      "sourcePath": "azlan-github-workflow/skills/pfc-qvf-cyber/breach-model/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-qvf-breach-model/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "qvf-cyber",
+      "userInvocable": true,
+      "description": "Breach probability model \u2014 estimates breach likelihood from finding severity distribution."
+    },
+    {
+      "name": "pfc-qvf-cyber-insure",
+      "sourcePath": "azlan-github-workflow/skills/pfc-qvf-cyber/cyber-insure/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-qvf-cyber-insure/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "qvf-cyber",
+      "userInvocable": true,
+      "description": "Cyber insurance optimisation \u2014 models premium reduction from posture improvement."
+    },
+    {
+      "name": "pfc-qvf-grc-roi",
+      "sourcePath": "azlan-github-workflow/skills/pfc-qvf-cyber/grc-roi/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-qvf-grc-roi/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "qvf-cyber",
+      "userInvocable": true,
+      "description": "GRC ROI calculation \u2014 return on investment and payback period for remediation investment."
+    },
+    {
+      "name": "pfc-qvf-grc-value",
+      "sourcePath": "azlan-github-workflow/skills/pfc-qvf-cyber/grc-value/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-qvf-grc-value/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "qvf-cyber",
+      "userInvocable": true,
+      "description": "Net Cyber Value equation \u2014 Risk Reduction + Insurance + Compliance + Operational \u2212 Investment."
+    },
+    {
+      "name": "pfc-hcr-compose",
+      "sourcePath": "azlan-github-workflow/skills/pfc-hcr/compose/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-hcr-compose/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "hcr",
+      "userInvocable": true,
+      "description": "HCR Report Composer \u2014 assembles full HCR v2.0 report entity from findings, roadmap, economics."
+    },
+    {
+      "name": "pfc-hcr-analyse",
+      "sourcePath": "azlan-github-workflow/skills/pfc-hcr/analyse/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-hcr-analyse/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "hcr",
+      "userInvocable": true,
+      "description": "HCR Analyser \u2014 cross-domain finding correlation, SPC baselining, Nelson rule detection."
+    },
+    {
+      "name": "pfc-hcr-verify",
+      "sourcePath": "azlan-github-workflow/skills/pfc-hcr/verify/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-hcr-verify/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "hcr",
+      "userInvocable": true,
+      "description": "HCR Verifier \u2014 evidence audit trail, hash chain validation, verification attestation."
+    },
+    {
+      "name": "pfc-hcr-dashboard",
+      "sourcePath": "azlan-github-workflow/skills/pfc-hcr/dashboard/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-hcr-dashboard/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "hcr",
+      "userInvocable": true,
+      "description": "HCR Dashboard \u2014 produces dashboard data package for HCR UI consumption."
+    },
+    {
+      "name": "pfc-hcr-roadmap",
+      "sourcePath": "azlan-github-workflow/skills/pfc-hcr/roadmap/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-hcr-roadmap/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "hcr",
+      "userInvocable": true,
+      "description": "HCR Roadmap \u2014 backcasted 4-phase remediation roadmap with \u0394ALE per phase."
+    },
+    {
+      "name": "pfc-alz-pipeline",
+      "sourcePath": "azlan-github-workflow/skills/pfc-alz-pipeline/SKILL.md",
+      "targetPath": "pfc-core/skills/pfc-alz-pipeline/SKILL.md",
+      "sealed": true,
+      "scope": "aza-alz",
+      "category": "orchestrator",
+      "userInvocable": true,
+      "description": "ALZ Assessment Pipeline orchestrator \u2014 7-phase (ENGAGE\u2192EXTRACT\u2192ASSESS\u2192ANALYSE\u2192STRATEGISE\u2192DOCUMENT\u2192ASSURE) with 4 human checkpoints."
+    }
+  ],
+  "categories": {
+    "lifecycle": "Issue management, repo setup, compliance auditing, and close-out",
+    "ve-pipeline": "Value Engineering process chain \u2014 org-context through value proposition",
+    "delta-pipeline": "DELTA 5-phase discovery and gap analysis process",
+    "orchestrator": "Multi-skill pipeline orchestrators",
+    "plugin": "Non-user-invocable plugins called by other skills",
+    "ontology": "Ontology creation, conversion, and validation",
+    "alz-assess": "Azure Landing Zone assessment skills \u2014 WAF, CAF, Cyber, Health, Strategy",
+    "grc-mcsb": "GRC/MCSB compliance skills \u2014 assess, baseline, drift, remediate, report",
+    "qvf-cyber": "QVF Cyber Economics skills \u2014 impact, breach, insurance, ROI, value",
+    "hcr": "Health Check Report skills \u2014 compose, analyse, verify, dashboard, roadmap"
+  },
+  "governance": {
+    "authorisedAuthor": "github-actions[bot]",
+    "guardWorkflow": "guard-core.yml",
+    "overrideType": "none",
+    "editableInTriad": false,
+    "editableInHub": true,
+    "hubRepository": "ajrmooreuk/Azlan-EA-AAA"
+  },
+  "release": {
+    "tagPattern": "pfc-v*",
+    "workflow": "pfc-release.yml",
+    "changelogPath": "azlan-github-workflow/CHANGELOG.md"
+  }
+}
