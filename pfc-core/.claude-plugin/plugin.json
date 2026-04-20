@@ -1,0 +1,40 @@
+{
+  "name": "pfc-core-sealed",
+  "description": "PFC-Core sealed skills — 25 skills distributed by pfc-release.yml, protected by guard-core.yml. These skills are executable but not editable in PFI triad repos. Covers lifecycle, VE pipeline, DELTA pipeline, orchestrators, reasoning plugins, and ontology architecture.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ajrmooreuk",
+    "url": "https://github.com/ajrmooreuk/Azlan-EA-AAA"
+  },
+  "repository": "https://github.com/ajrmooreuk/Azlan-EA-AAA",
+  "license": "MIT",
+  "keywords": [
+    "pfc-core",
+    "sealed",
+    "close-out",
+    "create-epic",
+    "create-feature",
+    "create-story",
+    "review-hierarchy",
+    "setup-project-board",
+    "setup-repo",
+    "pfc-org-context",
+    "pfc-macro-analysis",
+    "pfc-industry-analysis",
+    "pfc-vsom",
+    "pfc-okr",
+    "pfc-kpi",
+    "pfc-vp",
+    "pfc-kano",
+    "pfc-efs",
+    "pfc-ve-pipeline",
+    "pfc-delta-scope",
+    "pfc-delta-evaluate",
+    "pfc-delta-leverage",
+    "pfc-delta-narrate",
+    "pfc-delta-adapt",
+    "pfc-delta-pipeline",
+    "pfc-reason",
+    "pfc-oaa-v7"
+  ]
+}

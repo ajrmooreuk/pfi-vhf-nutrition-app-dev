@@ -1,35 +1,49 @@
 {
   "@context": "https://platformcore.io/ontology/registry/",
-  "@type": "OntologyRegistry",
-  "@id": "azlan-ont-registry",
-  "name": "Azlan Ontology Registry",
-  "version": "7.2.0",
-  "oaaVersion": "6.1.0",
-  "lastUpdated": "2026-02-14",
-  "description": "Merged ontology library — registry entries co-located with artifacts, organized by series",
+  "@type": "OntologyRegistrySnapshot",
+  "@id": "pfc-snapshot-PFI-VHF",
+  "name": "Azlan Ontology Registry — PFI-VHF Snapshot",
+  "sourceVersion": "13.10.0",
+  "oaaVersion": "7.0.0",
+  "releaseTag": "manual-20260318-193614",
+  "releaseDate": "2026-03-18T19:36:27Z",
+  "targetPfi": "PFI-VHF",
+  "snapshotDescription": "Filtered ontology registry for PFI-VHF. Contains 56 ontologies from series: VE-Series, PE-Series, Foundation, Orchestration.",
   "entries": [
     {
       "@id": "Entry-ONT-EMC-001",
       "name": "EMC Ontology (Enterprise Model Composition)",
       "namespace": "emc:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "2.0.0",
+      "oaaVersion": "7.0.0",
+      "version": "5.3.0",
       "gatesPassed": 8,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-07",
+      "validatedDate": "2026-03-13",
       "path": "./Orchestration/EMC-ONT/Entry-ONT-EMC-001.json"
+    },
+    {
+      "@id": "Entry-ONT-DT-001",
+      "name": "DT Ontology (Decision Tree — Extensibility Pattern Evaluation)",
+      "namespace": "dt:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-24",
+      "path": "./Orchestration/DT-ONT/Entry-ONT-DT-001.json"
     },
     {
       "@id": "Entry-ONT-ORG-001",
       "name": "ORG Ontology (Organization Foundation)",
       "namespace": "org:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "3.0.0",
+      "oaaVersion": "7.0.0",
+      "version": "4.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
+      "validatedDate": "2026-03-13",
       "path": "./Foundation/ORG-ONT/Entry-ONT-ORG-001.json"
     },
     {
@@ -37,11 +51,11 @@
       "name": "ORG-CONTEXT Ontology (Context Hub)",
       "namespace": "org-ctx:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "3.0.0",
+      "oaaVersion": "7.0.0",
+      "version": "4.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-10",
+      "validatedDate": "2026-03-13",
       "path": "./Foundation/ORG-CONTEXT-ONT/Entry-ONT-ORG-CTX-001.json",
       "subSeries": "ORG-CTX"
     },
@@ -50,56 +64,31 @@
       "name": "ORG-MAT Ontology (Organization Maturity)",
       "namespace": "org-mat:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "2.0.0",
+      "oaaVersion": "7.0.0",
+      "version": "2.1.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
+      "validatedDate": "2026-03-13",
       "path": "./Foundation/ORG-MAT-ONT/Entry-ONT-ORG-MAT-001.json"
-    },
-    {
-      "@id": "Entry-ONT-CA-001",
-      "name": "CA Ontology (Competitive Analysis) [DEPRECATED]",
-      "namespace": "ca:",
-      "status": "deprecated",
-      "oaaVersion": "6.1.0",
-      "version": "3.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
-      "path": "./_orphans/Competitive-deprecated/CA-ONT/Entry-ONT-CA-001.json",
-      "deprecationNote": "Entities absorbed into ORG-CONTEXT v3.0.0 (Epic 9C). Use org-ctx: namespace equivalents."
-    },
-    {
-      "@id": "Entry-ONT-CL-001",
-      "name": "CL Ontology (Competitive Landscape) [DEPRECATED]",
-      "namespace": "cl:",
-      "status": "deprecated",
-      "oaaVersion": "6.1.0",
-      "version": "2.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
-      "path": "./_orphans/Competitive-deprecated/CL-ONT/Entry-ONT-CL-001.json",
-      "deprecationNote": "Entities absorbed into ORG-CONTEXT v3.0.0 (Epic 9C). Use org-ctx: namespace equivalents."
     },
     {
       "@id": "Entry-ONT-GA-001",
       "name": "GA Ontology (Gap Analysis)",
       "namespace": "ga:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-07",
-      "path": "./Foundation/GA-ONT/Entry-ONT-GA-001.json"
+      "validatedDate": "2026-03-13",
+      "path": "./Foundation/GA-ONT/Entry-ONT-GA-001.json",
+      "version": "2.1.0"
     },
     {
       "@id": "Entry-ONT-VSOM-001",
       "name": "VSOM Ontology (Vision-Strategy-Objectives-Metrics)",
       "namespace": "vsom:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "3.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -114,7 +103,7 @@
       "gatesPassed": 8,
       "gatesFailed": 0,
       "validatedDate": "2026-02-06",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "2.1.0",
       "path": "./VE-Series/OKR-ONT/Entry-ONT-OKR-001.json"
     },
@@ -126,7 +115,7 @@
       "gatesPassed": 8,
       "gatesFailed": 0,
       "validatedDate": "2026-02-02",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.2.3",
       "path": "./VE-Series/VP-ONT/Entry-ONT-VP-001.json"
     },
@@ -135,7 +124,7 @@
       "name": "RRR Ontology (Roles/RACI/RBAC)",
       "namespace": "rrr:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-02",
@@ -146,7 +135,7 @@
       "name": "PMF Ontology (Product-Market Fit)",
       "namespace": "pmf:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "2.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -170,7 +159,7 @@
       "name": "BSC Ontology (Balanced Scorecard & Strategy Maps)",
       "namespace": "bsc:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -181,10 +170,10 @@
     {
       "@id": "Entry-ONT-IND-001",
       "name": "INDUSTRY Ontology (Porter's 5F, SWOT/TOWS, Ansoff Growth)",
-      "namespace": "ind:",
+      "namespace": "ind-sa:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "1.0.0",
+      "oaaVersion": "7.0.0",
+      "version": "2.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-12",
@@ -196,7 +185,7 @@
       "name": "REASON Ontology (MECE, Logic Trees, Hypothesis-Driven Analysis)",
       "namespace": "rsn:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -209,7 +198,7 @@
       "name": "MACRO Ontology (PESTEL, Scenarios, Futures Funnel, Backcasting)",
       "namespace": "mac:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -222,7 +211,7 @@
       "name": "PORTFOLIO Ontology (BCG, Three Horizons, Investment Maps, Strategic Lens)",
       "namespace": "pfl:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -231,11 +220,24 @@
       "subSeries": "VSOM-SA"
     },
     {
+      "@id": "Entry-ONT-KANO-001",
+      "name": "KANO Ontology (Customer Satisfaction Classification — Kano Model)",
+      "namespace": "kano:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 7,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-28",
+      "path": "./VE-Series/VSOM-SA/KANO-ONT/Entry-ONT-KANO-001.json",
+      "subSeries": "VSOM-SA"
+    },
+    {
       "@id": "Entry-ONT-NAR-001",
       "name": "NARRATIVE Ontology (Strategic Storytelling & Communication Patterns)",
       "namespace": "nar:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -248,7 +250,7 @@
       "name": "CASCADE Ontology (Audience Translation & Fidelity Tracking)",
       "namespace": "csc:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -261,7 +263,7 @@
       "name": "CULTURE Ontology (Strategic Culture Alignment)",
       "namespace": "cul:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -274,7 +276,7 @@
       "name": "VIZSTRAT Ontology (Visual Strategy Artefacts & Deck Patterns)",
       "namespace": "viz:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -287,7 +289,7 @@
       "name": "PPM Ontology (Portfolio/Programme/Project)",
       "namespace": "ppm:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "4.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
@@ -299,11 +301,11 @@
       "name": "PE Ontology (Process Engineering)",
       "namespace": "pe:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "3.0.0",
-      "gatesPassed": 7,
+      "oaaVersion": "7.0.0",
+      "version": "4.0.0",
+      "gatesPassed": 8,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
+      "validatedDate": "2026-02-26",
       "path": "./PE-Series/PE-ONT/Entry-ONT-PE-001.json"
     },
     {
@@ -311,187 +313,429 @@
       "name": "EFS Ontology (Enterprise Framework Services)",
       "namespace": "efs:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-07",
       "path": "./PE-Series/EFS-ONT/Entry-ONT-EFS-001.json"
     },
     {
-      "@id": "Entry-ONT-ALZ-001",
-      "name": "MCSB Ontology (Microsoft Cloud Security Benchmark v1)",
-      "namespace": "mcsb:",
-      "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "2.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
-      "path": "./RCSG-Series/MCSB-ONT/Entry-ONT-ALZ-001.json"
-    },
-    {
-      "@id": "Entry-ONT-EA-001",
-      "name": "EA Ontology (Enterprise Architecture Portfolio)",
-      "namespace": "ea:",
-      "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-07",
-      "path": "./PE-Series/EA-ONT/Entry-ONT-EA-001.json"
-    },
-    {
       "@id": "Entry-ONT-EA-CORE-001",
       "name": "EA-CORE Ontology (Enterprise Architecture Core)",
       "namespace": "ea-core:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "seriesRole": "hub",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-09",
-      "path": "./PE-Series/EA-CORE-ONT/Entry-ONT-EA-CORE-001.json"
+      "path": "./PE-Series/EA/EA-CORE-ONT/Entry-ONT-EA-CORE-001.json",
+      "subSeries": "EA"
     },
     {
       "@id": "Entry-ONT-EA-TOGAF-001",
       "name": "EA-TOGAF Ontology (TOGAF ADM Methodology)",
       "namespace": "ea-togaf:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "seriesRole": "spoke",
+      "spokeType": "methodology",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
       "validatedDate": "2026-02-09",
-      "path": "./PE-Series/EA-TOGAF-ONT/Entry-ONT-EA-TOGAF-001.json"
+      "path": "./PE-Series/EA/EA-TOGAF-ONT/Entry-ONT-EA-TOGAF-001.json",
+      "subSeries": "EA"
     },
     {
       "@id": "Entry-ONT-EA-MSFT-001",
       "name": "EA-MSFT Ontology (Microsoft Cloud Platform)",
       "namespace": "ea-msft:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "seriesRole": "spoke",
+      "spokeType": "vendor",
+      "oaaVersion": "7.0.0",
+      "version": "1.1.0",
+      "gatesPassed": 7,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-05",
+      "path": "./PE-Series/EA/EA-MSFT-ONT/Entry-ONT-EA-MSFT-001.json",
+      "subSeries": "EA"
+    },
+    {
+      "@id": "Entry-ONT-EA-AI-001",
+      "name": "EA-AI Ontology (AI/ML Architecture)",
+      "namespace": "ea-ai:",
+      "status": "compliant",
+      "seriesRole": "spoke",
+      "spokeType": "capability",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-09",
-      "path": "./PE-Series/EA-MSFT-ONT/Entry-ONT-EA-MSFT-001.json"
+      "validatedDate": "2026-03-05",
+      "path": "./PE-Series/EA/EA-AI-ONT/Entry-ONT-EA-AI-001.json",
+      "subSeries": "EA"
     },
     {
       "@id": "Entry-ONT-DS-001",
       "name": "DS Ontology (Design System)",
       "namespace": "ds:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
+      "version": "4.0.0",
+      "gatesPassed": 7,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-24",
+      "path": "./PE-Series/DS-ONT/Entry-ONT-DS-001.json"
+    },
+    {
+      "@id": "Entry-ONT-LSC-001",
+      "name": "LSC Ontology (Logistics & Supply Chain)",
+      "namespace": "lsc:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.2.0",
+      "gatesPassed": 15,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-23",
+      "path": "./PE-Series/LSC-ONT/Entry-ONT-LSC-001.json"
+    },
+    {
+      "@id": "Entry-ONT-OFM-001",
+      "name": "OFM Ontology (Order Fulfilment Management)",
+      "namespace": "ofm:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
       "version": "1.1.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-10",
-      "path": "./PE-Series/DS-ONT/Entry-ONT-DS-001.json"
+      "validatedDate": "2026-03-02",
+      "path": "./PE-Series/OFM-ONT/Entry-ONT-OFM-001.json"
+    },
+    {
+      "@id": "Entry-ONT-SOP-001",
+      "name": "SOP Ontology (Sales Order Processing)",
+      "namespace": "sop:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 7,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-10",
+      "path": "./PE-Series/SOP-ONT/Entry-ONT-SOP-001.json"
     },
     {
       "@id": "Entry-ONT-CTX-001",
       "name": "CTX Ontology (ContextTypes — Organisational Context Taxonomy)",
-      "namespace": "ctx:",
+      "namespace": "org-ctx:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
-      "version": "1.0.0",
+      "oaaVersion": "7.0.0",
+      "version": "2.1.0",
       "gatesPassed": 8,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-10",
+      "validatedDate": "2026-03-13",
       "path": "./Foundation/ORG-CONTEXT-ONT/Entry-ONT-CTX-001.json",
       "subSeries": "ORG-CTX"
     },
     {
-      "@id": "Entry-ONT-RCSG-FW-001",
-      "name": "RCSG-FW Ontology (RCSG Framework)",
-      "namespace": "rcsg-fw:",
+      "@id": "Entry-ONT-CICD-001",
+      "name": "CICD Ontology (CI/CD Pipeline & Delivery)",
+      "namespace": "cicd:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.1.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-19",
+      "path": "./PE-Series/CICD-ONT/Entry-ONT-CICD-001.json"
+    },
+    {
+      "@id": "Entry-ONT-ANTIQUES-001",
+      "name": "Antiques Ontology (Antiques and Insurance Valuations)",
+      "namespace": "antq:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 7,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-19",
+      "path": "./PE-Series/ANTIQUES-ONT/Entry-ONT-ANTIQUES-001.json"
+    },
+    {
+      "@id": "Entry-ONT-DACS-001",
+      "name": "DACS Ontology (20C Design Arts & Crafts SME Classification)",
+      "namespace": "dacs:",
+      "status": "proposal",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 5,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-06",
+      "path": "./PE-Series/DACS-ONT/Entry-ONT-DACS-001.json"
+    },
+    {
+      "@id": "Entry-ONT-INDT-001",
+      "name": "IND Ontology (Individual Types — B2B/B2C Archetypes)",
+      "namespace": "indt:",
+      "status": "proposal",
+      "oaaVersion": "7.0.0",
+      "version": "1.1.0",
+      "gatesPassed": 0,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-13",
+      "path": "./Foundation/IND-ONT/Entry-ONT-INDT-001.json"
+    },
+    {
+      "@id": "Entry-ONT-CRT-001",
+      "name": "CRT Ontology (Customer Role Taxonomy)",
+      "namespace": "crt:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-20",
+      "path": "./VE-Series/CRT-ONT/Entry-ONT-CRT-001.json"
+    },
+    {
+      "@id": "Entry-ONT-QVF-001",
+      "name": "QVF Ontology (Quantitative Value & Finance)",
+      "namespace": "qvf:",
       "status": "compliant",
       "oaaVersion": "6.1.0",
       "version": "1.0.0",
       "gatesPassed": 8,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-10",
-      "path": "./RCSG-Series/RCSG-FW-ONT/Entry-ONT-RCSG-FW-001.json"
+      "validatedDate": "2026-03-11",
+      "path": "./VE-Series/QVF-ONT/Entry-ONT-QVF-001.json"
     },
     {
-      "@id": "Entry-ONT-MCSB2-001",
-      "name": "MCSB v2 Ontology (Microsoft Cloud Security Benchmark v2)",
-      "namespace": "mcsb2:",
-      "status": "placeholder",
+      "@id": "Entry-ONT-K-DMAIC-001",
+      "name": "K-DMAIC Ontology (Kaizen DMAIC)",
+      "namespace": "kdmaic:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-26",
+      "path": "./PE-Series/K-DMAIC-ONT/Entry-ONT-K-DMAIC-001.json"
+    },
+    {
+      "@id": "Entry-ONT-DMAIC-001",
+      "name": "DMAIC Ontology (Six Sigma DMAIC)",
+      "namespace": "dmaic:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-26",
+      "path": "./PE-Series/DMAIC-ONT/Entry-ONT-DMAIC-001.json"
+    },
+    {
+      "@id": "Entry-ONT-DELTA-001",
+      "name": "DELTA Ontology (Discover-Evaluate-Leverage-Transform-Adapt)",
+      "namespace": "delta:",
+      "series": "PE-Series",
+      "status": "Draft",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 0,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-18",
+      "path": "./PE-Series/DELTA-ONT/Entry-ONT-DELTA-001.json"
+    },
+    {
+      "@id": "Entry-ONT-NUT-001",
+      "name": "NUT Ontology (Nutrition Coaching)",
+      "version": "1.0.0",
+      "oaaVersion": "7.0.0",
+      "status": "compliant",
       "gatesPassed": 0,
       "gatesFailed": 0,
       "validatedDate": null,
-      "path": "./RCSG-Series/MCSB2-ONT/Entry-ONT-MCSB2-001.json"
+      "path": "./PE-Series/NUT-ONT/Entry-ONT-NUT-001.json",
+      "layer": "PE-SERIES",
+      "domain": "Nutrition Coaching",
+      "namespace": "nut:",
+      "prefix": "nut:",
+      "dependencies": [
+        "Entry-ONT-PE-001",
+        "Entry-ONT-CRT-001",
+        "Entry-ONT-IND-001",
+        "Entry-ONT-RRR-001",
+        "Entry-ONT-VP-001",
+        "Entry-ONT-KPI-001"
+      ],
+      "dependents": [],
+      "created": "2026-02-26"
     },
     {
-      "@id": "Entry-ONT-GDPR-001",
-      "name": "GDPR Regulatory Framework Ontology",
-      "namespace": "gdpr:",
+      "@id": "Entry-ONT-FAIRSLICE-001",
+      "name": "FAIRSLICE Ontology (FairSlice Platform Economics & Revenue Distribution)",
+      "namespace": "fs:",
       "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
       "gatesPassed": 8,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-06",
-      "oaaVersion": "6.1.0",
-      "version": "1.0.0",
-      "path": "./RCSG-Series/GDPR-ONT/Entry-ONT-GDPR-001.json"
+      "validatedDate": "2026-02-26",
+      "path": "./Orchestration/FAIRSLICE-ONT/Entry-ONT-FAIRSLICE-001.json"
     },
     {
-      "@id": "Entry-ONT-AZALZ-001",
-      "name": "Az-ALZ Assessment Ontology (Azure Landing Zone Assessment)",
-      "namespace": "azalz:",
-      "status": "placeholder",
+      "@id": "Entry-ONT-PARTNER-001",
+      "name": "PARTNER Ontology (Partner Network & Channel Economics)",
+      "namespace": "partner:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 8,
+      "gatesFailed": 0,
+      "validatedDate": "2026-02-26",
+      "path": "./Foundation/PARTNER-ONT/Entry-ONT-PARTNER-001.json"
+    },
+    {
+      "@id": "Entry-ONT-SNG-001",
+      "name": "SNG (Strategic Neural Graph)",
+      "namespace": "sng:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
       "gatesPassed": 0,
       "gatesFailed": 0,
-      "validatedDate": null,
-      "path": "./RCSG-Series/AZALZ-ONT/Entry-ONT-AZALZ-001.json"
+      "validatedDate": "2026-03-07",
+      "path": "./Orchestration/SNG/pfc-sng-v1.0.0.jsonld",
+      "series": "Orchestration",
+      "description": "Weighted directed meta-graph: 40 nodes (ontology namespaces), 50+ directed weighted edges, 6 edge types, 5 neural layers, 6 clusters, 4 PFI overlays"
     },
     {
-      "@id": "Entry-ONT-PII-001",
-      "name": "PII Governance Ontology (Microsoft Native)",
-      "namespace": "pii:",
-      "status": "compliant",
-      "gatesPassed": 8,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-06",
-      "oaaVersion": "6.1.0",
-      "version": "3.3.0",
-      "path": "./RCSG-Series/PII-ONT/Entry-ONT-PII-001.json"
-    },
-    {
-      "@id": "Entry-ONT-RMF-001",
-      "name": "RMF-IS27005 Ontology (Risk Management Framework — ISO 27005)",
-      "namespace": "ns:",
-      "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "@id": "Entry-ONT-URG-001",
+      "name": "URG Ontology (Unified Registry & Governance)",
+      "namespace": "urg:",
+      "status": "candidate",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
+      "gatesPassed": 5,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-18",
+      "path": "./Orchestration/URG-ONT/Entry-ONT-URG-001.json"
+    },
+    {
+      "@id": "Entry-ONT-PFC-001",
+      "name": "PFC Ecosystem Ontology",
+      "namespace": "pfc:",
+      "status": "candidate",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 5,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-18",
+      "path": "./Orchestration/PFC-ONT/Entry-ONT-PFC-001.json"
+    },
+    {
+      "@id": "Entry-ONT-GRPH-001",
+      "name": "GRPH Ontology (Graph Theory Intellectual History)",
+      "namespace": "grph:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 5,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-13",
+      "path": "./Foundation/GRPH-ONT/Entry-ONT-GRPH-001.json",
+      "series": "Foundation",
+      "description": "3,000-year intellectual ancestry of graph theory — 7 entities, 14 relationships, 27 contributors (Thales to Zuckerberg, 8 women), cut-up lineage (Tzara→Gysin→Burroughs→Bowie→LLM), Rothschild network finance, Snow/Nightingale epidemiology, social media graphs, pattern matching, SNG convergence"
+    },
+    {
+      "@id": "Entry-PP-FDN-001",
+      "name": "FDN Context Assembly ProcessPath",
+      "namespace": "pe:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "gatesPassed": 6,
+      "gatesFailed": 0,
+      "validatedDate": "2026-03-14",
+      "path": "./Foundation/FDN-ProcessPath/fdn-context-assembly-v1.0.0.jsonld",
+      "series": "Foundation",
+      "artifactType": "processPath",
+      "description": "PE-ONT ProcessPath for the 8-step FDN context assembly chain: CTX → ORG-CONTEXT → PROFILE-IND → ORG-MAT → GA → DISCOVER → PARTNER-MAP → CONTEXT-REFRESH. 8 PathSteps, 8 PathLinks (5 mandatory + 2 optional + 1 feedback loop), 6 ProcessGates."
+    },
+    {
+      "@id": "Entry-PP-VE-001",
+      "name": "VE Adaptive Progressive Value Engineering ProcessPath",
+      "namespace": "pe:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "2.0.0",
       "gatesPassed": 7,
       "gatesFailed": 0,
-      "validatedDate": "2026-02-10",
-      "path": "./RCSG-Series/RMF-IS27005-ONT/Entry-ONT-RMF-001.json"
+      "validatedDate": "2026-03-15",
+      "path": "./VE-Series/VE-ProcessPath/ve-chain-v2.0.0.jsonld",
+      "series": "VE-Series",
+      "artifactType": "processPath",
+      "description": "PE-ONT ProcessPath for the VE adaptive progressive chain v2.0.0. 21 PathSteps across 5 zones (FDN, STRATEGY, METRICS, PROPOSITION, REALISATION), 25 PathLinks, 7 ProcessGates, 6 ExpansionZones (SA, Metrics, Proposition, GRC, Method, Delivery), 2 feedback loops. Typed I/O contracts per step. Conforms to PFC-VE-BRIEF-Adaptive-Progressive-Value-Engineering-Pattern-v1.0.0."
     },
     {
-      "@id": "Entry-ONT-NCSC-CAF-001",
-      "name": "NCSC-CAF Ontology (NCSC Cyber Assessment Framework v4.0)",
-      "namespace": "ncsc-caf:",
+      "@id": "Entry-PP-VE-EXT-PATTERN",
+      "name": "VE PFI Extension Pattern",
+      "namespace": "pe:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-14",
-      "path": "./RCSG-Series/NCSC-CAF-ONT/Entry-ONT-NCSC-CAF-001.json"
+      "validatedDate": "2026-03-15",
+      "path": "./VE-Series/VE-ProcessPath/ve-pfi-extension-pattern-v1.0.0.jsonld",
+      "series": "VE-Series",
+      "artifactType": "processPath",
+      "description": "Defines pe:PFIProcessPathExtension entity and pe:pathScopedToInstance relationship pattern. Schema for PFI instance-scoped VE ProcessPath extensions (step overrides, gate insertions, scope narrowing, link overrides)."
     },
     {
-      "@id": "Entry-ONT-DSPT-001",
-      "name": "DSPT Ontology (NHS Data Security and Protection Toolkit)",
-      "namespace": "dspt:",
+      "@id": "Entry-PP-VE-BAIV-001",
+      "name": "VE ProcessPath — BAIV",
+      "namespace": "pe:",
       "status": "compliant",
-      "oaaVersion": "6.1.0",
+      "oaaVersion": "7.0.0",
       "version": "1.0.0",
-      "gatesPassed": 7,
-      "gatesFailed": 0,
-      "validatedDate": "2026-02-14",
-      "path": "./RCSG-Series/DSPT-ONT/Entry-ONT-DSPT-001.json"
+      "validatedDate": "2026-03-15",
+      "path": "./VE-Series/VE-ProcessPath/ve-chain-baiv-v1.0.0.jsonld",
+      "series": "VE-Series",
+      "artifactType": "processPath",
+      "pfiInstance": "BAIV",
+      "parentProcessPath": "ve-chain-v2.0.0",
+      "description": "PFI instance-scoped VE ProcessPath for BAIV. Extends base with ICP validation gate (4 ICPs), strengthened three-voice VP gate, and marketing skill chain readiness gate. Product-level scope."
+    },
+    {
+      "@id": "Entry-PP-VE-AIRL-001",
+      "name": "VE ProcessPath — AIRL",
+      "namespace": "pe:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "validatedDate": "2026-03-15",
+      "path": "./VE-Series/VE-ProcessPath/ve-chain-airl-v1.0.0.jsonld",
+      "series": "VE-Series",
+      "artifactType": "processPath",
+      "pfiInstance": "AIRL",
+      "parentProcessPath": "ve-chain-v2.0.0",
+      "description": "PFI instance-scoped VE ProcessPath for AIRL. Extends base with 5 PbD/SbD compliance gates (Privacy Impact Screen, DPIA Scope, Security Baseline, Full DPIA, Pentest + AI Security). GRC expansion zone mandatory. Zero Trust validation. OWASP LLM Top 10."
+    },
+    {
+      "@id": "Entry-PP-VE-W4M-001",
+      "name": "VE ProcessPath — W4M",
+      "namespace": "pe:",
+      "status": "compliant",
+      "oaaVersion": "7.0.0",
+      "version": "1.0.0",
+      "validatedDate": "2026-03-15",
+      "path": "./VE-Series/VE-ProcessPath/ve-chain-w4m-v1.0.0.jsonld",
+      "series": "VE-Series",
+      "artifactType": "processPath",
+      "pfiInstance": "W4M",
+      "parentProcessPath": "ve-chain-v2.0.0",
+      "description": "PFI instance-scoped VE ProcessPath for W4M. Constrains base by conditionally skipping Kano/PMF for internal and international supply corridors (B2B operations). External corridors follow full path. Corridor classification gate added. Link override routes VP-gate directly to Realisation when Kano/PMF skipped."
     }
   ],
   "namespaceRegistry": {
@@ -500,8 +744,6 @@
     "org": "https://platformcore.io/ontology/org/",
     "org-ctx": "https://platformcore.io/ontology/org-context/",
     "org-mat": "https://platformcore.io/ontology/org-maturity/",
-    "ca": "https://platformcore.io/ontology/ca/",
-    "cl": "https://platformcore.io/ontology/cl/",
     "ga": "https://platformcore.io/ontology/ga/",
     "vsom": "https://platformcore.io/ontology/vsom/",
     "okr": "https://platformcore.io/ontology/okr/",
@@ -510,7 +752,7 @@
     "pmf": "https://platformcore.io/ontology/pmf/",
     "kpi": "https://platformcore.io/ontology/kpi/",
     "bsc": "https://oaa-ontology.org/v6/bsc/",
-    "ind": "https://oaa-ontology.org/v6/industry/",
+    "ind-sa": "https://oaa-ontology.org/v6/industry/",
     "rsn": "https://oaa-ontology.org/v6/reason/",
     "mac": "https://oaa-ontology.org/v6/macro/",
     "pfl": "https://oaa-ontology.org/v6/portfolio/",
@@ -522,58 +764,114 @@
     "pe": "https://platformcore.io/ontology/pe/",
     "efs": "https://platformcore.io/ontology/efs/",
     "ds": "https://platformcore.io/ontology/ds/",
-    "mcsb": "https://platformcore.io/ontology/mcsb/",
-    "mcsb2": "https://platformcore.io/ontology/mcsb2/",
-    "ea": "https://platformcore.io/ontology/ea/",
     "ea-core": "https://oaa-ontology.org/v6/ea-core/",
     "ea-togaf": "https://oaa-ontology.org/v6/ea-togaf/",
     "ea-msft": "https://oaa-ontology.org/v6/ea-msft/",
-    "gdpr": "https://platformcore.io/ontology/gdpr/",
-    "azalz": "https://platformcore.io/ontology/azalz/",
-    "pii": "https://platformcore.io/ontology/pii-governance/",
-    "ctx": "https://baiv.co.uk/ontology/",
-    "rcsg-fw": "https://platformcore.io/ontology/rcsg-fw/",
-    "ns": "https://baiv.co.uk/ontology/",
-    "ncsc-caf": "https://platformcore.io/ontology/ncsc-caf/",
-    "dspt": "https://platformcore.io/ontology/dspt/"
+    "cicd": "https://platformcore.io/ontology/cicd/",
+    "indt": "https://platformcore.io/ontology/individual-types/",
+    "crt": "https://platformcore.io/ontology/crt/",
+    "lsc": "https://oaa-ontology.org/v6/logistics/",
+    "ofm": "https://oaa-ontology.org/v6/order-fulfilment/",
+    "sop": "https://oaa-ontology.org/v6/sales-order-processing/",
+    "dt": "https://platformcore.io/ontology/dt/",
+    "kdmaic": "https://oaa-ontology.org/v6/kaizen-dmaic/",
+    "dmaic": "https://oaa-ontology.org/v6/six-sigma-dmaic/",
+    "nut": "https://oaa-ontology.org/v7/nutrition/",
+    "fs": "https://platformcore.io/ontology/fairslice/",
+    "partner": "https://platformcore.io/ontology/partner/",
+    "grph": "https://platformcore.io/ontology/grph/"
   },
   "seriesRegistry": {
     "VE-Series": {
       "name": "Value Engineering Series",
-      "description": "Strategic value definition, measurement, and analysis ontologies",
-      "ontologies": ["VSOM", "OKR", "VP", "RRR", "PMF", "KPI"],
+      "description": "Strategic value definition, measurement, analysis, and customer role taxonomy ontologies",
+      "ontologies": [
+        "VSOM",
+        "OKR",
+        "VP",
+        "RRR",
+        "PMF",
+        "KPI",
+        "CRT",
+        "QVF"
+      ],
       "subSeries": {
         "VSOM-SA": {
           "name": "VSOM Strategy Analysis",
           "description": "Strategic analysis frameworks layered on VSOM spine — enables deeper pattern analysis as sub-analysis of VSOM",
-          "ontologies": ["BSC", "INDUSTRY", "REASON", "MACRO", "PORTFOLIO"]
+          "ontologies": [
+            "BSC",
+            "INDUSTRY",
+            "REASON",
+            "MACRO",
+            "PORTFOLIO",
+            "KANO"
+          ]
         },
         "VSOM-SC": {
           "name": "VSOM Strategy Communication",
           "description": "Strategy communication, audience cascade, culture alignment, and visual artefact ontologies — the 'how we tell' complement to VSOM-SA's 'how we think'",
-          "ontologies": ["NARRATIVE", "CASCADE", "CULTURE", "VIZSTRAT"]
+          "ontologies": [
+            "NARRATIVE",
+            "CASCADE",
+            "CULTURE",
+            "VIZSTRAT"
+          ]
         }
       }
     },
     "PE-Series": {
       "name": "Process Engineering Series",
       "description": "Execution and process management ontologies",
-      "ontologies": ["PPM", "PE", "EFS", "EA", "EA-CORE", "EA-TOGAF", "EA-MSFT", "DS"]
-    },
-    "RCSG-Series": {
-      "name": "Risk, Compliance, Security & Governance Series",
-      "description": "Risk management, regulatory compliance, security benchmarks, and governance ontologies",
-      "ontologies": ["RCSG-FW", "MCSB", "MCSB2", "GDPR", "AZALZ", "PII", "RMF-IS27005", "NCSC-CAF", "DSPT"]
+      "ontologies": [
+        "PPM",
+        "PE",
+        "EFS",
+        "EA",
+        "DS",
+        "CICD",
+        "ANTIQUES",
+        "DACS",
+        "LSC",
+        "OFM",
+        "SOP",
+        "K-DMAIC",
+        "DMAIC",
+        "DELTA",
+        "NUT"
+      ],
+      "subSeries": {
+        "EA": {
+          "name": "Enterprise Architecture",
+          "description": "Hub-spoke EA sub-series. EA-CORE is the platform-agnostic hub. Spokes are methodology-driven (TOGAF), vendor-specific (MSFT, AWS, Google), or capability-driven (AI).",
+          "parentOntology": "EA-CORE",
+          "ontologies": [
+            "EA-CORE",
+            "EA-TOGAF",
+            "EA-MSFT",
+            "EA-AI"
+          ]
+        }
+      }
     },
     "Foundation": {
       "name": "Foundation Ontologies",
       "description": "Core organizational and context ontologies",
-      "ontologies": ["ORG", "ORG-MAT", "GA"],
+      "ontologies": [
+        "ORG",
+        "ORG-MAT",
+        "GA",
+        "IND",
+        "PARTNER"
+      ],
       "subSeries": {
         "ORG-CTX": {
           "name": "Organisation Context",
           "description": "Context types, subtypes, and environmental factors",
-          "ontologies": ["ORG-CONTEXT", "CTX"],
+          "ontologies": [
+            "ORG-CONTEXT",
+            "CTX"
+          ],
           "parentOntology": "ORG-CONTEXT"
         }
       }
@@ -581,181 +879,18 @@
     "Orchestration": {
       "name": "Orchestration Layer",
       "description": "Model composition and integration ontologies",
-      "ontologies": ["EMC"]
+      "ontologies": [
+        "EMC",
+        "DT",
+        "FAIRSLICE"
+      ]
     }
   },
   "statistics": {
-    "totalOntologies": 40,
-    "compliant": 36,
-    "nearCompliance": 0,
-    "partialCompliance": 0,
-    "pendingReview": 0,
-    "placeholder": 2,
-    "deprecated": 2
-  },
-  "validationSummary": {
-    "validated": 36,
-    "validatedOntologies": [
-      "EMC", "ORG", "ORG-CONTEXT", "ORG-MAT", "CTX",
-      "GA",
-      "VSOM", "OKR", "VP", "RRR", "PMF", "KPI",
-      "BSC", "INDUSTRY", "REASON", "MACRO", "PORTFOLIO",
-      "NARRATIVE", "CASCADE", "CULTURE", "VIZSTRAT",
-      "PPM", "PE", "EFS", "MCSB", "EA", "PII", "GDPR",
-      "EA-CORE", "EA-TOGAF", "EA-MSFT", "DS", "RCSG-FW", "RMF-IS27005", "NCSC-CAF", "DSPT"
-    ],
-    "deprecatedOntologies": ["CA", "CL"],
-    "placeholders": ["MCSB2", "AZALZ"],
-    "oaaVersion": "6.1.0",
-    "oaaVersionNotes": "36 compliant ontologies at OAA v6.1.0+. KPI at v6.2.0. VE-Series expanded with VSOM-SA sub-series (BSC, INDUSTRY, REASON, MACRO, PORTFOLIO) and VSOM-SC sub-series (NARRATIVE, CASCADE, CULTURE, VIZSTRAT). SA = 'how we think'; SC = 'how we tell'. RCSG-Series expanded: NCSC-CAF-ONT (UK NCSC Cyber Assessment Framework v4.0 — 4 objectives, 14 principles, 41 contributing outcomes, ~559 IGPs; UK public sector compliance for NIS Regulations, GovAssure, local government) and DSPT-ONT (NHS Data Security and Protection Toolkit — 10 NDG standards, 44 assertions, 149 evidence items across 4 organisation categories; cross-mapped to CAF and GDPR). Epic 9C: Competitive series eliminated — CA-ONT and CL-ONT entities absorbed into ORG-CONTEXT v3.0.0 as subtypes; GA-ONT moved to Foundation. 2 deprecated (CA, CL), 2 placeholders (MCSB2, AZALZ) pending implementation.",
-    "lastFullValidation": "2026-02-14"
-  },
-  "pfiInstances": [
-    {
-      "@id": "PFI-BAIV",
-      "name": "BAIV Instance",
-      "description": "Brand AI Visibility PF-Instance — SaaS platform for B2B AI citation tracking and content optimisation",
-      "products": ["AIV"],
-      "brands": ["BAIV"],
-      "designSystemConfig": {
-        "brand": "baiv",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["PRODUCT", "COMPETITIVE", "STRATEGIC"],
-      "maturityLevel": 1,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:baiv-limited",
-        "organizationName": "BAIV Limited",
-        "industry": "MarTech SaaS",
-        "size": "Startup"
-      },
-      "verticalMarket": "MarTech",
-      "jurisdictions": ["UK", "EU"],
-      "instanceDataFiles": [
-        {
-          "ontologyRef": "VP-ONT",
-          "path": "pfi-BAIV-AIV-ONT/baiv-ai-visibility-vp-instance-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV AI Visibility Value Proposition instance"
-        },
-        {
-          "ontologyRef": "RRR-ONT",
-          "path": "pfi-BAIV-AIV-ONT/RRR-DATA-BAIV-AIV-roles-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV RBAC roles and permissions"
-        },
-        {
-          "ontologyRef": "RRR-ONT",
-          "path": "pfi-BAIV-AIV-ONT/baiv-csuite-rrr-instances-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV C-Suite role instances with strategic objectives"
-        },
-        {
-          "ontologyRef": "VP-ONT",
-          "path": "pfi-BAIV-AIV-ONT/baiv-ai-visibility-vp-rrr-enhanced-v1.1.0.jsonld",
-          "type": "instance-data",
-          "description": "Enhanced VP+RRR integration with security context"
-        },
-        {
-          "ontologyRef": "EFS-ONT",
-          "path": "pfi-BAIV-AIV-ONT/EFS-DATA-BAIV-AIV-security-v1.0.0.jsonld",
-          "type": "instance-data",
-          "description": "BAIV Enterprise Framework Services security data"
-        }
-      ],
-      "instanceOntologies": [
-        "pfi-BAIV-AIV-ONT/RRR-DATA-BAIV-AIV-roles-v1.0.0.jsonld",
-        "pfi-BAIV-AIV-ONT/AIV-Competitive-ONT/"
-      ],
-      "clientOrgs": []
-    },
-    {
-      "@id": "PFI-RCS",
-      "name": "RCS Instance",
-      "description": "RCS PF-Instance — regulatory compliance and security platform for multi-framework governance",
-      "products": ["RCS"],
-      "brands": ["RCS"],
-      "designSystemConfig": {
-        "brand": "rcs",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["COMPLIANCE", "SECURITY"],
-      "maturityLevel": 1,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:rcs-platform",
-        "organizationName": "RCS Platform",
-        "industry": "RegTech",
-        "size": "Enterprise"
-      },
-      "verticalMarket": "RegTech",
-      "jurisdictions": ["UK", "EU", "US"],
-      "instanceDataFiles": [],
-      "instanceOntologies": [],
-      "clientOrgs": []
-    },
-    {
-      "@id": "PFI-W4M",
-      "name": "W4M Instance",
-      "description": "W4M PF-Instance — placeholder using PF-Core defaults, no brand-specific design tokens",
-      "products": ["W4M"],
-      "brands": ["W4M"],
-      "designSystemConfig": {
-        "brand": null,
-        "fallback": "pfc",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["PRODUCT"],
-      "maturityLevel": 1,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:w4m-platform",
-        "organizationName": "W4M Platform",
-        "industry": "SaaS",
-        "size": "Startup"
-      },
-      "verticalMarket": "SaaS",
-      "jurisdictions": ["UK"],
-      "instanceDataFiles": [],
-      "instanceOntologies": [],
-      "clientOrgs": []
-    },
-    {
-      "@id": "PFI-VHF",
-      "name": "VHF Nutrition App Instance",
-      "description": "VHF Nutrition App PF-Instance — PoC instance validating hub-and-spoke CI/CD architecture with full ontology suite",
-      "products": ["VHF-Nutrition"],
-      "brands": ["VHF"],
-      "designSystemConfig": {
-        "brand": null,
-        "fallback": "pfc",
-        "configVersion": "1.0.0"
-      },
-      "requirementScopes": ["PRODUCT", "COMPLIANCE", "SECURITY"],
-      "maturityLevel": 0,
-      "contextLevel": "PFI",
-      "orgContext": {
-        "organizationRef": "org:vhf-nutrition",
-        "organizationName": "VHF Nutrition",
-        "industry": "HealthTech / Nutrition",
-        "size": "PoC"
-      },
-      "verticalMarket": "HealthTech",
-      "jurisdictions": ["UK"],
-      "instanceDataFiles": [],
-      "instanceOntologies": [],
-      "clientOrgs": [],
-      "hubSpokeConfig": {
-        "repos": {
-          "dev": "ajrmooreuk/pfi-vhf-nutrition-app-dev",
-          "test": "ajrmooreuk/pfi-vhf-nutrition-app-test",
-          "prod": "ajrmooreuk/pfi-vhf-nutrition-app-prod"
-        },
-        "pfcPin": "latest",
-        "license": "pfc-enterprise",
-        "ontologySeries": ["VE-Series", "PE-Series", "RCSG-Series", "Foundation", "Orchestration"]
-      }
-    }
-  ]
+    "totalOntologies": 56,
+    "compliant": 51,
+    "superseded": 0,
+    "placeholder": 0,
+    "deprecated": 0
+  }
 }
